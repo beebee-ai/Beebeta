@@ -31,11 +31,20 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Update vite.config.ts for deployment
+      - name: Get repository name
+        id: repo
+        run: |
+          REPO_NAME=$(echo "${{ github.repository }}" | awk -F '/' '{print $2}')
+          echo "name=$REPO_NAME" >> $GITHUB_OUTPUT
+          echo "Repository name: $REPO_NAME"
+
+      - name: Update vite.config.ts outDir
         run: |
           sed -i "s/outDir: 'build'/outDir: 'dist'/g" vite.config.ts
 
       - name: Build
+        env:
+          BASE_PATH: /${{ steps.repo.outputs.name }}/
         run: npm run build
 
       - name: List build files
