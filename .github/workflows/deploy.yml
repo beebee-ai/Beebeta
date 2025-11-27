@@ -42,9 +42,17 @@ jobs:
           echo "name=$REPO_NAME" >> $GITHUB_OUTPUT
           echo "Repository name: $REPO_NAME"
 
+      - name: Update vite.config.ts base path
+        run: |
+          REPO_NAME="${{ steps.repo.outputs.name }}"
+          BASE_PATH="/${REPO_NAME}/"
+          # 更新 base 配置为实际路径值
+          sed -i "s|base:.*|base: '${BASE_PATH}',|g" vite.config.ts
+          # 验证配置
+          echo "Updated base path to: ${BASE_PATH}"
+          grep "base:" vite.config.ts
+
       - name: Build
-        env:
-          BASE_PATH: /${{ steps.repo.outputs.name }}/
         run: npm run build
 
       - name: List build files
