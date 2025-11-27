@@ -42,21 +42,6 @@ jobs:
           echo "name=$REPO_NAME" >> $GITHUB_OUTPUT
           echo "Repository name: $REPO_NAME"
 
-      - name: Update vite.config.ts base path
-        run: |
-          # 检查是否已存在 base 配置
-          if grep -q "base:" vite.config.ts; then
-            # 如果存在，更新它
-            sed -i "s|base:.*|base: process.env.BASE_PATH || '/',|g" vite.config.ts
-          else
-            # 如果不存在，使用 awk 在 defineConfig({ 后插入 base 配置
-            awk '/export default defineConfig\(/{print; print "    base: process.env.BASE_PATH || '\''/'\'',"; next}1' vite.config.ts > vite.config.ts.tmp && mv vite.config.ts.tmp vite.config.ts
-          fi
-          # 验证配置已添加
-          echo "=== Updated vite.config.ts (showing relevant lines) ==="
-          grep -A 2 "defineConfig" vite.config.ts | head -4
-          grep "base:" vite.config.ts || (echo "ERROR: base config not found!" && exit 1)
-
       - name: Build
         env:
           BASE_PATH: /${{ steps.repo.outputs.name }}/
