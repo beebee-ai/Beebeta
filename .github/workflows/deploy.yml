@@ -46,11 +46,28 @@ jobs:
         run: |
           REPO_NAME="${{ steps.repo.outputs.name }}"
           BASE_PATH="/${REPO_NAME}/"
-          # 更新 base 配置为实际路径值
-          sed -i "s|base:.*|base: '${BASE_PATH}',|g" vite.config.ts
-          # 验证配置
-          echo "Updated base path to: ${BASE_PATH}"
-          grep "base:" vite.config.ts
+          echo "Repository name: ${REPO_NAME}"
+          echo "Base path: ${BASE_PATH}"
+          
+          # 检查是否已存在 base 配置
+          if grep -q "base:" vite.config.ts; then
+            # 如果存在，更新它
+            echo "Updating existing base configuration..."
+            sed -i "s|base:.*|base: '${BASE_PATH}',|g" vite.config.ts
+          else
+            # 如果不存在，使用 awk 在 defineConfig({ 后添加
+            echo "Adding base configuration..."
+            awk -v bp="${BASE_PATH}" '/export default defineConfig\(/{print; print "    base: '\''" bp "'\','"; next}1' vite.config.ts > vite.config.ts.tmp && mv vite.config.ts.tmp vite.config.ts
+          fi
+          
+          # 验证配置已添加/更新
+          echo "=== Updated vite.config.ts (showing relevant lines) ==="
+          grep -A 2 "defineConfig" vite.config.ts | head -4
+          if ! grep -q "base:" vite.config.ts; then
+            echo "ERROR: Failed to add base configuration!"
+            exit 1
+          fi
+          echo "✓ Base configuration verified"
 
       - name: Build
         run: npm run build
