@@ -42,6 +42,14 @@ jobs:
           echo "name=$REPO_NAME" >> $GITHUB_OUTPUT
           echo "Repository name: $REPO_NAME"
 
+      - name: Update vite.config.ts base path
+        run: |
+          if grep -q "base:" vite.config.ts; then
+            sed -i "s|base:.*|base: process.env.BASE_PATH || '/',|g" vite.config.ts
+          else
+            sed -i "/export default defineConfig({/a\    base: process.env.BASE_PATH || '/'," vite.config.ts
+          fi
+
       - name: Build
         env:
           BASE_PATH: /${{ steps.repo.outputs.name }}/
