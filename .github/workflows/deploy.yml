@@ -32,7 +32,8 @@ jobs:
         run: npm install
 
       - name: Update vite.config.ts outDir
-        run: sed -i "s/outDir: 'build'/outDir: 'dist'/g" vite.config.ts
+        run: |
+          sed -i "s/outDir: 'build'/outDir: 'dist'/g" vite.config.ts
 
       - name: Get repository name
         id: repo
@@ -48,6 +49,11 @@ jobs:
 
       - name: List build files
         run: ls -la dist || echo "Build directory check"
+
+      - name: Remove README.md
+        run: |
+          rm -f dist/README.md || true
+          rm -f README.md || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
