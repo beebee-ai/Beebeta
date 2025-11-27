@@ -31,10 +31,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Update vite.config.ts outDir
-        run: |
-          sed -i "s/outDir: 'build'/outDir: 'dist'/g" vite.config.ts
-
       - name: Get repository name
         id: repo
         run: |
@@ -42,13 +38,9 @@ jobs:
           echo "name=$REPO_NAME" >> $GITHUB_OUTPUT
           echo "Repository name: $REPO_NAME"
 
-      - name: Update vite.config.ts base path
+      - name: Update vite.config.ts outDir
         run: |
-          if grep -q "base:" vite.config.ts; then
-            sed -i "s|base:.*|base: process.env.BASE_PATH || '/',|g" vite.config.ts
-          else
-            sed -i "/export default defineConfig({/a\    base: process.env.BASE_PATH || '/'," vite.config.ts
-          fi
+          sed -i "s/outDir: 'build'/outDir: 'dist'/g" vite.config.ts
 
       - name: Build
         env:
