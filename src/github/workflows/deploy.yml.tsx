@@ -31,6 +31,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Update vite.config.ts outDir
+        run: sed -i "s/outDir: 'build'/outDir: 'dist'/g" vite.config.ts
+
       - name: Get repository name
         id: repo
         run: |
