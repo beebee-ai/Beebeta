@@ -1,6 +1,6 @@
 import { Mail } from 'lucide-react';
 import { Button } from './ui/button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../config/emailjs';
@@ -21,6 +21,14 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
     message: t.contact.form.defaultMessage
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Update default message when language changes
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      message: t.contact.form.defaultMessage
+    }));
+  }, [t.contact.form.defaultMessage]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

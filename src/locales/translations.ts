@@ -114,7 +114,7 @@ export const translations = {
       stage2a: {
         title: "BETA 星空营 (Galaxy)",
         subtitle: "",
-        ageLimit: "18岁以上大学生/研究生/博士生",
+        ageLimit: "18岁及以上大学生/研究生/博士生",
         suitableFor:
           "从零做出能上线的完整产品，强化作品集，用于实习申请、求职提升或验证创业想法",
         duration:
@@ -134,7 +134,7 @@ export const translations = {
       stage2b: {
         title: "BETA 深空营 (Cosmos)",
         subtitle: "",
-        ageLimit: "18岁以上大学生/在职工程师/创业者",
+        ageLimit: "18岁及以上大学生/在职工程师/创业者",
         suitableFor:
           "打造生产级、具备商业潜力的项目，用于大厂转岗、PhD申请或创业MVP",
         duration:
@@ -156,7 +156,7 @@ export const translations = {
       stage3: {
         title: "BETA 无界营 (Infinity)",
         subtitle: "",
-        ageLimit: "18岁以上大学生/在职工程师/创业者",
+        ageLimit: "18岁及以上大学生/在职工程师/创业者",
         suitableFor:
           "提升AI工程与产品能力，在市场与专家指导下完成可用于求职或创业的生产级产品",
         duration:
@@ -276,7 +276,7 @@ export const translations = {
       title: "专业",
       titleHighlight: "导师团队",
       subtitle:
-        "由行业顶尖专家组成的导师团队，为您的AI学习之路保驾护航",
+        "由行业顶尖专家组成的导师���队，为您的AI学习之路保驾护航",
       projectMentors: "项目导师",
       professionalLecturers: "专业讲师",
       viewAllInstructors: "查看所有讲师详细介绍",
@@ -992,7 +992,7 @@ export const translations = {
       subtitle:
         "Systematic learning path from beginner to expert, cultivating AI professionals",
       stage1: {
-        title: "Pin 专业公开课",
+        title: "Pin Professional Open Course",
         subtitle: "Pin",
         ageLimit: "College students and above",
         suitableFor:
@@ -1008,9 +1008,9 @@ export const translations = {
         ],
       },
       stage2a: {
-        title: "BETA 星空营 (Galaxy)",
+        title: "BETA Galaxy Camp",
         subtitle: "",
-        ageLimit: "18岁以上大学生/研究生/博士生",
+        ageLimit: "College Students/Graduate Students/PhD Students (Age 18 and Above)",
         suitableFor: "Build complete products from scratch to strengthen portfolio for internships, job seeking or startup validation",
         duration: "6 weeks (1 session/week, 1.5 hours each)",
         requirements: "Clear logic, STEM background preferred",
@@ -1026,9 +1026,9 @@ export const translations = {
         ],
       },
       stage2b: {
-        title: "BETA 深空营 (Cosmos)",
+        title: "BETA Cosmos Camp",
         subtitle: "",
-        ageLimit: "18岁以上大学生/在职工程师/创业者",
+        ageLimit: "College Students/Engineers/Entrepreneurs (Age 18 and Above)",
         suitableFor:
           "Build production-grade projects with commercial potential for career advancement, PhD applications or startup MVP",
         duration: "8 weeks (2 sessions/week, 1.5 hours each)",
@@ -1047,9 +1047,9 @@ export const translations = {
         ],
       },
       stage3: {
-        title: "BETA 无界营 (Infinity)",
+        title: "BETA Infinity Camp",
         subtitle: "",
-        ageLimit: "18岁以上大学生/在职工程师/创业者",
+        ageLimit: "College Students/Engineers/Entrepreneurs (Age 18 and Above)",
         suitableFor:
           "Enhance AI engineering and product skills to complete production-grade products for career, further education or entrepreneurship",
         duration: "12 weeks (1 session/week, 1.5 hours each)",
