@@ -248,19 +248,19 @@ export const translations = {
         "看看我们的学员如何将所学知识转化为实际项目，创造出令人惊叹的作品",
       projects: {
         propertyai: {
-          student: "Harry",
+          student: "H 同学",
           camp: "BETA 星空营（Galaxy）",
           background: "房产经纪，0工程经验",
           description: "新西兰AI驱动房产交易平台",
         },
         rowingpro: {
-          student: "Vincent",
+          student: "V 同学",
           camp: "BETA 深空营（Cosmos）",
           background: "16岁，美国，多项数学/编程金牌得主",
           description: "智能划船训练分析与社区平台",
         },
         climatehub: {
-          student: "Katherine",
+          student: "K 同学",
           camp: "BETA 无界营（Infinity）",
           background: "18岁，大一，多项数学/编程金牌得主",
           description: "个性化气候变化预测与行动建议平台",
@@ -276,7 +276,7 @@ export const translations = {
       title: "专业",
       titleHighlight: "导师团队",
       subtitle:
-        "由行业顶尖专家组成的导师���队，为您的AI学习之路保驾护航",
+        "由行业顶尖专家组成的导师团队，为您的AI学习之路保驾护航",
       projectMentors: "项目导师",
       professionalLecturers: "专业讲师",
       viewAllInstructors: "查看所有讲师详细介绍",
@@ -376,7 +376,7 @@ export const translations = {
       companyTitle: "关于 BEEBEE AI",
       companyIntro: {
         paragraph1:
-          "BEEBEE AI LTD是一家总部位于新西兰的国际科技公司，团队分布在新西兰、英国、加拿大、��国、泰国、中国。公司专注于GenAI智能产品开发，由具有20年以上互联网/IT经验及8年AI全模态应用开发经验的资深人士于2022年创立。",
+          "BEEBEE AI LTD是一家总部位于新西兰的国际科技公司，团队分布在新西兰、英国、加拿大、美国、泰国、中国。公司专注于GenAI智能产品开发，由具有20年以上互联网/IT经验及8年AI全模态应用开发经验的资深人士于2022年创立。",
         paragraph2: {
           part1: "公司的使命是通过",
           highlight1: "'AI × 私域知识'",
@@ -1140,7 +1140,7 @@ export const translations = {
         "See how our students transform knowledge into real projects and create amazing works",
       projects: {
         propertyai: {
-          student: "Harry",
+          student: "Student H",
           camp: "BETA Galaxy Camp",
           background:
             "Real Estate Agent, 0 Engineering Experience",
@@ -1148,7 +1148,7 @@ export const translations = {
             "AI-Driven Property Trading Platform in New Zealand",
         },
         rowingpro: {
-          student: "Vincent",
+          student: "Student V",
           camp: "BETA Cosmos Camp",
           background:
             "16 years old, USA, Multiple Math/Programming Awards",
@@ -1156,7 +1156,7 @@ export const translations = {
             "Intelligent Rowing Training Analysis & Community Platform",
         },
         climatehub: {
-          student: "Katherine",
+          student: "Student K",
           camp: "BETA Infinity Camp",
           background:
             "18 years old, Freshman, Multiple Math/Programming Awards",
