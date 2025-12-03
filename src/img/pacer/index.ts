@@ -19,6 +19,8 @@ const bobbyImg = `${BASE_URL}/bobby.png`;
 const jinImg = `${BASE_URL}/fangzhong.jpg`;
 const mingxiImg = `${BASE_URL}/Mingxi.png`;
 const heyangImg = `${BASE_URL}/heyang.jpg`;
+const jerryImg = `${BASE_URL}/jerry.jpg`;
+const shuhongImg = `${BASE_URL}/shuhong.png`;
 
 // 专家导师 (Pros)
 const hugoImg = `${BASE_URL}/yuguo.png`;
@@ -26,6 +28,7 @@ const alexwuImg = `${BASE_URL}/alexwu.png`;
 const williamImg = `${BASE_URL}/william.jpg`;
 const henryImg = `${BASE_URL}/henry.png`;
 const royNeeImg = `${BASE_URL}/roynee.png`;
+const xiaoyuImg = `${BASE_URL}/xiaoyu.jpg`;
 
 // 导出映射对象
 export const pacerImages = {
@@ -45,6 +48,8 @@ export const pacerImages = {
   'mentor-fangzhong': jinImg,
   'mentor-mingxi': mingxiImg,
   'mentor-heyang': heyangImg,
+  'mentor-jerry': jerryImg,
+  'mentor-hongshu': shuhongImg,
   
   // 专家导师
   'expert-hugo': hugoImg,
@@ -52,6 +57,7 @@ export const pacerImages = {
   'expert-william': williamImg,
   'expert-henry': henryImg,
   'expert-roy': royNeeImg,
+  'expert-xiaoyu': xiaoyuImg
 };
 
 // 默认导出

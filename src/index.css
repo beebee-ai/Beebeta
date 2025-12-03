@@ -2603,10 +2603,6 @@
     scrollbar-width: none;
   }
 
-  .running {
-    animation-play-state: running;
-  }
-
   @media (hover: hover) {
     .group-hover\:scale-100:is(:where(.group):hover *) {
       --tw-scale-x: 100%;

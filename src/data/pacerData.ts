@@ -788,85 +788,92 @@ export const pacerMentors: MentorData[] = [
   },
   {
     id: "mentor-hongshu",
-    name: "Shu Hong",
-    nameEn: "Shu Hong",
-    title: "高级系统开发工程师 / 金融科技方向",
-    titleEn: "Senior Systems Developer / FinTech Engineer",
+    name: "Hong Shu",
+    nameEn: "Hong Shu",
+    title: "纽约金融机构核心系统工程师",
+    titleEn:
+      "Core Systems Engineer in NY Financial Institutions",
     summary:
-      "毕业于哥伦比亚大学运筹学硕士、纽约大学电子工程硕士与中山大学电子通信本科。拥有多年华尔街系统开发经验，现任 StoneCastle Partners SVP Developer（7 年），此前在 MKP Capital 与 Aroya Capital 从事交易台与应用开发。具备扎实的软件工程基础与金融系统架构能力，熟悉 Python、Java、SQL、C#、Spring 体系与多前端框架。",
+      "哥伦比亚大学运筹学硕士，纽约大学电气工程硕士，中山大学电子与通信本科。拥有 9 年以上纽约金融机构核心系统经验，覆盖后端开发、数据工程、交易与风险系统。精通 Python/Java/Spring/SQL/C#，并具备前端原型能力。在 BEE Beta 指导学生构建可落地、可维护、可扩展的生产级系统。",
     summaryEn:
-      "Holds an MS in Operations Research from Columbia University, an MS in Electrical Engineering from NYU, and a BS in Electronic Communication from Sun Yat-sen University. With extensive experience in financial systems engineering, he has spent 7+ years as an SVP Developer at StoneCastle Partners, previously working in application and trading desk development at MKP Capital and Aroya Capital. Skilled in Python, Java, SQL, C#, Spring Boot, APIs, and modern frontend technologies.",
+      "MS in Operations Research from Columbia University, MS in Electrical Engineering from NYU, and BS from Sun Yat-sen University. Over 9 years of backend and data engineering experience across NYC financial institutions, specializing in core trading, risk, and settlement systems. Skilled in Python, Java, Spring, SQL, C#, plus frontend prototyping.",
     details: `
-<p>Shu Hong 在金融科技领域深耕多年，横跨运筹学、电子工程与金融系统开发，在华尔街中后台与交易台系统的实际建设中经验丰富。</p>
+<p>Hong Shu 深耕纽约金融科技行业多年，负责资产管理、交易系统与核心资金结算平台的工程落地，长期在高要求、高可靠的场景里搭建生产系统。</p>
 
-<h4>金融工程与行业经历</h4>
+<h4>教育背景</h4>
 <ul>
-  <li>StoneCastle Partners：SVP Developer，负责核心系统开发与内部平台建设（任职 7 年以上）</li>
-  <li>MKP Capital：应用开发工程师，参与量化工具与交易支持系统建设</li>
-  <li>Aroya Capital：交易台相关系统开发，接触多类金融产品与实时数据流</li>
+  <li>哥伦比亚大学 · 运筹学硕士（MS OR）</li>
+  <li>纽约大学 NYU · 电气工程硕士</li>
+  <li>中山大学 · 电子与通信学士</li>
+  <li>通过 CFA Level 1（强化金融与风险理解）</li>
 </ul>
 
-<h4>技术专长</h4>
+<h4>专业经验</h4>
 <ul>
-  <li>后端开发：Python / Java / C# / SQL</li>
-  <li>Spring Boot API 开发与服务集成</li>
-  <li>前端技能：Vue.js / Angular</li>
-  <li>金融系统架构设计与跨模块协作</li>
-  <li>Plaid 金融数据集成经验</li>
+  <li>9 年以上纽约金融机构后端开发、数据工程与核心系统构建经验</li>
+  <li>熟悉资产管理、交易系统、风险系统、客户资金结算与对账流程</li>
+  <li>负责大型资产管理公司的核心后端 API、数据处理与资金系统集成</li>
+  <li>自主开发数据管线、交易与余额计算、报表生成与交付系统</li>
+  <li>主导价值 2000 万美元的系统集成交付与技术售卖</li>
+  <li>在对冲基金与资管机构构建定价系统、风险引擎与对账平台</li>
 </ul>
 
-<h4>系统与项目经验</h4>
+<h4>AI / 工程技术栈（在 BEE Beta 掌握）</h4>
 <ul>
-  <li>构建和维护资产管理、交易支持与内部运营系统</li>
-  <li>设计稳定、安全、合规的金融数据处理流程</li>
-  <li>搭建跨语言、跨服务的企业级应用架构</li>
-  <li>推动前后端技术升级与系统现代化</li>
+  <li>Python / Java / Spring / SQL / C#</li>
+  <li>Vue.js / Angular 前端原型开发能力</li>
+  <li>分布式服务构建、数据流水线、计算与报表系统</li>
+  <li>API 设计、服务集成、自动化与系统可维护性建设</li>
 </ul>
 
 <h4>教学理念与风格</h4>
 <ul>
-  <li>以工程质量与实战经验为核心，强调可维护性与长期稳定性</li>
-  <li>擅长从“系统视角”讲解业务流程与技术架构</li>
-  <li>能将复杂金融系统拆解为清晰模块，让学生理解真实业务场景中的技术决策</li>
+  <li>实战导向：强调“系统如何真正落地”</li>
+  <li>擅长把复杂系统拆成清晰、可执行的步骤</li>
+  <li>讲解节奏稳，逻辑清楚，注重工程质量与可维护性</li>
+  <li>适合希望提升工程系统设计思维、掌握严谨实现方法的学员</li>
 </ul>
 `,
     detailsEn: `
-<p>Shu Hong is an experienced financial systems engineer with a strong background in operations research, electrical engineering and enterprise application development. He has built and maintained systems supporting trading desks, portfolio management and internal operations.</p>
+<p>Hong Shu has extensive experience building mission-critical systems across major NYC financial institutions, working on trading engines, asset management workflows, and fund settlement pipelines.</p>
 
-<h4>Industry Experience</h4>
+<h4>Education</h4>
 <ul>
-  <li>StoneCastle Partners – SVP Developer, leading internal platform and system development for 7+ years</li>
-  <li>MKP Capital – Application Developer for quantitative and trading-support tools</li>
-  <li>Aroya Capital – Trading desk systems engineer working with real-time financial data</li>
+  <li>MS in Operations Research, Columbia University</li>
+  <li>MS in Electrical Engineering, New York University</li>
+  <li>BS in Electronics & Communications, Sun Yat-sen University</li>
+  <li>Passed CFA Level 1</li>
 </ul>
 
-<h4>Technical Expertise</h4>
+<h4>Professional Experience</h4>
 <ul>
-  <li>Python, Java, C#, SQL</li>
-  <li>Spring Boot API development</li>
-  <li>Frontend frameworks: Vue.js, Angular</li>
-  <li>Financial system architecture and workflow design</li>
-  <li>Plaid API and financial data integrations</li>
+  <li>9+ years in backend engineering and data systems within NYC finance</li>
+  <li>Deep familiarity with asset management, trading systems, risk platforms, and reconciliation flows</li>
+  <li>Built core backend APIs and fund settlement systems for large asset management firms</li>
+  <li>Designed Python data pipelines, transaction & balance computation engines, and reporting systems</li>
+  <li>Led a 20M USD system integration and technical delivery initiative</li>
+  <li>Developed pricing engines, risk calculators, and reconciliation tools for hedge funds and AM firms</li>
 </ul>
 
-<h4>Systems & Project Experience</h4>
+<h4>AI / Engineering Stack</h4>
 <ul>
-  <li>Developed and maintained asset management, trading support and internal operational systems</li>
-  <li>Designed secure and compliant data workflows for financial environments</li>
-  <li>Built enterprise-level architectures integrating multiple services and languages</li>
-  <li>Drove modernization of legacy systems and frontend upgrades</li>
+  <li>Python, Java, Spring, SQL, C#</li>
+  <li>Vue.js / Angular frontend prototyping</li>
+  <li>Distributed services, data pipelines, reporting & automation</li>
+  <li>Service integration, API architecture, system quality & maintainability</li>
 </ul>
 
 <h4>Teaching Style</h4>
 <ul>
-  <li>Focuses on engineering quality, maintainability and real-world constraints</li>
-  <li>Explains systems from a practical, architecture-level perspective</li>
-  <li>Able to break down complex financial workflows into understandable components</li>
+  <li>Practical and grounded in real engineering workflows</li>
+  <li>Breaks complex system problems into clear, actionable steps</li>
+  <li>Stable pacing, structured explanations, and emphasis on maintainability</li>
+  <li>Ideal for students who want to build reliable, production-grade systems</li>
 </ul>
 `,
-    quote: "技术的价值在于构建稳得住、跑得久的系统。",
+    quote: "复杂系统不神秘，把路径拆清楚，一步步就能落地。",
     quoteEn:
-      "Great engineering is about building systems that stay stable and stay running.",
+      "Complex systems become simple when broken into clear steps.",
     photo: "",
   },
   {
@@ -970,6 +977,93 @@ export const pacerMentors: MentorData[] = [
     quote: "理解原理让你看得更深，工程实践让系统跑得更远。",
     quoteEn:
       "Principles reveal depth; engineering brings distance.",
+    photo: "",
+  },
+  {
+    id: "mentor-jerry",
+    name: "Jerry",
+    nameEn: "Jerry",
+    title: "AI 基础设施与云架构专家",
+    titleEn: "AI Infrastructure & Cloud Architecture Expert",
+    summary:
+      "纽约州立大学布法罗分校管理学院 Mini MBA 项目，电子科技大学本科。拥有16年顶尖科技公司经验，是国内最早一批践行 DevOps 的工程师之一，深耕 AIOps/MLOps、云原生架构与 AI 系统基础设施构建。在 BEE Beta 掌握从底层 Infra 到 AI 落地的完整体系，包括云平台、Kubernetes、RAG、vLLM 推理服务部署等核心能力。",
+    summaryEn:
+      "Mini MBA Certificate Program (OMMBA) at SUNY Buffalo and BS from UESTC. Over 16 years in top tech companies and one of the earliest DevOps practitioners in China. Specialized in AIOps, MLOps, cloud architecture (AWS/Azure/GCP), Kubernetes, and AI infrastructure including RAG pipelines and vLLM deployments.",
+    details: `
+<p>Jerry 在云架构、AI 系统基础设施、DevOps/MLOps 等方向具备极深一线经验，是国内最早推动 DevOps 实践的工程师之一，长期负责复杂系统的稳定性、自动化与智能化。</p>
+
+<h4>教育背景</h4>
+<ul>
+  <li>纽约州立大学布法罗分校管理学院 Mini MBA Certificate Program (OMMBA)</li>
+  <li>电子科技大学 本科</li>
+</ul>
+
+<h4>专业经验</h4>
+<ul>
+  <li>16 年顶尖科技公司工程经验，覆盖开发、运维、架构到 AI 系统落地</li>
+  <li>2008 年起践行 DevOps，是国内最早的探索者之一</li>
+  <li>AIOps / MLOps 实践者，负责模型上线流程、自动化测试与监控体系</li>
+  <li>AWS / Azure / GCP 全栈云基础设施管理与架构设计</li>
+  <li>CNCF Certified Kubernetes Administrator（CKA）</li>
+  <li>NVIDIA Certified AI Infrastructure & Operations Engineer</li>
+  <li>拥有 10+ 国际权威技术认证</li>
+</ul>
+
+<h4>AI / 工程技术栈（在 BEE Beta 掌握）</h4>
+<ul>
+  <li>CloudFlare、Firebase 全链路服务集成</li>
+  <li>RAG / LangChain 系统构建</li>
+  <li>vLLM + KubeRay 推理服务部署与优化</li>
+  <li>云原生系统设计、容器化、自动化部署、可观测性体系</li>
+  <li>Kubernetes、Terraform、CI/CD Pipeline 构建</li>
+</ul>
+
+<h4>教学理念与风格</h4>
+<ul>
+  <li>用简单易懂的语言拆解复杂概念，让学生快速理解系统本质</li>
+  <li>强调工程实践，注重系统稳定性与可维护性</li>
+  <li>沟通顺畅，课堂氛围轻松，适合从工程基础向 AI Infra 进阶的学生</li>
+</ul>
+`,
+    detailsEn: `
+<p>Jerry brings 16 years of hands-on experience across cloud architecture, DevOps, MLOps, and AI infrastructure. As one of the earliest DevOps adopters in China, he has led large-scale automation and intelligent ops systems across multiple cloud platforms.</p>
+
+<h4>Education</h4>
+<ul>
+  <li>Mini MBA Certificate Program (OMMBA), SUNY Buffalo School of Management</li>
+  <li>BS, University of Electronic Science and Technology of China</li>
+</ul>
+
+<h4>Professional Experience</h4>
+<ul>
+  <li>16 years in top-tier technology companies</li>
+  <li>Early DevOps practitioner since 2008</li>
+  <li>Expert in AIOps, MLOps, automated pipelines and monitoring systems</li>
+  <li>Architect for AWS / Azure / GCP cloud infrastructure</li>
+  <li>CNCF Certified Kubernetes Administrator</li>
+  <li>NVIDIA Certified AI Infrastructure & Operations Engineer</li>
+  <li>Holds 10+ internationally recognized industry certifications</li>
+</ul>
+
+<h4>AI / Engineering Stack</h4>
+<ul>
+  <li>Cloudflare, Firebase integration</li>
+  <li>RAG / LangChain pipelines</li>
+  <li>vLLM + KubeRay inference deployment</li>
+  <li>Cloud-native architecture and container orchestration</li>
+  <li>Kubernetes, Terraform, CI/CD automation</li>
+</ul>
+
+<h4>Teaching Style</h4>
+<ul>
+  <li>Explains complex systems with clear and approachable language</li>
+  <li>Strong engineering pragmatism with focus on reliability and scalability</li>
+  <li>Easy to communicate with and ideal for students leveling up toward AI infrastructure engineering</li>
+</ul>
+`,
+    quote: "复杂系统要敢拆，拆清楚了就能掌控。",
+    quoteEn:
+      "Break complexity into clarity — that’s how control begins.",
     photo: "",
   },
 ];
