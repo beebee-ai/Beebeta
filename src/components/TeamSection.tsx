@@ -239,7 +239,7 @@ export function TeamSection() {
     },
     {
       id: 23,
-      name: 'Expert X',
+      name: 'Engineer X',
       title: isEn ? 'Leading XR Industry Expert' : 'XR 行业资深观察者与实践者',
       bio: isEn
         ? 'Known as a top XR expert in China; former core member at Baidu and Maoyan, ex-investor at ZhenFund, with deep insight into Meta and Apple\'s XR strategies and ecosystems.'
@@ -252,7 +252,7 @@ export function TeamSection() {
     },
     {
       id: 24,
-      name: 'Lead Y',
+      name: 'Chief Y',
       title: isEn ? 'Product Lead & UI/UX Designer (Silicon Valley & London)' : '硅谷/伦敦产品负责人 & UI/UX 设计师',
       bio: isEn
         ? 'US-educated (Bachelor & Master), worked as a UI/UX designer at major tech companies in Silicon Valley and London; now Product Lead at an AI startup, known for practical "interest → product → monetization" playbooks.'
@@ -265,7 +265,7 @@ export function TeamSection() {
     },
     {
       id: 25,
-      name: 'Dr. Y',
+      name: 'Engineer Y',
       title: isEn ? 'Senior Speech AI & Voice Model Expert' : '语音大模型与语音合成专家',
       bio: isEn
         ? 'Senior voice algorithm expert at Zhipu AI; PhD trainee at CAS Institute of Acoustics; 20+ papers at ICASSP/INTERSPEECH/IJCAI; led multiple large-scale speech synthesis and voice interaction products.'
@@ -278,7 +278,7 @@ export function TeamSection() {
     },
     {
       id: 26,
-      name: 'Master Wi',
+      name: 'Engineer W',
       title: isEn ? 'AI Evangelist & Minimalist Engineer' : 'AI 技术布道者 & 极简工程实践者',
       bio: isEn
         ? 'MSc in CS from UESTC, former Senior Software Engineer at Nokia; now Ireland-based AI creator simplifying LangChain, MCP and LLM tooling through videos, articles and open-source projects.'
@@ -291,7 +291,7 @@ export function TeamSection() {
     },
     {
       id: 27,
-      name: 'Master H',
+      name: 'Engineer H',
       title: isEn ? 'Multimodal & Video AI Algorithm Engineer (CVPR Champion)' : '多模态与视频 AI 算法工程师（CVPR 冠军）',
       bio: isEn
         ? 'Master in Software Engineering (BJUT), 6+ years in AI; CVPR 2020 facial expression challenge champion; specializes in multimodal models, video understanding, OCR, and edge AI optimization with models deployed in consumer devices.'
@@ -317,7 +317,7 @@ export function TeamSection() {
     },
     {
       id: 29,
-      name: 'Master R',
+      name: 'Architect R',
       title: isEn ? 'FinTech Core Systems Architect' : '金融科技核心系统架构师',
       bio: isEn
         ? 'Master in Computer Science (BUPT), 15 years in FinTech; former core architect at top Chinese banks designing credit card and payment systems handling 250M+ daily requests; now architect at a public FinTech company in Australia.'
