@@ -112,7 +112,7 @@ export const expertMentors: ExpertData[] = [
       "设计不是装饰，而是让产品真正被理解、被使用、被喜爱的核心力量。",
     quoteEn:
       "Design is not decoration — it is the core force that makes a product understood, used and loved.",
-    photo: "",
+    photo: "expert-guoyu",
   },
   {
     id: "expert-xuwu",

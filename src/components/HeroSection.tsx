@@ -23,14 +23,6 @@ export function HeroSection() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-5xl mx-auto text-center -mt-8">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#ffc75a]/10 border border-[#ffc75a]/20 mb-8 -mt-8">
-            <Sparkles className="w-4 h-4 text-[#ffc75a]" />
-            <span className="text-[#ffc75a] text-sm">
-              {language === 'zh' ? 'AI时代的创新教育平台' : 'Innovative AI Education Platform'}
-            </span>
-          </div>
-
           {/* Main Heading */}
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 lg:mb-8 leading-relaxed">
             {language === 'zh' ? (

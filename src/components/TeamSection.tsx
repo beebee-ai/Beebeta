@@ -234,7 +234,7 @@ export function TeamSection() {
       expertise: isEn
         ? ['UX Design', 'Interaction Design', 'Product Innovation']
         : ['交互设计', '用户体验', '产品创新'],
-      image: '',
+      image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_guoyu.png',
       category: 'lecturer' as const
     },
     {

@@ -93,7 +93,7 @@ export const translations = {
       title: "三阶",
       titleHighlight: "课程体系",
       subtitle:
-        "系统化学习路径,从入门到精通,打造AI领域专业人才",
+        "产品/工程/市场三位一体，品味和架构重于代码，培养AI原生全栈人才",
       stage1: {
         title: "Pin 专业公开课",
         subtitle: "Pin",
@@ -834,7 +834,7 @@ export const translations = {
     advancedCoursesSection: {
       title: "进阶与陪练课程",
       description:
-        "专业高级课程和1对1辅导，为Alpha/Beta学员和毕业生提供持续成长的机会",
+        "专业高级课程和1对1辅导，为学员提供持续成长的机会",
       dialogDescription:
         "填写以下信息，我们的课程顾问将在24小时内与您联系",
       starry: {
@@ -990,7 +990,7 @@ export const translations = {
       title: "Three-Stage ",
       titleHighlight: "Course System",
       subtitle:
-        "Systematic learning path from beginner to expert, cultivating AI professionals",
+        "Product, Engineering, and Marketing in Harmony — Taste and Architecture Over Code, Cultivating AI-Native Full-Stack Talent",
       stage1: {
         title: "Pin Professional Open Course",
         subtitle: "Pin",
@@ -1777,7 +1777,7 @@ We have no exam scores. Your graduation project must be published on real platfo
     advancedCoursesSection: {
       title: "Advanced & Coaching Programs",
       description:
-        "Professional advanced courses and 1-on-1 coaching for continued growth of Alpha/Beta learners and graduates",
+        "Professional advanced courses and 1-on-1 coaching for continued growth of learners",
       dialogDescription:
         "Fill in the information below, our course advisor will contact you within 24 hours",
       starry: {

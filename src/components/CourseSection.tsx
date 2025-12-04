@@ -277,12 +277,6 @@ export function CourseSection() {
               </div>
               
               <div className="text-center mb-8 lg:mb-10">
-                <p className="text-gray-400 text-sm lg:text-base max-w-3xl mx-auto">
-                  {isEn 
-                    ? 'Three parallel tracks designed for different goals: Galaxy for product development, Cosmos for technical depth, and Infinity for elite entrepreneurship'
-                    : '三条并列路径，针对不同目标：星空营注重产品开发，深空营专注技术深度，无界营面向精英创业'
-                  }
-                </p>
                 <p className="text-gray-300 text-sm lg:text-base mx-auto mt-4 italic whitespace-nowrap">
                   {isEn
                     ? 'Note: China courses use localized tech stack (Trae/Qoder replacing Cursor, etc.). Consult for details.'
