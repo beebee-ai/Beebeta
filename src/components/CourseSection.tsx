@@ -207,9 +207,7 @@ export function CourseSection() {
               </ul>
             </div>
             
-            {course.content.length > 6 && (
-              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none"></div>
-            )}
+            {/* 移除底部渐变遮罩 */}
           </div>
           
           {course.content.length > 6 && (
@@ -283,6 +281,12 @@ export function CourseSection() {
                   {isEn 
                     ? 'Three parallel tracks designed for different goals: Galaxy for product development, Cosmos for technical depth, and Infinity for elite entrepreneurship'
                     : '三条并列路径，针对不同目标：星空营注重产品开发，深空营专注技术深度，无界营面向精英创业'
+                  }
+                </p>
+                <p className="text-gray-300 text-sm lg:text-base mx-auto mt-4 italic whitespace-nowrap">
+                  {isEn
+                    ? 'Note: China courses use localized tech stack (Trae/Qoder replacing Cursor, etc.). Consult for details.'
+                    : '注：中国课程会使用更适合本地环境的完整技术栈（例如将 Cursor 替换为 Trae 或 Qoder 等）。如需细节，请咨询。'
                   }
                 </p>
               </div>

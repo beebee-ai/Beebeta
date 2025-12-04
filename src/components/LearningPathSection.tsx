@@ -13,8 +13,8 @@ export function LearningPathSection() {
           {/* Simple Text Layout */}
           <div className="text-center space-y-3">
             {/* Learning Path */}
-            <p className="text-gray-500 text-sm leading-relaxed">
-              <span className="text-gray-400">
+            <p className="text-gray-400 text-sm lg:text-base leading-relaxed">
+              <span className="text-gray-200 font-medium">
                 {isEn ? 'Learning Path: ' : '学习路径：'}
               </span>
               {isEn 
@@ -24,8 +24,8 @@ export function LearningPathSection() {
             </p>
 
             {/* Path Recommendations */}
-            <p className="text-gray-500 text-sm leading-relaxed">
-              <span className="text-gray-400">
+            <p className="text-gray-400 text-sm lg:text-base leading-relaxed">
+              <span className="text-gray-200 font-medium">
                 {isEn ? 'Path Recommendations: ' : '路径建议：'}
               </span>
               {isEn 
@@ -35,7 +35,7 @@ export function LearningPathSection() {
             </p>
 
             {/* Consultation Note */}
-            <p className="text-[#ffc75a] text-sm">
+            <p className="text-[#ffc75a] text-sm lg:text-base">
               {isEn 
                 ? 'For course and instructor details, please consult our staff' 
                 : '如需课程及导师详情，请向我们工作人员咨询'

@@ -149,7 +149,7 @@ export const expertMentors: ExpertData[] = [
 <h4>XR 行业洞察：路径、难点与机会</h4>
 <ul>
   <li>讲清楚 XR 到底难在哪：算力、交互、内容生态、成本结构等关键约束</li>
-  <li>分析机会点：企业场景、行业���具、轻量化设备、空间计算内容</li>
+  <li>分析机会点：企业场景、行业具、轻量化设备、空间计算内容</li>
   <li>指出 XR 创业与落地中常见坑，帮助学员避免误判</li>
 </ul>
 
@@ -198,7 +198,7 @@ export const expertMentors: ExpertData[] = [
       "XR 的未来不是概念，而是跨过难点后真实能被用起来的场景。",
     quoteEn:
       "The future of XR is not in concepts, but in real scenarios that work after solving the hard problems.",
-    photo: "",
+    photo: "expert-xuwu",
   },
   {
     id: "expert-xiaoyu",
@@ -461,7 +461,7 @@ export const expertMentors: ExpertData[] = [
   <li><strong>AI 工具链开发：</strong>LangChain、RAG 系统、AI 应用集成</li>
   <li><strong>大模型应用：</strong>提示工程、API 开发、模型微调基础</li>
   <li><strong>AI 内容创作：</strong>技术科普、视频教程、知识社区运营</li>
-  <li><strong>开���实践：</strong>从 idea → MVP → 产品的完整流程</li>
+  <li><strong>开实践：</strong>从 idea → MVP → 产品的完整流程</li>
 </ul>
 
 <h4>国际化视野</h4>

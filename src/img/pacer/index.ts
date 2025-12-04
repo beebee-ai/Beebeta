@@ -29,6 +29,7 @@ const williamImg = `${BASE_URL}/william.jpg`;
 const henryImg = `${BASE_URL}/henry.png`;
 const royNeeImg = `${BASE_URL}/roynee.png`;
 const xiaoyuImg = `${BASE_URL}/xiaoyu.jpg`;
+const xuwuImg = `${BASE_URL}/xuwu.jpg`;
 
 // 导出映射对象
 export const pacerImages = {
@@ -57,7 +58,8 @@ export const pacerImages = {
   'expert-william': williamImg,
   'expert-henry': henryImg,
   'expert-roy': royNeeImg,
-  'expert-xiaoyu': xiaoyuImg
+  'expert-xiaoyu': xiaoyuImg,
+  'expert-xuwu': xuwuImg
 };
 
 // 默认导出
