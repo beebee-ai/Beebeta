@@ -88,7 +88,7 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1 text-gray-300 hover:text-[#ffc75a] transition-colors"
+              className="flex items-center gap-1 text-gray-300 hover:text-[#ffc75a] transition-colors cursor-pointer"
               title={language === 'zh' ? '切换到英文' : 'Switch to Chinese'}
             >
               <Globe className="w-4 h-4" />
@@ -133,7 +133,7 @@ export function Header() {
               <div className="flex flex-col gap-2 mt-4 px-2">
                 <button
                   onClick={toggleLanguage}
-                  className="flex items-center justify-center gap-2 text-gray-300 hover:text-[#ffc75a] transition-colors py-2"
+                  className="flex items-center justify-center gap-2 text-gray-300 hover:text-[#ffc75a] transition-colors py-2 cursor-pointer"
                 >
                   <Globe className="w-4 h-4" />
                   <span>{language === 'zh' ? '中文 / English' : 'English / 中文'}</span>

@@ -219,7 +219,7 @@ export function CourseSection() {
           <div className="mt-auto flex-shrink-0">
             <Button
               onClick={() => handleConsultClick(course)}
-              className="w-full text-black hover:opacity-90 transition-all group py-5 lg:py-6 text-base lg:text-lg"
+              className="w-full text-black hover:opacity-90 transition-all group py-5 lg:py-6 text-base lg:text-lg cursor-pointer"
               style={{ backgroundColor: course.color }}
             >
               {t.courses.labels.consult}

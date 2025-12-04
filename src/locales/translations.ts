@@ -425,7 +425,7 @@ export const translations = {
         vision:
           "作为一位充满好奇心的连续创业者，周品先生不断探索技术与商业的边界。同时，他也是一位愿意分享AI教育实践的父亲，致力于将自己在人工智能领域的经验和见解传递给下一代，在技术创新与教育实践之间找到了完美的平衡点。",
         quote:
-          "让每一位对AI充满热情的年轻人，都能在这里找到属于自己的成长方向，成为推动人工智能发展的中坚力量。",
+          "AI让我们更容易终生学习，提问让我们超越AI，做出产品才能验证学习。",
       },
     },
 
@@ -1367,7 +1367,7 @@ export const translations = {
         vision:
           "As a curious serial entrepreneur, Mr. Zhou constantly explores the boundaries of technology and business. He is also a father willing to share his AI education practice, committed to passing on his experience and insights in AI to the next generation, finding a perfect balance between technological innovation and educational practice.",
         quote:
-          "Let every young person passionate about AI find their growth direction here, becoming a pillar of AI development.",
+          "AI makes lifelong learning easier, asking questions helps us transcend AI, building products validates our learning.",
       },
     },
 

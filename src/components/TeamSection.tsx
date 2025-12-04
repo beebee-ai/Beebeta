@@ -452,7 +452,7 @@ export function TeamSection() {
             <p className="text-gray-400 text-sm mb-4 line-clamp-2">
               {t.team.moreInstructors}
             </p>
-            <button className="px-4 py-2 bg-[#ffc75a] text-black rounded-lg hover:bg-[#ffc75a]/90 transition-colors font-medium text-sm">
+            <button className="px-4 py-2 bg-[#ffc75a] text-black rounded-lg hover:bg-[#ffc75a]/90 transition-colors font-medium text-sm cursor-pointer">
               {t.team.applyInviteCode}
             </button>
           </div>
@@ -549,7 +549,7 @@ export function TeamSection() {
           <div className="inline-flex bg-zinc-900 rounded-lg p-1 border border-[#ffc75a]/10">
             <button
               onClick={() => handleCategoryChange('project')}
-              className={`px-8 py-3 rounded-md transition-all ${
+              className={`px-8 py-3 rounded-md transition-all cursor-pointer ${
                 activeCategory === 'project'
                   ? 'bg-[#ffc75a] text-black'
                   : 'text-gray-400 hover:text-white'
@@ -559,7 +559,7 @@ export function TeamSection() {
             </button>
             <button
               onClick={() => handleCategoryChange('lecturer')}
-              className={`px-8 py-3 rounded-md transition-all ${
+              className={`px-8 py-3 rounded-md transition-all cursor-pointer ${
                 activeCategory === 'lecturer'
                   ? 'bg-[#ffc75a] text-black'
                   : 'text-gray-400 hover:text-white'
@@ -577,7 +577,7 @@ export function TeamSection() {
             {/* 左箭头 */}
             <button
               onClick={handlePrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 w-12 h-12 rounded-full bg-[#ffc75a] text-black hover:bg-[#ffc75a]/90 transition-all flex items-center justify-center shadow-lg"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 w-12 h-12 rounded-full bg-[#ffc75a] text-black hover:bg-[#ffc75a]/90 transition-all flex items-center justify-center shadow-lg cursor-pointer"
               aria-label="上一页"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -615,7 +615,7 @@ export function TeamSection() {
             {/* 右箭头 */}
             <button
               onClick={handleNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 w-12 h-12 rounded-full bg-[#ffc75a] text-black hover:bg-[#ffc75a]/90 transition-all flex items-center justify-center shadow-lg"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 w-12 h-12 rounded-full bg-[#ffc75a] text-black hover:bg-[#ffc75a]/90 transition-all flex items-center justify-center shadow-lg cursor-pointer"
               aria-label="下一页"
             >
               <ChevronRight className="w-6 h-6" />
@@ -630,7 +630,7 @@ export function TeamSection() {
                     setDirection(index > currentPage ? 1 : -1);
                     setCurrentPage(index);
                   }}
-                  className={`h-2 rounded-full transition-all ${
+                  className={`h-2 rounded-full transition-all cursor-pointer ${
                     index === currentPage
                       ? 'bg-[#ffc75a] w-8'
                       : 'bg-gray-600 hover:bg-gray-500 w-2'
@@ -691,13 +691,13 @@ export function TeamSection() {
                   <Button
                     onClick={() => setShowApplyForm(true)}
                     variant="outline"
-                    className="flex-1 border-[#ffc75a]/30 text-[#ffc75a] hover:text-[#ffc75a]/80 hover:bg-[#ffc75a]/10 hover:border-[#ffc75a]/50"
+                    className="flex-1 border-[#ffc75a]/30 text-[#ffc75a] hover:text-[#ffc75a]/80 hover:bg-[#ffc75a]/10 hover:border-[#ffc75a]/50 cursor-pointer"
                   >
                     {t.team.applyForCodeButton}
                   </Button>
                   <Button
                     onClick={handleVerifyCode}
-                    className="flex-1 bg-[#ffc75a] hover:bg-[#ffc75a]/90 text-black"
+                    className="flex-1 bg-[#ffc75a] hover:bg-[#ffc75a]/90 text-black cursor-pointer"
                     disabled={!inviteCode.trim()}
                   >
                     {t.team.verifyButton}

@@ -237,7 +237,7 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
 
             <Button
               type="submit"
-              className="w-full bg-[#ffc75a] hover:bg-[#ffc75a]/90 text-black"
+              className="w-full bg-[#ffc75a] hover:bg-[#ffc75a]/90 text-black cursor-pointer"
               disabled={isSubmitting}
             >
               {isSubmitting ? t.contact.form.submitting : t.contact.form.submit}

@@ -51,7 +51,7 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               size="lg"
-              className="bg-[#ffc75a] hover:bg-[#ffc75a]/90 text-black px-8 py-6 text-lg group w-full sm:w-auto"
+              className="bg-[#ffc75a] hover:bg-[#ffc75a]/90 text-black px-8 py-6 text-lg group w-full sm:w-auto cursor-pointer"
               onClick={handleCourseClick}
             >
               {language === 'zh' ? '了解课程详情' : 'Explore Courses'}

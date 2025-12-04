@@ -86,7 +86,7 @@ export function AdvancedCoursesSection() {
                 {/* CTA Button */}
                 <Button
                   onClick={() => handleConsultClick('Starry 繁星专业进阶课')}
-                  className="w-full lg:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-8 py-6 text-lg shadow-lg shadow-indigo-500/30"
+                  className="w-full lg:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-8 py-6 text-lg shadow-lg shadow-indigo-500/30 cursor-pointer"
                 >
                   {t.advancedCoursesSection.starry.cta}
                 </Button>
@@ -141,7 +141,7 @@ export function AdvancedCoursesSection() {
                 {/* CTA Button */}
                 <Button
                   onClick={() => handleConsultClick('Orbiter 伴星1v1陪练课')}
-                  className="w-full lg:w-auto bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-8 py-6 text-lg shadow-lg shadow-cyan-500/30"
+                  className="w-full lg:w-auto bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-8 py-6 text-lg shadow-lg shadow-cyan-500/30 cursor-pointer"
                 >
                   {t.advancedCoursesSection.orbiter.cta}
                 </Button>
