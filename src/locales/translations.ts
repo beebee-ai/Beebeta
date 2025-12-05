@@ -118,7 +118,7 @@ export const translations = {
         suitableFor:
           "从零做出能上线的完整产品，强化作品集，用于实习申请、求职提升或验证创业想法",
         duration:
-          "6 周课程：每周 1 次 1.5 小时主课（2 门产品课、4 门工程课）与 1 次作业检查；工程课当周另提供 1 小时直播答疑",
+          "6 周课程：每周 1 次 2 小时主课（2 门产品课、4 门工程课）与 1 次作业检查；工程课当周另提供 1 小时直播答疑",
         requirements:
           "逻辑清晰，并愿意完成从产品到工程到上线的完整项目流程",
         content: [
@@ -138,7 +138,7 @@ export const translations = {
         suitableFor:
           "打造生产级、具备商业潜力的项目，用于大厂转岗、PhD申请或创业MVP",
         duration:
-          "8 周课程：每周 2 次 1.5 小时主课与 1 次作业检查；每周另提供 1 小时集中直播答疑。",
+          "8 周课程：每周 2 次 2 小时主课与 1 次作业检查；每周另提供 1 小时集中直播答疑。",
         requirements:
           "逻辑清晰，具备一定编程能力，能承担高强度工程实战",
         content: [
@@ -160,7 +160,7 @@ export const translations = {
         suitableFor:
           "提升AI工程与产品能力，在市场与专家指导下完成可用于求职或创业的生产级产品",
         duration:
-          "12周课程：每周 1 次 1.5 小时主课与 1 次作业检查；每周另提供 1 小时集中直播答疑",
+          "12周课程：每周 1 次 2 小时主课与 1 次作业检查；每周另提供 1 小时集中直播答疑",
         requirements:
           "扎实的学术与工程经验，能独立规划并推动项目；通过创始人 1v1 面试",
         content: [
@@ -1012,7 +1012,7 @@ export const translations = {
         subtitle: "",
         ageLimit: "College Students/Graduate Students/PhD Students (Age 18 and Above)",
         suitableFor: "Build complete products from scratch to strengthen portfolio for internships, job seeking or startup validation",
-        duration: "6 weeks (1 session/week, 1.5 hours each)",
+        duration: "6 weeks (1 session/week, 2 hours each)",
         requirements: "Clear logic, STEM background preferred",
         content: [
           "AI Cognition & Questioning Framework",
@@ -1031,7 +1031,7 @@ export const translations = {
         ageLimit: "College Students/Engineers/Entrepreneurs (Age 18 and Above)",
         suitableFor:
           "Build production-grade projects with commercial potential for career advancement, PhD applications or startup MVP",
-        duration: "8 weeks (2 sessions/week, 1.5 hours each)",
+        duration: "8 weeks (2 sessions/week, 2 hours each)",
         requirements:
           "Programming ability, clear language and mathematical logic",
         content: [
@@ -1052,7 +1052,7 @@ export const translations = {
         ageLimit: "College Students/Engineers/Entrepreneurs (Age 18 and Above)",
         suitableFor:
           "Enhance AI engineering and product skills to complete production-grade products for career, further education or entrepreneurship",
-        duration: "12 weeks (1 session/week, 1.5 hours each)",
+        duration: "12 weeks (1 session/week, 2 hours each)",
         requirements:
           "Solid academic or engineering background, capable of independent project execution; founder 1v1 interview required",
         content: [
