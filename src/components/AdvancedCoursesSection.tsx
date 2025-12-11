@@ -138,6 +138,15 @@ export function AdvancedCoursesSection() {
                   </div>
                 </div>
 
+                {/* Features 特性列表 */}
+                <div className="mb-8 space-y-3">
+                  {t.advancedCoursesSection.orbiter.features.map((feature: string, index: number) => (
+                    <div key={index} className="flex items-start gap-3 text-cyan-50">
+                      <span className="text-cyan-400 mt-1">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
                 {/* CTA Button */}
                 <Button
                   onClick={() => handleConsultClick('Orbiter 伴星1v1陪练课')}
