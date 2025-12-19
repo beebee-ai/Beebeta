@@ -15,9 +15,10 @@ export function TeamSection() {
   
   // 项目导师
   const projectMentors = [
+    // 前10位按指定顺序
     {
       id: 1,
-      name: 'Founder Z',
+      name: 'Pin Zhou',
       title: isEn ? 'Entrepreneur & AI Product Builder' : '创业导师 / AI 产品实战派',
       bio: isEn 
         ? 'Serial founder with 8 years of applied AI experience across product, operations, e-commerce and supply chain.'
@@ -30,7 +31,7 @@ export function TeamSection() {
     },
     {
       id: 2,
-      name: 'Prof. H',
+      name: 'Iris Hu',
       title: isEn ? 'NLP Scientist & Associate Professor' : 'NLP 科学家 / 高校副教授',
       bio: isEn
         ? 'Associate Professor with 40+ top-tier NLP papers, 3× Best Paper Awards and major national research projects.'
@@ -42,21 +43,8 @@ export function TeamSection() {
       category: 'project' as const
     },
     {
-      id: 3,
-      name: 'Architect F',
-      title: isEn ? 'System Architect & Private LLM Expert' : '底层架构大师 / 私有模型专家',
-      bio: isEn
-        ? '25-year C/C++ veteran specializing in private LLM deployment, distributed systems and high-performance pipelines.'
-        : '25 年 C/C++ 开发经验，超级解霸核心程序员，专长私有模型部署、分布式系统与高性能数据处理。',
-      expertise: isEn
-        ? ['Architecture', 'C/C++', 'Private Models', 'Distributed Systems', 'HPC']
-        : ['系统架构', 'C/C++', '私有模型', '分布式', '高性能'],
-      image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_Chi.png',
-      category: 'project' as const
-    },
-    {
       id: 4,
-      name: 'Engineer V',
+      name: 'Vito Liu',
       title: isEn ? 'RAG Engineer & AI Full-Stack Developer' : 'RAG 系统工程师 / AI 全栈开发',
       bio: isEn
         ? 'McGill CS + Math graduate, core engineer for enterprise-grade RAG and knowledge systems.'
@@ -68,21 +56,8 @@ export function TeamSection() {
       category: 'project' as const
     },
     {
-      id: 5,
-      name: 'Engineer M',
-      title: isEn ? 'Crawler & Concurrency Engineer' : '爬虫与并发工程师',
-      bio: isEn
-        ? 'Expert in large-scale web scraping, BFS crawler frameworks and concurrent data pipelines.'
-        : '专注大规模 Web 数据采集，擅长 BFS 爬虫架构与高并发抓取系统设计。',
-      expertise: isEn
-        ? ['Crawling', 'Concurrency', 'Data Acquisition', 'Python', 'Data Engineering']
-        : ['爬虫', '并发', '数据采集', 'Python', '数据工程'],
-      image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_Miles.png',
-      category: 'project' as const
-    },
-    {
       id: 6,
-      name: 'Engineer A',
+      name: 'Ashlynn Lu',
       title: isEn ? 'Data Scientist & AI Data Engineer' : '数据科学 / AI 数据工程师',
       bio: isEn
         ? 'ICL Distinction MSc and Edinburgh First Class; strong in statistical modeling, async crawlers and LLM data systems.'
@@ -94,34 +69,21 @@ export function TeamSection() {
       category: 'project' as const
     },
     {
-      id: 7,
-      name: 'Engineer C',
-      title: isEn ? 'NLP Algorithm Engineer' : 'NLP 算法工程师',
+      id: 16,
+      name: 'Jennifer Liu',
+      title: isEn ? 'Senior AI Product GTM Expert / Serial Entrepreneur' : '资深 AI 产品 GTM 专家 / 连续创业者',
       bio: isEn
-        ? 'Focused on Transformers, prompt engineering and multimodal RAG; contributed to major AI agent systems.'
-        : '专注 Transformer、Prompt 工程、多模态 RAG，负责第二大脑智能体落地与跨平台集成。',
+        ? 'NYU Economics & KCL International Management graduate, currently pursuing MBA at Cheung Kong. Former Lu Qi team member, co-founded AI company with Li Ziran, focusing on AI Growth Agent and product commercialization.'
+        : 'NYU 经济学士、KCL 国际管理硕士，长江商学院 MBA 在读。曾在陆奇团队工作，与李自然共创 AI 公司，聚焦 AI Growth Agent 与产品商业化。',
       expertise: isEn
-        ? ['NLP', 'Transformer', 'Prompt Engineering', 'RAG', 'Full-stack']
-        : ['NLP', 'Transformer', 'Prompt Engineering', 'RAG', '全栈'],
-      image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_charlie.png',
-      category: 'project' as const
-    },
-    {
-      id: 8,
-      name: 'Engineer B',
-      title: isEn ? 'Senior Frontend Engineer' : '资深前端工程师',
-      bio: isEn
-        ? '8 years multi-platform experience across Uniapp, Vue, and enterprise-scale frontend architecture.'
-        : '8 年多端实战，精通 Uniapp、Vue、前端架构与复杂商业项目交付。',
-      expertise: isEn
-        ? ['Frontend', 'Vue', 'Uniapp', 'Components', 'Engineering']
-        : ['前端', 'Vue', 'Uniapp', '组件设计', '工程化'],
-      image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_bobby.png',
+        ? ['AI Product GTM', 'Growth Strategy', 'Cold Start', '0-to-1 Product', 'Commercialization']
+        : ['AI 产品 GTM', '增长策略', '冷启动', '0-1 产品', '商业化'],
+      image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_jennifer.png',
       category: 'project' as const
     },
     {
       id: 9,
-      name: 'Engineer F',
+      name: 'Fangzhong Liu',
       title: isEn ? 'Senior Data Scientist' : '资深数据科学家',
       bio: isEn
         ? 'UChicago Financial Math graduate specializing in XGBoost/uplift modeling, MMM, RAG analytics and growth systems.'
@@ -134,7 +96,7 @@ export function TeamSection() {
     },
     {
       id: 10,
-      name: 'Engineer C',
+      name: 'Mingxi Chen',
       title: isEn ? 'Full-Stack Engineer & AI Application Developer' : '全栈工程师 / AI 应用开发者',
       bio: isEn
         ? 'Builds end-to-end AI systems including RAG, vLLM, OCR and automation workflows; strong full-stack delivery.'
@@ -147,7 +109,7 @@ export function TeamSection() {
     },
     {
       id: 11,
-      name: 'Engineer H',
+      name: 'Shu Hong',
       title: isEn ? 'NYC Financial Systems Engineer' : '纽约金融系统工程师',
       bio: isEn
         ? 'Columbia OR alumnus with 9+ years building trading, settlement and risk systems in NYC finance.'
@@ -160,7 +122,7 @@ export function TeamSection() {
     },
     {
       id: 12,
-      name: 'Engineer L',
+      name: 'Heyang Long',
       title: isEn ? 'Machine Learning Engineer, Google' : 'Google 机器学习工程师',
       bio: isEn
         ? 'OSU Physics PhD (Presidential Fellow), ML engineer at Google with experience across RAG, agents and full-stack pipelines.'
@@ -173,7 +135,7 @@ export function TeamSection() {
     },
     {
       id: 13,
-      name: 'Engineer J',
+      name: 'Jerry Yu',
       title: isEn ? 'AI Infrastructure & Cloud Architecture Expert' : 'AI 基础设施与云架构专家',
       bio: isEn
         ? '16-year veteran, early DevOps adopter; expert in Kubernetes, cloud-native engineering and vLLM deployments.'
@@ -186,7 +148,7 @@ export function TeamSection() {
     },
     {
       id: 14,
-      name: 'Designer C',
+      name: 'Claire Chen',
       title: isEn ? 'UX Designer & Program Lead' : '用户体验设计师 & 项目负责人',
       bio: isEn
         ? '8+ years in digital product design and educational program management, combining UX thinking with operations to deliver smooth, high-quality learning experiences.'
@@ -197,9 +159,62 @@ export function TeamSection() {
       image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_jin.png',
       category: 'project' as const
     },
+    // 其他导师保持原顺序
+    {
+      id: 3,
+      name: 'Fred Chi',
+      title: isEn ? 'System Architect & Private LLM Expert' : '底层架构大师 / 私有模型专家',
+      bio: isEn
+        ? '25-year C/C++ veteran specializing in private LLM deployment, distributed systems and high-performance pipelines.'
+        : '25 年 C/C++ 开发经验，超级解霸核心程序员，专长私有模型部署、分布式系统与高性能数据处理。',
+      expertise: isEn
+        ? ['Architecture', 'C/C++', 'Private Models', 'Distributed Systems', 'HPC']
+        : ['系统架构', 'C/C++', '私有模型', '分布式', '高性能'],
+      image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_Chi.png',
+      category: 'project' as const
+    },
+    {
+      id: 5,
+      name: 'Miles Chen',
+      title: isEn ? 'Crawler & Concurrency Engineer' : '爬虫与并发工程师',
+      bio: isEn
+        ? 'Expert in large-scale web scraping, BFS crawler frameworks and concurrent data pipelines.'
+        : '专注大规模 Web 数据采集，擅长 BFS 爬虫架构与高并发抓取系统设计。',
+      expertise: isEn
+        ? ['Crawling', 'Concurrency', 'Data Acquisition', 'Python', 'Data Engineering']
+        : ['爬虫', '并发', '数据采集', 'Python', '数据工程'],
+      image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_Miles.png',
+      category: 'project' as const
+    },
+    {
+      id: 7,
+      name: 'Charlie Chen',
+      title: isEn ? 'NLP Algorithm Engineer' : 'NLP 算法工程师',
+      bio: isEn
+        ? 'Focused on Transformers, prompt engineering and multimodal RAG; contributed to major AI agent systems.'
+        : '专注 Transformer、Prompt 工程、多模态 RAG，负责第二大脑智能体落地与跨平台集成。',
+      expertise: isEn
+        ? ['NLP', 'Transformer', 'Prompt Engineering', 'RAG', 'Full-stack']
+        : ['NLP', 'Transformer', 'Prompt Engineering', 'RAG', '全栈'],
+      image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_charlie.png',
+      category: 'project' as const
+    },
+    {
+      id: 8,
+      name: 'Bobby Wang',
+      title: isEn ? 'Senior Frontend Engineer' : '资深前端工程师',
+      bio: isEn
+        ? '8 years multi-platform experience across Uniapp, Vue, and enterprise-scale frontend architecture.'
+        : '8 年多端实战，精通 Uniapp、Vue、前端架构与复杂商业项目交付。',
+      expertise: isEn
+        ? ['Frontend', 'Vue', 'Uniapp', 'Components', 'Engineering']
+        : ['前端', 'Vue', 'Uniapp', '组件设计', '工程化'],
+      image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_bobby.png',
+      category: 'project' as const
+    },
     {
       id: 15,
-      name: 'TA P',
+      name: 'Alan Peng',
       title: isEn ? 'Teaching Assistant & Test Engineer' : '助教 & 测试工程师',
       bio: isEn
         ? 'Math & Physics junior at Augustana University, serving as BEEBEE AI test engineer and TA, helping students grasp AI concepts and code with both strong theory and hands-on debugging skills.'
@@ -224,9 +239,10 @@ export function TeamSection() {
 
   // 专业讲师
   const professionalLecturers = [
+    // 前3位按指定顺序
     {
       id: 22,
-      name: 'Chief Y',
+      name: 'Yu Guo',
       title: isEn ? 'Chief-level UX & Product Design Expert' : '设计与体验总监级专家',
       bio: isEn
         ? 'Former Chief Designer at Baidu and UX designer at Netscape/eBay/PayPal; educated at SJTU, IIT Institute of Design and Columbia Business School; built one of China\'s earliest professional UX teams.'
@@ -238,21 +254,8 @@ export function TeamSection() {
       category: 'lecturer' as const
     },
     {
-      id: 23,
-      name: 'Engineer X',
-      title: isEn ? 'Leading XR Industry Expert' : 'XR 行业资深观察者与实践者',
-      bio: isEn
-        ? 'Known as a top XR expert in China; former core member at Baidu and Maoyan, ex-investor at ZhenFund, with deep insight into Meta and Apple\'s XR strategies and ecosystems.'
-        : '被称为"中国 XR 第一人"，历任百度、猫眼核心成员与真格基金投资人，深度研究 Meta 和 Apple 的 XR 战略与生态。',
-      expertise: isEn
-        ? ['XR', 'Spatial Computing', 'Product Strategy', 'VC Perspective']
-        : ['XR', '空间计算', '行业战略', '产品与投融资'],
-      image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_xuwu.png',
-      category: 'lecturer' as const
-    },
-    {
       id: 24,
-      name: 'Chief Y',
+      name: 'Jieyu Yang',
       title: isEn ? 'Product Lead & UI/UX Designer (Silicon Valley & London)' : '硅谷/伦敦产品负责人 & UI/UX 设计师',
       bio: isEn
         ? 'US-educated (Bachelor & Master), worked as a UI/UX designer at major tech companies in Silicon Valley and London; now Product Lead at an AI startup, known for practical "interest → product → monetization" playbooks.'
@@ -264,8 +267,22 @@ export function TeamSection() {
       category: 'lecturer' as const
     },
     {
+      id: 23,
+      name: 'Wu Xu',
+      title: isEn ? 'Leading XR Industry Expert' : 'XR 行业资深观察者与实践者',
+      bio: isEn
+        ? 'Known as a top XR expert in China; former core member at Baidu and Maoyan, ex-investor at ZhenFund, with deep insight into Meta and Apple\'s XR strategies and ecosystems.'
+        : '被称为"中国 XR 第一人"，历任百度、猫眼核心成员与真格基金投资人，深度研究 Meta 和 Apple 的 XR 战略与生态。',
+      expertise: isEn
+        ? ['XR', 'Spatial Computing', 'Product Strategy', 'VC Perspective']
+        : ['XR', '空间计算', '行业战略', '产品与投融资'],
+      image: 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/cartoon_xuwu.png',
+      category: 'lecturer' as const
+    },
+    // 其他专业讲师保持原顺序
+    {
       id: 25,
-      name: 'Engineer Y',
+      name: 'Hugo Yu',
       title: isEn ? 'Senior Speech AI & Voice Model Expert' : '语音大模型与语音合成专家',
       bio: isEn
         ? 'Senior voice algorithm expert at Zhipu AI; PhD trainee at CAS Institute of Acoustics; 20+ papers at ICASSP/INTERSPEECH/IJCAI; led multiple large-scale speech synthesis and voice interaction products.'
@@ -278,7 +295,7 @@ export function TeamSection() {
     },
     {
       id: 26,
-      name: 'Engineer W',
+      name: 'William',
       title: isEn ? 'AI Evangelist & Minimalist Engineer' : 'AI 技术布道者 & 极简工程实践者',
       bio: isEn
         ? 'MSc in CS from UESTC, former Senior Software Engineer at Nokia; now Ireland-based AI creator simplifying LangChain, MCP and LLM tooling through videos, articles and open-source projects.'
@@ -291,7 +308,7 @@ export function TeamSection() {
     },
     {
       id: 27,
-      name: 'Engineer H',
+      name: 'Henry Wang',
       title: isEn ? 'Multimodal & Video AI Algorithm Engineer (CVPR Champion)' : '多模态与视频 AI 算法工程师（CVPR 冠军）',
       bio: isEn
         ? 'Master in Software Engineering (BJUT), 6+ years in AI; CVPR 2020 facial expression challenge champion; specializes in multimodal models, video understanding, OCR, and edge AI optimization with models deployed in consumer devices.'
@@ -304,7 +321,7 @@ export function TeamSection() {
     },
     {
       id: 28,
-      name: 'Architect A',
+      name: 'Alex Wu',
       title: isEn ? 'Distributed Systems & Cloud-Native Architect' : '分布式系统与云原生架构专家',
       bio: isEn
         ? 'MSc in Software Engineering (St Andrews), 13 years of engineering and tech leadership; designed billion-scale index search engines with high QPS and low latency, plus AI-integrated cloud-native platforms.'
@@ -317,7 +334,7 @@ export function TeamSection() {
     },
     {
       id: 29,
-      name: 'Architect R',
+      name: 'Roy Nee',
       title: isEn ? 'FinTech Core Systems Architect' : '金融科技核心系统架构师',
       bio: isEn
         ? 'Master in Computer Science (BUPT), 15 years in FinTech; former core architect at top Chinese banks designing credit card and payment systems handling 250M+ daily requests; now architect at a public FinTech company in Australia.'

@@ -1066,4 +1066,55 @@ export const pacerMentors: MentorData[] = [
       "Break complexity into clarity — that’s how control begins.",
     photo: "",
   },
+  {
+    id: "mentor-jennifer-liu",
+    name: "Jennifer Liu",
+    nameEn: "Jennifer Liu",
+    title: "资深 AI 产品 GTM 专家 / 连续创业者",
+    titleEn:
+      "Senior AI Product GTM Expert / Serial Entrepreneur",
+    summary:
+      "拥有 NYU 经济学学士与 KCL国际管理硕士学位，现于长江商学院攻读 MBA。曾在陆奇团队工作期间深度参与早期创业者从 0 到 1 的产品验证、增长与生存策略。与 YouTube 科技博主李自然合伙创立 AI 公司，主导多款 AI 产品上线与增长，长期聚焦 AI Growth Agent、AI 产品商业化与冷启动方法论。",
+    summaryEn:
+      "Jennifer Liu holds a Bachelor's in Economics from NYU and a Master's in International Management from KCL, currently pursuing an MBA at Cheung Kong Graduate School of Business. She has deep experience in product validation, growth, and survival strategies for early-stage entrepreneurs, having worked with the Lu Qi team. She co-founded an AI company with YouTube tech influencer Li Ziran, leading multiple AI product launches and growth strategies. Her focus is on AI Growth Agent, AI product commercialization, and cold start methodologies.",
+    details: `
+    <p>Jennifer Liu 拥有经济学与国际管理的深厚学术背景，且在 AI 产品 GTM（Go-to-Market）方面具有丰富的实战经验。她与知名科技博主李自然共同创办 AI 公司，推动多款 AI 产品的快速增长，深谙早期产品的市场切入与冷启动策略。</p>
+
+<h4>跨领域的专业经验</h4>
+<ul>
+  <li>曾在陆奇团队参与早期创业者从 0 到 1 的产品验证与生存策略</li>
+  <li>与李自然共同创立 AI 公司，主导 AI 产品的定位、增长与商业化</li>
+  <li>专注于 AI 产品的市场切入与商业化路径，深入了解产品冷启动方法论</li>
+  <li>为 100 多家 AI 初创公司提供 GTM 策略支持</li>
+</ul>
+
+<h4>教学理念与风格</h4>
+<ul>
+  <li>实战导向，强调从 0 到 1 的关键判断与可执行步骤</li>
+  <li>结合真实创业案例，注重验证思路、增长路径与商业化可行性</li>
+  <li>风格直接务实，专注解决“冷启动问题”和“用户需求”</li>
+</ul>
+`,
+    detailsEn: `
+    <p>Jennifer Liu holds an academic background in Economics and International Management, with rich practical experience in AI product GTM (Go-to-Market) strategies. She co-founded an AI company with renowned tech influencer Li Ziran, leading AI product launches and growth strategies, with a deep focus on early product market entry and cold start methodologies.</p>
+
+<h4>Cross-domain Professional Experience</h4>
+<ul>
+  <li>Worked with Lu Qi's team on product validation and survival strategies for early-stage entrepreneurs</li>
+  <li>Co-founded an AI company with Li Ziran, leading product positioning, growth, and commercialization</li>
+  <li>Focused on market entry and commercialization paths for AI products, deeply understanding cold start methodologies</li>
+  <li>Provided GTM strategy support for over 100 AI startups</li>
+</ul>
+
+<h4>Teaching Style & Philosophy</h4>
+<ul>
+  <li>Practical, execution-oriented approach, emphasizing key decisions and actionable steps from 0 to 1</li>
+  <li>Uses real-life entrepreneurial case studies, focusing on validation thinking, growth paths, and commercialization feasibility</li>
+  <li>Direct and pragmatic style, addressing cold start issues and true user needs</li>
+</ul>
+`,
+    quote: "从 0 到 1，不是做出来的，而是验证出来的。",
+    quoteEn: "From 0 to 1, it's not created, it's validated.",
+    photo: "",
+  },
 ];
