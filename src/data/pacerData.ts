@@ -1115,6 +1115,6 @@ export const pacerMentors: MentorData[] = [
 `,
     quote: "从 0 到 1，不是做出来的，而是验证出来的。",
     quoteEn: "From 0 to 1, it's not created, it's validated.",
-    photo: "",
+    photo: "https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/jennifer.jpg",
   },
 ];

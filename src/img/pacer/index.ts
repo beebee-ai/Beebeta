@@ -21,6 +21,7 @@ const mingxiImg = `${BASE_URL}/Mingxi.png`;
 const heyangImg = `${BASE_URL}/heyang.jpg`;
 const jerryImg = `${BASE_URL}/jerry.jpg`;
 const shuhongImg = `${BASE_URL}/shuhong.png`;
+const jenniferImg = `${BASE_URL}/jennifer.jpg`;
 
 // 专家导师 (Pros)
 const hugoImg = `${BASE_URL}/yuguo.png`;
@@ -52,6 +53,7 @@ export const pacerImages = {
   'mentor-heyang': heyangImg,
   'mentor-jerry': jerryImg,
   'mentor-hongshu': shuhongImg,
+  'mentor-jennifer-liu': jenniferImg,
   
   // 专家导师
   'expert-hugo': hugoImg,
