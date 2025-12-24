@@ -8,6 +8,17 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { Button } from './ui/button';
 import { toast } from 'sonner@2.0.3';
 
+// 简化姓名显示格式：FirstName LastInitial (如 "Pin Z" 或 "Jennifer L")
+function formatShortName(fullName: string): string {
+  const parts = fullName.trim().split(' ');
+  if (parts.length === 0) return '';
+  if (parts.length === 1) return parts[0];
+  
+  const firstName = parts[0];
+  const lastNameInitial = parts[parts.length - 1].charAt(0);
+  return `${firstName} ${lastNameInitial}`;
+}
+
 export function TeamSection() {
   const { t, language } = useLanguage();
   const navigate = useNavigate();
@@ -518,7 +529,7 @@ export function TeamSection() {
         <div className="p-4 flex flex-col flex-1 min-w-0 overflow-hidden">
           <div className="flex items-start justify-between mb-2 flex-shrink-0">
             <div className="flex-1 min-w-0">
-              <h3 className="text-white mb-1">{member.name}</h3>
+              <h3 className="text-white mb-1">{formatShortName(member.name)}</h3>
               <p className="text-[#ffc75a] text-sm line-clamp-1">{member.title}</p>
             </div>
             {/* <Linkedin className="w-5 h-5 text-gray-500 group-hover:text-[#ffc75a] transition-colors cursor-pointer" /> */}
