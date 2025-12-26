@@ -15,64 +15,63 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative pt-32 pb-8 lg:pt-40 lg:pb-16 overflow-hidden bg-[#fafafa]">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <img 
-          src="https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/banner_white.jpg"
-          alt="" 
-          className="w-full h-full object-cover object-right opacity-50"
-        />
-      </div>
+    <section id="home" className="relative pt-32 pb-8 lg:pt-40 lg:pb-16 overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#ffc75a]/10 via-black to-black"></div>
+      <div className="absolute top-20 right-20 w-96 h-96 bg-[#ffc75a]/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#ffc75a]/5 rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="w-full">
-          {/* Left aligned content */}
-          <div className="w-full lg:max-w-4xl lg:ml-20">
-            {/* Main Heading */}
-            <div className="mb-6 sm:mb-8">
-              <h1 className="text-[26px] sm:text-[48px] lg:text-[72px] mb-6 sm:mb-8 leading-[1.3] font-extrabold text-[#1a1a1a] lg:skew-x-[-5deg]">
-                {language === 'zh' ? (
-                  <>
-                    <span className="block">成为 <span className="text-[30px] sm:text-[56px] lg:text-[84px] bg-gradient-to-r from-[#FF6900] via-[#FF8533] to-[#FFA366] bg-clip-text text-transparent">AI时代</span> 的创造者</span>
-                    <span className="block">而不只是消费者</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="block">Become an <span className="text-[30px] sm:text-[56px] lg:text-[84px] bg-gradient-to-r from-[#FF6900] via-[#FF8533] to-[#FFA366] bg-clip-text text-transparent">AI Creator</span>,</span>
-                    <span className="block">Not Just a Consumer</span>
-                  </>
-                )}
-              </h1>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-5xl mx-auto text-center -mt-8">
+          {/* Main Heading */}
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 lg:mb-8 leading-relaxed">
+            {language === 'zh' ? (
+              <>
+                <span className="text-white">成为</span>
+                <span className="text-[#ffc75a]"> AI时代 </span>
+                <span className="text-white">的创造者 而不只是消费者</span>
+              </>
+            ) : (
+              <>
+                <span className="text-white">Become an </span>
+                <span className="text-[#ffc75a]">AI Creator</span>
+                <span className="text-white">, Not Just a Consumer</span>
+              </>
+            )}
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-gray-400 text-lg lg:text-xl mb-10 lg:mb-12 max-w-3xl mx-auto">
+            {language === 'zh' 
+              ? 'BEE Beta 三阶课程体系 - 学AI，创未来' 
+              : 'BEE Beta Three-Stage Course System - Learn AI, Shape the Future'}
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button 
+              size="lg"
+              className="bg-[#ffc75a] hover:bg-[#ffc75a]/90 text-black px-8 py-6 text-lg group w-full sm:w-auto cursor-pointer"
+              onClick={handleCourseClick}
+            >
+              {language === 'zh' ? '了解课程详情' : 'Explore Courses'}
+              <Sparkles className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+            </Button>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-8 lg:mt-12 flex flex-wrap items-center justify-center gap-8 lg:gap-12 text-sm text-white">
+            <div className="flex items-center gap-2">
+              <div className="w-1 h-1 bg-[#ffc75a] rounded-full"></div>
+              <span>{language === 'zh' ? 'AI驱动课程' : 'AI-Driven Courses'}</span>
             </div>
-
-            {/* Subtitle */}
-            <p className="text-[15px] sm:text-[24px] lg:text-[32px] leading-[1.5] text-[#4a5565] mb-8 sm:mb-12">
-              {language === 'zh' 
-                ? 'BEE Beta 三阶课程体系 - 学AI，创未来' 
-                : 'BEE Beta Three-Stage Course System - Learn AI, Shape the Future'}
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="mb-12 sm:mb-16">
-              <button 
-                onClick={handleCourseClick}
-                className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-12 sm:py-5 bg-gradient-to-r from-[#FF6900] to-[#FF8533] rounded-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,105,0,0.3)] hover:scale-105 text-white text-[18px] sm:text-[22px] cursor-pointer border border-[#FF6900]/20 w-full sm:w-auto"
-                style={{
-                  boxShadow: '0 4px 20px rgba(255, 105, 0, 0.15)'
-                }}
-              >
-                {/* Soft glow background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FF8533] to-[#FFA366] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                
-                {/* Shimmer effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
-                
-                <span className="relative z-10 tracking-wide font-medium">
-                  {language === 'zh' ? '了解课程详情' : 'Explore Courses'}
-                </span>
-                <span className="relative z-10 text-[20px] group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </button>
+            <div className="flex items-center gap-2">
+              <div className="w-1 h-1 bg-[#ffc75a] rounded-full"></div>
+              <span>{language === 'zh' ? '实战项目导向' : 'Project-Based Learning'}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-1 h-1 bg-[#ffc75a] rounded-full"></div>
+              <span>{language === 'zh' ? '终身学习社区' : 'Lifelong Learning Community'}</span>
             </div>
           </div>
         </div>

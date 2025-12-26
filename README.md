@@ -1,7 +1,7 @@
 
-  # Bee-Beta正式（橙白版）
+  # Bee-Beta
 
-  This is a code bundle for Bee-Beta正式（橙白版）. The original project is available at https://www.figma.com/design/cg67vPzUbmzJBAkBdrTmeG/Bee-Beta%E6%AD%A3%E5%BC%8F%EF%BC%88%E6%A9%99%E7%99%BD%E7%89%88%EF%BC%89.
+  This is a code bundle for Bee-Beta. The original project is available at https://www.figma.com/design/eteejViPvXu84SvLbQHcjT/Bee-Beta.
 
   ## Running the code
 

@@ -1,5 +1,5 @@
 import { Linkedin, ChevronLeft, ChevronRight, Lock } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
@@ -7,13 +7,23 @@ import { ContactSection } from './ContactSection';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Button } from './ui/button';
 import { toast } from 'sonner@2.0.3';
-import { SectionDivider } from './SectionDivider';
+
+// 简化姓名显示格式：FirstName LastInitial (如 "Pin Z" 或 "Jennifer L")
+function formatShortName(fullName: string): string {
+  const parts = fullName.trim().split(' ');
+  if (parts.length === 0) return '';
+  if (parts.length === 1) return parts[0];
+  
+  const firstName = parts[0];
+  const lastNameInitial = parts[parts.length - 1].charAt(0);
+  return `${firstName} ${lastNameInitial}`;
+}
 
 export function TeamSection() {
   const { t, language } = useLanguage();
   const navigate = useNavigate();
   const isEn = language === 'en';
-
+  
   // 项目导师
   const projectMentors = [
     // 前10位按指定顺序
@@ -398,33 +408,15 @@ export function TeamSection() {
 
   // 获取当前分类的导师列表
   const currentTeam = activeCategory === 'project' ? projectMentors : professionalLecturers;
-  
-  // 响应式每页显示数量
-  const [isMobile, setIsMobile] = useState(false);
-  
-  // 检测屏幕尺寸
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024); // lg断点
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-  
-  // 移动端每页2个，桌面端每页6个
-  const itemsPerPage = isMobile ? 2 : ITEMS_PER_PAGE;
-  const shouldUseCarousel = currentTeam.length > itemsPerPage;
+  const shouldUseCarousel = currentTeam.length > 6;
 
   // 计算总页数
-  const totalPages = Math.ceil(currentTeam.length / itemsPerPage);
+  const totalPages = Math.ceil(currentTeam.length / ITEMS_PER_PAGE);
 
   // 获取当前页的导师
   const getCurrentPageTeam = () => {
-    const startIndex = currentPage * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
+    const startIndex = currentPage * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
     return currentTeam.slice(startIndex, endIndex);
   };
 
@@ -463,33 +455,32 @@ export function TeamSection() {
               // 已验证，直接跳转
               navigate('/pacer');
             } else {
-              // 未验证,显示邀请码对话框
+              // 未验证，显示邀请码对话框
               setIsInviteDialogOpen(true);
             }
           }}
-          className="group bg-white rounded-lg overflow-hidden border-2 border-[#FF6900]/30 hover:border-[#FF6900] transition-all cursor-pointer relative shadow-lg hover:shadow-xl mx-auto
-                     flex flex-col sm:flex-row w-full sm:w-[400px] h-auto sm:h-[240px]"
+          className="group bg-zinc-900 rounded-lg overflow-hidden border-2 border-[#ffc75a]/30 hover:border-[#ffc75a] transition-all flex flex-row cursor-pointer relative h-[220px]"
         >
           {/* Image with overlay */}
-          <div className="relative w-full h-[180px] sm:w-[160px] sm:h-full flex-shrink-0 overflow-hidden bg-gradient-to-br from-[#FFF8F0] to-[#FFE8CC]">
+          <div className="relative w-[180px] flex-shrink-0 overflow-hidden">
             <img
               src={member.image}
               alt="邀请查看"
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-30"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-40"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/80 to-white" />
+            <div className="absolute inset-0 bg-gradient-to-r from-zinc-900/60 via-zinc-900/80 to-zinc-900" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <Lock className="w-10 h-10 text-[#FF6900] group-hover:scale-110 transition-transform" />
+              <Lock className="w-10 h-10 text-[#ffc75a] group-hover:scale-110 transition-transform" />
             </div>
           </div>
 
           {/* Content */}
-          <div className="p-4 sm:p-4 flex flex-col flex-1 items-center justify-center text-center">
-            <h3 className="text-[#101828] mb-2 text-base sm:text-lg">{t.team.viewAllInstructors}</h3>
-            <p className="text-[#4a5565] text-sm mb-4 line-clamp-2">
+          <div className="p-4 flex flex-col flex-1 items-center justify-center text-center">
+            <h3 className="text-white mb-2">{t.team.viewAllInstructors}</h3>
+            <p className="text-gray-400 text-sm mb-4 line-clamp-2">
               {t.team.moreInstructors}
             </p>
-            <button className="px-4 py-2 bg-[#FF6900] text-white rounded-lg hover:bg-[#FF6900]/90 transition-colors font-medium text-sm cursor-pointer">
+            <button className="px-4 py-2 bg-[#ffc75a] text-black rounded-lg hover:bg-[#ffc75a]/90 transition-colors font-medium text-sm cursor-pointer">
               {t.team.applyInviteCode}
             </button>
           </div>
@@ -513,11 +504,10 @@ export function TeamSection() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.3 }}
-        className="group bg-white rounded-lg overflow-hidden border border-[#FF6900]/10 hover:border-[#FF6900]/30 transition-all shadow-lg hover:shadow-xl mx-auto
-                   flex flex-col sm:flex-row w-full sm:w-[400px] h-auto sm:h-[240px]"
+        className="group bg-zinc-900 rounded-lg overflow-hidden border border-[#ffc75a]/10 hover:border-[#ffc75a]/30 transition-all flex flex-row h-[220px]"
       >
         {/* Image */}
-        <div className="relative w-full h-[180px] sm:w-[160px] sm:h-full flex-shrink-0 bg-gradient-to-br from-[#FFF8F0] to-[#FFE8CC] overflow-hidden">
+        <div className="relative w-[180px] flex-shrink-0 bg-zinc-800 overflow-hidden">
           {member.image ? (
             <img
               src={member.image}
@@ -526,33 +516,33 @@ export function TeamSection() {
             />
           ) : (
             // 首字母占位符
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#FF6900]/20 to-[#FF6900]/5">
-              <span className="text-[#FF6900] text-6xl font-bold group-hover:scale-105 transition-transform duration-500">
+            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#ffc75a]/20 to-[#ffc75a]/5">
+              <span className="text-[#ffc75a] text-6xl font-bold group-hover:scale-105 transition-transform duration-500">
                 {member.name.split(' ').pop()?.charAt(0) || 'G'}
               </span>
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-zinc-900/30 pointer-events-none" />
         </div>
 
         {/* Content */}
-        <div className="p-3 sm:p-3 flex flex-col flex-1 min-w-0 overflow-hidden">
-          <div className="flex items-start justify-between mb-1.5 flex-shrink-0">
+        <div className="p-4 flex flex-col flex-1 min-w-0 overflow-hidden">
+          <div className="flex items-start justify-between mb-2 flex-shrink-0">
             <div className="flex-1 min-w-0">
-              <h3 className="text-[#101828] mb-1 text-base sm:text-lg">{member.name}</h3>
-              <p className="text-[#FF6900] text-xs sm:text-sm line-clamp-1 sm:line-clamp-1">{member.title}</p>
+              <h3 className="text-white mb-1">{formatShortName(member.name)}</h3>
+              <p className="text-[#ffc75a] text-sm line-clamp-1">{member.title}</p>
             </div>
-            {/* <Linkedin className="w-5 h-5 text-gray-500 group-hover:text-[#FF6900] transition-colors cursor-pointer" /> */}
+            {/* <Linkedin className="w-5 h-5 text-gray-500 group-hover:text-[#ffc75a] transition-colors cursor-pointer" /> */}
           </div>
 
-          <p className="text-[#4a5565] text-xs sm:text-sm mb-2 line-clamp-3 sm:line-clamp-4 flex-shrink-0">{member.bio}</p>
+          <p className="text-gray-400 text-sm mb-3 line-clamp-3 flex-shrink-0">{member.bio}</p>
 
           {/* Expertise Tags */}
-          <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-auto">
+          <div className="flex flex-wrap gap-1.5 mt-auto">
             {displayTags.map((skill) => (
               <span
                 key={skill}
-                className="px-1.5 sm:px-2 py-0.5 bg-[#FF6900]/10 border border-[#FF6900]/20 rounded text-[#FF6900] text-[10px] sm:text-xs whitespace-nowrap"
+                className="px-2 py-0.5 bg-[#ffc75a]/10 border border-[#ffc75a]/20 rounded text-[#ffc75a] text-xs whitespace-nowrap"
               >
                 {skill}
               </span>
@@ -580,26 +570,17 @@ export function TeamSection() {
   };
 
   return (
-    <section id="team" className="pb-16 lg:pb-16 bg-[#fafafa]">
-      {/* Section Title */}
-      <SectionDivider 
-        number="05" 
-        title={t.team.title}
-        titleHighlight={t.team.titleHighlight}
-        subtitle={t.team.subtitle}
-        highlightPosition="end"
-      />
-      
+    <section id="team" className="py-8 lg:py-16 bg-zinc-950">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Category Tabs */}
         <div className="flex justify-center mb-12">
-          <div className="inline-flex bg-white rounded-lg p-1 border border-gray-200">
+          <div className="inline-flex bg-zinc-900 rounded-lg p-1 border border-[#ffc75a]/10">
             <button
               onClick={() => handleCategoryChange('project')}
               className={`px-8 py-3 rounded-md transition-all cursor-pointer ${
                 activeCategory === 'project'
-                  ? 'bg-gradient-to-r from-[#FF6900] to-[#FF8533] text-white'
-                  : 'text-[#4a5565] hover:text-[#101828]'
+                  ? 'bg-[#ffc75a] text-black'
+                  : 'text-gray-400 hover:text-white'
               }`}
             >
               {t.team.projectMentors}
@@ -608,8 +589,8 @@ export function TeamSection() {
               onClick={() => handleCategoryChange('lecturer')}
               className={`px-8 py-3 rounded-md transition-all cursor-pointer ${
                 activeCategory === 'lecturer'
-                  ? 'bg-gradient-to-r from-[#FF6900] to-[#FF8533] text-white'
-                  : 'text-[#4a5565] hover:text-[#101828]'
+                  ? 'bg-[#ffc75a] text-black'
+                  : 'text-gray-400 hover:text-white'
               }`}
             >
               {t.team.professionalLecturers}
@@ -619,19 +600,19 @@ export function TeamSection() {
 
         {/* Team Display */}
         {shouldUseCarousel ? (
-          /* 轮播模式 - 移动端和桌面端 */
+          /* 轮播模式 - 当导师数量超过6个时 */
           <div className="relative">
-            {/* 左箭头 - 仅桌面端显示 */}
+            {/* 左箭头 */}
             <button
               onClick={handlePrev}
-              className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 translate-x-[20px] xl:translate-x-[50px] z-10 w-[32px] h-[50px] rounded-l-full bg-white text-[#FF6900] hover:bg-gray-50 transition-all items-center justify-center shadow-md cursor-pointer"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 w-12 h-12 rounded-full bg-[#ffc75a] text-black hover:bg-[#ffc75a]/90 transition-all flex items-center justify-center shadow-lg cursor-pointer"
               aria-label="上一页"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-6 h-6" />
             </button>
 
             {/* 导师网格 - 带动画 */}
-            <div className={`relative ${isMobile ? 'min-h-[720px]' : 'min-h-[520px]'} max-w-[1300px] mx-auto`}>
+            <div className="relative min-h-[500px]">
               <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                   key={`${activeCategory}-${currentPage}`}
@@ -644,32 +625,32 @@ export function TeamSection() {
                     x: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.3 }
                   }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 absolute w-full top-0 place-items-center"
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 absolute w-full"
                 >
                   {getCurrentPageTeam().map((member) => renderTeamCard(member))}
                 </motion.div>
               </AnimatePresence>
-              {/* 占位元素，保持容器高度 */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-0 pointer-events-none place-items-center">
-                {Array.from({ length: itemsPerPage }).map((_, index) => (
-                  <div key={index} className="w-full sm:w-[400px] h-[330px] sm:h-[240px]">
+              {/* 占位元素，保持容器高度 - 始终显示6个占位 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-0 pointer-events-none">
+                {Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
+                  <div key={index} className="bg-zinc-900 rounded-lg overflow-hidden border border-[#ffc75a]/10 h-[220px]">
                     <div className="h-full"></div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* 右箭头 - 仅桌面端显示 */}
+            {/* 右箭头 */}
             <button
               onClick={handleNext}
-              className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 -translate-x-[20px] xl:-translate-x-[50px] z-10 w-[32px] h-[50px] rounded-r-full bg-white text-[#FF6900] hover:bg-gray-50 transition-all items-center justify-center shadow-md cursor-pointer"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 w-12 h-12 rounded-full bg-[#ffc75a] text-black hover:bg-[#ffc75a]/90 transition-all flex items-center justify-center shadow-lg cursor-pointer"
               aria-label="下一页"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-6 h-6" />
             </button>
 
             {/* 页面指示器 */}
-            <div className="flex items-center justify-center gap-2 mt-4 md:mt-4">
+            <div className="flex items-center justify-center gap-2 mt-16">
               {Array.from({ length: totalPages }).map((_, index) => (
                 <button
                   key={index}
@@ -679,8 +660,8 @@ export function TeamSection() {
                   }}
                   className={`h-2 rounded-full transition-all cursor-pointer ${
                     index === currentPage
-                      ? 'bg-[#FF6900] w-8'
-                      : 'bg-gray-400 hover:bg-gray-500 w-2'
+                      ? 'bg-[#ffc75a] w-8'
+                      : 'bg-gray-600 hover:bg-gray-500 w-2'
                   }`}
                   aria-label={`第 ${index + 1} 页`}
                 />
@@ -688,13 +669,13 @@ export function TeamSection() {
             </div>
           </div>
         ) : (
-          /* 网格模式 - 导师数量少时使用 */
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
-            {getCurrentPageTeam().map((member) => renderTeamCard(member))}
+          /* 网格模式 - 当导师数量不超过6个时 */
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {currentTeam.map((member) => renderTeamCard(member))}
           </div>
         )}
 
-        {/* 邀码对话框 */}
+        {/* 邀请码对话框 */}
         <Dialog open={isInviteDialogOpen} onOpenChange={(open) => {
           setIsInviteDialogOpen(open);
           if (!open) {
@@ -702,12 +683,12 @@ export function TeamSection() {
             setInviteCode('');
           }
         }}>
-          <DialogContent className={`${showApplyForm ? 'w-[85vw] !max-w-[85vw] h-[90vh] max-h-[90vh] overflow-y-auto' : 'w-[85vw] !max-w-[600px]'} bg-[#fafafa] border-2 border-[#FF6900]/30 p-8 lg:p-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]`}>
-            <DialogHeader className="border-b border-[#FF6900]/20 pb-6 mb-8">
-              <DialogTitle className="text-2xl lg:text-3xl text-[#101828]">
+          <DialogContent className={`${showApplyForm ? 'w-[85vw] !max-w-[85vw] h-[90vh] max-h-[90vh] overflow-y-auto' : 'w-[85vw] !max-w-[600px]'} bg-zinc-950 border-2 border-[#ffc75a]/30 p-8 lg:p-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]`}>
+            <DialogHeader className="border-b border-[#ffc75a]/20 pb-6 mb-8">
+              <DialogTitle className="text-2xl lg:text-3xl text-white">
                 {showApplyForm ? t.team.applyInviteCode : t.team.enterInviteCode}
               </DialogTitle>
-              <DialogDescription className="text-[#4a5565] mt-3 text-base">
+              <DialogDescription className="text-gray-400 mt-3 text-base">
                 {showApplyForm ? t.team.inviteDialogDescription : t.team.enterInviteCodeDescription}
               </DialogDescription>
             </DialogHeader>
@@ -716,7 +697,7 @@ export function TeamSection() {
               /* 邀请码输入表单 */
               <div className="space-y-6">
                 <div>
-                  <label htmlFor="inviteCode" className="block text-[#4a5565] mb-2">
+                  <label htmlFor="inviteCode" className="block text-gray-400 mb-2">
                     {t.team.inviteCodeLabel}
                   </label>
                   <input
@@ -729,7 +710,7 @@ export function TeamSection() {
                         handleVerifyCode();
                       }
                     }}
-                    className="w-full px-4 py-3 bg-white border border-[#FF6900]/20 rounded-lg text-[#101828] placeholder-gray-400 focus:border-[#FF6900] focus:outline-none transition-colors uppercase"
+                    className="w-full px-4 py-3 bg-zinc-900 border border-[#ffc75a]/20 rounded-lg text-white placeholder-gray-500 focus:border-[#ffc75a] focus:outline-none transition-colors uppercase"
                     placeholder={t.team.inviteCodePlaceholder}
                   />
                 </div>
@@ -738,20 +719,20 @@ export function TeamSection() {
                   <Button
                     onClick={() => setShowApplyForm(true)}
                     variant="outline"
-                    className="flex-1 border-[#FF6900]/30 text-[#FF6900] hover:text-[#FF6900]/80 hover:bg-[#FF6900]/10 hover:border-[#FF6900]/50 cursor-pointer"
+                    className="flex-1 border-[#ffc75a]/30 text-[#ffc75a] hover:text-[#ffc75a]/80 hover:bg-[#ffc75a]/10 hover:border-[#ffc75a]/50 cursor-pointer"
                   >
                     {t.team.applyForCodeButton}
                   </Button>
                   <Button
                     onClick={handleVerifyCode}
-                    className="flex-1 bg-[#FF6900] hover:bg-[#FF6900]/90 text-white cursor-pointer"
+                    className="flex-1 bg-[#ffc75a] hover:bg-[#ffc75a]/90 text-black cursor-pointer"
                     disabled={!inviteCode.trim()}
                   >
                     {t.team.verifyButton}
                   </Button>
                 </div>
                 
-                <p className="text-center text-[#6b7280] text-sm">
+                <p className="text-center text-gray-500 text-sm">
                   {t.team.noCodeHint}
                 </p>
               </div>
@@ -764,7 +745,7 @@ export function TeamSection() {
                 />
                 <button
                   onClick={() => setShowApplyForm(false)}
-                  className="mt-6 w-full text-[#4a5565] cursor-pointer hover:text-[#101828] transition-colors py-2"
+                  className="mt-6 w-full text-gray-400 cursor-pointer hover:text-gray-300 transition-colors py-2"
                 >
                   {t.team.backToEnterCode}
                 </button>
