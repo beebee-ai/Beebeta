@@ -5,6 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../config/emailjs';
 import { toast } from 'sonner@2.0.3';
+import { SectionDivider } from './SectionDivider';
 
 interface ContactSectionProps {
   isDialog?: boolean;
@@ -103,43 +104,43 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
       <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 ${isDialog ? '' : 'max-w-6xl mx-auto'}`}>
         {/* Contact Info */}
         <div>
-          <h3 className="text-white mb-8">{t.contact.contactInfoTitle}</h3>
+          <h3 className="text-[#101828] mb-8">{t.contact.contactInfoTitle}</h3>
           <div className="space-y-6">
             {/* Email Contacts */}
             {emails.map((info) => (
               <div
                 key={info.email}
-                className="flex gap-4 p-6 bg-zinc-900 rounded-lg border border-[#ffc75a]/10 hover:border-[#ffc75a]/30 transition-all"
+                className="flex gap-4 p-6 bg-white rounded-lg border border-[#FF6900]/20 hover:border-[#FF6900]/40 transition-all hover:shadow-lg hover:shadow-[#FF6900]/10"
               >
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-[#ffc75a]/10 rounded-lg flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-[#ffc75a]" />
+                  <div className="w-12 h-12 bg-[#FF6900]/10 rounded-lg flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-[#FF6900]" />
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-white mb-1">{t.contact.emailLabel}</h4>
+                  <h4 className="text-[#101828] mb-1">{t.contact.emailLabel}</h4>
                   <a 
                     href={`mailto:${info.email}`}
-                    className="text-[#ffc75a] mb-1 block hover:underline"
+                    className="text-[#FF6900] mb-1 block hover:underline"
                   >
                     {info.email}
                   </a>
-                  <p className="text-gray-400 text-sm">{info.description}</p>
+                  <p className="text-[#6b7280] text-sm">{info.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Social Links - WeChat Only */}
-          {/* <div className="mt-8 p-6 bg-zinc-900 rounded-lg border border-[#ffc75a]/10">
-            <h4 className="text-white mb-4">{t.contact.followUs}</h4>
+          {/* <div className="mt-8 p-6 bg-white rounded-lg border border-[#FF6900]/20">
+            <h4 className="text-[#101828] mb-4">{t.contact.followUs}</h4>
             <div className="flex gap-4">
               <a
                 href="#"
-                className="w-10 h-10 bg-[#ffc75a]/10 rounded-lg flex items-center justify-center hover:bg-[#ffc75a]/20 transition-colors"
+                className="w-10 h-10 bg-[#FF6900]/10 rounded-lg flex items-center justify-center hover:bg-[#FF6900]/20 transition-colors"
                 title={t.contact.wechat}
               >
-                <span className="text-[#ffc75a]">微</span>
+                <span className="text-[#FF6900]">微</span>
               </a>
             </div>
           </div> */}
@@ -147,12 +148,12 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
 
         {/* Contact Form */}
         <div>
-          <h3 className="text-white mb-8">{t.contact.form.title}</h3>
+          <h3 className="text-[#101828] mb-8">{t.contact.form.title}</h3>
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* 同学姓名和年龄 - 左右排列 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="name" className="block text-gray-400 mb-2">
+                <label htmlFor="name" className="block text-[#4a5565] mb-2">
                   {t.contact.form.name} *
                 </label>
                 <input
@@ -162,13 +163,13 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-zinc-900 border border-[#ffc75a]/20 rounded-lg text-white placeholder-gray-500 focus:border-[#ffc75a] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-[#FF6900]/20 rounded-lg text-[#101828] placeholder-gray-400 focus:border-[#FF6900] focus:outline-none transition-colors"
                   placeholder={t.contact.form.namePlaceholder}
                 />
               </div>
 
               <div>
-                <label htmlFor="age" className="block text-gray-400 mb-2">
+                <label htmlFor="age" className="block text-[#4a5565] mb-2">
                   {t.contact.form.age}
                 </label>
                 <input
@@ -177,7 +178,7 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
                   name="age"
                   value={formData.age}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-zinc-900 border border-[#ffc75a]/20 rounded-lg text-white placeholder-gray-500 focus:border-[#ffc75a] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-[#FF6900]/20 rounded-lg text-[#101828] placeholder-gray-400 focus:border-[#FF6900] focus:outline-none transition-colors"
                   placeholder={t.contact.form.agePlaceholder}
                 />
               </div>
@@ -186,7 +187,7 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
             {/* 所在国家和电子邮件 - 左右排列 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="country" className="block text-gray-400 mb-2">
+                <label htmlFor="country" className="block text-[#4a5565] mb-2">
                   {t.contact.form.country} *
                 </label>
                 <input
@@ -196,13 +197,13 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
                   required
                   value={formData.country}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-zinc-900 border border-[#ffc75a]/20 rounded-lg text-white placeholder-gray-500 focus:border-[#ffc75a] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-[#FF6900]/20 rounded-lg text-[#101828] placeholder-gray-400 focus:border-[#FF6900] focus:outline-none transition-colors"
                   placeholder={t.contact.form.countryPlaceholder}
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-gray-400 mb-2">
+                <label htmlFor="email" className="block text-[#4a5565] mb-2">
                   {t.contact.form.email} *
                 </label>
                 <input
@@ -212,7 +213,7 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-zinc-900 border border-[#ffc75a]/20 rounded-lg text-white placeholder-gray-500 focus:border-[#ffc75a] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-[#FF6900]/20 rounded-lg text-[#101828] placeholder-gray-400 focus:border-[#FF6900] focus:outline-none transition-colors"
                   placeholder={t.contact.form.emailPlaceholder}
                 />
               </div>
@@ -220,7 +221,7 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
 
             {/* 咨询说明 - 单独一行 */}
             <div>
-              <label htmlFor="message" className="block text-gray-400 mb-2">
+              <label htmlFor="message" className="block text-[#4a5565] mb-2">
                 {t.contact.form.message} *
               </label>
               <textarea
@@ -230,14 +231,14 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
                 rows={5}
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-zinc-900 border border-[#ffc75a]/20 rounded-lg text-white placeholder-gray-500 focus:border-[#ffc75a] focus:outline-none transition-colors resize-none"
+                className="w-full px-4 py-3 bg-white border border-[#FF6900]/20 rounded-lg text-[#101828] placeholder-gray-400 focus:border-[#FF6900] focus:outline-none transition-colors resize-none"
                 placeholder={t.contact.form.messagePlaceholder}
               />
             </div>
 
             <Button
               type="submit"
-              className="w-full bg-[#ffc75a] hover:bg-[#ffc75a]/90 text-black cursor-pointer"
+              className="w-full bg-[#FF6900] hover:bg-[#FF6900]/90 text-white cursor-pointer"
               disabled={isSubmitting}
             >
               {isSubmitting ? t.contact.form.submitting : t.contact.form.submit}
@@ -253,8 +254,19 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
   }
 
   return (
-    <section id="contact" className="py-8 lg:py-16 bg-black">
-      {content}
+    <section id="contact" className="pb-8 lg:pb-16 bg-[#fafafa]">
+      {/* Section Title */}
+      <SectionDivider 
+        number="08" 
+        title={t.contact.title}
+        titleHighlight={t.contact.titleHighlight}
+        subtitle={t.contact.subtitle}
+        highlightPosition="end"
+      />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {content}
+      </div>
     </section>
   );
 }
