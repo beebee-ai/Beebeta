@@ -13,14 +13,14 @@ export function InfinityValuesSection() {
       icon: Crown,
       title: infinityValues.founderMentorship.title,
       items: infinityValues.founderMentorship.items,
-      accentColor: '#60B5FF',
+      accentColor: '#ffc75a',
       number: '01'
     },
     {
       icon: Users,
       title: infinityValues.engineerTeaching.title,
       items: infinityValues.engineerTeaching.items,
-      accentColor: '#f97316',
+      accentColor: '#42a5f5',
       number: '02'
     },
     {
@@ -41,24 +41,29 @@ export function InfinityValuesSection() {
       icon: Briefcase,
       title: infinityValues.careerOpportunities.title,
       items: infinityValues.careerOpportunities.items,
-      accentColor: '#60B5FF',
+      accentColor: '#ffc75a',
       number: '05'
     }
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-[#f7f9fb] relative overflow-hidden">
+    <section className="py-16 lg:py-24 bg-gradient-to-b from-black via-zinc-950 to-black relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#60B5FF] rounded-full opacity-[0.03] blur-[100px]" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#60B5FF] rounded-full opacity-[0.03] blur-[100px]" />
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#ffc75a] rounded-full opacity-[0.03] blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#ffc75a] rounded-full opacity-[0.03] blur-[100px]" />
+        {/* Grid pattern */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255, 199, 90, 0.05) 1px, transparent 0)',
+          backgroundSize: '50px 50px'
+        }} />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 -mt-8 lg:-mt-12">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16 lg:mb-20">
-          <div className="inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-gradient-to-r from-[#60B5FF]/10 via-[#60B5FF]/20 to-[#60B5FF]/10 border border-[#60B5FF]/30">
-            <span className="text-[#60B5FF] font-semibold tracking-wider">
+          <div className="inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-gradient-to-r from-[#ffc75a]/10 via-[#ffc75a]/20 to-[#ffc75a]/10 border border-[#ffc75a]/30">
+            <span className="text-[#ffc75a] font-semibold tracking-wider">
               {isEn 
                 ? 'BETA INFINITY CAMP — Unique Value'
                 : 'BETA 无界营（INFINITY）— 独特价值'
@@ -66,15 +71,15 @@ export function InfinityValuesSection() {
             </span>
           </div>
           
-          <p className="text-[#4a5565] text-base lg:text-lg leading-relaxed">
+          <p className="text-gray-400 text-base lg:text-lg leading-relaxed">
             {infinityValues.subtitle}
           </p>
           
           {/* Decorative line */}
           <div className="mt-8 flex items-center justify-center gap-3">
-            <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#60B5FF]/50" />
-            <div className="w-2 h-2 rounded-full bg-[#60B5FF]" />
-            <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#60B5FF]/50" />
+            <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#ffc75a]/50" />
+            <div className="w-2 h-2 rounded-full bg-[#ffc75a]" />
+            <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#ffc75a]/50" />
           </div>
         </div>
 
@@ -107,7 +112,7 @@ export function InfinityValuesSection() {
                   
                   {/* Icon */}
                   <div 
-                    className="relative z-10 flex items-center justify-center w-16 h-16 lg:w-20 lg:h-20 rounded-2xl border-2 bg-white backdrop-blur-sm group-hover:scale-110 transition-transform duration-300"
+                    className="relative z-10 flex items-center justify-center w-16 h-16 lg:w-20 lg:h-20 rounded-2xl border-2 bg-black/80 backdrop-blur-sm group-hover:scale-110 transition-transform duration-300"
                     style={{ borderColor: `${value.accentColor}40` }}
                   >
                     <div 
@@ -121,7 +126,7 @@ export function InfinityValuesSection() {
                 {/* Content Side */}
                 <div className="flex-1 w-full lg:w-0 group">
                   <div 
-                    className="relative bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-8 border transition-all duration-300 hover:shadow-2xl"
+                    className="relative bg-gradient-to-br from-zinc-800/95 to-zinc-900/95 rounded-2xl lg:rounded-3xl p-6 lg:p-8 border transition-all duration-300 hover:shadow-2xl backdrop-blur-sm"
                     style={{
                       borderColor: `${value.accentColor}30`,
                       boxShadow: `0 0 0 1px ${value.accentColor}15`
@@ -144,7 +149,8 @@ export function InfinityValuesSection() {
                     <div className="relative z-10">
                       {/* Title */}
                       <h3 
-                        className="text-xl lg:text-2xl font-bold mb-5 transition-colors text-[#101828]"
+                        className="text-xl lg:text-2xl font-bold mb-5 transition-colors"
+                        style={{ color: 'white' }}
                       >
                         {value.title}
                       </h3>
@@ -159,7 +165,7 @@ export function InfinityValuesSection() {
                                 style={{ backgroundColor: value.accentColor }}
                               />
                             </div>
-                            <span className="text-[#4a5565] text-sm lg:text-base leading-relaxed group-hover/item:text-[#101828] transition-colors">
+                            <span className="text-gray-300 text-sm lg:text-base leading-relaxed group-hover/item:text-gray-200 transition-colors">
                               {item}
                             </span>
                           </li>

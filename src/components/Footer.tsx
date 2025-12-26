@@ -41,7 +41,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-gray-200 py-12" style={{ background: '#f7f9fd' }}>
+    <footer className="bg-zinc-900 border-t border-[#ffc75a]/20 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Navigation Links */}
         <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 mb-8">
@@ -50,7 +50,7 @@ export function Footer() {
               key={item.sectionId}
               href={`#${item.sectionId}`}
               onClick={(e) => handleNavClick(item, e)}
-              className="text-[#4a5565] hover:text-[#60B5FF] transition-colors cursor-pointer"
+              className="text-gray-300 hover:text-[#ffc75a] transition-colors cursor-pointer"
             >
               {item.label}
             </a>
@@ -58,11 +58,11 @@ export function Footer() {
         </nav>
 
         {/* Divider */}
-        <div className="border-t border-gray-200 mb-8"></div>
+        <div className="border-t border-gray-700 mb-8"></div>
 
         {/* Copyright */}
         <div className="text-center">
-          <p className="text-[#4a5565] text-sm">
+          <p className="text-gray-400 text-sm">
             {t.footer.copyright}
           </p>
         </div>
