@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 // BEE Beta Logo - 使用网络链接
 const logoImage =
-  "https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/beebee_ai_black.png";
+  "https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/bee_beta.png";
 // CEO 图片 - 使用网络链接
 const ceoImage =
   "https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/pacer/pin.png";
@@ -20,9 +20,9 @@ export function CEOLetterPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#fafafa]">
+    <div className="min-h-screen bg-black">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#f0f4ff]/80 via-[#f5f7ff]/80 to-[#f8f4ff]/80 backdrop-blur-md border-b border-white/30 shadow-[0_1px_10px_rgba(96,181,255,0.08)]">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-[#ffc75a]/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <Link to="/" className="flex items-center">
@@ -35,7 +35,7 @@ export function CEOLetterPage() {
             <Link to="/">
               <Button
                 variant="ghost"
-                className="text-[#FF6900] hover:text-[#FF6900]/80 hover:bg-[#FF6900]/10"
+                className="text-[#ffc75a] hover:text-[#ffc75a]/80 hover:bg-[#ffc75a]/10"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 {isEn ? "Back to Home" : "返回首页"}
@@ -51,7 +51,7 @@ export function CEOLetterPage() {
           <div className="max-w-4xl mx-auto">
             {/* Page Title */}
             <div className="text-center mb-16">
-              <h1 className="text-[#FF6900] mb-4">
+              <h1 className="text-[#ffc75a] mb-4">
                 {isEn
                   ? "A Letter to Students"
                   : "致学员的一封信"}
@@ -69,14 +69,14 @@ export function CEOLetterPage() {
                 <img
                   src={ceoImage}
                   alt="CEO"
-                  className="w-32 h-32 rounded-full object-cover border-4 border-[#FF6900]/20"
+                  className="w-32 h-32 rounded-full object-cover border-4 border-[#ffc75a]/20"
                 />
               </div>
               <div className="text-center md:text-left">
-                <h2 className="text-black mb-2">
+                <h2 className="text-white mb-2">
                   {isEn ? "Pin Zhou" : "Pin Zhou 周品"}
                 </h2>
-                <p className="text-[#FF6900] mb-2">
+                <p className="text-[#ffc75a] mb-2">
                   {isEn
                     ? "Founder of BEEBEE AI"
                     : "BEEBEE AI 创始人"}
@@ -90,11 +90,11 @@ export function CEOLetterPage() {
             </div>
 
             {/* Letter Content */}
-            <div className="bg-white rounded-lg p-8 lg:p-12 border-2 border-[#FF6900]/20 relative">
-              <Quote className="absolute top-6 left-6 w-12 h-12 text-[#FF6900]/20" />
+            <div className="bg-zinc-900 rounded-lg p-8 lg:p-12 border border-[#ffc75a]/10 relative">
+              <Quote className="absolute top-6 left-6 w-12 h-12 text-[#ffc75a]/20" />
 
-              <div className="relative z-10 space-y-8 text-[#4a5565] leading-loose text-base">
-                <p className="text-[#101828] leading-relaxed">
+              <div className="relative z-10 space-y-8 text-gray-400 leading-loose text-base">
+                <p className="text-white leading-relaxed">
                   {isEn ? "Dear Student:" : "亲爱的同学："}
                 </p>
 
@@ -125,7 +125,7 @@ export function CEOLetterPage() {
 
                 {/* Section 1 */}
                 <div className="pt-6">
-                  <h3 className="text-[#FF6900] mb-6">
+                  <h3 className="text-[#ffc75a] mb-6">
                     {isEn
                       ? "1. Why Create the BETA System for Students and Early-Career Professionals?"
                       : "1. 为什么要为大学生与准职业人群开设 BETA 体系？"}
@@ -137,7 +137,7 @@ export function CEOLetterPage() {
                       : "过去几年里，我们与来自 MIT、康奈尔、UIUC、清华、浙大、UCL 等名校背景的同学合作过不少项目。他们聪明、会学、有理论功底，但也普遍面临一个现实："}
                   </p>
 
-                  <p className="text-[#101828] text-lg mb-4 pl-4 border-l-2 border-[#FF6900]">
+                  <p className="text-white text-lg mb-4 pl-4 border-l-2 border-[#ffc75a]">
                     {isEn
                       ? "The gap from theory to practice is far more challenging than imagined."
                       : "理论到实践的跨越，远比想象中艰难。"}
@@ -149,13 +149,13 @@ export function CEOLetterPage() {
                       : "换句话说，仅仅会写代码、会调用模型，不足以在新的技术周期站稳脚跟。"}
                   </p>
 
-                  <div className="my-6 py-4 px-5 bg-[#FFF4E6] border-l-4 border-[#FF6900] rounded-r">
-                    <p className="text-[#6b7280] text-sm mb-2">
+                  <div className="my-6 py-4 px-5 bg-black/30 border-l-4 border-[#ffc75a]/60 rounded-r">
+                    <p className="text-gray-400 text-sm mb-2">
                       {isEn
                         ? "As Fei-Fei Li said:"
                         : "如李飞飞所说："}
                     </p>
-                    <p className="text-[#FF6900] italic">
+                    <p className="text-[#ffc75a] italic">
                       {isEn
                         ? '"Our human education system has been stagnant for one or two hundred years. What worries me most is the current lack of quality public AI education."'
                         : '"我们的人类教育系统早已僵化，固步自封一二百年了。我最担心的就是现在缺乏优质的AI公共教育。"'}
@@ -166,7 +166,7 @@ export function CEOLetterPage() {
                     {isEn
                       ? "Schools teach knowledge; companies need capabilities; "
                       : "学校教的是知识；企业要的是能力；"}
-                    <span className="text-[#101828]">
+                    <span className="text-white">
                       {isEn
                         ? "and the era demands people who can turn AI into real value."
                         : "而时代要的是能把 AI 变成现实价值的人。"}
@@ -174,7 +174,7 @@ export function CEOLetterPage() {
                   </p>
 
                   <p className="leading-relaxed">
-                    <span className="text-[#101828]">
+                    <span className="text-[rgb(255,255,255)]">
                       {isEn
                         ? "BETA was born to bridge this gap: "
                         : "BETA 就是为这个断层诞生的："}
@@ -182,7 +182,7 @@ export function CEOLetterPage() {
                     {isEn
                       ? "Helping you gain core practical skills in "
                       : "帮助你在年轻阶段，就获得 "}
-                    <span className="text-[#101828]">
+                    <span className="text-white">
                       {isEn
                         ? "AI product engineering + market validation"
                         : "AI 产品工程 + 市场验证"}
@@ -195,7 +195,7 @@ export function CEOLetterPage() {
 
                 {/* Section 2 */}
                 <div className="pt-6">
-                  <h3 className="text-[#FF6900] mb-4">
+                  <h3 className="text-[#ffc75a] mb-4">
                     {isEn
                       ? "2. The Logic Behind BETA's Three-Stage Curriculum"
                       : "2. BETA 三阶课程体系的逻辑"}
@@ -205,7 +205,7 @@ export function CEOLetterPage() {
                     {isEn
                       ? "BETA doesn't teach concepts, make false promises, or have you invent products in PowerPoint. From day one, our system is focused on "
                       : "BETA 不讲概念、不做虚假承诺，不让你在 PPT 上发明产品。我们的体系从第一天开始，就是奔着"}
-                    <span className="text-[#FF6900]">
+                    <span className="text-[#ffc75a]">
                       {isEn ? '"real launch."' : "「真实上线」"}
                     </span>
                     {isEn ? " " : "去的。"}
@@ -214,14 +214,14 @@ export function CEOLetterPage() {
                       : "它由三大阶段组成，对应三种能力："}
                   </p>
 
-                  <div className="bg-[#FFF8F0] p-6 rounded-lg border border-[#FF6900]/20 mt-4">
-                    <h4 className="text-[#101828] mb-3">
+                  <div className="bg-black/30 p-6 rounded-lg border border-[#ffc75a]/20 mt-4">
+                    <h4 className="text-white mb-3">
                       {isEn
                         ? "Beta Galaxy Camp — Foundational AI Native Product Engineering"
                         : "Beta 星空营（Galaxy）——初阶 AI Native 产品工程"}
                     </h4>
                     <p className="mb-3">
-                      <span className="text-[#FF6900]">
+                      <span className="text-[#ffc75a]">
                         {isEn ? "Suitable for: " : "适合："}
                       </span>
                       {isEn
@@ -229,7 +229,7 @@ export function CEOLetterPage() {
                         : "基础薄弱、有想法、希望快速做出第一款 AI 产品的人"}
                     </p>
                     <p className="mb-2">
-                      <span className="text-[#FF6900]">
+                      <span className="text-[#ffc75a]">
                         {isEn ? "Goals:" : "目标："}
                       </span>
                     </p>
@@ -270,14 +270,14 @@ export function CEOLetterPage() {
                     </ul>
                   </div>
 
-                  <div className="bg-[#FFF8F0] p-6 rounded-lg border border-[#FF6900]/20 mt-4">
-                    <h4 className="text-[#101828] mb-3">
+                  <div className="bg-black/30 p-6 rounded-lg border border-[#ffc75a]/20 mt-4">
+                    <h4 className="text-white mb-3">
                       {isEn
                         ? "Beta Cosmos Camp — Advanced Full-Chain AI Engineering"
                         : "Beta 深空营（Cosmos）——高阶全链条 AI 工程实战"}
                     </h4>
                     <p className="mb-3">
-                      <span className="text-[#FF6900]">
+                      <span className="text-[#ffc75a]">
                         {isEn ? "Suitable for: " : "适合："}
                       </span>
                       {isEn
@@ -285,7 +285,7 @@ export function CEOLetterPage() {
                         : "有基本工程能力，希望突破硬核 AI 技术栈的人"}
                     </p>
                     <p className="mb-2">
-                      <span className="text-[#FF6900]">
+                      <span className="text-[#ffc75a]">
                         {isEn ? "You'll master:" : "你将掌握："}
                       </span>
                     </p>
@@ -323,18 +323,18 @@ export function CEOLetterPage() {
                     <p className="mt-3">
                       {isEn
                         ? "The goal is a production-grade AI product that enterprises can use."
-                        : "目标是一款能被业使用的生产级 AI 产品。"}
+                        : "目标是一款能被企业使用的生产级 AI 产品。"}
                     </p>
                   </div>
 
-                  <div className="bg-[#FFF8F0] p-6 rounded-lg border border-[#FF6900]/20 mt-4">
-                    <h4 className="text-[#101828] mb-3">
+                  <div className="bg-black/30 p-6 rounded-lg border border-[#ffc75a]/20 mt-4">
+                    <h4 className="text-white mb-3">
                       {isEn
                         ? "Beta Infinity Camp — AI Product Founder Leadership Course"
                         : "Beta 无界营（Infinity）——AI 产品创始人引领课程"}
                     </h4>
                     <p className="mb-3">
-                      <span className="text-[#FF6900]">
+                      <span className="text-[#ffc75a]">
                         {isEn ? "Suitable for: " : "适合："}
                       </span>
                       {isEn
@@ -342,7 +342,7 @@ export function CEOLetterPage() {
                         : "有工程背景、明确目标，希望打造创业级产品的人"}
                     </p>
                     <p className="mb-2">
-                      <span className="text-[#FF6900]">
+                      <span className="text-[#ffc75a]">
                         {isEn
                           ? "Complete in 12 weeks:"
                           : "12 周完成："}
@@ -377,7 +377,7 @@ export function CEOLetterPage() {
                       )}
                     </ul>
                     <p className="mt-3 mb-2">
-                      <span className="text-[#FF6900]">
+                      <span className="text-[#ffc75a]">
                         {isEn
                           ? "Outstanding students will also receive:"
                           : "优秀学员还会得到："}
@@ -403,17 +403,17 @@ export function CEOLetterPage() {
                     </ul>
                   </div>
 
-                  <p className="mt-6 text-[#4a5565] leading-relaxed">
+                  <p className="mt-6 text-gray-300 leading-relaxed">
                     {isEn
                       ? 'The three-stage system doesn\'t follow a "training route," it follows a '
                       : '三阶体系不走"培训路线"，走的是'}
-                    <span className="text-[#FF6900]">
+                    <span className="text-[#ffc75a]">
                       {isEn ? '"product route."' : '"产品路线"'}
                     </span>
                     {isEn
                       ? " It's not about teaching you skills, but helping you build: "
                       : "。它不是教你技能，而是帮你建立："}
-                    <span className="text-[#101828]">
+                    <span className="text-white">
                       {isEn
                         ? "A complete capability loop from cognition → engineering → product → market → strategy."
                         : "从认知 → 工程 → 产品 → 市场 → 战略 的完整能力闭环。"}
@@ -423,7 +423,7 @@ export function CEOLetterPage() {
 
                 {/* Section 3 */}
                 <div className="pt-6">
-                  <h3 className="text-[#FF6900] mb-6">
+                  <h3 className="text-[#ffc75a] mb-6">
                     {isEn
                       ? "3. Why Do College Students Have Natural Advantages in AI Learning?"
                       : "3. 为什么大学生在 AI 学习上具备天然优势？"}
@@ -445,14 +445,14 @@ export function CEOLetterPage() {
                     {isEn ? (
                       <>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             Flexible thinking:
                           </span>{" "}
                           Can quickly adapt to the new paradigm
                           of "AI-assisted engineering"
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             Still have expectations for the
                             future:
                           </span>{" "}
@@ -460,14 +460,14 @@ export function CEOLetterPage() {
                           difficult things
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             No career framework constraints:
                           </span>{" "}
                           Dare to try, dare to overturn, dare to
                           restart
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             Fast learning speed:
                           </span>{" "}
                           With the right method, building a
@@ -477,25 +477,25 @@ export function CEOLetterPage() {
                     ) : (
                       <>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             思维尚未固化：
                           </span>
                           能快速接受"AI辅助工程"这种新范式
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             对未来仍有期待：
                           </span>
                           愿意投入时间做真正困难的事
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             没有职业框架束缚：
                           </span>
                           敢尝试、敢推翻、敢重来
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             学习速度快：
                           </span>
                           只要方法正确，6周做出产品十分现实
@@ -541,7 +541,7 @@ export function CEOLetterPage() {
                     )}
                   </ul>
 
-                  <p className="text-[#101828]">
+                  <p className="text-white">
                     {isEn
                       ? "They're not geniuses, they just gave themselves an outlet to enter real-world practice."
                       : "他们并不是天才，只是给自己一个进入实战的出口。"}
@@ -550,15 +550,15 @@ export function CEOLetterPage() {
 
                 {/* Section 4 */}
                 <div className="pt-6">
-                  <h3 className="text-[#FF6900] mb-4">
+                  <h3 className="text-[#ffc75a] mb-4">
                     {isEn
                       ? "4. How BETA Differs from Traditional Engineering Learning"
                       : "4. BETA 与传统工程学习的差异"}
                   </h3>
 
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-gray-100 p-5 rounded-lg">
-                      <p className="text-[#101828] mb-2">
+                    <div className="bg-zinc-800/50 p-5 rounded-lg">
+                      <p className="text-white mb-2">
                         {isEn
                           ? "Traditional route:"
                           : "传统路线："}
@@ -574,8 +574,8 @@ export function CEOLetterPage() {
                           : "过程枯燥，结果有限。"}
                       </p>
                     </div>
-                    <div className="bg-[#FF6900]/10 p-5 rounded-lg border border-[#FF6900]/30">
-                      <p className="text-[#FF6900] mb-2">
+                    <div className="bg-[#ffc75a]/10 p-5 rounded-lg border border-[#ffc75a]/30">
+                      <p className="text-[#ffc75a] mb-2">
                         {isEn ? "BETA route:" : "BETA 的路线："}
                       </p>
                       <p className="text-sm">
@@ -583,7 +583,7 @@ export function CEOLetterPage() {
                           ? "Questions → Product → Engineering → Market → Launch"
                           : "提问 → 产品 → 工程 → 市场 → 上线"}
                       </p>
-                      <p className="text-sm text-gray-600 mt-2">
+                      <p className="text-sm text-gray-400 mt-2">
                         {isEn
                           ? "Every step points to an outcome: building real products."
                           : "每一步都指向一个成果：做出真实产品。"}
@@ -601,35 +601,35 @@ export function CEOLetterPage() {
                     {isEn ? (
                       <>
                         <li>
-                          <span className="text-[#FF6900]">
+                          <span className="text-[#ffc75a]">
                             Framework over code:
                           </span>{" "}
                           Knowing how to write code isn't
                           enough, you need to drive AI to write
                         </li>
                         <li>
-                          <span className="text-[#FF6900]">
+                          <span className="text-[#ffc75a]">
                             Product before engineering:
                           </span>{" "}
                           You're not doing homework, you're
                           building a "product"
                         </li>
                         <li>
-                          <span className="text-[#FF6900]">
+                          <span className="text-[#ffc75a]">
                             Aesthetics over manufacturing:
                           </span>{" "}
                           Your product's taste will determine
                           its fate
                         </li>
                         <li>
-                          <span className="text-[#FF6900]">
+                          <span className="text-[#ffc75a]">
                             Feedback over features:
                           </span>{" "}
                           Launch is more important than perfect,
                           market is more important than teacher
                         </li>
                         <li>
-                          <span className="text-[#FF6900]">
+                          <span className="text-[#ffc75a]">
                             Questions above all:
                           </span>{" "}
                           All capabilities start and are driven
@@ -639,31 +639,31 @@ export function CEOLetterPage() {
                     ) : (
                       <>
                         <li>
-                          <span className="text-[#FF6900]">
+                          <span className="text-[#ffc75a]">
                             框架重于代码：
                           </span>
                           会写代码不够，你要能驱动 AI 写
                         </li>
                         <li>
-                          <span className="text-[#FF6900]">
+                          <span className="text-[#ffc75a]">
                             产品先于工程：
                           </span>
                           你不是在做课程作业，而是在做"产品"
                         </li>
                         <li>
-                          <span className="text-[#FF6900]">
+                          <span className="text-[#ffc75a]">
                             审美优于制造：
                           </span>
                           你作品的品味，会决定它的命运
                         </li>
                         <li>
-                          <span className="text-[#FF6900]">
+                          <span className="text-[#ffc75a]">
                             反馈大于功能：
                           </span>
                           上线比完美重要，市场比老师重要
                         </li>
                         <li>
-                          <span className="text-[#FF6900]">
+                          <span className="text-[#ffc75a]">
                             提问高于一切：
                           </span>
                           所有能力从提问开始，也被提问驱动
@@ -672,7 +672,7 @@ export function CEOLetterPage() {
                     )}
                   </ul>
 
-                  <p className="text-[#101828]">
+                  <p className="text-white">
                     {isEn
                       ? "This is the real logic of business and the true need of the era."
                       : "这是企业的真实逻辑，也是时代真正的需求。"}
@@ -681,7 +681,7 @@ export function CEOLetterPage() {
 
                 {/* Section 5 */}
                 <div className="pt-6">
-                  <h3 className="text-[#FF6900] mb-4">
+                  <h3 className="text-[#ffc75a] mb-4">
                     {isEn
                       ? "5. The Challenge is Real, But Support is Complete"
                       : "5. 挑战是真实的，但支持也是完整的"}
@@ -691,7 +691,7 @@ export function CEOLetterPage() {
                     {isEn
                       ? "I won't tell you this course is easy. "
                       : "我不会告诉你这门课很轻松。"}
-                    <span className="text-[#101828]">
+                    <span className="text-white">
                       {isEn
                         ? "Saying it's easy would be disrespectful to you."
                         : "说轻松是对你的不尊重。"}
@@ -700,7 +700,7 @@ export function CEOLetterPage() {
                     {isEn
                       ? "But I can guarantee: "
                       : " 但我可以保证："}
-                    <span className="text-[#FF6900]">
+                    <span className="text-[#ffc75a]">
                       {isEn
                         ? "You won't face difficulties alone."
                         : "你不会独自面对困境。"}
@@ -745,7 +745,7 @@ export function CEOLetterPage() {
                     )}
                   </ul>
 
-                  <p className="mt-6 text-[#4a5565] leading-relaxed">
+                  <p className="mt-6 text-gray-300 leading-relaxed">
                     {isEn
                       ? "Our goal isn't to make you "
                       : "我们的目标不是让你"}
@@ -755,7 +755,7 @@ export function CEOLetterPage() {
                     {isEn
                       ? "but to actually make you "
                       : "而是让你真实地"}
-                    <span className="text-[#FF6900]">
+                    <span className="text-[#ffc75a]">
                       {isEn ? '"build."' : "「做出」。"}
                     </span>
                   </p>
@@ -763,7 +763,7 @@ export function CEOLetterPage() {
 
                 {/* Section 6 */}
                 <div className="pt-6">
-                  <h3 className="text-[#FF6900] mb-4">
+                  <h3 className="text-[#ffc75a] mb-4">
                     {isEn
                       ? "6. Value for Your Career and Future Development"
                       : "6. 对你的职业与未来发展的价值"}
@@ -776,8 +776,8 @@ export function CEOLetterPage() {
                   </p>
 
                   <div className="space-y-4 mt-4">
-                    <div className="bg-[#FFF8F0] p-4 rounded-lg border-l-4 border-[#FF6900]">
-                      <p className="text-[#101828] mb-2">
+                    <div className="bg-black/30 p-4 rounded-lg border-l-4 border-[#ffc75a]">
+                      <p className="text-white mb-2">
                         {isEn
                           ? "Academic / Career Competitiveness"
                           : "升学 / 工作竞争力"}
@@ -809,8 +809,8 @@ export function CEOLetterPage() {
                       </ul>
                     </div>
 
-                    <div className="bg-[#FFF8F0] p-4 rounded-lg border-l-4 border-[#FF6900]">
-                      <p className="text-[#101828] mb-2">
+                    <div className="bg-black/30 p-4 rounded-lg border-l-4 border-[#ffc75a]">
+                      <p className="text-white mb-2">
                         {isEn
                           ? "Skill Enhancement"
                           : "技能提升"}
@@ -841,8 +841,8 @@ export function CEOLetterPage() {
                       </ul>
                     </div>
 
-                    <div className="bg-[#FFF8F0] p-4 rounded-lg border-l-4 border-[#FF6900]">
-                      <p className="text-[#101828] mb-2">
+                    <div className="bg-black/30 p-4 rounded-lg border-l-4 border-[#ffc75a]">
+                      <p className="text-white mb-2">
                         {isEn
                           ? "Career Direction Judgment"
                           : "职业方向判断力"}
@@ -868,7 +868,7 @@ export function CEOLetterPage() {
                           </>
                         )}
                       </ul>
-                      <p className="text-sm text-gray-600 mt-2">
+                      <p className="text-sm text-gray-400 mt-2">
                         {isEn
                           ? "Practice will give you answers."
                           : "实践会给你答案。"}
@@ -879,7 +879,7 @@ export function CEOLetterPage() {
 
                 {/* Section 7 */}
                 <div className="pt-6">
-                  <h3 className="text-[#FF6900] mb-4">
+                  <h3 className="text-[#ffc75a] mb-4">
                     {isEn
                       ? "7. If You Decide to Join, Here's My Advice"
                       : "7. 如果你决定加入，这是我给你的建议"}
@@ -889,32 +889,32 @@ export function CEOLetterPage() {
                     {isEn ? (
                       <>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             Don't fear difficulty
                           </span>{" "}
                           — Real growth is never easy
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             Go all in
                           </span>{" "}
                           — The AI era belongs to those with
                           high execution density
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             Write down every confusion
                           </span>{" "}
                           — Questions are your weapon
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             Give up "perfectionism"
                           </span>{" "}
                           — Launch first, optimize later
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             Allow yourself to fail
                           </span>{" "}
                           — Failure is part of building
@@ -924,31 +924,31 @@ export function CEOLetterPage() {
                     ) : (
                       <>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             不要害怕难度
                           </span>
                           ——真实的成长从不轻松
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             尽量全力投入
                           </span>
                           ——AI时代属于执行密度高的人
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             把每一次困惑写下来
                           </span>
                           ——提问是你的武器
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             放弃"完美主义"
                           </span>
                           ——先上线，再优化
                         </li>
                         <li>
-                          <span className="text-[#101828]">
+                          <span className="text-white">
                             允许自己失败
                           </span>
                           ——失败是产品的日常，不是你的问题
@@ -957,7 +957,7 @@ export function CEOLetterPage() {
                     )}
                   </ul>
 
-                  <p className="text-[#101828] mt-4">
+                  <p className="text-white mt-4">
                     {isEn
                       ? "Your goal isn't to \"complete homework,\" but to become someone who can independently build real AI products."
                       : '你的目标不是"完成作业"，而是成为能凭自己做出真实 AI 产品的人。'}
@@ -966,7 +966,7 @@ export function CEOLetterPage() {
 
                 {/* Final words */}
                 <div className="pt-6">
-                  <h3 className="text-[#FF6900] mb-4">
+                  <h3 className="text-[#ffc75a] mb-4">
                     {isEn ? "Final Words" : "最后的话"}
                   </h3>
 
@@ -974,7 +974,7 @@ export function CEOLetterPage() {
                     {isEn
                       ? "In the wave of the AI era, you may not have realized one thing: "
                       : "在 AI 的时代浪潮里，你可能还没意识到一件事："}
-                    <span className="text-[#101828]">
+                    <span className="text-white font-medium">
                       {isEn
                         ? "People who can turn AI into products will become the most scarce in this era."
                         : "能把 AI 变成产品的人，会成为这个时代最稀缺的人。"}
@@ -984,12 +984,12 @@ export function CEOLetterPage() {
                       : " 这也是我们创办 BEE BETA 的根本原因。"}
                   </p>
 
-                  <div className="bg-gradient-to-r from-[#FF6900]/10 to-transparent border-l-4 border-[#FF6900] p-6 rounded-lg">
-                    <p className="text-[#4a5565] leading-relaxed">
+                  <div className="bg-gradient-to-r from-[#ffc75a]/10 to-transparent border-l-4 border-[#ffc75a] p-6 rounded-lg">
+                    <p className="text-gray-300 leading-relaxed">
                       {isEn
                         ? "If you're willing, we'll accompany you: "
                         : "如果你愿意，我们会和你一起："}
-                      <span className="text-[#101828]">
+                      <span className="text-white">
                         {isEn
                           ? "From questioning, to creating, to validating, to launching, walking through the first stage of the real world."
                           : "从提问、到创造、到验证、到发布，走完真实世界的第一段路。"}
@@ -997,21 +997,21 @@ export function CEOLetterPage() {
                     </p>
                   </div>
 
-                  <p className="text-[#FF6900] mt-6 text-lg">
+                  <p className="text-[#ffc75a] mt-6 text-lg">
                     {isEn
                       ? "Looking forward to meeting you in BETA."
                       : "期待在 BETA 与你相遇。"}
                   </p>
                 </div>
 
-                <div className="pt-8 border-t border-[#FF6900]/20 mt-8">
-                  <p className="text-[#101828] mb-6">
+                <div className="pt-8 border-t border-[#ffc75a]/20 mt-8">
+                  <p className="text-white mb-6">
                     {isEn ? "Sincerely," : "诚挚的，"}
                   </p>
                   <p className="text-gray-500 text-sm mb-6">
                     {isEn ? "October 2025" : "2025年10月"}
                   </p>
-                  <p className="text-[#101828] mb-1">
+                  <p className="text-white mb-1">
                     {isEn ? "Pin Zhou" : "Pin Zhou 周品"}
                   </p>
                   <p className="text-gray-500 text-sm">
@@ -1029,13 +1029,13 @@ export function CEOLetterPage() {
             </div>
 
             {/* Quote Highlight */}
-            <div className="mt-12 p-6 bg-[#FF6900]/5 border-l-4 border-[#FF6900] rounded">
+            <div className="mt-12 p-6 bg-[#ffc75a]/5 border-l-4 border-[#ffc75a] rounded">
               <p className="text-gray-400 italic">
                 {isEn
                   ? '"People who can turn AI into products will become the most scarce in this era."'
                   : '"能把 AI 变成产品的人，会成为这个时代最稀缺的人。"'}
               </p>
-              <p className="text-[#FF6900] text-sm mt-2">
+              <p className="text-[#ffc75a] text-sm mt-2">
                 — {isEn ? "Pin Zhou" : "Pin Zhou 周品"}
               </p>
             </div>
@@ -1043,7 +1043,7 @@ export function CEOLetterPage() {
             {/* CTA */}
             <div className="mt-12 text-center">
               <Link to="/">
-                <Button className="bg-[#FF6900] hover:bg-[#FF6900]/90 text-white text-xl font-bold px-8 py-6 font-normal">
+                <Button className="bg-[#ffc75a] hover:bg-[#ffc75a]/90 text-black">
                   {isEn ? "Back to Home" : "返回首页"}
                 </Button>
               </Link>
@@ -1053,7 +1053,7 @@ export function CEOLetterPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#FF6900]/20 py-8">
+      <footer className="border-t border-[#ffc75a]/20 py-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-gray-500 text-sm">
             {isEn

@@ -54,12 +54,12 @@ function LazyCard({
   }, [forceLoad]);
 
   return (
-    <div ref={ref} id={cardId}>
+    <div ref={ref}>
       {isVisible ? (
         children
       ) : (
         // 占位符 - 保持布局稳定
-        <div className="w-full h-[340px] lg:h-[345px] bg-gray-100 rounded-2xl border-2 border-[#FF6900]/10 animate-pulse"></div>
+        <div className="w-full h-[340px] lg:h-[345px] bg-zinc-900/30 rounded-2xl border-2 border-[#ffc75a]/10 animate-pulse"></div>
       )}
     </div>
   );
@@ -95,66 +95,18 @@ export function PacerPage() {
 
   // 滚动到指定导师卡片 - 优化以支持懒加载
   const scrollToMentor = (mentorId: string) => {
-    console.log('🎯 尝试滚动到导师:', mentorId);
-    
-    // 判断导师属于哪个分类，并自动展开对应分类
-    const isPacer = pacerMentors.some(m => m.id === mentorId);
-    const isExpert = expertMentors.some(m => m.id === mentorId);
-    const isOperations = operationsMentors.some(m => m.id === mentorId);
-    
-    console.log('📂 分类判断:', { isPacer, isExpert, isOperations });
-    
-    let needsExpand = false;
-    if (isPacer && isProjectCollapsed) {
-      console.log('🔓 展开项目导师');
-      setIsProjectCollapsed(false);
-      needsExpand = true;
-    } else if (isExpert && isExpertCollapsed) {
-      console.log('🔓 展开专家导师');
-      setIsExpertCollapsed(false);
-      needsExpand = true;
-    } else if (isOperations && isOperationsCollapsed) {
-      console.log('🔓 展开运营管理');
-      setIsOperationsCollapsed(false);
-      needsExpand = true;
-    }
-    
     // 先强制加载该卡片
     setForceLoadedCards(prev => new Set(prev).add(mentorId));
-    console.log('⚡ 强制加载卡片:', mentorId);
     
-    // 递归查找元素，最多尝试20次
-    let attempts = 0;
-    const maxAttempts = 20;
-    
-    const tryScroll = () => {
+    // 使用 setTimeout 确保 DOM 已更新
+    setTimeout(() => {
       const element = document.getElementById(mentorId);
-      console.log(`🔍 尝试 ${attempts + 1}/${maxAttempts}:`, element ? '✅ 找到元素' : '❌ 未找到');
-      
       if (element) {
-        console.log('📜 开始滚动...');
-        // 使用 scrollIntoView 替代手动计算
-        element.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start',
-          inline: 'nearest'
-        });
-        
-        // 滚动后微调位置，为固定头部留出空间
-        setTimeout(() => {
-          window.scrollBy({ top: -100, behavior: 'smooth' });
-        }, 300);
-      } else if (attempts < maxAttempts) {
-        attempts++;
-        setTimeout(tryScroll, 100); // 减少间隔到100ms
-      } else {
-        console.error('❌ 滚动失败：未找到元素', mentorId);
+        const yOffset = -100;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
       }
-    };
-    
-    // 根据是否需要展开来决定延迟时间
-    const initialDelay = needsExpand ? 200 : 50; // 需要展开时200ms，否则50ms
-    setTimeout(tryScroll, initialDelay);
+    }, 100);
   };
 
   const MentorCard = ({
@@ -174,14 +126,11 @@ export function PacerPage() {
         {/* 桌面端 - 3D翻转卡片 */}
         <div
           className="hidden lg:block w-full"
+          id={mentor.id}
         >
           <div
-            className="relative w-full cursor-pointer"
-            style={{ 
-              perspective: "1500px",
-              minHeight: isFlipped ? '600px' : '340px',
-              transition: 'min-height 0.3s ease-out'
-            }}
+            className="relative w-full min-h-[340px] cursor-pointer"
+            style={{ perspective: "1500px" }}
             onClick={() => toggleCardFlip(mentor.id)}
           >
             <div
@@ -194,14 +143,14 @@ export function PacerPage() {
             >
               {/* 正面 - 简介卡片 */}
               <div
-                className="w-full rounded-2xl border-2 border-[#FF6900]/30 bg-white shadow-lg"
+                className="w-full rounded-2xl border-2 border-[#ffc75a]/30 bg-zinc-900"
                 style={{
                   backfaceVisibility: "hidden",
                   WebkitBackfaceVisibility: "hidden",
                 }}
               >
                 {/* 顶部装饰条 */}
-                <div className={`h-1.5 rounded-t-xl ${isExpert ? 'bg-[#FF6900]' : 'bg-[#FF6900]/70'}`}></div>
+                <div className={`h-1.5 rounded-t-xl ${isExpert ? 'bg-[#ffc75a]' : 'bg-[#ffc75a]/70'}`}></div>
 
                 <div className="p-5 flex gap-5">
                   {/* 左侧：头像 */}
@@ -210,11 +159,11 @@ export function PacerPage() {
                       <img 
                         src={pacerImages[mentor.id]} 
                         alt={isEnglish ? mentor.nameEn : mentor.name}
-                        className="w-40 h-40 rounded-full object-cover ring-4 ring-[#FF6900]/20"
+                        className="w-40 h-40 rounded-full object-cover ring-4 ring-[#ffc75a]/20"
                         loading="lazy"
                       />
                     ) : (
-                      <div className="w-40 h-40 rounded-full bg-[#FF6900] flex items-center justify-center text-5xl text-white ring-4 ring-[#FF6900]/20">
+                      <div className="w-40 h-40 rounded-full bg-[#ffc75a] flex items-center justify-center text-5xl text-black ring-4 ring-[#ffc75a]/20">
                         {mentor.nameEn.charAt(0)}
                       </div>
                     )}
@@ -223,12 +172,12 @@ export function PacerPage() {
                   {/* 右侧：信息内容 */}
                   <div className="flex-1 flex flex-col min-w-0">
                     {/* 名字 */}
-                    <h3 className="text-3xl text-[#101828] mb-2">
+                    <h3 className="text-3xl text-white mb-2">
                       {isEnglish ? mentor.nameEn : mentor.name}
                     </h3>
 
                     {/* 职位 */}
-                    <div className="flex items-center gap-2 text-[#FF6900] mb-2">
+                    <div className="flex items-center gap-2 text-[#ffc75a] mb-2">
                       <Briefcase className="w-4 h-4 flex-shrink-0" />
                       <p className="text-lg">
                         {isEnglish ? mentor.titleEn : mentor.title}
@@ -238,19 +187,19 @@ export function PacerPage() {
                     {/* 标签 - 单独一行 */}
                     <div className="flex items-center gap-3 mb-3">
                       {isExpert && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-sm">
+                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#ffc75a]/20 border border-[#ffc75a]/40 rounded-full text-[#ffc75a] text-sm">
                           <GraduationCap className="w-4 h-4" />
                           <span>{isEnglish ? 'Expert Mentor' : '专家导师'}</span>
                         </div>
                       )}
                       {isOperations && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-sm">
+                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#ffc75a]/20 border border-[#ffc75a]/40 rounded-full text-[#ffc75a] text-sm">
                           <Users className="w-4 h-4" />
                           <span>{isEnglish ? 'Operations' : '运营管理'}</span>
                         </div>
                       )}
                       {isProjectMentor && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-sm">
+                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#ffc75a]/20 border border-[#ffc75a]/40 rounded-full text-[#ffc75a] text-sm">
                           <Briefcase className="w-4 h-4" />
                           <span>{isEnglish ? 'Project Mentor' : '项目导师'}</span>
                         </div>
@@ -258,18 +207,18 @@ export function PacerPage() {
                     </div>
 
                     {/* 分割线 */}
-                    <div className="h-px bg-[#FF6900]/30 mb-3"></div>
+                    <div className="h-px bg-[#ffc75a]/30 mb-3"></div>
 
                     {/* 简介内容 - 完整显示，无截断 */}
                     <div className="mb-3">
-                      <p className="text-[#4a5565] text-base leading-relaxed">
+                      <p className="text-gray-300 text-base leading-relaxed">
                         {isEnglish ? mentor.summaryEn : mentor.summary}
                       </p>
                     </div>
 
                     {/* 底部提示 */}
-                    <div className="pt-3 border-t border-[#FF6900]/20">
-                      <p className="text-center text-[#FF6900]/60 text-xs">
+                    <div className="pt-3 border-t border-[#ffc75a]/20">
+                      <p className="text-center text-[#ffc75a]/60 text-xs">
                         {isEnglish ? '👆 Click to view details' : '👆 点击查看详细信息'}
                       </p>
                     </div>
@@ -279,42 +228,35 @@ export function PacerPage() {
 
               {/* 背面 - 详细信息 */}
               <div
-                className="absolute top-0 left-0 w-full rounded-2xl border-2 border-[#FF6900]/50"
+                className="absolute inset-0 w-full h-full rounded-2xl border-2 border-[#ffc75a]/50 bg-[#ffc75a]"
                 style={{
                   transform: "rotateY(180deg)",
                   backfaceVisibility: "hidden",
                   WebkitBackfaceVisibility: "hidden",
-                  background: 'linear-gradient(135deg, #FF8533 0%, #FFA366 50%, #FF8533 100%)'
                 }}
               >
                 {/* 顶部装饰条 */}
-                <div className="h-2 bg-white/20 rounded-t-xl"></div>
+                <div className="h-2 bg-black/20 rounded-t-xl"></div>
 
-                <div className="p-6 max-h-[600px] overflow-y-auto scrollbar-gold-bg">
+                <div className="p-6 h-[calc(100%-8px)] overflow-y-auto scrollbar-gold-bg">
                   {isFlipped && (
                     <>
+                      {/* 详细信息 */}
                       <div 
-                        className="mentor-details text-white text-base leading-relaxed"
+                        className="mentor-details text-black/90 text-base leading-relaxed"
                         dangerouslySetInnerHTML={{ 
                           __html: isEnglish ? mentor.detailsEn : mentor.details 
                         }}
                       />
-
+                      
                       {/* 引用语录 */}
                       {mentor.quote && (
-                        <div className="mt-6 bg-white/10 border-l-4 border-white/30 p-4 rounded-lg">
-                          <p className="text-white/90 italic text-base">
+                        <div className="mt-6 bg-black/10 border-l-4 border-black/30 p-4 rounded-lg">
+                          <p className="text-black/80 italic text-base">
                             "{isEnglish ? mentor.quoteEn : mentor.quote}"
                           </p>
                         </div>
                       )}
-
-                      {/* 底部返回提示 */}
-                      <div className="pt-4 mt-4 border-t border-white/20">
-                        <p className="text-center text-white/70 text-sm">
-                          {isEnglish ? '👆 Click again to return' : '👆 再次点击返回简介'}
-                        </p>
-                      </div>
                     </>
                   )}
                 </div>
@@ -347,14 +289,14 @@ export function PacerPage() {
             >
               {/* 正面 - 简介卡片 */}
               <div
-                className="w-full rounded-2xl border-2 border-[#FF6900]/30 bg-white shadow-lg"
+                className="w-full rounded-2xl border-2 border-[#ffc75a]/30 bg-zinc-900"
                 style={{
                   backfaceVisibility: "hidden",
                   WebkitBackfaceVisibility: "hidden",
                 }}
               >
                 {/* 顶部装饰条 */}
-                <div className={`h-1.5 rounded-t-xl ${isExpert ? 'bg-[#FF6900]' : 'bg-[#FF6900]/70'}`}></div>
+                <div className={`h-1.5 rounded-t-xl ${isExpert ? 'bg-[#ffc75a]' : 'bg-[#ffc75a]/70'}`}></div>
 
                 <div className="p-6">
                   {/* 上部分：头像区 - 居中显示 */}
@@ -364,22 +306,22 @@ export function PacerPage() {
                       <img 
                         src={pacerImages[mentor.id]} 
                         alt={isEnglish ? mentor.nameEn : mentor.name}
-                        className="w-32 h-32 rounded-full object-cover ring-4 ring-[#FF6900]/20 mb-4"
+                        className="w-32 h-32 rounded-full object-cover ring-4 ring-[#ffc75a]/20 mb-4"
                         loading="lazy"
                       />
                     ) : (
-                      <div className="w-32 h-32 rounded-full bg-[#FF6900] flex items-center justify-center text-4xl text-white ring-4 ring-[#FF6900]/20 mb-4">
+                      <div className="w-32 h-32 rounded-full bg-[#ffc75a] flex items-center justify-center text-4xl text-black ring-4 ring-[#ffc75a]/20 mb-4">
                         {mentor.nameEn.charAt(0)}
                       </div>
                     )}
 
                     {/* 名字 */}
-                    <h3 className="text-3xl text-[#101828] text-center mb-2">
+                    <h3 className="text-3xl text-white text-center mb-2">
                       {isEnglish ? mentor.nameEn : mentor.name}
                     </h3>
 
                     {/* 职位 - 移动端无图标 */}
-                    <div className="text-[#FF6900] mb-2">
+                    <div className="text-[#ffc75a] mb-2">
                       <p className="text-lg text-center">
                         {isEnglish ? mentor.titleEn : mentor.title}
                       </p>
@@ -388,19 +330,19 @@ export function PacerPage() {
                     {/* 标签 - 单独一行 */}
                     <div className="flex items-center gap-3 mb-3">
                       {isExpert && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-base">
+                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#ffc75a]/20 border border-[#ffc75a]/40 rounded-full text-[#ffc75a] text-base">
                           <GraduationCap className="w-4 h-4" />
                           <span>{isEnglish ? 'Expert Mentor' : '专家导师'}</span>
                         </div>
                       )}
                       {isOperations && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-base">
+                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#ffc75a]/20 border border-[#ffc75a]/40 rounded-full text-[#ffc75a] text-base">
                           <Users className="w-4 h-4" />
                           <span>{isEnglish ? 'Operations' : '运营管理'}</span>
                         </div>
                       )}
                       {isProjectMentor && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-base">
+                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#ffc75a]/20 border border-[#ffc75a]/40 rounded-full text-[#ffc75a] text-base">
                           <Briefcase className="w-4 h-4" />
                           <span>{isEnglish ? 'Project Mentor' : '项目导师'}</span>
                         </div>
@@ -409,18 +351,18 @@ export function PacerPage() {
                   </div>
 
                   {/* 分割线 */}
-                  <div className="h-px bg-[#FF6900]/30 mb-4"></div>
+                  <div className="h-px bg-[#ffc75a]/30 mb-4"></div>
 
                   {/* 下部分：简介内容 */}
                   <div>
-                    <p className="text-[#4a5565] text-base leading-relaxed">
+                    <p className="text-gray-300 text-base leading-relaxed">
                       {isEnglish ? mentor.summaryEn : mentor.summary}
                     </p>
                   </div>
 
                   {/* 底部提示 */}
-                  <div className="mt-4 pt-4 border-t border-[#FF6900]/20">
-                    <p className="text-center text-[#FF6900]/60 text-sm">
+                  <div className="mt-4 pt-4 border-t border-[#ffc75a]/20">
+                    <p className="text-center text-[#ffc75a]/60 text-sm">
                       {isEnglish ? '👆 Click to view details' : '👆 点击查看详细信息'}
                     </p>
                   </div>
@@ -429,7 +371,7 @@ export function PacerPage() {
 
               {/* 背面 - 详细信息 */}
               <div
-                className="absolute top-0 left-0 w-full rounded-2xl border-2 border-[#FF6900]/50 bg-[#FF6900]"
+                className="absolute top-0 left-0 w-full rounded-2xl border-2 border-[#ffc75a]/50 bg-[#ffc75a]"
                 style={{
                   transform: "rotateY(180deg)",
                   backfaceVisibility: "hidden",
@@ -476,38 +418,38 @@ export function PacerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#101828]">
+    <div className="min-h-screen bg-black text-white">
       {/* 顶部固定栏 - 返回按钮和语言切换 */}
-      <div className="fixed top-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-md border-b border-[#FF6900]/20">
+      <div className="fixed top-0 left-0 right-0 z-[100] bg-black/95 border-b border-white/10">
         <div className="flex items-center justify-between px-5 py-4">
           {/* 返回按钮 */}
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 px-4 py-2 bg-[#FF6900]/10 hover:bg-[#FF6900]/20 rounded-lg transition-colors border border-[#FF6900]/30 text-[#101828]"
+            className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors border border-white/20"
           >
-            <ArrowLeft className="w-5 h-5 text-[#FF6900]" />
+            <ArrowLeft className="w-5 h-5" />
             <span>{isEnglish ? "Back to Home" : "返回首页"}</span>
           </button>
 
           {/* 中英文切换 - 参照首页样式 */}
           <button
             onClick={() => setLanguage(language === 'en' ? 'zh' : 'en')}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-[#FF6900]/20 hover:border-[#FF6900]/50 hover:bg-[#FFF5ED] transition-all duration-300"
+            className="flex items-center gap-1 text-gray-300 hover:text-[#ffc75a] transition-colors"
             title={language === 'zh' ? '切换到英文' : 'Switch to Chinese'}
           >
-            <Globe className="w-4 h-4 text-[#FF6900]" />
-            <span className="text-sm font-medium text-[#FF6900]">{language === 'zh' ? 'EN' : 'ZH'}</span>
+            <Globe className="w-4 h-4" />
+            <span className="text-sm">{language === 'zh' ? '中' : 'EN'}</span>
           </button>
         </div>
       </div>
 
       {/* 侧边导航 */}
-      <nav className="fixed top-[73px] left-0 w-[200px] h-[calc(100vh-73px)] bg-white z-40 px-5 py-6 overflow-y-auto border-r border-[#FF6900]/20 hidden lg:block scrollbar-thin scrollbar-thumb-[#FF6900]/30 scrollbar-track-gray-100">
+      <nav className="fixed top-[73px] left-0 w-[200px] h-[calc(100vh-73px)] bg-zinc-900/95 z-40 px-5 py-6 overflow-y-auto border-r border-white/10 hidden lg:block scrollbar-thin scrollbar-thumb-[#ffc75a]/30 scrollbar-track-zinc-900">
         {/* 项目导师部分 */}
         <div className="mb-8">
           <button
             onClick={() => setIsProjectCollapsed(!isProjectCollapsed)}
-            className="w-full text-xs uppercase tracking-wider mb-3 text-[#FF6900] border-b-2 border-[#FF6900]/30 pb-2 flex items-center justify-between hover:text-[#FF6900]/80 transition-colors text-[14px]"
+            className="w-full text-xs uppercase tracking-wider mb-3 text-[#ffc75a] border-b-2 border-[#ffc75a]/30 pb-2 flex items-center justify-between hover:text-[#ffc75a]/80 transition-colors"
           >
             <div className="flex items-center gap-2">
               <Briefcase className="w-3 h-3" />
@@ -521,7 +463,7 @@ export function PacerPage() {
                 <li key={mentor.id}>
                   <button
                     onClick={() => scrollToMentor(mentor.id)}
-                    className="block w-full text-left text-sm text-[#4a5565] hover:text-[#FF6900] hover:bg-[#FF6900]/10 px-3 py-2 rounded transition-colors"
+                    className="block w-full text-left text-sm text-white/70 hover:text-[#ffc75a] hover:bg-[#ffc75a]/10 px-3 py-2 rounded transition-colors"
                   >
                     {isEnglish
                       ? mentor.nameEn
@@ -537,7 +479,7 @@ export function PacerPage() {
         <div className="mb-8">
           <button
             onClick={() => setIsExpertCollapsed(!isExpertCollapsed)}
-            className="w-full text-xs uppercase tracking-wider mb-3 text-[#FF6900] border-b-2 border-[#FF6900]/30 pb-2 flex items-center justify-between hover:text-[#FF6900]/80 transition-colors text-[14px]"
+            className="w-full text-xs uppercase tracking-wider mb-3 text-[#ffc75a] border-b-2 border-[#ffc75a]/30 pb-2 flex items-center justify-between hover:text-[#ffc75a]/80 transition-colors"
           >
             <div className="flex items-center gap-2">
               <Award className="w-3 h-3" />
@@ -551,7 +493,7 @@ export function PacerPage() {
                 <li key={expert.id}>
                   <button
                     onClick={() => scrollToMentor(expert.id)}
-                    className="block w-full text-left text-sm text-[#4a5565] hover:text-[#FF6900] hover:bg-[#FF6900]/10 px-3 py-2 rounded transition-colors"
+                    className="block w-full text-left text-sm text-white/70 hover:text-[#ffc75a] hover:bg-[#ffc75a]/10 px-3 py-2 rounded transition-colors"
                   >
                     {isEnglish
                       ? expert.nameEn
@@ -567,7 +509,7 @@ export function PacerPage() {
         <div className="mb-8">
           <button
             onClick={() => setIsOperationsCollapsed(!isOperationsCollapsed)}
-            className="w-full text-xs uppercase tracking-wider mb-3 text-[#FF6900] border-b-2 border-[#FF6900]/30 pb-2 flex items-center justify-between hover:text-[#FF6900]/80 transition-colors text-[14px]"
+            className="w-full text-xs uppercase tracking-wider mb-3 text-[#ffc75a] border-b-2 border-[#ffc75a]/30 pb-2 flex items-center justify-between hover:text-[#ffc75a]/80 transition-colors"
           >
             <div className="flex items-center gap-2">
               <Users className="w-3 h-3" />
@@ -581,7 +523,7 @@ export function PacerPage() {
                 <li key={ops.id}>
                   <button
                     onClick={() => scrollToMentor(ops.id)}
-                    className="block w-full text-left text-sm text-[#4a5565] hover:text-[#FF6900] hover:bg-[#FF6900]/10 px-3 py-2 rounded transition-colors"
+                    className="block w-full text-left text-sm text-white/70 hover:text-[#ffc75a] hover:bg-[#ffc75a]/10 px-3 py-2 rounded transition-colors"
                   >
                     {isEnglish
                       ? ops.nameEn
@@ -599,30 +541,30 @@ export function PacerPage() {
         {/* 标题 */}
         <div className="text-center mb-16 pt-16">
           <h1 className="text-5xl lg:text-7xl mb-6">
-            <span className="text-[#FF6900]">
+            <span className="text-[#ffc75a]">
               {isEnglish ? "Training Mentor" : "培训导师"}
             </span>{" "}
-            <span className="text-[#101828]">
+            <span className="text-white">
               {isEnglish ? "Team" : "团队"}
             </span>
           </h1>
-          <p className="text-xl text-[#4a5565] max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             {isEnglish
               ? "Gathering Top AI Experts, Leading the Path of Exploration and Practice"
               : "汇聚顶尖AI专家，引领探索实践之路"}
           </p>
-          <div className="mt-4 h-1 w-32 bg-gradient-to-r from-transparent via-[#FF6900] to-transparent mx-auto"></div>
+          <div className="mt-4 h-1 w-32 bg-gradient-to-r from-transparent via-[#ffc75a] to-transparent mx-auto"></div>
         </div>
 
         {/* 项目导师 */}
         <div className="mb-20">
           <div className="flex items-center justify-center gap-3 mb-12">
-            <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-transparent to-[#FF6900]/50"></div>
-            <h2 className="text-4xl text-center text-[#FF6900] flex items-center gap-3">
+            <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-transparent to-[#ffc75a]/50"></div>
+            <h2 className="text-4xl text-center text-[#ffc75a] flex items-center gap-3">
               <Briefcase className="w-8 h-8" />
               {isEnglish ? "Project Mentors" : "项目导师"}
             </h2>
-            <div className="h-px flex-1 max-w-xs bg-gradient-to-l from-transparent to-[#FF6900]/50"></div>
+            <div className="h-px flex-1 max-w-xs bg-gradient-to-l from-transparent to-[#ffc75a]/50"></div>
           </div>
           <div className="max-w-3xl mx-auto space-y-12">
             {pacerMentors.map((mentor) => (
@@ -636,12 +578,12 @@ export function PacerPage() {
         {/* 专家导师 */}
         <div className="mb-20">
           <div className="flex items-center justify-center gap-3 mb-12">
-            <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-transparent to-[#FF6900]/50"></div>
-            <h2 className="text-4xl text-center text-[#FF6900] flex items-center gap-3">
+            <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-transparent to-[#ffc75a]/50"></div>
+            <h2 className="text-4xl text-center text-[#ffc75a] flex items-center gap-3">
               <Award className="w-8 h-8" />
               {isEnglish ? "Expert Mentors" : "专家导师"}
             </h2>
-            <div className="h-px flex-1 max-w-xs bg-gradient-to-l from-transparent to-[#FF6900]/50"></div>
+            <div className="h-px flex-1 max-w-xs bg-gradient-to-l from-transparent to-[#ffc75a]/50"></div>
           </div>
           <div className="max-w-3xl mx-auto space-y-12">
             {expertMentors.map((expert) => (
@@ -659,12 +601,12 @@ export function PacerPage() {
         {/* 运营导师 */}
         <div className="mb-20">
           <div className="flex items-center justify-center gap-3 mb-12">
-            <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-transparent to-[#FF6900]/50"></div>
-            <h2 className="text-4xl text-center text-[#FF6900] flex items-center gap-3">
+            <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-transparent to-[#ffc75a]/50"></div>
+            <h2 className="text-4xl text-center text-[#ffc75a] flex items-center gap-3">
               <Users className="w-8 h-8" />
               {isEnglish ? "Operations Team" : "运营管理"}
             </h2>
-            <div className="h-px flex-1 max-w-xs bg-gradient-to-l from-transparent to-[#FF6900]/50"></div>
+            <div className="h-px flex-1 max-w-xs bg-gradient-to-l from-transparent to-[#ffc75a]/50"></div>
           </div>
           <div className="max-w-3xl mx-auto space-y-12">
             {operationsMentors.map((opMentor) => (
@@ -691,12 +633,12 @@ export function PacerPage() {
         .scrollbar-thin::-webkit-scrollbar {
           width: 6px;
         }
-        .scrollbar-thumb-\\[\\#FF6900\\]\\/30::-webkit-scrollbar-thumb {
-          background: rgba(255, 105, 0, 0.3);
+        .scrollbar-thumb-\\[\\#ffc75a\\]\\/30::-webkit-scrollbar-thumb {
+          background: rgba(255, 199, 90, 0.3);
           border-radius: 3px;
         }
-        .scrollbar-track-gray-100::-webkit-scrollbar-track {
-          background: rgb(243, 244, 246);
+        .scrollbar-track-zinc-900::-webkit-scrollbar-track {
+          background: rgb(24, 24, 27);
           border-radius: 3px;
         }
 
@@ -719,11 +661,11 @@ export function PacerPage() {
         .mentor-details h4 {
           font-size: 1.125rem;
           font-weight: 700;
-          color: rgba(255, 255, 255, 0.95);
+          color: #000;
           margin-top: 1.5rem;
           margin-bottom: 0.75rem;
           padding-bottom: 0.5rem;
-          border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+          border-bottom: 2px solid rgba(0, 0, 0, 0.2);
         }
         
         .mentor-details h4:first-child {
@@ -733,7 +675,7 @@ export function PacerPage() {
         .mentor-details p {
           margin-bottom: 1rem;
           line-height: 1.625;
-          color: rgba(255, 255, 255, 0.9);
+          color: rgba(0, 0, 0, 0.9);
         }
         
         .mentor-details ul {
@@ -747,20 +689,20 @@ export function PacerPage() {
           padding-left: 1.5rem;
           margin-bottom: 0.5rem;
           line-height: 1.625;
-          color: rgba(255, 255, 255, 0.9);
+          color: rgba(0, 0, 0, 0.9);
         }
         
         .mentor-details ul li::before {
           content: "▸";
           position: absolute;
           left: 0;
-          color: rgba(255, 255, 255, 0.95);
+          color: #000;
           font-weight: bold;
         }
         
         .mentor-details strong {
           font-weight: 700;
-          color: rgba(255, 255, 255, 0.95);
+          color: #000;
         }
 
         /* 滚动条样式 - 金色背景 */
@@ -768,11 +710,11 @@ export function PacerPage() {
           width: 6px;
         }
         .scrollbar-gold-bg::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.4);
+          background: rgba(255, 199, 90, 0.5);
           border-radius: 3px;
         }
         .scrollbar-gold-bg::-webkit-scrollbar-track {
-          background: rgba(0, 0, 0, 0.1);
+          background: rgb(24, 24, 27);
           border-radius: 3px;
         }
       `}</style>

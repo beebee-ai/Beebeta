@@ -2,9 +2,9 @@
 
 :root {
   --font-size: 16px;
-  --background: #fafafa;
+  --background: #ffffff;
   --foreground: oklch(0.145 0 0);
-  --card: #fafafa;
+  --card: #ffffff;
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
@@ -126,11 +126,6 @@
 
   body {
     @apply bg-background text-foreground;
-    overflow-x: hidden;
-  }
-
-  html {
-    overflow-x: hidden;
   }
 }
 
