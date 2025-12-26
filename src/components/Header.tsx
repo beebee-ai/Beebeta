@@ -4,9 +4,6 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../locales/translations';
 
-// BEE Beta Logo - 使用网络链接
-const logoImage = 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/bee_beta.png';
-
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, toggleLanguage } = useLanguage();
@@ -52,31 +49,31 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-[#ffc75a]/20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#f0f4ff]/80 via-[#f5f7ff]/80 to-[#f8f4ff]/80 backdrop-blur-md border-b border-white/30 shadow-[0_1px_10px_rgba(96,181,255,0.08)]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img src={logoImage} alt="BEE Beta" className="h-8 lg:h-10 w-auto" />
+          <Link to="/" className="flex items-center gap-3">
+            <img src="https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/beebee_ai_black.png" alt="BEE Beta" className="h-8 lg:h-10 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               item.isInternal ? (
                 <a
-                  key={item.label}
+                  key={item.sectionId}
                   href={`#${item.sectionId}`}
                   onClick={(e) => handleNavClick(item, e)}
-                  className="text-gray-300 hover:text-[#ffc75a] transition-colors cursor-pointer"
+                  className="text-lg text-[#101828] hover:text-[#60B5FF] transition-colors cursor-pointer font-medium"
                 >
                   {item.label}
                 </a>
               ) : (
                 <Link
-                  key={item.label}
+                  key={item.href}
                   to={item.href!}
-                  className="text-gray-300 hover:text-[#ffc75a] transition-colors"
+                  className="text-lg text-[#101828] hover:text-[#60B5FF] transition-colors cursor-pointer font-medium"
                 >
                   {item.label}
                 </Link>
@@ -84,63 +81,58 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Language Toggle & Mobile Menu */}
+          <div className="flex items-center gap-4">
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1 text-gray-300 hover:text-[#ffc75a] transition-colors cursor-pointer"
-              title={language === 'zh' ? '切换到英文' : 'Switch to Chinese'}
+              className="group relative flex flex-row items-center gap-2 px-3 py-2 rounded-lg bg-white/80 border border-[#FF6900]/20 hover:border-[#FF6900]/50 hover:bg-[#FFF5ED] transition-all duration-300 cursor-pointer"
             >
-              <Globe className="w-4 h-4" />
-              <span className="text-sm">{language === 'zh' ? '中' : 'EN'}</span>
+              {/* Globe Icon with rotation effect */}
+              <Globe className="w-4 h-4 text-[#FF6900] group-hover:rotate-180 transition-transform duration-500" />
+              
+              {/* Language text - on the right of icon */}
+              <span className="text-sm font-medium text-[#FF6900]">
+                {language === 'zh' ? 'EN' : 'ZH'}
+              </span>
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="lg:hidden text-[#60B5FF] cursor-pointer"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <Menu className="w-6 h-6" />
             </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden text-[#ffc75a] p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <Menu className="w-6 h-6" />
-          </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-[#ffc75a]/20">
-            <nav className="flex flex-col gap-4">
+          <nav className="lg:hidden py-4 border-t border-white/30 bg-gradient-to-r from-[#f0f4ff]/70 via-[#f5f7ff]/70 to-[#f8f4ff]/70 backdrop-blur-md rounded-b-lg">
+            <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 item.isInternal ? (
                   <a
-                    key={item.label}
+                    key={item.sectionId}
                     href={`#${item.sectionId}`}
                     onClick={(e) => handleNavClick(item, e)}
-                    className="text-gray-300 hover:text-[#ffc75a] transition-colors px-2 py-1 cursor-pointer"
+                    className="text-lg text-[#101828] hover:text-[#60B5FF] transition-colors cursor-pointer font-medium"
                   >
                     {item.label}
                   </a>
                 ) : (
                   <Link
-                    key={item.label}
+                    key={item.href}
                     to={item.href!}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-gray-300 hover:text-[#ffc75a] transition-colors px-2 py-1"
+                    className="text-lg text-[#101828] hover:text-[#60B5FF] transition-colors cursor-pointer font-medium"
                   >
                     {item.label}
                   </Link>
                 )
               ))}
-              <div className="flex flex-col gap-2 mt-4 px-2">
-                <button
-                  onClick={toggleLanguage}
-                  className="flex items-center justify-center gap-2 text-gray-300 hover:text-[#ffc75a] transition-colors py-2 cursor-pointer"
-                >
-                  <Globe className="w-4 h-4" />
-                  <span>{language === 'zh' ? '中文 / English' : 'English / 中文'}</span>
-                </button>
-              </div>
-            </nav>
-          </div>
+            </div>
+          </nav>
         )}
       </div>
     </header>

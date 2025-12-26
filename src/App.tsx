@@ -20,7 +20,7 @@ export default function App() {
       link.href = href;
     };
     
-    setFavicon('https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/icon.png');
+    setFavicon('https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/beebee_ico.png');
     
     // 设置默认标题
     document.title = 'Bee-Beta';

@@ -981,7 +981,7 @@ export const pacerMentors: MentorData[] = [
   },
   {
     id: "mentor-jerry",
-    name: "Jerry",
+    name: "Jerry Yu",
     nameEn: "Jerry",
     title: "AI 基础设施与云架构专家",
     titleEn: "AI Infrastructure & Cloud Architecture Expert",
