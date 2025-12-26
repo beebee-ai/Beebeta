@@ -2,7 +2,7 @@ import { Header } from '../components/Header';
 import { HeroSection } from '../components/HeroSection';
 import { FeaturesSection } from '../components/FeaturesSection';
 import { CourseSection } from '../components/CourseSection';
-import { AdvancedCoursesAndStatsSection } from '../components/AdvancedCoursesAndStatsSection.tsx';
+import { AdvancedCoursesAndStatsSection } from '../components/AdvancedCoursesAndStatsSection';
 import { WorksSection } from '../components/WorksSection';
 import { TeamSection } from '../components/TeamSection';
 import { AboutSection } from '../components/AboutSection';
