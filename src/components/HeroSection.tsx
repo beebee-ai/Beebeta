@@ -16,10 +16,10 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative pt-32 pb-8 lg:pt-40 lg:pb-16 overflow-hidden bg-[#fafafa]">
-      {/* Background Image */}
+      {/* Background Image - 全屏背景，右对齐 */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <img 
-          src="https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/banner_white.jpg"
+        <img
+          src="https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/banner_white.png"
           alt="" 
           className="w-full h-full object-cover object-right opacity-50"
         />
