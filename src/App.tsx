@@ -5,6 +5,7 @@ import { PacerPage } from './pages/PacerPage';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { Toaster } from 'sonner@2.0.3';
 import { useEffect } from 'react';
+import favicon from 'figma:asset/1f5df53133ba856c63750f20b8027131635ced56.png';
 
 export default function App() {
   // 设置网站图标和标题
@@ -20,7 +21,7 @@ export default function App() {
       link.href = href;
     };
     
-    setFavicon('https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/icon.png');
+    setFavicon(favicon);
     
     // 设置默认标题
     document.title = 'Bee-Beta';
