@@ -1,24 +1,13 @@
 import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../locales/translations';
-import { SectionDivider } from './SectionDivider';
 
 // 学员作品图片 - 使用网络链接
-const pdSelectionImages = ['https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/pdselection.png'];
-const rowingProImages = ['https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/ops/rowingProImage.jpg'];
-const climateHubImages = ['https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/ops/climateHubImage.jpg'];
-const hobbiImages = [
-  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/hobbi_1.PNG',
-  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/hobbi_2.PNG',
-  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/hobbi_3.PNG'
-];
-const yummyYummyImages = [
-  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/yum_1.jpg',
-  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/yum_2.jpg'
-];
-const relabSEOImages = ['https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/Relab_SEO_1.png'];
+const propertyAIImage = 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/ops/propertyAIImage.jpg';
+const rowingProImage = 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/ops/rowingProImage.jpg';
+const climateHubImage = 'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/ops/climateHubImage.jpg';
 
 export function WorksSection() {
   const { language } = useLanguage();
@@ -27,23 +16,23 @@ export function WorksSection() {
   const works = [
     {
       id: 1,
-      title: 'Hobbi',
-      student: t.works.projects.hobbi.student,
-      camp: t.works.projects.hobbi.camp,
-      background: t.works.projects.hobbi.background,
-      description: t.works.projects.hobbi.description,
-      image: hobbiImages,
-      link: 'https://www.voiceto.me/'
+      title: 'PropertyAI NZ',
+      student: t.works.projects.propertyai.student,
+      camp: t.works.projects.propertyai.camp,
+      background: t.works.projects.propertyai.background,
+      description: t.works.projects.propertyai.description,
+      image: propertyAIImage,
+      link: 'https://aipropertyagent.netlify.app/'
     },
     {
       id: 2,
-      title: 'Yummy Yummy',
-      student: t.works.projects.yummyyummy.student,
-      camp: t.works.projects.yummyyummy.camp,
-      background: t.works.projects.yummyyummy.background,
-      description: t.works.projects.yummyyummy.description,
-      image: yummyYummyImages,
-      link: 'https://yum.9top.org/'
+      title: 'RowingPro',
+      student: t.works.projects.rowingpro.student,
+      camp: t.works.projects.rowingpro.camp,
+      background: t.works.projects.rowingpro.background,
+      description: t.works.projects.rowingpro.description,
+      image: rowingProImage,
+      link: 'https://crew-trainer.com'
     },
     {
       id: 3,
@@ -52,38 +41,8 @@ export function WorksSection() {
       camp: t.works.projects.climatehub.camp,
       background: t.works.projects.climatehub.background,
       description: t.works.projects.climatehub.description,
-      image: climateHubImages,
+      image: climateHubImage,
       link: 'https://climate-intelligence-hub.org/'
-    },
-    {
-      id: 4,
-      title: 'Relab SEO',
-      student: t.works.projects.relabseo.student,
-      camp: t.works.projects.relabseo.camp,
-      background: t.works.projects.relabseo.background,
-      description: t.works.projects.relabseo.description,
-      image: relabSEOImages,
-      link: 'https://relabai.netlify.app'
-    },
-    {
-      id: 5,
-      title: language === 'zh' ? '纯素甄选' : 'PD Selection',
-      student: t.works.projects.pdselection.student,
-      camp: t.works.projects.pdselection.camp,
-      background: t.works.projects.pdselection.background,
-      description: t.works.projects.pdselection.description,
-      image: pdSelectionImages,
-      link: 'https://www.pdselection.com'
-    },
-    {
-      id: 6,
-      title: 'RowingPro',
-      student: t.works.projects.rowingpro.student,
-      camp: t.works.projects.rowingpro.camp,
-      background: t.works.projects.rowingpro.background,
-      description: t.works.projects.rowingpro.description,
-      image: rowingProImages,
-      link: 'https://crew-trainer.com'
     }
   ];
 
@@ -115,171 +74,72 @@ export function WorksSection() {
   };
 
   // 渲染单个作品卡片
-  const renderWorkCard = (work: typeof works[0]) => {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [isHovered, setIsHovered] = useState(false);
-    const images = work.image;
-    const hasMultipleImages = images.length > 1;
-
-    // 自动轮播效果
-    useEffect(() => {
-      if (!hasMultipleImages || isHovered) return;
-
-      const interval = setInterval(() => {
-        setCurrentImageIndex((prev) => (prev + 1) % images.length);
-      }, 3000); // 每3秒切换一次
-
-      return () => clearInterval(interval);
-    }, [hasMultipleImages, isHovered, images.length]);
-
-    // 切换到上一张图片
-    const handlePrevImage = (e: React.MouseEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-    };
-
-    // 切换到下一张图片
-    const handleNextImage = (e: React.MouseEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    };
-
-    return (
-      <motion.div
-        key={work.id}
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3 }}
+  const renderWorkCard = (work: typeof works[0]) => (
+    <motion.div
+      key={work.id}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.3 }}
+    >
+      <a
+        href={work.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block group bg-zinc-900 rounded-lg overflow-hidden border border-[#ffc75a]/10 hover:border-[#ffc75a]/30 transition-all hover:shadow-xl hover:shadow-[#ffc75a]/10 cursor-pointer flex flex-col h-full relative"
       >
-        <a
-          href={work.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block group bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-[#FF6900]/50 transition-all hover:shadow-xl hover:shadow-[#FF6900]/10 cursor-pointer flex flex-col h-full relative"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {/* Image Gallery */}
-          <div className="relative h-56 overflow-hidden">
-            {/* Current Image with fade transition */}
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={currentImageIndex}
-                src={images[currentImageIndex]}
-                alt={`${work.title} - ${currentImageIndex + 1}`}
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              />
-            </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-            
-            {/* Title Overlay on Image */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-              <h3 className="text-white drop-shadow-lg">{work.title}</h3>
-              {hasMultipleImages && (
-                <div className="flex items-center gap-1.5 mt-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white/60"></div>
-                  <span className="text-white/90 text-xs">{images.length} {language === 'zh' ? '张图片' : 'images'}</span>
-                </div>
-              )}
-            </div>
-            
-            {/* Image Navigation - Only show if multiple images */}
-            {hasMultipleImages && (
-              <>
-                {/* Left Arrow */}
-                <button
-                  onClick={handlePrevImage}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#FF6900] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10"
-                  aria-label="上一张图片"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-
-                {/* Right Arrow */}
-                <button
-                  onClick={handleNextImage}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#FF6900] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10"
-                  aria-label="下一张图片"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-
-                {/* Image Indicators */}
-                <div className="absolute top-3 right-3 flex gap-1.5 z-10">
-                  {images.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        setCurrentImageIndex(index);
-                      }}
-                      className={`h-1.5 rounded-full transition-all ${
-                        index === currentImageIndex
-                          ? 'bg-white w-6'
-                          : 'bg-white/50 hover:bg-white/70 w-1.5'
-                      }`}
-                      aria-label={`图片 ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              </>
-            )}
-            
-            {/* Hover Overlay with Link Icon */}
-            <div className="absolute inset-0 bg-[#FF6900]/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF6900] to-[#FF8533] flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform">
-                <ExternalLink className="w-6 h-6 text-white" />
-              </div>
-            </div>
-            
-            {/* Link Icon in Corner */}
-            <div className="absolute top-3 left-3 z-10">
-              <div className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center">
-                <ExternalLink className="w-4 h-4 text-[#FF6900]" />
-              </div>
+        {/* Image */}
+        <div className="relative h-64 overflow-hidden">
+          <img
+            src={work.image}
+            alt={work.title}
+            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent" />
+          
+          {/* Hover Overlay with Link Icon */}
+          <div className="absolute inset-0 bg-[#ffc75a]/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-[#ffc75a] flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform">
+              <ExternalLink className="w-6 h-6 text-black" />
             </div>
           </div>
+        </div>
 
-          {/* Content */}
-          <div className="p-6 flex flex-col flex-1">
-            {/* Student Info Section */}
-            <div className="space-y-3 mb-4">
-              {/* Student Name with Icon */}
-              <div className="flex items-start gap-2">
-                <div className="w-1 h-1 rounded-full bg-[#FF6900] mt-2 flex-shrink-0"></div>
-                <div className="flex-1">
-                  <p className="text-xs text-[#FF6900]/70 mb-0.5">{language === 'zh' ? '作者' : 'Author'}</p>
-                  <p className="text-[#101828] text-sm leading-relaxed">{work.student}</p>
-                </div>
-              </div>
-              
+        {/* Content */}
+        <div className="p-6 flex flex-col flex-1">
+          {/* Camp Tag - Larger Font */}
+          <div className="inline-flex items-center gap-2 mb-4 self-start">
+            <div className="w-2 h-2 rounded-full bg-[#ffc75a] animate-pulse"></div>
+            <span className="text-[#ffc75a] text-base tracking-wide">{work.camp}</span>
+          </div>
+          
+          {/* Title and Student Info */}
+          <div className="mb-4">
+            <h3 className="text-white mb-3 group-hover:text-[#ffc75a] transition-colors">{work.title}</h3>
+            <div className="space-y-2">
+              {/* Student Name */}
+              <p className="text-gray-200 text-sm">
+                <span className="text-[#ffc75a]/80">{language === 'zh' ? '作者:' : 'Author:'}</span> {work.student}
+              </p>
               {/* Background/Occupation */}
-              <div className="flex items-start gap-2">
-                <div className="w-1 h-1 rounded-full bg-[#FF6900] mt-2 flex-shrink-0"></div>
-                <div className="flex-1">
-                  <p className="text-xs text-[#FF6900]/70 mb-0.5">{language === 'zh' ? '背景' : 'Background'}</p>
-                  <p className="text-[#4a5565] text-sm leading-relaxed">{work.background}</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Product Description */}
-            <div className="mt-auto pt-4 border-t border-gray-100">
-              <p className="text-xs text-[#FF6900]/70 mb-2">{language === 'zh' ? '产品介绍' : 'About'}</p>
-              <p className="text-[#4a5565] text-sm leading-relaxed">{work.description}</p>
+              <p className="text-gray-400 text-sm">
+                <span className="text-[#ffc75a]/80">{language === 'zh' ? '背景:' : 'Background:'}</span> {work.background}
+              </p>
             </div>
           </div>
-        </a>
-      </motion.div>
-    );
-  };
+          
+          {/* Product Description */}
+          <div className="mt-auto pt-4 border-t border-gray-800">
+            <p className="text-gray-400 text-sm leading-relaxed">{work.description}</p>
+          </div>
+          
+          {/* Link Icon in Corner */}
+          <div className="absolute top-4 right-4">
+            <ExternalLink className="w-5 h-5 text-gray-500 group-hover:text-[#ffc75a] transition-colors" />
+          </div>
+        </div>
+      </a>
+    </motion.div>
+  );
 
   // 定义滑动动画变体
   const slideVariants = {
@@ -298,17 +158,8 @@ export function WorksSection() {
   };
 
   return (
-    <section id="works" className="py-16 lg:py-24 bg-[#fafafa]">
-      {/* Section Title */}
-      <SectionDivider 
-        number="04" 
-        title={t.works.title}
-        titleHighlight={t.works.titleHighlight}
-        subtitle={t.works.subtitle}
-        highlightPosition="end"
-      />
-      
-      <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 mt-12 lg:mt-16">
+    <section id="works" className="py-8 lg:py-16 bg-black">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Works Display */}
         {shouldUseCarousel ? (
           /* 轮播模式 - 当作品数量超过6个时 */
@@ -316,7 +167,7 @@ export function WorksSection() {
             {/* 左箭头 */}
             <button
               onClick={handlePrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 w-12 h-12 rounded-full bg-gradient-to-r from-[#FF6900] to-[#FF8533] text-white hover:opacity-90 transition-all flex items-center justify-center shadow-lg"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 w-12 h-12 rounded-full bg-[#ffc75a] text-black hover:bg-[#ffc75a]/90 transition-all flex items-center justify-center shadow-lg"
               aria-label="上一页"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -336,22 +187,22 @@ export function WorksSection() {
                     x: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.3 }
                   }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 absolute w-full"
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 absolute w-full"
                 >
                   {getCurrentPageWorks().map((work) => renderWorkCard(work))}
                 </motion.div>
               </AnimatePresence>
               {/* 占位元素，保持容器高度 - 始终显示6个占位 */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 opacity-0 pointer-events-none">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-0 pointer-events-none">
                 {Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
-                  <div key={index} className="bg-white rounded-lg overflow-hidden border border-gray-200">
+                  <div key={index} className="bg-zinc-900 rounded-lg overflow-hidden border border-[#ffc75a]/10">
                     <div className="h-64"></div>
                     <div className="p-6">
                       <div className="mb-3">
-                        <h3 className="text-[#101828] mb-1">占位标题</h3>
-                        <p className="text-[#FF6900] text-sm">占位学生</p>
+                        <h3 className="text-white mb-1">占位标题</h3>
+                        <p className="text-[#ffc75a] text-sm">占位学生</p>
                       </div>
-                      <p className="text-[#4a5565] text-sm mb-3">占位描述</p>
+                      <p className="text-gray-400 text-sm mb-3">占位描述</p>
                     </div>
                   </div>
                 ))}
@@ -361,7 +212,7 @@ export function WorksSection() {
             {/* 右箭头 */}
             <button
               onClick={handleNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 w-12 h-12 rounded-full bg-gradient-to-r from-[#FF6900] to-[#FF8533] text-white hover:opacity-90 transition-all flex items-center justify-center shadow-lg"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 w-12 h-12 rounded-full bg-[#ffc75a] text-black hover:bg-[#ffc75a]/90 transition-all flex items-center justify-center shadow-lg"
               aria-label="下一页"
             >
               <ChevronRight className="w-6 h-6" />
@@ -378,8 +229,8 @@ export function WorksSection() {
                   }}
                   className={`h-2 rounded-full transition-all ${
                     index === currentPage
-                      ? 'bg-[#FF6900] w-8'
-                      : 'bg-gray-400 hover:bg-gray-500 w-2'
+                      ? 'bg-[#ffc75a] w-8'
+                      : 'bg-gray-600 hover:bg-gray-500 w-2'
                   }`}
                   aria-label={`第 ${index + 1} 页`}
                 />
@@ -388,7 +239,7 @@ export function WorksSection() {
           </div>
         ) : (
           /* 网格模式 - 当作品数量不超过6个时 */
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {works.map((work) => renderWorkCard(work))}
           </div>
         )}

@@ -18,10 +18,6 @@ export const translations = {
       chapter2: "完整课程体系",
       chapter3: "进阶与陪练课程",
       chapter4: "学员作品展示",
-      chapter5: "专业导师团队",
-      chapter6: "关于我们",
-      chapter7: "常见问题",
-      chapter8: "联系我们",
     },
 
     // Hero Section
@@ -71,7 +67,7 @@ export const translations = {
           "深入学习GPT、Claude等主流AI模型，掌握实际应用场景",
       },
       fullStackProject: {
-        title: "全栈开发 AI 项目并推动市场化落地",
+        title: "全栈开发并市场化一个AI项目",
         description:
           "从0到1完成AI项目开发，学习产品化和市场推广全流程",
       },
@@ -94,8 +90,8 @@ export const translations = {
 
     // Course Section
     courses: {
-      title: "课程体系",
-      titleHighlight: "三阶",
+      title: "三阶",
+      titleHighlight: "课程体系",
       subtitle:
         "产品/工程/市场三位一体，品味和架构重于代码，培养AI原生全栈人才",
       stage1: {
@@ -122,7 +118,7 @@ export const translations = {
         suitableFor:
           "从零做出能上线的完整产品，强化作品集，用于实习申请、求职提升或验证创业想法",
         duration:
-          "6 周课程：每周 1 次 2 小时主课（2 门产品课、4 门工程课）与 1 次作业检查；工程课当周另提供 1 小时直播答疑",
+          "6 周课程：每周 1 次 1.5 小时主课（2 门产品课、4 门工程课）与 1 次作业检查；工程课当周另提供 1 小时直播答疑",
         requirements:
           "逻辑清晰，并愿意完成从产品到工程到上线的完整项目流程",
         content: [
@@ -142,7 +138,7 @@ export const translations = {
         suitableFor:
           "打造生产级、具备商业潜力的项目，用于大厂转岗、PhD申请或创业MVP",
         duration:
-          "8 周课程：每周 2 次 2 小时主课与 1 次作业检查；每周另提供 1 小时集中直播答疑。",
+          "8 周课程：每周 2 次 1.5 小时主课与 1 次作业检查；每周另提供 1 小时集中直播答疑。",
         requirements:
           "逻辑清晰，具备一定编程能力，能承担高强度工程实战",
         content: [
@@ -164,7 +160,7 @@ export const translations = {
         suitableFor:
           "提升AI工程与产品能力，在市场与专家指导下完成可用于求职或创业的生产级产品",
         duration:
-          "12周课程：每周 1 次 2 小时主课与 1 次作业检查；每周另提供 1 小时集中直播答疑",
+          "12周课程：每周 1 次 1.5 小时主课与 1 次作业检查；每周另提供 1 小时集中直播答疑",
         requirements:
           "扎实的学术与工程经验，能独立规划并推动项目；通过创始人 1v1 面试",
         content: [
@@ -202,11 +198,11 @@ export const translations = {
         subtitle:
           "BETA 无界营不仅是课程，更是一个连接产业前沿、验证产品价值、提升职业竞争力的完整体系",
         founderMentorship: {
-          title: "创始人品哥和学界专家，行业大咖轮番上阵TALK",
+          title: "创始人品哥和学界专家,行业大咖轮番上阵TALK",
           items: [
-            "每3周一次深度对谈，分享真实创业/产品/管理/行业经验",
+            "每3周一次深度对谈,分享真实创业/产品/管理/行业经验",
             "产品思维 + 工程方法 + 市场策略三位一体",
-            '从为工程而产品，到因需求而市场的无界探索',
+            '从为工程而产品,到因需求而市场的无界探索',
           ],
         },
         engineerTeaching: {
@@ -222,7 +218,7 @@ export const translations = {
           items: [
             "邀请顶尖科学家讲解Transformer、大模型理论",
             "行业领军者分享垂直领域应用案例",
-            "拓展视野，建立行业人脉",
+            "拓展视野,建立行业人脉",
           ],
         },
         marketValidation: {
@@ -251,41 +247,23 @@ export const translations = {
       subtitle:
         "看看我们的学员如何将所学知识转化为实际项目，创造出令人惊叹的作品",
       projects: {
-        pdselection: {
-          student: "Z 同学",
+        propertyai: {
+          student: "H 同学",
           camp: "BETA 星空营（Galaxy）",
-          background: "投资，零工程经验",
-          description: "发现精选素食生活方式，经过严格筛选的餐厅、食谱、产品与生活灵感，让您的素食之旅更简单。",
+          background: "房产经纪，0工程经验",
+          description: "新西兰AI驱动房产交易平台",
         },
         rowingpro: {
           student: "V 同学",
           camp: "BETA 深空营（Cosmos）",
           background: "16岁，美国，多项数学/编程金牌得主",
-          description: "掌握你的划船技术：追踪进度、分析动作，并与划船社区交流。用 AI 洞察帮你把表现提升到更高水平。",
+          description: "智能划船训练分析与社区平台",
         },
         climatehub: {
           student: "K 同学",
           camp: "BETA 无界营（Infinity）",
           background: "18岁，大一，多项数学/编程金牌得主",
-          description: "提供个性化的气候变化预测和解释。它能生成美国本地化预测，根据你的所在地、职业和目标给出行动建议，并提供一个能回答问题、帮助你降低排放的 AI 助手。",
-        },
-        hobbi: {
-          student: "小组作品，四人协作完成",
-          camp: "BETA 无界营（Infinity）",
-          background: "物理博士，金融硕士，CS本科生，有一定工程经验",
-          description: "在冥想的夜空下，用语音记录心灵笔记。Hobbi 利用你上传的照片，为你打造沉浸式的冥想空间，并与之互动，共同创作心灵日记。Hobbi 会耐心倾听，不加评判，从不打断，并在恰当的时机抛出恰到好处的玩笑或讽刺回应。100% 私密，随时可用，完全免费，无需预约。",
-        },
-        yummyyummy: {
-          student: "小组作品，四人协作完成",
-          camp: "BETA 无界营（Infinity）",
-          background: "物理博士，金融数学硕士，运筹/电气工程双硕士，有一定工程经验",
-          description: "YummyYummy 是您友好的 AI 美食助手，随时随地帮助您快速自信地做出美食选择。它会即时显示每道菜品，并提供简洁明了的描述，还会精选真实的菜品照片，帮助您更好地想象美食的模样。",
-        },
-        relabseo: {
-          student: "K 同学",
-          camp: "BETA 星空营（Galaxy）",
-          background: "房地产大数据公司CEO，销售市场背景，0工程经验",
-          description: "Relab SEO - 内容集群和 AI 工具；内容聚类可视化 · AI 内容生成 · 由 Claude 提供支持的 SEO 评分",
+          description: "个性化气候变化预测与行动建议平台",
         },
       },
       prevPage: "上一页",
@@ -453,8 +431,8 @@ export const translations = {
 
     // FAQ Section
     faq: {
-      title: "常见",
-      titleHighlight: "问题",
+      title: "问题",
+      titleHighlight: "常见",
       subtitle:
         "解答您关心的问题，帮助您更好地了解我们的课程和服务",
       q1: {
@@ -528,8 +506,8 @@ export const translations = {
 
     // Contact Section
     contact: {
-      title: "联系",
-      titleHighlight: "我们",
+      title: "我们",
+      titleHighlight: "联系",
       subtitle:
         "有任何问题或建议，欢迎随时与我们联系，我们将竭诚为您服务",
       dialogTitle: "联系我们",
@@ -903,10 +881,10 @@ export const translations = {
         eligibility: "招生对象",
         eligibilityValue: "Alpha/Beta毕业生",
         features: [
-          "工程导师1对1个性化指导",
-          "目标导向实践，无理论宣讲",
-          "产品升级与优化陪伴式学习",
-          "仅对已学课程的强化陪练",
+          "✓ 工程导师1对1个性化指导",
+          "✓ 目标导向实践，无理论宣讲",
+          "✓ 产品升级与优化陪伴式学习",
+          "✓ 仅对已学课程的强化陪练",
         ],
         cta: "立即咨询",
       },
@@ -932,10 +910,6 @@ export const translations = {
       chapter2: "Complete Course System",
       chapter3: "Advanced & Coaching Programs",
       chapter4: "Student Work Showcase",
-      chapter5: "Professional Mentorship Team",
-      chapter6: "About Us",
-      chapter7: "FAQ",
-      chapter8: "Contact Us",
     },
 
     // Hero Section
@@ -988,7 +962,7 @@ export const translations = {
       },
       fullStackProject: {
         title:
-          "Build Full-Stack AI Products and Drive Market Launch",
+          "Full-stack development and market launch of an AI project",
         description:
           "Complete the development of an AI project from scratch, learning the entire process of productization and market promotion",
       },
@@ -1030,10 +1004,7 @@ export const translations = {
         content: [
           "AI Product Engineering",
           "Entrepreneurship Philosophy Sharing",
-          "Is AI a Threat or a Superpower?",
-          "Why is 'Asking Questions' More Important Than 'Having Answers'?",
-          "Has the Meaning of Programming Changed?",
-          "How Should We Coexist with AI in the Future?",
+          "AI Top 10 Questions",
         ],
       },
       stage2a: {
@@ -1041,7 +1012,7 @@ export const translations = {
         subtitle: "",
         ageLimit: "College Students/Graduate Students/PhD Students (Age 18 and Above)",
         suitableFor: "Build complete products from scratch to strengthen portfolio for internships, job seeking or startup validation",
-        duration: "6 weeks (1 session/week, 2 hours each)",
+        duration: "6 weeks (1 session/week, 1.5 hours each)",
         requirements: "Clear logic, STEM background preferred",
         content: [
           "AI Cognition & Questioning Framework",
@@ -1060,7 +1031,7 @@ export const translations = {
         ageLimit: "College Students/Engineers/Entrepreneurs (Age 18 and Above)",
         suitableFor:
           "Build production-grade projects with commercial potential for career advancement, PhD applications or startup MVP",
-        duration: "8 weeks (2 sessions/week, 2 hours each)",
+        duration: "8 weeks (2 sessions/week, 1.5 hours each)",
         requirements:
           "Programming ability, clear language and mathematical logic",
         content: [
@@ -1081,7 +1052,7 @@ export const translations = {
         ageLimit: "College Students/Engineers/Entrepreneurs (Age 18 and Above)",
         suitableFor:
           "Enhance AI engineering and product skills to complete production-grade products for career, further education or entrepreneurship",
-        duration: "12 weeks (1 session/week, 2 hours each)",
+        duration: "12 weeks (1 session/week, 1.5 hours each)",
         requirements:
           "Solid academic or engineering background, capable of independent project execution; founder 1v1 interview required",
         content: [
@@ -1168,13 +1139,13 @@ export const translations = {
       subtitle:
         "See how our students transform knowledge into real projects and create amazing works",
       projects: {
-        pdselection: {
-          student: "Student Z",
+        propertyai: {
+          student: "Student H",
           camp: "BETA Galaxy Camp",
           background:
-            "Investment, 0 Engineering Experience",
+            "Real Estate Agent, 0 Engineering Experience",
           description:
-            "Discover a curated vegan lifestyle with carefully selected restaurants, recipes, products, and lifestyle inspiration to make your plant-based journey easier.",
+            "AI-Driven Property Trading Platform in New Zealand",
         },
         rowingpro: {
           student: "Student V",
@@ -1182,7 +1153,7 @@ export const translations = {
           background:
             "16 years old, USA, Multiple Math/Programming Awards",
           description:
-            "Master your rowing technique: track progress, analyze movements, and connect with the rowing community. Use AI insights to elevate your performance to the next level.",
+            "Intelligent Rowing Training Analysis & Community Platform",
         },
         climatehub: {
           student: "Student K",
@@ -1190,31 +1161,7 @@ export const translations = {
           background:
             "18 years old, Freshman, Multiple Math/Programming Awards",
           description:
-            "Provides personalized climate change predictions and explanations. It generates US-localized forecasts, offers action recommendations based on your location, profession, and goals, and features an AI assistant that answers questions and helps you reduce emissions.",
-        },
-        hobbi: {
-          student: "Group Project, Four-Person Collaboration",
-          camp: "BETA Infinity Camp",
-          background:
-            "Physics PhD, Finance Master's, CS Undergraduate, Some Engineering Experience",
-          description:
-            "Under the meditative night sky, record your soul notes with voice. Hobbi uses your uploaded photos to create an immersive meditation space, interacting with you to co-create a spiritual diary. Hobbi listens patiently, without judgment, never interrupts, and throws in just the right joke or sarcastic response at the perfect moment. 100% private, always available, completely free, no appointment needed.",
-        },
-        yummyyummy: {
-          student: "Group Project, Four-Person Collaboration",
-          camp: "BETA Infinity Camp",
-          background:
-            "Physics PhD, Financial Mathematics Master's, Operations Research/Electrical Engineering Dual Master's, Some Engineering Experience",
-          description:
-            "YummyYummy is your friendly AI food assistant, helping you make food choices quickly and confidently anytime, anywhere. It instantly displays each dish with clear, concise descriptions and curates authentic food photos to help you better imagine what the dish looks like.",
-        },
-        relabseo: {
-          student: "Student K",
-          camp: "BETA Galaxy Camp",
-          background:
-            "CEO of Real Estate Big Data Company, Sales & Marketing Background, No Engineering Experience",
-          description:
-            "Relab SEO - Content Cluster & AI Tools; Content Clustering Visualization · AI Content Generation · SEO Scoring Powered by Claude",
+            "Personalized Climate Change Prediction & Action Platform",
         },
       },
       prevPage: "Previous",
