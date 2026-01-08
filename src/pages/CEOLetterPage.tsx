@@ -1057,8 +1057,8 @@ export function CEOLetterPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-gray-500 text-sm">
             {isEn
-              ? "© 2025 Bee Beta. All rights reserved. Learn AI, Shape the Future."
-              : "© 2025 Bee Beta. 保留所有权利。学习AI，塑造未来。"}
+              ? "© 2026 Bee Beta. All rights reserved. Learn AI, Shape the Future."
+              : "© 2026 Bee Beta. 保留所有权利。学习AI，塑造未来。"}
           </p>
         </div>
       </footer>
