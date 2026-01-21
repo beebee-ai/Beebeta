@@ -572,7 +572,7 @@ export const translations = {
     // Footer
     footer: {
       copyright:
-        "© 2025 BEE BETA. 保留所有权利。学AI，创未来。",
+        `© ${new Date().getFullYear()} BEE BETA. 保留所有权利。学AI，创未来。`,
     },
 
     // CEO Letter Page
@@ -1546,7 +1546,7 @@ We have no exam scores. Your graduation project must be published on real platfo
     // Footer
     footer: {
       copyright:
-        "© 2025 BEE BETA. All rights reserved. Learn AI, Shape the Future.",
+        `© ${new Date().getFullYear()} BEE BETA. All rights reserved. Learn AI, Shape the Future.`,
     },
 
     // CEO Letter Page

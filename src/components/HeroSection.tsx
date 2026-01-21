@@ -74,7 +74,7 @@ export function HeroSection() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="mb-12 sm:mb-16">
+            <div className="mb-2 sm:mb-3">
               <button 
                 onClick={handleCourseClick}
                 className="group relative inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:px-8 sm:py-3 bg-gradient-to-r from-[#FF6900] to-[#FF8533] rounded-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,105,0,0.3)] hover:scale-105 text-white cursor-pointer border border-[#FF6900]/20 w-auto"

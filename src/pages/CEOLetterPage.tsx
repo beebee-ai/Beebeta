@@ -316,7 +316,7 @@ export function CEOLetterPage() {
                         </>
                       ) : (
                         <>
-                          <li>多模态（OCR/ASR/Web Crawl）</li>
+                          <li>���模态（OCR/ASR/Web Crawl）</li>
                           <li>RAG、向量库、关键词图谱</li>
                           <li>Agent + 工具链</li>
                           <li>React + FastAPI 全栈</li>
@@ -1062,8 +1062,8 @@ export function CEOLetterPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-[#000000] text-sm">
             {isEn
-              ? "© 2025 Bee Beta. All rights reserved. Learn AI, Shape the Future."
-              : "© 2025 Bee Beta. 保留所有权利。学习AI，塑造未来。"}
+              ? `© ${new Date().getFullYear()} Bee Beta. All rights reserved. Learn AI, Shape the Future.`
+              : `© ${new Date().getFullYear()} Bee Beta. 保留所有权利。学AI，创未来。`}
           </p>
         </div>
       </footer>

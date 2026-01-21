@@ -3944,12 +3944,6 @@
   }
 
   @media (width >= 40rem) {
-    .sm\:mb-16 {
-      margin-bottom: calc(var(--spacing) * 16);
-    }
-  }
-
-  @media (width >= 40rem) {
     .sm\:line-clamp-1 {
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
