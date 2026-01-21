@@ -28,7 +28,7 @@ export function SEO({
       title: 'BEE BETA - 用 AI 创造未来',
       description: 'BEE BETA 提供专业 AI 产品与工程课程，面向大学生与进阶学习者，聚焦 AI 全栈开发、RAG、Agent、爬虫与 Product Hunt 全球发布，用真实产品验证能力。',
       keywords: 'AI工程课程, AI产品训练营, BETA课程, 全栈AI开发, RAG架构, Agent开发, Product Hunt发布, Cursor AI, BEE BETA',
-      ogTitle: 'BEE BETA AI｜BETA 级 AI 产品工程训练营',
+      ogTitle: 'BEEBEE AI BETA 实训营',
       ogDescription: '以产品落地为目标的 BETA 级 AI 工程课程，覆盖全栈开发、RAG、Agent、爬虫与商业化发布。'
     },
     en: {
@@ -144,7 +144,7 @@ export function SEO({
         {
           "@type": "Course",
           "@id": "https://bee-beta.com/#course",
-          "name": "BEEBEE AI BETA 专业级 AI 产品工程营",
+          "name": "BEEBEE AI BETA 实训营",
           "description": "面向大学生与专业人士的高阶 AI 产品工程课程体系，通过真实产品驱动学习，覆盖 AI Native 产品设计、全栈工程、RAG、Agent、爬虫与全球产品发布。",
           "url": "https://bee-beta.com",
           "provider": {
