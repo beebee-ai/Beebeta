@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useEffect } from "react";
+import { SEO } from "../components/SEO";
 
 // BEE Beta Logo - 使用网络链接
 const logoImage =
@@ -15,12 +16,16 @@ export function CEOLetterPage() {
   const { language } = useLanguage();
   const isEn = language === "en";
 
-  useEffect(() => {
-    document.title = "Bee-Beta - CEO Letter";
-  }, []);
-
   return (
     <div className="min-h-screen bg-[#fafafa]">
+      <SEO 
+        title={isEn ? "BEE BETA - A Letter to Students" : "BEE BETA - 致学员的一封信"}
+        description={isEn 
+          ? "A personal letter from Pin Zhou, founder of BEEBEE AI and initiator of BEE BETA program, about the mission and vision of AI education."
+          : "来自 BEEBEE AI 创始人、BEE BETA 项目发起人周品的一封信，分享关于 AI 教育的使命与愿景。"
+        }
+        canonicalUrl="https://bee-beta.com/ceo-letter"
+      />
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#f0f4ff]/80 via-[#f5f7ff]/80 to-[#f8f4ff]/80 backdrop-blur-md border-b border-white/30 shadow-[0_1px_10px_rgba(96,181,255,0.08)]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,7 +33,7 @@ export function CEOLetterPage() {
             <Link to="/" className="flex items-center">
               <img
                 src={logoImage}
-                alt="BEE Beta"
+                alt="BEE BETA"
                 className="h-8 lg:h-10 w-auto"
               />
             </Link>
@@ -56,10 +61,10 @@ export function CEOLetterPage() {
                   ? "A Letter to Students"
                   : "致学员的一封信"}
               </h1>
-              <p className="text-gray-400">
+              <p className="text-[#000000]">
                 {isEn
-                  ? "Learn AI, Shape the Future"
-                  : "Learn AI, Build Reality. 学AI，创未来。"}
+                  ? "Learn AI, Build Reality."
+                  : "Learn AI, Build Reality. 学AI,创未来。"}
               </p>
             </div>
 
@@ -81,7 +86,7 @@ export function CEOLetterPage() {
                     ? "Founder of BEEBEE AI"
                     : "BEEBEE AI 创始人"}
                 </p>
-                <p className="text-gray-400 text-sm">
+                <p className="text-[#000000] text-sm">
                   {isEn
                     ? "Initiator of BEE BETA Program"
                     : "BEE BETA 项目发起人"}
@@ -90,19 +95,19 @@ export function CEOLetterPage() {
             </div>
 
             {/* Letter Content */}
-            <div className="bg-white rounded-lg p-8 lg:p-12 border-2 border-[#FF6900]/20 relative">
+            <div className="bg-white rounded-lg p-8 lg:p-12 border-2 border-[#FF6900]/20 relative text-[#000000]">
               <Quote className="absolute top-6 left-6 w-12 h-12 text-[#FF6900]/20" />
 
-              <div className="relative z-10 space-y-8 text-[#4a5565] leading-loose text-base">
+              <div className="relative z-10 space-y-8 leading-loose text-base">
                 <p className="text-[#101828] leading-relaxed">
                   {isEn ? "Dear Student:" : "亲爱的同学："}
                 </p>
 
-                <p>
+                <p className="text-[#000000]">
                   <span className="block mb-5 leading-loose">
                     {isEn
-                      ? "Hello! I'm Pin Zhou, initiator of the BEE Beta three-stage curriculum system. First of all, thank you for taking the time to learn about our AI curriculum. As an experienced AI practitioner team, we would like to share some genuine thoughts with you:"
-                      : "您好！我是 BEE Beta 三阶课程体系的发起人周品。首先，感谢您花时间了解我们的 AI 课程体系。作为一支由资深 AI 从业者组成的团队，我们希望与您分享一些真诚的想法："}
+                      ? "Hello! I'm Pin Zhou, initiator of the BEE BETA three-stage curriculum system. First of all, thank you for taking the time to learn about our AI curriculum. As an experienced AI practitioner team, we would like to share some genuine thoughts with you:"
+                      : "您好！我是 BEE BETA 三阶课程体系的发起人周品。首先，感谢您花时间了解我们的 AI 课程体系。作为一支由资深 AI 从业者组成的团队,我们希望与您分享一些真诚的想法："}
                   </span>
                   <span className="block pl-6 space-y-4">
                     <span className="block leading-loose">
@@ -110,7 +115,7 @@ export function CEOLetterPage() {
                         ? "Why we've created this intensive, real-world AI product engineering system for college students and working learners"
                         : "为什么我们要为大学生和在职学习者打造这样一套强度不低、目标极实的 AI 产品工程体系"}
                     </span>
-                    <span className="block leading-loose">
+                    <span className="block leading-loose text-[rgb(0,0,0)] font-bold font-normal">
                       • {isEn
                         ? "What core challenges it solves for your future development"
                         : "它如何解决你未来发展的核心挑战"}
@@ -124,7 +129,7 @@ export function CEOLetterPage() {
                 </p>
 
                 {/* Section 1 */}
-                <div className="pt-6">
+                <div className="pt-6 text-[#000000]">
                   <h3 className="text-[#FF6900] mb-6">
                     {isEn
                       ? "1. Why Create the BETA System for Students and Early-Career Professionals?"
@@ -749,7 +754,7 @@ export function CEOLetterPage() {
                     {isEn
                       ? "Our goal isn't to make you "
                       : "我们的目标不是让你"}
-                    <span className="text-gray-500">
+                    <span className="text-[#000000]">
                       {isEn ? '"learn," ' : '"学会"，'}
                     </span>
                     {isEn
@@ -1008,18 +1013,18 @@ export function CEOLetterPage() {
                   <p className="text-[#101828] mb-6">
                     {isEn ? "Sincerely," : "诚挚的，"}
                   </p>
-                  <p className="text-gray-500 text-sm mb-6">
+                  <p className="text-[#000000] text-sm mb-6">
                     {isEn ? "October 2025" : "2025年10月"}
                   </p>
                   <p className="text-[#101828] mb-1">
                     {isEn ? "Pin Zhou" : "Pin Zhou 周品"}
                   </p>
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-[#000000] text-sm">
                     {isEn
                       ? "Founder of BEEBEE AI"
                       : "BEEBEE AI 创始人"}
                   </p>
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-[#000000] text-sm">
                     {isEn
                       ? "Initiator of BEE BETA Program"
                       : "BEE BETA 项目发起人"}
@@ -1030,10 +1035,10 @@ export function CEOLetterPage() {
 
             {/* Quote Highlight */}
             <div className="mt-12 p-6 bg-[#FF6900]/5 border-l-4 border-[#FF6900] rounded">
-              <p className="text-gray-400 italic">
+              <p className="text-[#000000] italic">
                 {isEn
                   ? '"People who can turn AI into products will become the most scarce in this era."'
-                  : '"能把 AI 变成产品的人，会成为这个时代最稀缺的人。"'}
+                  : '"把 AI 变成产品的人，会成为这个时代最稀缺的人。"'}
               </p>
               <p className="text-[#FF6900] text-sm mt-2">
                 — {isEn ? "Pin Zhou" : "Pin Zhou 周品"}
@@ -1055,10 +1060,10 @@ export function CEOLetterPage() {
       {/* Footer */}
       <footer className="border-t border-[#FF6900]/20 py-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-gray-500 text-sm">
+          <p className="text-center text-[#000000] text-sm">
             {isEn
-              ? "© 2026 Bee Beta. All rights reserved. Learn AI, Shape the Future."
-              : "© 2026 Bee Beta. 保留所有权利。学习AI，塑造未来。"}
+              ? "© 2025 Bee Beta. All rights reserved. Learn AI, Shape the Future."
+              : "© 2025 Bee Beta. 保留所有权利。学习AI，塑造未来。"}
           </p>
         </div>
       </footer>

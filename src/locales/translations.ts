@@ -14,7 +14,7 @@ export const translations = {
 
     // Section Dividers
     sectionDividers: {
-      chapter1: "参加 BEE Beta 你能得到什么？",
+      chapter1: "参加 BEE BETA 你能得到什么？",
       chapter2: "完整课程体系",
       chapter3: "进阶与陪练课程",
       chapter4: "学员作品展示",
@@ -29,7 +29,7 @@ export const translations = {
       title: "开启AI时代的",
       titleHighlight: "学习之旅",
       subtitle:
-        "与BEE Beta一起，掌握人工智能核心技能，成为AI时代的领军人才",
+        "与BEE BETA一起，掌握人工智能核心技能，成为AI时代的领军人才",
       cta: "立即开始",
       learnMore: "了解更多",
     },
@@ -39,51 +39,51 @@ export const translations = {
       title: "全时段覆盖的",
       titleHighlight: "教学模式",
       mode1: {
-        title: "AI驱动课程",
+        title: "AI 驱动课程",
         description:
-          "每周课程融合理论与实践，可根据假期灵活安排",
+          "以 AI 能力为核心设计课程结构，融合理论与实践，学习节奏可根据个人时间灵活调整",
       },
       mode2: {
         title: "实战项目导向",
         description:
-          "基于企业级知识库打造的培训智能体实时答疑+助教24小时内回复同学问题",
+          "围绕真实项目推进学习，企业级知识库智能体实时答疑，助教 24 小时内跟进反馈",
       },
       mode3: {
         title: "终身学习社区",
         description:
-          "自主研发全球多地多时区师生共用排课系统，可灵活同步课时和个人日历",
+          "自研全球多时区排课系统，课表与个人日历同步，支持长期协作与持续成长",
       },
     },
 
     // Features Section
     features: {
       title: "参加 ",
-      titleHighlight: "BEE Beta 你能得到什么？",
+      titleHighlight: "BEE BETA 你能得到什么？",
       subtitle: "全方位的学习支持，让您的AI学习之旅更加高效",
       globalExperience: {
-        title: "全球型AI创业公司的团队工作经历",
+        title: "全球化 AI 创业实战经验",
         description:
-          "获得在全球AI创业公司的实际工作经验，提升职业竞争力",
+          "真实参与国际 AI 创业团队，在真实业务中提升职业竞争力",
       },
       deepUnderstanding: {
-        title: "对各类模型和AI应用的深入理解",
+        title: "主流模型与 AI 应用深度理解",
         description:
-          "深入学习GPT、Claude等主流AI模型，掌握实际应用场景",
+          "理解 GPT、Claude 等主流模型，掌握真实应用场景",
       },
       fullStackProject: {
-        title: "全栈开发 AI 项目并推动市场化落地",
+        title: "AI 产品全栈落地能力",
         description:
-          "从0到1完成AI项目开发，学习产品化和市场推广全流程",
+          "从0到1完成AI项目开发，学习产品化与市场推广等全流程",
       },
       paperReading: {
-        title: "学会读顶尖论文并用于实践",
+        title: "前沿论文工程化能力",
         description:
-          "掌握阅读和理解前沿AI论文的能力，将理论转化为实践",
+          "从前沿论文中提炼可用方法，把研究成果转化为可运行方案",
       },
       recommendation: {
-        title: "公司创始人及导师的推荐信",
+        title: "创始人及导师权威推荐",
         description:
-          "获得权威推荐信，为未来的求职和发展增添有力背书",
+          "获得公司创始人与核心导师推荐信，为求职与长期发展加码",
       },
       community: {
         title: "和你一样充满好奇心的同学",
@@ -255,13 +255,13 @@ export const translations = {
           student: "Z 同学",
           camp: "BETA 星空营（Galaxy）",
           background: "投资，零工程经验",
-          description: "发现精选素食生活方式，经过严格筛选的餐厅、食谱、产品与生活灵感，让您的素食之旅更简单。",
+          description: "发现精选素食生活方式，经过严格筛选的餐厅、食谱、产品与生活灵感。通过AI技术精准推荐优质素食资源，让您的素食之旅更简单、更健康、更有品质。",
         },
         rowingpro: {
           student: "V 同学",
           camp: "BETA 深空营（Cosmos）",
           background: "16岁，美国，多项数学/编程金牌得主",
-          description: "掌握你的划船技术：追踪进度、分析动作，并与划船社区交流。用 AI 洞察帮你把表现提升到更高水平。",
+          description: "追踪你的划船训练进度，分析每一次动作，并与同样热爱划船的人交流。AI 提供清晰的改进建议，结合训练计划、视频分析和健康管理，帮助你稳步提升整体表现。",
         },
         climatehub: {
           student: "K 同学",
@@ -273,19 +273,19 @@ export const translations = {
           student: "小组作品，四人协作完成",
           camp: "BETA 无界营（Infinity）",
           background: "物理博士，金融硕士，CS本科生，有一定工程经验",
-          description: "在冥想的夜空下，用语音记录心灵笔记。Hobbi 利用你上传的照片，为你打造沉浸式的冥想空间，并与之互动，共同创作心灵日记。Hobbi 会耐心倾听，不加评判，从不打断，并在恰当的时机抛出恰到好处的玩笑或讽刺回应。100% 私密，随时可用，完全免费，无需预约。",
+          description: "在冥想空间中，用语音记录你的心灵笔记。Hobbi 会基于你上传的照片生成沉浸式场景，与你互动，共同写下心灵日记。完全私密，随时可用，免费无需预约。",
         },
         yummyyummy: {
           student: "小组作品，四人协作完成",
           camp: "BETA 无界营（Infinity）",
           background: "物理博士，金融数学硕士，运筹/电气工程双硕士，有一定工程经验",
-          description: "YummyYummy 是您友好的 AI 美食助手，随时随地帮助您快速自信地做出美食选择。它会即时显示每道菜品，并提供简洁明了的描述，还会精选真实的菜品照片，帮助您更好地想象美食的模样。",
+          description: "YummyYummy 是你的 AI 美食助手，随时帮你快速做出靠谱的美食选择。清晰展示菜品信息，配上简明介绍和真实照片，让你一眼就懂、放心点。",
         },
         relabseo: {
           student: "K 同学",
           camp: "BETA 星空营（Galaxy）",
           background: "房地产大数据公司CEO，销售市场背景，0工程经验",
-          description: "Relab SEO - 内容集群和 AI 工具；内容聚类可视化 · AI 内容生成 · 由 Claude 提供支持的 SEO 评分",
+          description: "内容集群和AI工具平台，提供内容聚类可视化、AI内容生成和由Claude提供支持的SEO评分。帮助营销人员快速构建内容策略，优化搜索引擎排名，提升内容营销效率。",
         },
       },
       prevPage: "上一页",
@@ -353,7 +353,7 @@ export const translations = {
         engineerV: {
           name: "Engineer V",
           title: "全栈开发者",
-          bio: "顶级北美大学计算机科学毕业生，RAG SaaS开发者，提示工程和API开发专家",
+          bio: "顶级���美大学计算机科学毕业生，RAG SaaS开发者，提示工程和API开发专家",
           expertise: ["全栈开发", "API设计", "提示工程"],
         },
       },
@@ -385,7 +385,7 @@ export const translations = {
         teacherN: {
           name: "N老师",
           title: "AI产业化专家",
-          bio: "17年技术经验，主导数亿级AI项目，AI创业公司合伙人，AI商业化专家",
+          bio: "17年技术经验，主导数亿级AI项目，AI创业公司合伙人，AI商业化专���",
           expertise: ["AI商业化", "项目管理", "创业"],
         },
       },
@@ -504,7 +504,7 @@ export const translations = {
         answer: `**全程直播 + 陪跑辅导**，拒绝录播。
 
 - **高频互动**：每周 1-2 次核心直播课，由一线讲师与创始人亲自授课。
-- **全程陪伴**：每课配套集中答疑及作业检查，助教手把手解决“卡点”。
+- **全程陪伴**：每课配套���中答疑及作业检查，助教手把手解决“卡点”。
 - **全球友好**：直播均有回放，并在全球主流时区友好安排，确保你无论身在何处都能跟上进度。`
       },
       q7: {
@@ -557,7 +557,7 @@ export const translations = {
         phonePlaceholder: "请输入您的联系电话",
         message: "咨询说明",
         messagePlaceholder: "请告诉我们您的问题或需求",
-        defaultMessage: "我想咨询BEE Beta课程，请联系我。",
+        defaultMessage: "我想咨询BEE BETA课程，请联系我。",
         submit: "提交留言",
         submitting: "提交中...",
         successMessage: "感谢您的留言！我们会尽快与您联系。",
@@ -572,7 +572,7 @@ export const translations = {
     // Footer
     footer: {
       copyright:
-        "© 2025 Bee Beta. 保留所有权利。学AI，创未来。",
+        "© 2025 BEE BETA. 保留所有权利。学AI，创未来。",
     },
 
     // CEO Letter Page
@@ -676,11 +676,11 @@ export const translations = {
           benefitsList: [
             "创始人推荐信",
             "大厂/AI公司实习推荐",
-            "种子投资机会",
+            "种子���资机会",
           ],
         },
 
-        p4: '三阶体系不走"培训路线"，走的是"产品路线"。',
+        p4: '三阶体系不走"培训路线"，走的��"产品���线"。',
         p5: "它不是教你技能，而是帮你建立：",
         p6: "从认知 → 工程 → 产品 → 市场 → 战略 的完整能力闭环。",
       },
@@ -856,7 +856,7 @@ export const translations = {
     advancedCoursesSection: {
       title: "进阶与陪练课程",
       description:
-        "专业高级课程和1对1辅导，为学员提供持续成长的机会",
+        "高阶课程和1对1辅导，为学员提供持续成长的机会",
       dialogDescription:
         "填写以下信息，我们的课程顾问将在24小时内与您联系",
       starry: {
@@ -882,9 +882,9 @@ export const translations = {
           "Cursor高阶",
           "数据采集",
           "MCP智能体",
-          "Docker运维",
-          "K8s集群",
           "Transformer架构",
+          "K8s集群",
+          "Docker运维",
           "企业AI Bot",
         ],
         cta: "立即咨询",
@@ -928,7 +928,7 @@ export const translations = {
 
     // Section Dividers
     sectionDividers: {
-      chapter1: "What You'll Get from BEE Beta?",
+      chapter1: "What You'll Get from BEE BETA?",
       chapter2: "Complete Course System",
       chapter3: "Advanced & Coaching Programs",
       chapter4: "Student Work Showcase",
@@ -943,7 +943,7 @@ export const translations = {
       title: "Begin Your",
       titleHighlight: "AI Learning Journey",
       subtitle:
-        "Master core AI skills with BEE Beta and become a leader in the AI era",
+        "Master core AI skills with BEE BETA and become a leader in the AI era",
       cta: "Get Started",
       learnMore: "Learn More",
     },
@@ -955,24 +955,24 @@ export const translations = {
       mode1: {
         title: "AI-Driven Courses",
         description:
-          "Weekly courses blend theory and practice, flexible scheduling for holidays",
+          "Course structure designed around AI capabilities, integrating theory and practice with flexible pacing to match personal schedules",
       },
       mode2: {
-        title: "Project-Oriented Learning",
+        title: "Project-Oriented",
         description:
-          "Enterprise-level knowledge base AI assistant + TA 24h response",
+          "Learning through real projects, with enterprise knowledge base AI for instant support and TA follow-up within 24 hours",
       },
       mode3: {
-        title: "Lifetime Learning Community",
+        title: "Lifelong Learning Community",
         description:
-          "Self-developed system for flexible scheduling and calendar sync",
+          "Self-developed global multi-timezone scheduling system with calendar sync, supporting long-term collaboration and continuous growth",
       },
     },
 
     // Features Section
     features: {
       title: "What You'll Get from ",
-      titleHighlight: "BEE Beta?",
+      titleHighlight: "BEE BETA?",
       subtitle:
         "Comprehensive learning support to make your AI learning journey more efficient",
       globalExperience: {
@@ -1174,7 +1174,7 @@ export const translations = {
           background:
             "Investment, 0 Engineering Experience",
           description:
-            "Discover a curated vegan lifestyle with carefully selected restaurants, recipes, products, and lifestyle inspiration to make your plant-based journey easier.",
+            "Discover a curated vegan lifestyle with rigorously selected restaurants, recipes, products, and lifestyle inspiration. AI-powered precision recommendations for quality vegan resources, making your plant-based journey simpler, healthier, and more refined.",
         },
         rowingpro: {
           student: "Student V",
@@ -1182,7 +1182,7 @@ export const translations = {
           background:
             "16 years old, USA, Multiple Math/Programming Awards",
           description:
-            "Master your rowing technique: track progress, analyze movements, and connect with the rowing community. Use AI insights to elevate your performance to the next level.",
+            "Track your rowing training progress, analyze every movement, and connect with fellow rowing enthusiasts. AI provides clear improvement recommendations, combined with training plans, video analysis, and health management to help you steadily enhance overall performance.",
         },
         climatehub: {
           student: "Student K",
@@ -1198,7 +1198,7 @@ export const translations = {
           background:
             "Physics PhD, Finance Master's, CS Undergraduate, Some Engineering Experience",
           description:
-            "Under the meditative night sky, record your soul notes with voice. Hobbi uses your uploaded photos to create an immersive meditation space, interacting with you to co-create a spiritual diary. Hobbi listens patiently, without judgment, never interrupts, and throws in just the right joke or sarcastic response at the perfect moment. 100% private, always available, completely free, no appointment needed.",
+            "In a meditative space, record your soul notes with voice. Hobbi generates immersive scenes based on your uploaded photos, interacts with you, and co-creates spiritual diaries. Completely private, always available, free and no appointment needed.",
         },
         yummyyummy: {
           student: "Group Project, Four-Person Collaboration",
@@ -1206,7 +1206,7 @@ export const translations = {
           background:
             "Physics PhD, Financial Mathematics Master's, Operations Research/Electrical Engineering Dual Master's, Some Engineering Experience",
           description:
-            "YummyYummy is your friendly AI food assistant, helping you make food choices quickly and confidently anytime, anywhere. It instantly displays each dish with clear, concise descriptions and curates authentic food photos to help you better imagine what the dish looks like.",
+            "YummyYummy is your AI food assistant, helping you make reliable food choices quickly anytime. Clear dish info with concise descriptions and real photos, so you get it at a glance and order with confidence.",
         },
         relabseo: {
           student: "Student K",
@@ -1214,7 +1214,7 @@ export const translations = {
           background:
             "CEO of Real Estate Big Data Company, Sales & Marketing Background, No Engineering Experience",
           description:
-            "Relab SEO - Content Cluster & AI Tools; Content Clustering Visualization · AI Content Generation · SEO Scoring Powered by Claude",
+            "Content clustering and AI tools platform, offering content clustering visualization, AI content generation, and Claude-powered SEO scoring. Helps marketers quickly build content strategies, optimize search rankings, and boost content marketing efficiency.",
         },
       },
       prevPage: "Previous",
@@ -1530,7 +1530,7 @@ We have no exam scores. Your graduation project must be published on real platfo
         phonePlaceholder: "Enter your phone number",
         message: "Inquiry Details",
         messagePlaceholder: "Tell us your questions or needs",
-        defaultMessage: "I would like to inquire about BEE Beta courses, please contact me.",
+        defaultMessage: "I would like to inquire about BEE BETA courses, please contact me.",
         submit: "Submit Message",
         submitting: "Submitting...",
         successMessage:
@@ -1546,7 +1546,7 @@ We have no exam scores. Your graduation project must be published on real platfo
     // Footer
     footer: {
       copyright:
-        "© 2025 Bee Beta. All rights reserved. Learn AI, Shape the Future.",
+        "© 2025 BEE BETA. All rights reserved. Learn AI, Shape the Future.",
     },
 
     // CEO Letter Page
@@ -1856,9 +1856,9 @@ We have no exam scores. Your graduation project must be published on real platfo
           "Cursor Advanced",
           "Data Collection",
           "MCP Agent",
-          "Docker Operations",
-          "K8s Cluster",
           "Transformer Architecture",
+          "K8s Cluster",
+          "Docker Operations",
           "Enterprise AI Bot",
         ],
         cta: "Inquire Now",

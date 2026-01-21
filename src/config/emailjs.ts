@@ -27,18 +27,6 @@ export const EMAILJS_CONFIG = {
 
 // Suggested Email Template Format:
 // ------------------------------
-// Subject: BEE Beta 新咨询 - {{from_name}}
+// Subject: BEE BETA 新咨询 - {{from_name}}
 //
 // 您收到一条新的咨询信息：
-//
-// 【同学姓名】{{from_name}}
-// 【同学年龄】{{age}}
-// 【所在国家】{{country}}
-// 【电子邮件】{{from_email}}
-// 【留言来源】{{source}}
-//
-// 【咨询说明】
-// {{message}}
-//
-// ------------------------------
-// 请尽快回复学员！

@@ -54,7 +54,7 @@ export function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <img src="https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/beebee_ai_black.png" alt="BEE Beta" className="h-8 lg:h-10 w-auto" />
+            <img src="https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/beebee_beta.png" alt="BEE BETA" className="h-8 lg:h-10 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -65,7 +65,8 @@ export function Header() {
                   key={item.sectionId}
                   href={`#${item.sectionId}`}
                   onClick={(e) => handleNavClick(item, e)}
-                  className="text-lg text-[#101828] hover:text-[#60B5FF] transition-colors cursor-pointer font-medium"
+                  className="text-[#101828] hover:text-[#60B5FF] transition-colors cursor-pointer font-medium whitespace-nowrap"
+                  style={{ fontSize: 'clamp(14px, 1.5vw, 18px)' }}
                 >
                   {item.label}
                 </a>
@@ -73,7 +74,8 @@ export function Header() {
                 <Link
                   key={item.href}
                   to={item.href!}
-                  className="text-lg text-[#101828] hover:text-[#60B5FF] transition-colors cursor-pointer font-medium"
+                  className="text-[#101828] hover:text-[#60B5FF] transition-colors cursor-pointer font-medium whitespace-nowrap"
+                  style={{ fontSize: 'clamp(14px, 1.5vw, 18px)' }}
                 >
                   {item.label}
                 </Link>
@@ -91,7 +93,10 @@ export function Header() {
               <Globe className="w-4 h-4 text-[#FF6900] group-hover:rotate-180 transition-transform duration-500" />
               
               {/* Language text - on the right of icon */}
-              <span className="text-sm font-medium text-[#FF6900]">
+              <span 
+                className="font-medium text-[#FF6900]"
+                style={{ fontSize: 'clamp(12px, 1.8vw, 14px)' }}
+              >
                 {language === 'zh' ? 'EN' : 'ZH'}
               </span>
             </button>
@@ -116,7 +121,8 @@ export function Header() {
                     key={item.sectionId}
                     href={`#${item.sectionId}`}
                     onClick={(e) => handleNavClick(item, e)}
-                    className="text-lg text-[#101828] hover:text-[#60B5FF] transition-colors cursor-pointer font-medium"
+                    className="text-[#101828] hover:text-[#60B5FF] transition-colors cursor-pointer font-medium"
+                    style={{ fontSize: 'clamp(15px, 2.5vw, 18px)' }}
                   >
                     {item.label}
                   </a>
@@ -125,7 +131,8 @@ export function Header() {
                     key={item.href}
                     to={item.href!}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-lg text-[#101828] hover:text-[#60B5FF] transition-colors cursor-pointer font-medium"
+                    className="text-[#101828] hover:text-[#60B5FF] transition-colors cursor-pointer font-medium"
+                    style={{ fontSize: 'clamp(15px, 2.5vw, 18px)' }}
                   >
                     {item.label}
                   </Link>

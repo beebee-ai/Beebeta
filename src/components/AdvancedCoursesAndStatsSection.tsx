@@ -106,7 +106,10 @@ export function AdvancedCoursesAndStatsSection() {
               </div>
 
               {/* Subtitle */}
-              <p className="mt-6 text-white/90 text-lg lg:text-xl max-w-3xl text-center leading-relaxed font-light">
+              <p 
+                className="mt-6 text-white/90 max-w-3xl text-center leading-relaxed font-light"
+                style={{ fontSize: 'clamp(16px, 2.8vw, 20px)' }}
+              >
                 {t.advancedCoursesSection.description}
               </p>
             </div>
@@ -115,13 +118,13 @@ export function AdvancedCoursesAndStatsSection() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Courses Container - 淡雅渐变背景 */}
-          <div className="max-w-[1350px] mx-auto rounded-3xl p-8 lg:p-12 relative overflow-hidden"
+          <div className="max-w-[1350px] mx-auto rounded-3xl p-0 lg:p-12 relative overflow-hidden"
             style={{
               background: '#fafafa'
             }}
           >
             {/* 两个卡片并排 */}
-            <div className="grid grid-cols-1 gap-6 lg:gap-8 relative z-10 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 gap-6 lg:gap-8 relative z-10 max-w-[650px] lg:max-w-4xl mx-auto py-8 lg:py-0">
               
               {/* Starry 繁星：专业进阶课 */}
               <div className="relative rounded-3xl p-4 sm:p-6 lg:p-8 group transition-all hover:scale-[1.02] duration-500 flex flex-col border-2 overflow-hidden"
@@ -178,14 +181,25 @@ export function AdvancedCoursesAndStatsSection() {
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-xs sm:text-sm text-[#8B4513] mb-1 font-semibold">{t.advancedCoursesSection.starry.target}</div>
-                    <h3 className="text-[#101828] text-2xl sm:text-3xl lg:text-4xl mb-1 sm:mb-2 font-bold leading-tight">
+                    <div 
+                      className="text-[#8B4513] mb-1 font-semibold"
+                      style={{ fontSize: 'clamp(11px, 2vw, 14px)' }}
+                    >
+                      {t.advancedCoursesSection.starry.target}
+                    </div>
+                    <h3 
+                      className="text-[#101828] mb-1 sm:mb-2 font-bold leading-tight"
+                      style={{ fontSize: 'clamp(20px, 4vw, 36px)' }}
+                    >
                       {t.advancedCoursesSection.starry.subtitle}
                     </h3>
                   </div>
                 </div>
 
-                <p className="text-[#4a5565] mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base lg:text-lg">
+                <p 
+                  className="text-[#4a5565] mb-4 sm:mb-6 leading-relaxed"
+                  style={{ fontSize: 'clamp(14px, 2.5vw, 18px)' }}
+                >
                   {t.advancedCoursesSection.starry.description}
                 </p>
 
@@ -194,43 +208,93 @@ export function AdvancedCoursesAndStatsSection() {
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6900] flex-shrink-0" />
                     <div className="min-w-0">
-                      <div className="text-[#6b7280] text-xs sm:text-sm">{t.advancedCoursesSection.starry.duration}</div>
-                      <div className="text-[#101828] text-sm sm:text-base truncate">{t.advancedCoursesSection.starry.durationValue}</div>
+                      <div 
+                        className="text-[#6b7280]"
+                        style={{ fontSize: 'clamp(11px, 2vw, 14px)' }}
+                      >
+                        {t.advancedCoursesSection.starry.duration}
+                      </div>
+                      <div 
+                        className="text-[#101828] truncate"
+                        style={{ fontSize: 'clamp(13px, 2.2vw, 16px)' }}
+                      >
+                        {t.advancedCoursesSection.starry.durationValue}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6900] flex-shrink-0" />
                     <div className="min-w-0">
-                      <div className="text-[#6b7280] text-xs sm:text-sm">{t.advancedCoursesSection.starry.classSize}</div>
-                      <div className="text-[#101828] text-sm sm:text-base truncate">{t.advancedCoursesSection.starry.classSizeValue}</div>
+                      <div 
+                        className="text-[#6b7280]"
+                        style={{ fontSize: 'clamp(11px, 2vw, 14px)' }}
+                      >
+                        {t.advancedCoursesSection.starry.classSize}
+                      </div>
+                      <div 
+                        className="text-[#101828] truncate"
+                        style={{ fontSize: 'clamp(13px, 2.2vw, 16px)' }}
+                      >
+                        {t.advancedCoursesSection.starry.classSizeValue}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6900] flex-shrink-0" />
                     <div className="min-w-0">
-                      <div className="text-[#6b7280] text-xs sm:text-sm">{t.advancedCoursesSection.starry.language}</div>
-                      <div className="text-[#101828] text-sm sm:text-base truncate">{t.advancedCoursesSection.starry.languageValue}</div>
+                      <div 
+                        className="text-[#6b7280]"
+                        style={{ fontSize: 'clamp(11px, 2vw, 14px)' }}
+                      >
+                        {t.advancedCoursesSection.starry.language}
+                      </div>
+                      <div 
+                        className="text-[#101828] truncate"
+                        style={{ fontSize: 'clamp(13px, 2.2vw, 16px)' }}
+                      >
+                        {t.advancedCoursesSection.starry.languageValue}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6900] flex-shrink-0" />
                     <div className="min-w-0">
-                      <div className="text-[#6b7280] text-xs sm:text-sm">{t.advancedCoursesSection.starry.instructors}</div>
-                      <div className="text-[#101828] text-sm sm:text-base truncate">{t.advancedCoursesSection.starry.instructorsValue}</div>
+                      <div 
+                        className="text-[#6b7280]"
+                        style={{ fontSize: 'clamp(11px, 2vw, 14px)' }}
+                      >
+                        {t.advancedCoursesSection.starry.instructors}
+                      </div>
+                      <div 
+                        className="text-[#101828] truncate"
+                        style={{ fontSize: 'clamp(13px, 2.2vw, 16px)' }}
+                      >
+                        {t.advancedCoursesSection.starry.instructorsValue}
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* 12门专业课程可选 */}
                 <div className="mb-4 sm:mb-6 flex-1">
-                  <h4 className="text-[#101828] mb-2 sm:mb-3 text-base sm:text-lg lg:text-xl font-bold">{t.advancedCoursesSection.starry.courseOptions}</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                  <h4 
+                    className="text-[#101828] mb-2 sm:mb-3 font-bold"
+                    style={{ fontSize: 'clamp(15px, 2.8vw, 20px)' }}
+                  >
+                    {t.advancedCoursesSection.starry.courseOptions}
+                  </h4>
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 gap-x-4">
                     {t.advancedCoursesSection.starry.courses.map((course, index) => (
-                      <div key={index} className="flex items-start gap-1.5 text-sm sm:text-base">
+                      <div key={index} className={`flex items-start gap-1.5 ${index % 2 === 1 ? 'lg:pl-0 pl-2' : ''}`}>
                         <svg className="w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071L3.29289 10.7071C2.90237 10.3166 2.90237 9.68342 3.29289 9.29289C3.68342 8.90237 4.31658 8.90237 4.70711 9.29289L8 12.5858L15.2929 5.29289C15.6834 4.90237 16.3166 4.90237 16.7071 5.29289Z" fill="#FF6900"/>
                         </svg>
-                        <span className="text-[#4a5565] leading-relaxed">{course}</span>
+                        <span 
+                          className="text-[#4a5565] leading-relaxed"
+                          style={{ fontSize: 'clamp(13px, 2.2vw, 16px)' }}
+                        >
+                          {course}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -239,10 +303,11 @@ export function AdvancedCoursesAndStatsSection() {
                 {/* CTA Button */}
                 <Button
                   onClick={() => handleConsultClick('Starry 繁星专业进阶课')}
-                  className="w-full sm:w-auto sm:px-16 py-4 sm:py-5 text-base sm:text-lg cursor-pointer transition-all hover:scale-105 border-0 mx-auto"
+                  className="sm:w-auto py-3 sm:py-4 lg:py-5 px-8 sm:px-10 lg:px-12 cursor-pointer transition-all hover:scale-105 border-0 mx-auto"
                   style={{ 
                     background: 'linear-gradient(135deg, #FF6900 0%, #FF8533 100%)',
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 'clamp(14px, 3vw, 18px)'
                   }}
                 >
                   {t.advancedCoursesSection.starry.cta}
@@ -304,14 +369,25 @@ export function AdvancedCoursesAndStatsSection() {
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-xs sm:text-sm text-[#1a5490] mb-1 font-semibold">{t.advancedCoursesSection.orbiter.target}</div>
-                    <h3 className="text-[#101828] text-2xl sm:text-3xl lg:text-4xl mb-1 sm:mb-2 font-bold leading-tight">
+                    <div 
+                      className="text-[#1a5490] mb-1 font-semibold"
+                      style={{ fontSize: 'clamp(11px, 2vw, 14px)' }}
+                    >
+                      {t.advancedCoursesSection.orbiter.target}
+                    </div>
+                    <h3 
+                      className="text-[#101828] mb-1 sm:mb-2 font-bold leading-tight"
+                      style={{ fontSize: 'clamp(20px, 4vw, 36px)' }}
+                    >
                       {t.advancedCoursesSection.orbiter.subtitle}
                     </h3>
                   </div>
                 </div>
 
-                <p className="text-[#4a5565] mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base lg:text-lg">
+                <p 
+                  className="text-[#4a5565] mb-4 sm:mb-6 leading-relaxed"
+                  style={{ fontSize: 'clamp(14px, 2.5vw, 18px)' }}
+                >
                   {t.advancedCoursesSection.orbiter.description}
                 </p>
 
@@ -320,29 +396,69 @@ export function AdvancedCoursesAndStatsSection() {
                   <div className="flex items-center gap-2">
                     <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6900] flex-shrink-0" />
                     <div className="min-w-0">
-                      <div className="text-[#6b7280] text-xs sm:text-sm">{t.advancedCoursesSection.orbiter.courseFormat}</div>
-                      <div className="text-[#101828] text-sm sm:text-base truncate">{t.advancedCoursesSection.orbiter.courseFormatValue}</div>
+                      <div 
+                        className="text-[#6b7280]"
+                        style={{ fontSize: 'clamp(11px, 2vw, 14px)' }}
+                      >
+                        {t.advancedCoursesSection.orbiter.courseFormat}
+                      </div>
+                      <div 
+                        className="text-[#101828] truncate"
+                        style={{ fontSize: 'clamp(13px, 2.2vw, 16px)' }}
+                      >
+                        {t.advancedCoursesSection.orbiter.courseFormatValue}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6900] flex-shrink-0" />
                     <div className="min-w-0">
-                      <div className="text-[#6b7280] text-xs sm:text-sm">{t.advancedCoursesSection.orbiter.duration}</div>
-                      <div className="text-[#101828] text-sm sm:text-base truncate">{t.advancedCoursesSection.orbiter.durationValue}</div>
+                      <div 
+                        className="text-[#6b7280]"
+                        style={{ fontSize: 'clamp(11px, 2vw, 14px)' }}
+                      >
+                        {t.advancedCoursesSection.orbiter.duration}
+                      </div>
+                      <div 
+                        className="text-[#101828] truncate"
+                        style={{ fontSize: 'clamp(13px, 2.2vw, 16px)' }}
+                      >
+                        {t.advancedCoursesSection.orbiter.durationValue}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6900] flex-shrink-0" />
                     <div className="min-w-0">
-                      <div className="text-[#6b7280] text-xs sm:text-sm">{t.advancedCoursesSection.orbiter.instructors}</div>
-                      <div className="text-[#101828] text-sm sm:text-base truncate">{t.advancedCoursesSection.orbiter.instructorsValue}</div>
+                      <div 
+                        className="text-[#6b7280]"
+                        style={{ fontSize: 'clamp(11px, 2vw, 14px)' }}
+                      >
+                        {t.advancedCoursesSection.orbiter.instructors}
+                      </div>
+                      <div 
+                        className="text-[#101828] truncate"
+                        style={{ fontSize: 'clamp(13px, 2.2vw, 16px)' }}
+                      >
+                        {t.advancedCoursesSection.orbiter.instructorsValue}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <Globe2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6900] flex-shrink-0" />
                     <div className="min-w-0">
-                      <div className="text-[#6b7280] text-xs sm:text-sm">{t.advancedCoursesSection.orbiter.eligibility}</div>
-                      <div className="text-[#101828] text-sm sm:text-base truncate">{t.advancedCoursesSection.orbiter.eligibilityValue}</div>
+                      <div 
+                        className="text-[#6b7280]"
+                        style={{ fontSize: 'clamp(11px, 2vw, 14px)' }}
+                      >
+                        {t.advancedCoursesSection.orbiter.eligibility}
+                      </div>
+                      <div 
+                        className="text-[#101828] truncate"
+                        style={{ fontSize: 'clamp(13px, 2.2vw, 16px)' }}
+                      >
+                        {t.advancedCoursesSection.orbiter.eligibilityValue}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -355,11 +471,16 @@ export function AdvancedCoursesAndStatsSection() {
                     '产品升级与优化陪伴式学习',
                     '仅对已学课程的强化陪练'
                   ]).map((feature, index) => (
-                    <div key={index} className="flex items-start gap-2 text-sm sm:text-base">
+                    <div key={index} className="flex items-start gap-2">
                       <svg className="w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071L3.29289 10.7071C2.90237 10.3166 2.90237 9.68342 3.29289 9.29289C3.68342 8.90237 4.31658 8.90237 4.70711 9.29289L8 12.5858L15.2929 5.29289C15.6834 4.90237 16.3166 4.90237 16.7071 5.29289Z" fill="#FF6900"/>
                       </svg>
-                      <span className="text-[#4a5565] leading-relaxed">{feature}</span>
+                      <span 
+                        className="text-[#4a5565] leading-relaxed"
+                        style={{ fontSize: 'clamp(13px, 2.2vw, 16px)' }}
+                      >
+                        {feature}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -367,10 +488,11 @@ export function AdvancedCoursesAndStatsSection() {
                 {/* CTA Button */}
                 <Button
                   onClick={() => handleConsultClick('Orbiter 伴星1v1陪练课')}
-                  className="w-full sm:w-auto sm:px-16 py-4 sm:py-5 text-base sm:text-lg cursor-pointer transition-all hover:scale-105 border-0 mx-auto"
+                  className="sm:w-auto py-3 sm:py-4 lg:py-5 px-8 sm:px-10 lg:px-12 cursor-pointer transition-all hover:scale-105 border-0 mx-auto"
                   style={{ 
                     background: 'linear-gradient(135deg, #FF6900 0%, #FF8533 100%)',
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 'clamp(14px, 3vw, 18px)'
                   }}
                 >
                   {t.advancedCoursesSection.orbiter.cta}
@@ -384,22 +506,32 @@ export function AdvancedCoursesAndStatsSection() {
           <div className="mt-12 lg:mt-16">
             {/* 小板块标题 */}
             <div className="text-center mb-8 lg:mb-12">
-              <h3 className="text-2xl lg:text-3xl">
+              <h3 style={{ fontSize: 'clamp(20px, 4vw, 32px)' }}>
                 <span className="text-[#101828]">{t.stats.title}</span>
                 <span className="text-[#FF6900]">{t.stats.titleHighlight}</span>
               </h3>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12 max-w-6xl mx-auto">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 lg:gap-12 max-w-6xl mx-auto">
               {teachingModes.map((mode, index) => {
                 const Icon = mode.icon;
                 return (
-                  <div key={index} className="text-center group flex flex-col items-center bg-white rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all border border-[#FF6900]/10 hover:border-[#FF6900]/30">
-                    <div className="w-16 h-16 lg:w-20 lg:h-20 mb-4 lg:mb-6 rounded-2xl bg-gradient-to-r from-[#FF6900] to-[#FF8533] flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
-                      <Icon className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
+                  <div key={index} className="text-center group flex flex-col items-center bg-white rounded-2xl p-3 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all border border-[#FF6900]/10 hover:border-[#FF6900]/30">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mb-2 sm:mb-4 lg:mb-6 rounded-2xl bg-gradient-to-r from-[#FF6900] to-[#FF8533] flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                      <Icon className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
                     </div>
-                    <div className="text-[#101828] text-lg lg:text-xl mb-3 lg:mb-4">{mode.title}</div>
-                    <div className="text-sm lg:text-base text-[#4a5565] leading-relaxed">{mode.description}</div>
+                    <div 
+                      className="text-[#101828] mb-2 sm:mb-3 lg:mb-4 font-semibold"
+                      style={{ fontSize: 'clamp(12px, 3vw, 20px)' }}
+                    >
+                      {mode.title}
+                    </div>
+                    <div 
+                      className="text-[#4a5565] leading-relaxed"
+                      style={{ fontSize: 'clamp(11px, 2.2vw, 16px)' }}
+                    >
+                      {mode.description}
+                    </div>
                   </div>
                 );
               })}

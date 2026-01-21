@@ -29,7 +29,7 @@ export function LearningPath() {
             </span>
             {isEn 
               ? 'Choose Galaxy Camp if you have no/low coding experience and want to build real AI products; choose Cosmos Camp if you have a strong engineering foundation and aim for production-level projects; choose Infinity Camp if you have solid academics and 3+ years of intensive engineering experience (requires 1-on-1 interview with the founder).'
-              : '无/低编码经验且想做出真实AI产品选择星空营；具备较强工程基础且追求生产级项目选择深空营；学术扎实且有3年以上高强度工程经验选择无界营（需通过创始人1v1面试）。'
+              : '无/低编码经验且想做出真实AI产品选择星空营；具备较强工程基础且追求生产级项目选择深空营；学术扎实且有3年以上高强度工程经验选择无界营（需通过创始人1v1面试）'
             }
           </p>
 

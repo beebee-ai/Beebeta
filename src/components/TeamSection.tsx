@@ -539,20 +539,36 @@ export function TeamSection() {
         <div className="p-3 sm:p-3 flex flex-col flex-1 min-w-0 overflow-hidden">
           <div className="flex items-start justify-between mb-1.5 flex-shrink-0">
             <div className="flex-1 min-w-0">
-              <h3 className="text-[#101828] mb-1 text-base sm:text-lg">{member.name}</h3>
-              <p className="text-[#FF6900] text-xs sm:text-sm line-clamp-1 sm:line-clamp-1">{member.title}</p>
+              <h3 
+                className="text-[#101828] mb-1"
+                style={{ fontSize: 'clamp(16px, 2.8vw, 18px)' }}
+              >
+                {member.name}
+              </h3>
+              <p 
+                className="text-[#FF6900] line-clamp-1 sm:line-clamp-1"
+                style={{ fontSize: 'clamp(12px, 2.2vw, 14px)' }}
+              >
+                {member.title}
+              </p>
             </div>
             {/* <Linkedin className="w-5 h-5 text-gray-500 group-hover:text-[#FF6900] transition-colors cursor-pointer" /> */}
           </div>
 
-          <p className="text-[#4a5565] text-xs sm:text-sm mb-2 line-clamp-3 sm:line-clamp-4 flex-shrink-0">{member.bio}</p>
+          <p 
+            className="text-[#4a5565] mb-2 line-clamp-3 sm:line-clamp-4 flex-shrink-0"
+            style={{ fontSize: 'clamp(11px, 2vw, 13px)' }}
+          >
+            {member.bio}
+          </p>
 
           {/* Expertise Tags */}
           <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-auto">
             {displayTags.map((skill) => (
               <span
                 key={skill}
-                className="px-1.5 sm:px-2 py-0.5 bg-[#FF6900]/10 border border-[#FF6900]/20 rounded text-[#FF6900] text-[10px] sm:text-xs whitespace-nowrap"
+                className="px-1.5 sm:px-2 py-0.5 bg-[#FF6900]/10 border border-[#FF6900]/20 rounded text-[#FF6900] whitespace-nowrap"
+                style={{ fontSize: 'clamp(9px, 1.6vw, 11px)' }}
               >
                 {skill}
               </span>

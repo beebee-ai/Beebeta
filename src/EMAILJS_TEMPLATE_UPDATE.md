@@ -13,10 +13,10 @@
    将模板内容修改为以下格式：
 
 ```
-Subject: BEE Beta 官网留言 - {{from_name}}
+Subject: BEE BETA 官网留言 - {{from_name}}
 
 Content:
-您收到一条来自 BEE Beta 官网的新留言
+您收到一条来自 BEE BETA 官网的新留言
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📍 留言来源
@@ -35,9 +35,9 @@ Content:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 {{message}}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-此邮件由 BEE Beta 官网自动发送
+此邮件由 BEE BETA 官网自动发送
 请在24小时内回复用户
 ```
 
@@ -78,12 +78,8 @@ Content:
 ### ✅ 配置检查清单
 
 - [ ] 模板已保存
-- [ ] Subject 设置为：`BEE Beta 官网留言 - {{from_name}}`
+- [ ] Subject 设置为：`BEE BETA 官网留言 - {{from_name}}`
 - [ ] To Email 设置为：`2302137484@qq.com`
-- [ ] Reply To 设置为：`{{from_email}}`
-- [ ] From Name 设置为：`{{from_name}}`
-- [ ] 内容中包含 `{{source}}` 变量
-- [ ] 点击 "Test It" 按钮测试模板
 
 ### 📧 测试步骤
 

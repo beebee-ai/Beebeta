@@ -623,7 +623,7 @@ export const pacerMentors: MentorData[] = [
   <li>搭建 Google Meridian MMM 模型，用于跨渠道 ROI 测算与预算优化</li>
   <li>主导 A/B 测试与增长实验体系设计，支持业务决策与验证过程</li>
   <li>设计实时营销监控系统（40+ 指标），减少 DS 支撑需求 40%</li>
-  <li>推动 80% 报表自动化：开发 Python + CI/CD 数据管线</li>
+  <li>推动 80% 报表���动化：开发 Python + CI/CD 数据管线</li>
   <li>AIG 时期负责信用风险模型、Monte Carlo 模拟、违约预测（85% 准确度）</li>
   <li>开发早期预警系统，在 COVID 时期避免约 8,000 万潜在损失</li>
 </ul>
@@ -794,7 +794,7 @@ export const pacerMentors: MentorData[] = [
     titleEn:
       "Core Systems Engineer in NY Financial Institutions",
     summary:
-      "哥伦比亚大学运筹学硕士，纽约大学电气工程硕士，中山大学电子与通信本科。拥有 9 年以上纽约金融机构核心系统经验，覆盖后端开发、数据工程、交易与风险系统。精通 Python/Java/Spring/SQL/C#，并具备前端原型能力。在 BEE Beta 指导学生构建可落地、可维护、可扩展的生产级系统。",
+      "哥伦比亚大学运筹学硕士,纽约大学电气工程硕士,中山大学电子与通信本科。拥有 9 年以上纽约金融机构核心系统经验,覆盖后端开发、数据工程、交易与风险系统。精通 Python/Java/Spring/SQL/C#,并具备前端原型能力。在 BEE BETA 指导学生构建可落地、可维护、可扩展的生产级系统。",
     summaryEn:
       "MS in Operations Research from Columbia University, MS in Electrical Engineering from NYU, and BS from Sun Yat-sen University. Over 9 years of backend and data engineering experience across NYC financial institutions, specializing in core trading, risk, and settlement systems. Skilled in Python, Java, Spring, SQL, C#, plus frontend prototyping.",
     details: `

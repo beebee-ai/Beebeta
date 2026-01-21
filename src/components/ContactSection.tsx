@@ -90,12 +90,8 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
 
   const emails = [
     {
-      email: 'internprogram@beebee.ai',
+      email: 'service@beebee.ai',
       description: t.contact.emails.email1Description
-    },
-    {
-      email: 'brinny@beebee.ai',
-      description: t.contact.emails.email2Description
     }
   ];
 
@@ -104,7 +100,12 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
       <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 ${isDialog ? '' : 'max-w-6xl mx-auto'}`}>
         {/* Contact Info */}
         <div>
-          <h3 className="text-[#101828] mb-8">{t.contact.contactInfoTitle}</h3>
+          <h3 
+            className="text-[#101828] mb-8"
+            style={{ fontSize: 'clamp(18px, 3vw, 22px)' }}
+          >
+            {t.contact.contactInfoTitle}
+          </h3>
           <div className="space-y-6">
             {/* Email Contacts */}
             {emails.map((info) => (
@@ -118,14 +119,25 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[#101828] mb-1">{t.contact.emailLabel}</h4>
+                  <h4 
+                    className="text-[#101828] mb-1"
+                    style={{ fontSize: 'clamp(15px, 2.6vw, 18px)' }}
+                  >
+                    {t.contact.emailLabel}
+                  </h4>
                   <a 
                     href={`mailto:${info.email}`}
                     className="text-[#FF6900] mb-1 block hover:underline"
+                    style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
                   >
                     {info.email}
                   </a>
-                  <p className="text-[#6b7280] text-sm">{info.description}</p>
+                  <p 
+                    className="text-[#6b7280] text-sm"
+                    style={{ fontSize: 'clamp(12px, 2.2vw, 14px)' }}
+                  >
+                    {info.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -148,12 +160,21 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
 
         {/* Contact Form */}
         <div>
-          <h3 className="text-[#101828] mb-8">{t.contact.form.title}</h3>
+          <h3 
+            className="text-[#101828] mb-8"
+            style={{ fontSize: 'clamp(18px, 3vw, 22px)' }}
+          >
+            {t.contact.form.title}
+          </h3>
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* 同学姓名和年龄 - 左右排列 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="name" className="block text-[#4a5565] mb-2">
+                <label 
+                  htmlFor="name" 
+                  className="block text-[#4a5565] mb-2"
+                  style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
+                >
                   {t.contact.form.name} *
                 </label>
                 <input
@@ -164,12 +185,17 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-white border border-[#FF6900]/20 rounded-lg text-[#101828] placeholder-gray-400 focus:border-[#FF6900] focus:outline-none transition-colors"
+                  style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
                   placeholder={t.contact.form.namePlaceholder}
                 />
               </div>
 
               <div>
-                <label htmlFor="age" className="block text-[#4a5565] mb-2">
+                <label 
+                  htmlFor="age" 
+                  className="block text-[#4a5565] mb-2"
+                  style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
+                >
                   {t.contact.form.age}
                 </label>
                 <input
@@ -179,6 +205,7 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
                   value={formData.age}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-white border border-[#FF6900]/20 rounded-lg text-[#101828] placeholder-gray-400 focus:border-[#FF6900] focus:outline-none transition-colors"
+                  style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
                   placeholder={t.contact.form.agePlaceholder}
                 />
               </div>
@@ -187,7 +214,11 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
             {/* 所在国家和电子邮件 - 左右排列 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="country" className="block text-[#4a5565] mb-2">
+                <label 
+                  htmlFor="country" 
+                  className="block text-[#4a5565] mb-2"
+                  style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
+                >
                   {t.contact.form.country} *
                 </label>
                 <input
@@ -198,12 +229,17 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
                   value={formData.country}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-white border border-[#FF6900]/20 rounded-lg text-[#101828] placeholder-gray-400 focus:border-[#FF6900] focus:outline-none transition-colors"
+                  style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
                   placeholder={t.contact.form.countryPlaceholder}
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-[#4a5565] mb-2">
+                <label 
+                  htmlFor="email" 
+                  className="block text-[#4a5565] mb-2"
+                  style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
+                >
                   {t.contact.form.email} *
                 </label>
                 <input
@@ -214,6 +250,7 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-white border border-[#FF6900]/20 rounded-lg text-[#101828] placeholder-gray-400 focus:border-[#FF6900] focus:outline-none transition-colors"
+                  style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
                   placeholder={t.contact.form.emailPlaceholder}
                 />
               </div>
@@ -221,7 +258,11 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
 
             {/* 咨询说明 - 单独一行 */}
             <div>
-              <label htmlFor="message" className="block text-[#4a5565] mb-2">
+              <label 
+                htmlFor="message" 
+                className="block text-[#4a5565] mb-2"
+                style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
+              >
                 {t.contact.form.message} *
               </label>
               <textarea
@@ -232,6 +273,7 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
                 value={formData.message}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-white border border-[#FF6900]/20 rounded-lg text-[#101828] placeholder-gray-400 focus:border-[#FF6900] focus:outline-none transition-colors resize-none"
+                style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
                 placeholder={t.contact.form.messagePlaceholder}
               />
             </div>
@@ -239,6 +281,7 @@ export function ContactSection({ isDialog = false, source }: ContactSectionProps
             <Button
               type="submit"
               className="w-full bg-[#FF6900] hover:bg-[#FF6900]/90 text-white cursor-pointer"
+              style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
               disabled={isSubmitting}
             >
               {isSubmitting ? t.contact.form.submitting : t.contact.form.submit}

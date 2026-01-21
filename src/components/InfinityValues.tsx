@@ -53,18 +53,43 @@ export function InfinityValues() {
         <div className="inline-flex items-center gap-0 relative">
           {/* 左侧垂直装饰条 */}
           <div className="flex flex-col items-center gap-2 pr-5 lg:pr-6">
-            <div className="w-0.5 h-6 bg-gradient-to-b from-transparent to-[#FF6900]/60" />
-            <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg flex items-center justify-center relative" style={{
-              background: 'linear-gradient(135deg, #FF6900 0%, #FF8533 100%)',
-            }}>
+            <div 
+              className="bg-gradient-to-b from-transparent to-[#FF6900]/60"
+              style={{ 
+                width: 'clamp(1.5px, 0.15vw, 2px)',
+                height: 'clamp(18px, 2.5vw, 22px)'
+              }}
+            />
+            <div 
+              className="rounded-lg flex items-center justify-center relative"
+              style={{
+                width: 'clamp(28px, 4.5vw, 36px)',
+                height: 'clamp(28px, 4.5vw, 36px)',
+                background: 'linear-gradient(135deg, #FF6900 0%, #FF8533 100%)',
+              }}
+            >
               {/* 无限符号 */}
-              <svg className="w-4 h-4 lg:w-5 lg:h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <svg 
+                className="text-white" 
+                fill="currentColor" 
+                viewBox="0 0 24 24"
+                style={{
+                  width: 'clamp(14px, 2.2vw, 18px)',
+                  height: 'clamp(14px, 2.2vw, 18px)'
+                }}
+              >
                 <path d="M18.6 6.62c-1.44 0-2.8.56-3.77 1.53L12 10.66 10.48 12h.01L7.8 14.39c-.64.64-1.49.99-2.4.99-1.87 0-3.39-1.51-3.39-3.38S3.53 8.62 5.4 8.62c.91 0 1.76.35 2.44 1.03l1.13 1 1.51-1.34L9.22 8.2C8.2 7.18 6.84 6.62 5.4 6.62 2.42 6.62 0 9.04 0 12s2.42 5.38 5.4 5.38c1.44 0 2.8-.56 3.77-1.53l2.83-2.5.01-.01L13.52 12h-.01l2.69-2.39c.64-.64 1.49-.99 2.4-.99 1.87 0 3.39 1.51 3.39 3.38s-1.52 3.38-3.39 3.38c-.9 0-1.76-.35-2.44-1.03l-1.14-1.01-1.51 1.34 1.27 1.12c1.02 1.01 2.37 1.57 3.82 1.57 2.98 0 5.4-2.41 5.4-5.38s-2.42-5.37-5.4-5.37z"/>
               </svg>
               {/* 图标外框装饰 */}
               <div className="absolute -inset-1 border-2 border-[#FF6900]/20 rounded-lg" />
             </div>
-            <div className="w-0.5 h-6 bg-gradient-to-t from-transparent to-[#FF6900]/60" />
+            <div 
+              className="bg-gradient-to-t from-transparent to-[#FF6900]/60"
+              style={{ 
+                width: 'clamp(1.5px, 0.15vw, 2px)',
+                height: 'clamp(18px, 2.5vw, 22px)'
+              }}
+            />
           </div>
           
           {/* 主内容区 */}
@@ -77,7 +102,10 @@ export function InfinityValues() {
             
             {/* 文字内容 */}
             <div className="relative">
-              <span className="text-[#FF6900] font-semibold tracking-wide text-sm lg:text-base block">
+              <span 
+                className="text-[#FF6900] font-semibold tracking-wide block"
+                style={{ fontSize: 'clamp(13px, 2.2vw, 15px)' }}
+              >
                 {isEn 
                   ? 'BETA INFINITY CAMP — Unique Value'
                   : 'BETA 无界营（INFINITY）— 独特价值'
@@ -93,7 +121,10 @@ export function InfinityValues() {
           </div>
         </div>
         
-        <p className="text-[#2d3748] text-base lg:text-lg leading-relaxed font-medium">
+        <p 
+          className="text-[#2d3748] leading-relaxed font-medium"
+          style={{ fontSize: 'clamp(14px, 2.2vw, 16px)' }}
+        >
           {infinityValues.subtitle}
         </p>
       </div>
@@ -118,8 +149,11 @@ export function InfinityValues() {
                 {/* Large Number */}
                 <div className="relative">
                   <span 
-                    className="text-6xl lg:text-7xl font-bold transition-opacity"
-                    style={{ color: value.accentColor }}
+                    className="font-bold transition-opacity"
+                    style={{ 
+                      color: value.accentColor,
+                      fontSize: 'clamp(36px, 8vw, 72px)'
+                    }}
                   >
                     {value.number}
                   </span>
@@ -127,14 +161,25 @@ export function InfinityValues() {
                 
                 {/* Icon */}
                 <div 
-                  className="relative z-10 flex items-center justify-center w-16 h-16 lg:w-20 lg:h-20 rounded-2xl border-2 bg-white backdrop-blur-sm group-hover:scale-110 transition-transform duration-300"
-                  style={{ borderColor: `${value.accentColor}40` }}
+                  className="relative z-10 flex items-center justify-center rounded-2xl border-2 bg-white backdrop-blur-sm group-hover:scale-110 transition-transform duration-300"
+                  style={{ 
+                    borderColor: `${value.accentColor}40`,
+                    width: 'clamp(48px, 10vw, 80px)',
+                    height: 'clamp(48px, 10vw, 80px)'
+                  }}
                 >
                   <div 
                     className="absolute inset-0 rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity"
                     style={{ background: `radial-gradient(circle, ${value.accentColor}20, transparent)` }}
                   />
-                  <Icon className="w-8 h-8 lg:w-10 lg:h-10 relative z-10" style={{ color: value.accentColor }} />
+                  <Icon 
+                    className="relative z-10" 
+                    style={{ 
+                      color: value.accentColor,
+                      width: 'clamp(24px, 5vw, 40px)',
+                      height: 'clamp(24px, 5vw, 40px)'
+                    }} 
+                  />
                 </div>
               </div>
 
@@ -172,7 +217,8 @@ export function InfinityValues() {
                   <div className="relative z-10">
                     {/* Title */}
                     <h3 
-                      className="text-xl lg:text-2xl font-bold mb-5 transition-colors text-[#101828]"
+                      className="font-bold mb-5 transition-colors text-[#101828]"
+                      style={{ fontSize: 'clamp(16px, 3vw, 22px)' }}
                     >
                       {value.title}
                     </h3>
@@ -187,7 +233,10 @@ export function InfinityValues() {
                               style={{ backgroundColor: value.accentColor }}
                             />
                           </div>
-                          <span className="text-[#101828] text-sm lg:text-base leading-relaxed group-hover/item:text-[#FF6900] transition-colors">
+                          <span 
+                            className="text-[#101828] leading-relaxed group-hover/item:text-[#FF6900] transition-colors"
+                            style={{ fontSize: 'clamp(12px, 2vw, 15px)' }}
+                          >
                             {item}
                           </span>
                         </li>

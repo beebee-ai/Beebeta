@@ -220,9 +220,10 @@ export function CourseSection() {
             }}
           >
             <span 
-              className="text-sm font-semibold"
+              className="font-semibold"
               style={{ 
-                color: index === 0 ? '#FF6900' : index === 1 ? '#3B82F6' : index === 2 ? '#8B5CF6' : '#F59E0B'
+                color: index === 0 ? '#FF6900' : index === 1 ? '#3B82F6' : index === 2 ? '#8B5CF6' : '#F59E0B',
+                fontSize: 'clamp(12px, 2vw, 14px)'
               }}
             >
               {course.ageLimit}
@@ -231,12 +232,18 @@ export function CourseSection() {
           
           {/* 标题区域 */}
           <div className="mb-3 relative z-10">
-            <h3 className="text-[#101828] text-2xl lg:text-3xl font-bold">
+            <h3 
+              className="text-[#101828] font-bold"
+              style={{ fontSize: 'clamp(20px, 3.5vw, 28px)' }}
+            >
               {formatTitle(course.title)}
             </h3>
           </div>
           
-          <p className="text-[#2d3748] text-sm lg:text-base relative z-10">
+          <p 
+            className="text-[#2d3748] relative z-10"
+            style={{ fontSize: 'clamp(13px, 2vw, 16px)' }}
+          >
             {t.courses.labels.suitableFor}: {course.suitableFor}
           </p>
         </div>
@@ -254,12 +261,32 @@ export function CourseSection() {
         >
           <div className="space-y-3 lg:space-y-4">
             <div className="leading-relaxed">
-              <span className="text-[#101828] text-sm lg:text-base font-semibold">{t.courses.labels.duration}: </span>
-              <span className="text-[#2d3748] text-sm lg:text-base">{course.duration}</span>
+              <span 
+                className="text-[#101828] font-semibold"
+                style={{ fontSize: 'clamp(13px, 2vw, 16px)' }}
+              >
+                {t.courses.labels.duration}: 
+              </span>
+              <span 
+                className="text-[#2d3748]"
+                style={{ fontSize: 'clamp(13px, 2vw, 16px)' }}
+              >
+                {course.duration}
+              </span>
             </div>
             <div className="leading-relaxed">
-              <span className="text-[#101828] text-sm lg:text-base font-semibold">{t.courses.labels.requirements}: </span>
-              <span className="text-[#2d3748] text-sm lg:text-base">{course.requirements}</span>
+              <span 
+                className="text-[#101828] font-semibold"
+                style={{ fontSize: 'clamp(13px, 2vw, 16px)' }}
+              >
+                {t.courses.labels.requirements}: 
+              </span>
+              <span 
+                className="text-[#2d3748]"
+                style={{ fontSize: 'clamp(13px, 2vw, 16px)' }}
+              >
+                {course.requirements}
+              </span>
             </div>
           </div>
         </div>
@@ -317,7 +344,12 @@ export function CourseSection() {
                     >
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-[#101828] text-sm lg:text-base">{item}</span>
+                    <span 
+                      className="text-[#101828]"
+                      style={{ fontSize: 'clamp(13px, 2vw, 16px)' }}
+                    >
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -342,17 +374,23 @@ export function CourseSection() {
             </div>
           )}
 
-          <div className="mt-auto flex-shrink-0">
+          <div className="mt-auto flex-shrink-0 flex justify-center">
             <Button
               onClick={() => handleConsultClick(course)}
-              className="w-full transition-all group py-5 lg:py-6 text-base lg:text-lg cursor-pointer font-bold relative overflow-hidden"
+              className={`w-full transition-all group cursor-pointer font-bold relative overflow-hidden ${
+                index === 1 
+                  ? 'py-2.5 px-6 sm:py-4 sm:px-8 sm:px-10 lg:py-6 lg:px-12'
+                  : 'py-3 px-8 sm:py-4 sm:px-10 lg:py-6 lg:px-12'
+              }`}
               style={{ 
                 background: index === 0 ? 'linear-gradient(135deg, #FF6900 0%, #FF8533 100%)' :
                            index === 1 ? 'linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%)' :
                            index === 2 ? 'linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%)' :
+                           index === 3 ? 'linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%)' :
                            'linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%)',
                 color: '#ffffff',
-                border: 'none'
+                border: 'none',
+                fontSize: 'clamp(14px, 3vw, 18px)'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'scale(1.03)';
@@ -370,7 +408,7 @@ export function CourseSection() {
               />
               <span className="relative z-10 flex items-center justify-center">
                 {t.courses.labels.consult}
-                <Sparkles className="ml-2 w-4 h-4 lg:w-5 lg:h-5 group-hover:scale-110 group-hover:rotate-12 transition-transform" />
+                <Sparkles className="ml-2 w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 group-hover:scale-110 group-hover:rotate-12 transition-transform" />
               </span>
             </Button>
           </div>
@@ -449,7 +487,10 @@ export function CourseSection() {
               </div>
 
               {/* Subtitle */}
-              <p className="mt-6 text-white/90 text-lg lg:text-xl max-w-3xl text-center leading-relaxed font-light">
+              <p 
+                className="mt-6 text-white/90 max-w-3xl text-center leading-relaxed font-light"
+                style={{ fontSize: 'clamp(16px, 2.8vw, 20px)' }}
+              >
                 {t.courses.subtitle}
               </p>
             </div>
@@ -464,16 +505,39 @@ export function CourseSection() {
                 <div className="inline-flex items-center gap-0 relative">
                   {/* 左侧垂直装饰条 */}
                   <div className="flex flex-col items-center gap-2 pr-4 lg:pr-5">
-                    <div className="w-0.5 h-5 bg-gradient-to-b from-transparent to-[#FF6900]/60" />
-                    <div className="w-7 h-7 lg:w-9 lg:h-9 rounded-lg flex items-center justify-center relative" style={{
-                      background: 'linear-gradient(135deg, #FF6900 0%, #FF8533 100%)',
-                    }}>
+                    <div 
+                      className="bg-gradient-to-b from-transparent to-[#FF6900]/60"
+                      style={{ 
+                        width: 'clamp(1.5px, 0.15vw, 2px)',
+                        height: 'clamp(16px, 2vw, 18px)'
+                      }}
+                    />
+                    <div 
+                      className="rounded-lg flex items-center justify-center relative"
+                      style={{
+                        width: 'clamp(26px, 4vw, 32px)',
+                        height: 'clamp(26px, 4vw, 32px)',
+                        background: 'linear-gradient(135deg, #FF6900 0%, #FF8533 100%)',
+                      }}
+                    >
                       {/* 书本图标 */}
-                      <BookOpen className="w-4 h-4 lg:w-5 lg:h-5 text-white relative z-10" />
+                      <BookOpen 
+                        className="text-white relative z-10"
+                        style={{
+                          width: 'clamp(14px, 2.2vw, 18px)',
+                          height: 'clamp(14px, 2.2vw, 18px)'
+                        }}
+                      />
                       {/* 图标外框装饰 */}
                       <div className="absolute -inset-1 border-2 border-[#FF6900]/20 rounded-lg" />
                     </div>
-                    <div className="w-0.5 h-5 bg-gradient-to-t from-transparent to-[#FF6900]/60" />
+                    <div 
+                      className="bg-gradient-to-t from-transparent to-[#FF6900]/60"
+                      style={{ 
+                        width: 'clamp(1.5px, 0.15vw, 2px)',
+                        height: 'clamp(16px, 2vw, 18px)'
+                      }}
+                    />
                   </div>
                   
                   {/* 主内容区 */}
@@ -486,7 +550,10 @@ export function CourseSection() {
                     
                     {/* 文字内容 */}
                     <div className="relative">
-                      <span className="text-[#FF6900] font-semibold tracking-wide text-sm lg:text-base block">
+                      <span 
+                        className="text-[#FF6900] font-semibold tracking-wide block"
+                        style={{ fontSize: 'clamp(13px, 2.2vw, 15px)' }}
+                      >
                         {isEn ? 'Foundation: Pin Professional Open Course' : '入门课程：Pin 专业公开课'}
                       </span>
                       
@@ -519,16 +586,39 @@ export function CourseSection() {
                 <div className="inline-flex items-center gap-0 relative">
                   {/* 左侧垂直装饰条 */}
                   <div className="flex flex-col items-center gap-2 pr-4 lg:pr-5">
-                    <div className="w-0.5 h-5 bg-gradient-to-b from-transparent to-[#FF6900]/60" />
-                    <div className="w-7 h-7 lg:w-9 lg:h-9 rounded-lg flex items-center justify-center relative" style={{
-                      background: 'linear-gradient(135deg, #FF6900 0%, #FF8533 100%)',
-                    }}>
+                    <div 
+                      className="bg-gradient-to-b from-transparent to-[#FF6900]/60"
+                      style={{ 
+                        width: 'clamp(1.5px, 0.15vw, 2px)',
+                        height: 'clamp(16px, 2vw, 18px)'
+                      }}
+                    />
+                    <div 
+                      className="rounded-lg flex items-center justify-center relative"
+                      style={{
+                        width: 'clamp(26px, 4vw, 32px)',
+                        height: 'clamp(26px, 4vw, 32px)',
+                        background: 'linear-gradient(135deg, #FF6900 0%, #FF8533 100%)',
+                      }}
+                    >
                       {/* 学位帽图标 */}
-                      <GraduationCap className="w-4 h-4 lg:w-5 lg:h-5 text-white relative z-10" />
+                      <GraduationCap 
+                        className="text-white relative z-10"
+                        style={{
+                          width: 'clamp(14px, 2.2vw, 18px)',
+                          height: 'clamp(14px, 2.2vw, 18px)'
+                        }}
+                      />
                       {/* 图标外框装饰 */}
                       <div className="absolute -inset-1 border-2 border-[#FF6900]/20 rounded-lg" />
                     </div>
-                    <div className="w-0.5 h-5 bg-gradient-to-t from-transparent to-[#FF6900]/60" />
+                    <div 
+                      className="bg-gradient-to-t from-transparent to-[#FF6900]/60"
+                      style={{ 
+                        width: 'clamp(1.5px, 0.15vw, 2px)',
+                        height: 'clamp(16px, 2vw, 18px)'
+                      }}
+                    />
                   </div>
                   
                   {/* 主内容区 */}
@@ -541,7 +631,10 @@ export function CourseSection() {
                     
                     {/* 文字内容 */}
                     <div className="relative">
-                      <span className="text-[#FF6900] font-semibold tracking-wide text-sm lg:text-base block">
+                      <span 
+                        className="text-[#FF6900] font-semibold tracking-wide block"
+                        style={{ fontSize: 'clamp(13px, 2.2vw, 15px)' }}
+                      >
                         {isEn ? 'Advanced Programs: Choose One Path' : '进阶课程：选择一个方向'}
                       </span>
                       
@@ -556,10 +649,10 @@ export function CourseSection() {
               </div>
               
               <div className="text-center mb-8 lg:mb-10">
-                <p className="text-[#4a5565] text-sm lg:text-base mx-auto mt-4 italic whitespace-nowrap">
+                <p className="text-[#4a5565] text-sm lg:text-base mx-auto mt-4 italic max-w-3xl">
                   {isEn
                     ? 'Note: China courses use localized tech stack (Trae/Qoder replacing Cursor, etc.). Consult for details.'
-                    : '注：中国课程会使用更适合本地环境的完整技术栈（例如将 Cursor 替换为 Trae 或 Qoder 等）。如需细节，请咨询。'
+                    : '注：中国课程会使用更适合本地环境的完整技术栈（例如将 Cursor 替换为 Trae 或 Qoder 等）。如需细节,请咨询。'
                   }
                 </p>
               </div>

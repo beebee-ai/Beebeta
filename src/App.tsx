@@ -23,7 +23,7 @@ export default function App() {
     setFavicon('https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/icon/beebee_ico.png');
     
     // 设置默认标题
-    document.title = 'Bee-Beta';
+    document.title = 'BEE BETA';
   }, []);
 
   return (

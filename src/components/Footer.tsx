@@ -51,6 +51,7 @@ export function Footer() {
               href={`#${item.sectionId}`}
               onClick={(e) => handleNavClick(item, e)}
               className="text-[#4a5565] hover:text-[#60B5FF] transition-colors cursor-pointer"
+              style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
             >
               {item.label}
             </a>
@@ -62,7 +63,10 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="text-center">
-          <p className="text-[#4a5565] text-sm">
+          <p 
+            className="text-[#4a5565] text-sm"
+            style={{ fontSize: 'clamp(12px, 2.2vw, 14px)' }}
+          >
             {t.footer.copyright}
           </p>
         </div>

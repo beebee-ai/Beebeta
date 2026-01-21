@@ -15,10 +15,218 @@ const hobbiImages = [
   'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/hobbi_3.PNG'
 ];
 const yummyYummyImages = [
-  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/yum_1.jpg',
-  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/yum_2.jpg'
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/yum_3.png',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/yum_4.png'
 ];
 const relabSEOImages = ['https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/Relab_SEO_1.png'];
+
+// 单个作品卡片组件
+function WorkCard({ work }: { work: any }) {
+  const { language } = useLanguage();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const images = work.image;
+  const hasMultipleImages = images.length > 1;
+
+  // 自动轮播效果
+  useEffect(() => {
+    if (!hasMultipleImages || isHovered) return;
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 3000); // 每3秒切换一次
+
+    return () => clearInterval(interval);
+  }, [hasMultipleImages, isHovered, images.length]);
+
+  // 切换到上一张图片
+  const handlePrevImage = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  // 切换到下一张图片
+  const handleNextImage = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  return (
+    <motion.div
+      key={work.id}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.3 }}
+    >
+      <a
+        href={work.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block group bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-[#FF6900]/50 transition-all hover:shadow-xl hover:shadow-[#FF6900]/10 cursor-pointer flex flex-col h-full relative"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* Image Gallery */}
+        <div className="relative h-56 overflow-hidden">
+          {/* Current Image with fade transition */}
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentImageIndex}
+              src={images[currentImageIndex]}
+              alt={`${work.title} - ${currentImageIndex + 1}`}
+              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+          
+          {/* Title Overlay on Image */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+            <h3 
+              className="text-white drop-shadow-lg"
+              style={{ fontSize: 'clamp(18px, 3vw, 24px)' }}
+            >
+              {work.title}
+            </h3>
+            {hasMultipleImages && (
+              <div className="flex items-center gap-1.5 mt-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-white/60"></div>
+                <span 
+                  className="text-white/90"
+                  style={{ fontSize: 'clamp(10px, 1.8vw, 12px)' }}
+                >
+                  {images.length} {language === 'zh' ? '张图片' : 'images'}
+                </span>
+              </div>
+            )}
+          </div>
+          
+          {/* Image Navigation - Only show if multiple images */}
+          {hasMultipleImages && (
+            <>
+              {/* Left Arrow */}
+              <button
+                onClick={handlePrevImage}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#FF6900] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10"
+                aria-label="上一张图片"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              {/* Right Arrow */}
+              <button
+                onClick={handleNextImage}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#FF6900] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10"
+                aria-label="下一张图片"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+
+              {/* Image Indicators */}
+              <div className="absolute top-3 right-3 flex gap-1.5 z-10">
+                {images.map((_: any, index: number) => (
+                  <button
+                    key={index}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setCurrentImageIndex(index);
+                    }}
+                    className={`h-1.5 rounded-full transition-all ${
+                      index === currentImageIndex
+                        ? 'bg-white w-6'
+                        : 'bg-white/50 hover:bg-white/70 w-1.5'
+                    }`}
+                    aria-label={`图片 ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+          
+          {/* Hover Overlay with Link Icon */}
+          <div className="absolute inset-0 bg-[#FF6900]/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF6900] to-[#FF8533] flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform">
+              <ExternalLink className="w-6 h-6 text-white" />
+            </div>
+          </div>
+          
+          {/* Link Icon in Corner */}
+          <div className="absolute top-3 left-3 z-10">
+            <div className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center">
+              <ExternalLink className="w-4 h-4 text-[#FF6900]" />
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-6 flex flex-col flex-1">
+          {/* Student Info Section */}
+          <div className="space-y-3 mb-4">
+            {/* Student Name with Icon */}
+            <div className="flex items-start gap-2">
+              <div className="w-1 h-1 rounded-full bg-[#FF6900] mt-2 flex-shrink-0"></div>
+              <div className="flex-1">
+                <p 
+                  className="text-[#FF6900]/70 mb-0.5"
+                  style={{ fontSize: 'clamp(10px, 1.8vw, 12px)' }}
+                >
+                  {language === 'zh' ? '作者' : 'Author'}
+                </p>
+                <p 
+                  className="text-[#101828] leading-relaxed"
+                  style={{ fontSize: 'clamp(12px, 2.2vw, 14px)' }}
+                >
+                  {work.student}
+                </p>
+              </div>
+            </div>
+            
+            {/* Background/Occupation */}
+            <div className="flex items-start gap-2">
+              <div className="w-1 h-1 rounded-full bg-[#FF6900] mt-2 flex-shrink-0"></div>
+              <div className="flex-1">
+                <p 
+                  className="text-[#FF6900]/70 mb-0.5"
+                  style={{ fontSize: 'clamp(10px, 1.8vw, 12px)' }}
+                >
+                  {language === 'zh' ? '背景' : 'Background'}
+                </p>
+                <p 
+                  className="text-[#4a5565] leading-relaxed"
+                  style={{ fontSize: 'clamp(12px, 2.2vw, 14px)' }}
+                >
+                  {work.background}
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Product Description */}
+          <div className="mt-auto pt-4 border-t border-gray-100">
+            <p 
+              className="text-[#FF6900]/70 mb-2"
+              style={{ fontSize: 'clamp(10px, 1.8vw, 12px)' }}
+            >
+              {language === 'zh' ? '产品介绍' : 'About'}
+            </p>
+            <p 
+              className="text-[#4a5565] leading-relaxed"
+              style={{ fontSize: 'clamp(12px, 2.2vw, 14px)' }}
+            >
+              {work.description}
+            </p>
+          </div>
+        </div>
+      </a>
+    </motion.div>
+  );
+}
 
 export function WorksSection() {
   const { language } = useLanguage();
@@ -87,18 +295,35 @@ export function WorksSection() {
     }
   ];
 
+  // 响应式每页显示数量
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // 检测屏幕尺寸
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg断点
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const ITEMS_PER_PAGE = 6;
+  // 移动端每页2个，桌面端每页6个
+  const itemsPerPage = isMobile ? 2 : ITEMS_PER_PAGE;
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(0); // 用于判断滑动方向
-  const shouldUseCarousel = works.length > 6;
+  const shouldUseCarousel = works.length > itemsPerPage;
   
   // 计算总页数
-  const totalPages = Math.ceil(works.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(works.length / itemsPerPage);
   
   // 获取当前页的作品
   const getCurrentPageWorks = () => {
-    const startIndex = currentPage * ITEMS_PER_PAGE;
-    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
     return works.slice(startIndex, endIndex);
   };
 
@@ -112,173 +337,6 @@ export function WorksSection() {
   const handleNext = () => {
     setDirection(1);
     setCurrentPage((prev) => (prev + 1) % totalPages);
-  };
-
-  // 渲染单个作品卡片
-  const renderWorkCard = (work: typeof works[0]) => {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [isHovered, setIsHovered] = useState(false);
-    const images = work.image;
-    const hasMultipleImages = images.length > 1;
-
-    // 自动轮播效果
-    useEffect(() => {
-      if (!hasMultipleImages || isHovered) return;
-
-      const interval = setInterval(() => {
-        setCurrentImageIndex((prev) => (prev + 1) % images.length);
-      }, 3000); // 每3秒切换一次
-
-      return () => clearInterval(interval);
-    }, [hasMultipleImages, isHovered, images.length]);
-
-    // 切换到上一张图片
-    const handlePrevImage = (e: React.MouseEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-    };
-
-    // 切换到下一张图片
-    const handleNextImage = (e: React.MouseEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    };
-
-    return (
-      <motion.div
-        key={work.id}
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3 }}
-      >
-        <a
-          href={work.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block group bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-[#FF6900]/50 transition-all hover:shadow-xl hover:shadow-[#FF6900]/10 cursor-pointer flex flex-col h-full relative"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {/* Image Gallery */}
-          <div className="relative h-56 overflow-hidden">
-            {/* Current Image with fade transition */}
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={currentImageIndex}
-                src={images[currentImageIndex]}
-                alt={`${work.title} - ${currentImageIndex + 1}`}
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              />
-            </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-            
-            {/* Title Overlay on Image */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-              <h3 className="text-white drop-shadow-lg">{work.title}</h3>
-              {hasMultipleImages && (
-                <div className="flex items-center gap-1.5 mt-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white/60"></div>
-                  <span className="text-white/90 text-xs">{images.length} {language === 'zh' ? '张图片' : 'images'}</span>
-                </div>
-              )}
-            </div>
-            
-            {/* Image Navigation - Only show if multiple images */}
-            {hasMultipleImages && (
-              <>
-                {/* Left Arrow */}
-                <button
-                  onClick={handlePrevImage}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#FF6900] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10"
-                  aria-label="上一张图片"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-
-                {/* Right Arrow */}
-                <button
-                  onClick={handleNextImage}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#FF6900] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10"
-                  aria-label="下一张图片"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-
-                {/* Image Indicators */}
-                <div className="absolute top-3 right-3 flex gap-1.5 z-10">
-                  {images.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        setCurrentImageIndex(index);
-                      }}
-                      className={`h-1.5 rounded-full transition-all ${
-                        index === currentImageIndex
-                          ? 'bg-white w-6'
-                          : 'bg-white/50 hover:bg-white/70 w-1.5'
-                      }`}
-                      aria-label={`图片 ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              </>
-            )}
-            
-            {/* Hover Overlay with Link Icon */}
-            <div className="absolute inset-0 bg-[#FF6900]/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF6900] to-[#FF8533] flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform">
-                <ExternalLink className="w-6 h-6 text-white" />
-              </div>
-            </div>
-            
-            {/* Link Icon in Corner */}
-            <div className="absolute top-3 left-3 z-10">
-              <div className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center">
-                <ExternalLink className="w-4 h-4 text-[#FF6900]" />
-              </div>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="p-6 flex flex-col flex-1">
-            {/* Student Info Section */}
-            <div className="space-y-3 mb-4">
-              {/* Student Name with Icon */}
-              <div className="flex items-start gap-2">
-                <div className="w-1 h-1 rounded-full bg-[#FF6900] mt-2 flex-shrink-0"></div>
-                <div className="flex-1">
-                  <p className="text-xs text-[#FF6900]/70 mb-0.5">{language === 'zh' ? '作者' : 'Author'}</p>
-                  <p className="text-[#101828] text-sm leading-relaxed">{work.student}</p>
-                </div>
-              </div>
-              
-              {/* Background/Occupation */}
-              <div className="flex items-start gap-2">
-                <div className="w-1 h-1 rounded-full bg-[#FF6900] mt-2 flex-shrink-0"></div>
-                <div className="flex-1">
-                  <p className="text-xs text-[#FF6900]/70 mb-0.5">{language === 'zh' ? '背景' : 'Background'}</p>
-                  <p className="text-[#4a5565] text-sm leading-relaxed">{work.background}</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Product Description */}
-            <div className="mt-auto pt-4 border-t border-gray-100">
-              <p className="text-xs text-[#FF6900]/70 mb-2">{language === 'zh' ? '产品介绍' : 'About'}</p>
-              <p className="text-[#4a5565] text-sm leading-relaxed">{work.description}</p>
-            </div>
-          </div>
-        </a>
-      </motion.div>
-    );
   };
 
   // 定义滑动动画变体
@@ -308,22 +366,22 @@ export function WorksSection() {
         highlightPosition="end"
       />
       
-      <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 mt-12 lg:mt-16">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mt-12 lg:mt-16">
         {/* Works Display */}
         {shouldUseCarousel ? (
           /* 轮播模式 - 当作品数量超过6个时 */
           <div className="relative">
-            {/* 左箭头 */}
+            {/* 左箭头 - 仅桌面端显示 */}
             <button
               onClick={handlePrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 w-12 h-12 rounded-full bg-gradient-to-r from-[#FF6900] to-[#FF8533] text-white hover:opacity-90 transition-all flex items-center justify-center shadow-lg"
+              className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 translate-x-[20px] xl:translate-x-[50px] z-10 w-[32px] h-[50px] rounded-l-full bg-white text-[#FF6900] hover:bg-gray-50 transition-all items-center justify-center shadow-md cursor-pointer"
               aria-label="上一页"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
 
             {/* 作品网格 - 带动画 */}
-            <div className="relative min-h-[600px]">
+            <div className={`relative ${isMobile ? 'min-h-[1000px]' : 'min-h-[600px]'} max-w-[1300px] mx-auto`}>
               <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                   key={currentPage}
@@ -336,39 +394,32 @@ export function WorksSection() {
                     x: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.3 }
                   }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 absolute w-full"
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 absolute w-full top-0 place-items-center"
                 >
-                  {getCurrentPageWorks().map((work) => renderWorkCard(work))}
+                  {getCurrentPageWorks().map((work) => <WorkCard key={work.id} work={work} />)}
                 </motion.div>
               </AnimatePresence>
-              {/* 占位元素，保持容器高度 - 始终显示6个占位 */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 opacity-0 pointer-events-none">
-                {Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
-                  <div key={index} className="bg-white rounded-lg overflow-hidden border border-gray-200">
-                    <div className="h-64"></div>
-                    <div className="p-6">
-                      <div className="mb-3">
-                        <h3 className="text-[#101828] mb-1">占位标题</h3>
-                        <p className="text-[#FF6900] text-sm">占位学生</p>
-                      </div>
-                      <p className="text-[#4a5565] text-sm mb-3">占位描述</p>
-                    </div>
+              {/* 占位元素，保持容器高度 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-0 pointer-events-none place-items-center">
+                {Array.from({ length: itemsPerPage }).map((_, index) => (
+                  <div key={index} className="w-full sm:w-[400px] h-[480px]">
+                    <div className="h-full"></div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* 右箭头 */}
+            {/* 右箭头 - 仅桌面端显示 */}
             <button
               onClick={handleNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 w-12 h-12 rounded-full bg-gradient-to-r from-[#FF6900] to-[#FF8533] text-white hover:opacity-90 transition-all flex items-center justify-center shadow-lg"
+              className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 -translate-x-[20px] xl:-translate-x-[50px] z-10 w-[32px] h-[50px] rounded-r-full bg-white text-[#FF6900] hover:bg-gray-50 transition-all items-center justify-center shadow-md cursor-pointer"
               aria-label="下一页"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5" />
             </button>
 
             {/* 页面指示器 */}
-            <div className="flex items-center justify-center gap-2 mt-16">
+            <div className="flex items-center justify-center gap-2 mt-4 md:mt-4">
               {Array.from({ length: totalPages }).map((_, index) => (
                 <button
                   key={index}
@@ -376,7 +427,7 @@ export function WorksSection() {
                     setDirection(index > currentPage ? 1 : -1);
                     setCurrentPage(index);
                   }}
-                  className={`h-2 rounded-full transition-all ${
+                  className={`h-2 rounded-full transition-all cursor-pointer ${
                     index === currentPage
                       ? 'bg-[#FF6900] w-8'
                       : 'bg-gray-400 hover:bg-gray-500 w-2'
@@ -388,8 +439,8 @@ export function WorksSection() {
           </div>
         ) : (
           /* 网格模式 - 当作品数量不超过6个时 */
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
-            {works.map((work) => renderWorkCard(work))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+            {works.map((work) => <WorkCard key={work.id} work={work} />)}
           </div>
         )}
       </div>

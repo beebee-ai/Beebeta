@@ -87,7 +87,10 @@ export function SectionDivider({ number, title, titleHighlight, subtitle, highli
 
           {/* Optional Subtitle - Rendered below the divider */}
           {subtitle && (
-            <p className="mt-6 text-white/90 text-lg lg:text-xl max-w-3xl text-center leading-relaxed font-light">
+            <p 
+              className="mt-6 text-white/90 max-w-3xl text-center leading-relaxed font-light"
+              style={{ fontSize: 'clamp(16px, 2.8vw, 20px)' }}
+            >
               {subtitle}
             </p>
           )}

@@ -11,12 +11,14 @@ import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
 import { SectionDivider } from '../components/SectionDivider';
 import { useLanguage } from '../contexts/LanguageContext';
+import { SEO } from '../components/SEO';
 
 export function HomePage() {
   const { t } = useLanguage();
   
   return (
     <div className="min-h-screen relative">
+      <SEO />
       {/* 多色融合渐变背景 */}
       <div 
         className="fixed inset-0 -z-10"

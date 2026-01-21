@@ -57,7 +57,7 @@ export function FAQSection() {
 
   const renderAnswer = (answer: string) => {
     return (
-      <div className="space-y-2 text-[#4a5565] leading-relaxed">
+      <div className="space-y-2 text-[#4a5565] leading-relaxed" style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}>
         {answer.split('\n').map((line, i) => {
           const trimmed = line.trim();
           if (!trimmed) return <div key={i} className="h-2" />;
@@ -82,7 +82,7 @@ export function FAQSection() {
 
   const formatAnswer = (answer: string) => {
     return (
-      <div className="space-y-2 text-[#4a5565] leading-relaxed">
+      <div className="space-y-2 text-[#4a5565] leading-relaxed" style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}>
         {answer.split('\n').map((line, i) => {
           const trimmed = line.trim();
           if (!trimmed) return <div key={i} className="h-2" />;
@@ -129,7 +129,12 @@ export function FAQSection() {
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                   className="w-full px-6 py-5 text-left flex items-center justify-between cursor-pointer bg-white hover:bg-gray-50 transition-all border-b border-[#FF6900]/10"
                 >
-                  <span className="text-[#101828] pr-8">{faq.question}</span>
+                  <span 
+                    className="text-[#101828] pr-8"
+                    style={{ fontSize: 'clamp(15px, 2.6vw, 18px)' }}
+                  >
+                    {faq.question}
+                  </span>
                   <ChevronDown
                     className={`w-5 h-5 text-[#4a5565] flex-shrink-0 transition-transform duration-300 ${
                       openIndex === index ? 'rotate-180' : ''
@@ -152,10 +157,16 @@ export function FAQSection() {
 
         {/* Contact CTA */}
         <div className="text-center mt-12">
-          <p className="text-[#6b7280] mb-4">{t.faq.moreQuestions}</p>
+          <p 
+            className="text-[#6b7280] mb-4"
+            style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
+          >
+            {t.faq.moreQuestions}
+          </p>
           <button
             onClick={() => setIsContactDialogOpen(true)}
             className="inline-flex items-center gap-2 text-[#FF6900] hover:text-[#FF6900]/80 transition-colors cursor-pointer"
+            style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
           >
             {t.faq.contactUs}
             <ChevronDown className="w-4 h-4 transform -rotate-90" />
@@ -167,10 +178,16 @@ export function FAQSection() {
       <Dialog open={isContactDialogOpen} onOpenChange={setIsContactDialogOpen}>
         <DialogContent className="w-[85vw] !max-w-[85vw] h-[90vh] max-h-[90vh] overflow-y-auto bg-[#fafafa] border-2 border-[#FF6900]/30 p-8 lg:p-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           <DialogHeader className="border-b border-[#FF6900]/20 pb-6 mb-8">
-            <DialogTitle className="text-2xl lg:text-3xl text-[#101828]">
+            <DialogTitle 
+              className="text-2xl lg:text-3xl text-[#101828]"
+              style={{ fontSize: 'clamp(20px, 3.5vw, 28px)' }}
+            >
               {t.contact.dialogTitle}
             </DialogTitle>
-            <DialogDescription className="text-[#6b7280] mt-3 text-base">
+            <DialogDescription 
+              className="text-[#6b7280] mt-3 text-base"
+              style={{ fontSize: 'clamp(14px, 2.4vw, 16px)' }}
+            >
               {t.contact.dialogDescription}
             </DialogDescription>
           </DialogHeader>
