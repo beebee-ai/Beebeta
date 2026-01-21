@@ -64,7 +64,7 @@ export function CEOLetterPage() {
               <p className="text-[#000000]">
                 {isEn
                   ? "Learn AI, Build Reality."
-                  : "Learn AI, Build Reality. 学AI,创未来。"}
+                  : "Learn AI, Build Reality. 学AI，创未来。"}
               </p>
             </div>
 

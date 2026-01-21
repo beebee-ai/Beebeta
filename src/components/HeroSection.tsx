@@ -69,7 +69,7 @@ export function HeroSection() {
               style={{ fontSize: 'clamp(20px, 5vw, 40px)' }}
             >
               {language === 'zh' 
-                ? 'BEE BETA 三阶课程体系 - 学AI,创未来' 
+                ? 'BEE BETA 三阶课程体系 - 学AI，创未来' 
                 : 'BEE BETA Three-Stage Course System - Learn AI, Shape the Future'}
             </p>
 
