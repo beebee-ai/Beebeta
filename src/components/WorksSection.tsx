@@ -1,5 +1,5 @@
+import React, { useState, useEffect, type MouseEvent } from 'react';
 import { ExternalLink, ChevronLeft, ChevronRight, Users } from 'lucide-react';
-import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../locales/translations';
@@ -35,7 +35,7 @@ const relabSEOImages = [
 ];
 
 // 单个作品卡片组件
-function WorkCard({ work }: { work: any }) {
+const WorkCard: React.FC<{ work: any }> = ({ work }) => {
   const { language } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -54,14 +54,14 @@ function WorkCard({ work }: { work: any }) {
   }, [hasMultipleImages, isHovered, images.length]);
 
   // 切换到上一张图片
-  const handlePrevImage = (e: React.MouseEvent) => {
+  const handlePrevImage = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   // 切换到下一张图片
-  const handleNextImage = (e: React.MouseEvent) => {
+  const handleNextImage = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
@@ -219,7 +219,7 @@ function WorkCard({ work }: { work: any }) {
       </a>
     </motion.div>
   );
-}
+};
 
 export function WorksSection() {
   const { language } = useLanguage();
