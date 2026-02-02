@@ -252,40 +252,46 @@ export const translations = {
         "看看我们的学员如何将所学知识转化为实际项目，创造出令人惊叹的作品",
       projects: {
         pdselection: {
-          student: "Z 同学",
+          student: "K 同学",
           camp: "BETA 星空营（Galaxy）",
-          background: "投资，零工程经验",
-          description: "发现精选素食生活方式，经过严格筛选的餐厅、食谱、产品与生活灵感。通过AI技术精准推荐优质素食资源，让您的素食之旅更简单、更健康、更有品质。",
+          background: "18岁，大一，多项数学/编程金牌得主",
+          description: "提供可理解、可行动的气候变化预测与解读。它生成美国本地化预测，结合你的所在地、职业和目标，给出具体行动建议。内置 AI 助手可随时答疑，帮你评估选择、减少排放，把\"气候影响\"变成今天就能做的事。",
+          tags: ["气候预测", "数据分析", "行动建议"],
         },
         rowingpro: {
-          student: "V 同学",
+          student: "小组作品，四人协作完成",
           camp: "BETA 深空营（Cosmos）",
-          background: "16岁，美国，多项数学/编程金牌得主",
-          description: "追踪你的划船训练进度，分析每一次动作，并与同样热爱划船的人交流。AI 提供清晰的改进建议，结合训练计划、视频分析和健康管理，帮助你稳步提升整体表现。",
+          background: "物理博士，金融硕士，CS本科生，有一定工程经验",
+          description: "在安静的冥想空间里，用语音随手记录你的所思所感。Hobbi 会基于你上传的照片生成沉浸式场景，与你轻度互动，帮你把零散情绪整理成一篇心灵日记。想用就用，完全免费，无需预约。",
+          tags: ["语音记录", "冥想空间", "心灵日记"],
         },
         climatehub: {
-          student: "K 同学",
+          student: "V同学",
           camp: "BETA 无界营（Infinity）",
-          background: "18岁，大一，多项数学/编程金牌得主",
-          description: "提供个性化的气候变化预测和解释。它能生成美国本地化预测，根据你的所在地、职业和目标给出行动建议，并提供一个能回答问题、帮助你降低排放的 AI 助手。",
+          background: "计算机硕士，工程经验",
+          description: "在代理调用 API、访问 URL 或发起支付前，Andon 会在约 200 毫秒内给出批准 / 阻止 / 人工审核的决策，并附带可审计的证据链。它专为代理支付、采购和工具调用等高风险流程而生，把问题挡在\"来不及后悔\"之前。",
+          tags: ["API安全", "支付拦截", "风险评估"],
         },
         hobbi: {
           student: "小组作品，四人协作完成",
           camp: "BETA 无界营（Infinity）",
-          background: "物理博士，金融硕士，CS本科生，有一定工程经验",
-          description: "在冥想空间中，用语音记录你的心灵笔记。Hobbi 会基于你上传的照片生成沉浸式场景，与你互动，共同写下心灵日记。完全私密，随时可用，免费无需预约。",
+          background: "计算机博士，金融博士，金融硕士，工程经验",
+          description: "教师和家长常常难以快速找到安全、适龄的笑话。现有应用要么内容重复，要么尺度失控。SixSeven 一点即用，按场景推荐合适笑话，支持音效音频播放，并会随使用不断变得更懂你。",
+          tags: ["笑话生成", "笑话推荐", "笑话播放"],
         },
         yummyyummy: {
           student: "小组作品，四人协作完成",
           camp: "BETA 无界营（Infinity）",
-          background: "物理博士，金融数学硕士，运筹/电气工程双硕士，有一定工程经验",
-          description: "YummyYummy 是你的 AI 美食助手，随时帮你快速做出靠谱的美食选择。清晰展示菜品信息，配上简明介绍和真实照片，让你一眼就懂、放心点。",
+          background: "计算机博士，金融博士，设计硕士，有一定工程经验",
+          description: "千篇一律的创业建议毫无用处。SparkUp 会评估您的独特优势，并根据您的个人情况量身定制商业理念。立即将您的个性化创业项目发布到社交媒体，迅速引发早期热议，吸引首批支持者。告别盲目摸索，开启您的创业之旅。",
+          tags: ["创业建议", "商业理念", "个性化推荐"],
         },
         relabseo: {
-          student: "K 同学",
+          student: "小组作品，三人协作完成",
           camp: "BETA 星空营（Galaxy）",
-          background: "房地产大数据公司CEO，销售市场背景，0工程经验",
-          description: "内容集群和AI工具平台，提供内容聚类可视化、AI内容生成和由Claude提供支持的SEO评分。帮助营销人员快速构建内容策略，优化搜索引擎排名，提升内容营销效率。",
+          background: "金融博士，金融硕士，有一定工程经验",
+          description: "一款基于科学的营养补充剂决策助手。它以科学为先导，评估各种营养补充剂，突出成分的功效和局限性，并根据个人情况量身定制答案。没有网红炒作，没有利益驱动—只有清晰、有证据支持的推理，让您可以放心选择。",
+          tags: ["营养补充剂", "科学评估", "个性化建议"],
         },
       },
       prevPage: "上一页",
@@ -1169,52 +1175,58 @@ export const translations = {
         "See how our students transform knowledge into real projects and create amazing works",
       projects: {
         pdselection: {
-          student: "Student Z",
-          camp: "BETA Galaxy Camp",
-          background:
-            "Investment, 0 Engineering Experience",
-          description:
-            "Discover a curated vegan lifestyle with rigorously selected restaurants, recipes, products, and lifestyle inspiration. AI-powered precision recommendations for quality vegan resources, making your plant-based journey simpler, healthier, and more refined.",
-        },
-        rowingpro: {
-          student: "Student V",
-          camp: "BETA Cosmos Camp",
-          background:
-            "16 years old, USA, Multiple Math/Programming Awards",
-          description:
-            "Track your rowing training progress, analyze every movement, and connect with fellow rowing enthusiasts. AI provides clear improvement recommendations, combined with training plans, video analysis, and health management to help you steadily enhance overall performance.",
-        },
-        climatehub: {
           student: "Student K",
-          camp: "BETA Infinity Camp",
+          camp: "BETA Galaxy Camp",
           background:
             "18 years old, Freshman, Multiple Math/Programming Awards",
           description:
-            "Provides personalized climate change predictions and explanations. It generates US-localized forecasts, offers action recommendations based on your location, profession, and goals, and features an AI assistant that answers questions and helps you reduce emissions.",
+            "Provides understandable, actionable climate change predictions and interpretations. It generates US-localized forecasts, combines your location, profession, and goals to offer specific action recommendations. Built-in AI assistant is always available to answer questions, help you evaluate choices and reduce emissions, turning 'climate impact' into something you can act on today.",
+          tags: ["Climate Prediction", "Data Analysis", "Action Recommendations"],
         },
-        hobbi: {
+        rowingpro: {
           student: "Group Project, Four-Person Collaboration",
-          camp: "BETA Infinity Camp",
+          camp: "BETA Cosmos Camp",
           background:
             "Physics PhD, Finance Master's, CS Undergraduate, Some Engineering Experience",
           description:
-            "In a meditative space, record your soul notes with voice. Hobbi generates immersive scenes based on your uploaded photos, interacts with you, and co-creates spiritual diaries. Completely private, always available, free and no appointment needed.",
+            "In a quiet meditative space, casually record your thoughts and feelings with voice. Hobbi generates immersive scenes based on your uploaded photos, lightly interacts with you, and helps organize scattered emotions into a spiritual diary. Use it anytime, completely free, no appointment needed.",
+          tags: ["Voice Recording", "Meditation Space", "Spiritual Diary"],
+        },
+        climatehub: {
+          student: "Student V",
+          camp: "BETA Infinity Camp",
+          background:
+            "Computer Science Master's, Engineering Experience",
+          description:
+            "Before agents call APIs, access URLs, or initiate payments, Andon delivers approve/block/human-review decisions in ~200ms, with an auditable evidence chain attached. Built for high-risk workflows like agent payments, procurement, and tool calls, stopping problems before it's too late to regret.",
+          tags: ["API Security", "Payment Interception", "Risk Assessment"],
+        },
+        hobbi: {
+          student: "Students: Group Project, Four-Person Collaboration",
+          camp: "BETA Infinity Camp",
+          background:
+            "Computer Science PhD, Finance PhD, Finance Master's, Engineering Experience",
+          description:
+            "Teachers and parents often struggle to quickly find safe, age-appropriate jokes. Existing apps either repeat content or cross boundaries. SixSeven works with one tap, recommends suitable jokes by scenario, supports audio playback with sound effects, and gets smarter the more you use it.",
+          tags: ["Joke Generation", "Joke Recommendation", "Joke Playback"],
         },
         yummyyummy: {
           student: "Group Project, Four-Person Collaboration",
           camp: "BETA Infinity Camp",
           background:
-            "Physics PhD, Financial Mathematics Master's, Operations Research/Electrical Engineering Dual Master's, Some Engineering Experience",
+            "Computer Science PhD, Finance PhD, Design Master's, Some Engineering Experience",
           description:
-            "YummyYummy is your AI food assistant, helping you make reliable food choices quickly anytime. Clear dish info with concise descriptions and real photos, so you get it at a glance and order with confidence.",
+            "Generic startup advice is useless. SparkUp evaluates your unique strengths and tailors business ideas to your personal situation. Instantly publish your personalized startup project to social media, quickly generate early buzz, and attract your first supporters. Say goodbye to blind exploration and start your entrepreneurial journey.",
+          tags: ["Startup Advice", "Business Ideas", "Personalized Recommendations"],
         },
         relabseo: {
-          student: "Student K",
+          student: "Group Project, Three-Person Collaboration",
           camp: "BETA Galaxy Camp",
           background:
-            "CEO of Real Estate Big Data Company, Sales & Marketing Background, No Engineering Experience",
+            "Finance PhD, Finance Master's, Some Engineering Experience",
           description:
-            "Content clustering and AI tools platform, offering content clustering visualization, AI content generation, and Claude-powered SEO scoring. Helps marketers quickly build content strategies, optimize search rankings, and boost content marketing efficiency.",
+            "A science-based nutritional supplement decision assistant. It leads with science, evaluates various supplements, highlights ingredient efficacy and limitations, and tailors answers to individual circumstances. No influencer hype, no profit-driven motives—only clear, evidence-backed reasoning so you can choose with confidence.",
+          tags: ["Supplements", "Scientific Evaluation", "Personalized Advice"],
         },
       },
       prevPage: "Previous",

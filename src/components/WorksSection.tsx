@@ -1,4 +1,4 @@
-import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, ChevronLeft, ChevronRight, Users } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -6,19 +6,33 @@ import { translations } from '../locales/translations';
 import { SectionDivider } from './SectionDivider';
 
 // 学员作品图片 - 使用网络链接
-const pdSelectionImages = ['https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/pdselection.png'];
-const rowingProImages = ['https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/ops/rowingProImage.jpg'];
-const climateHubImages = ['https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/ops/climateHubImage.jpg'];
-const hobbiImages = [
+const pdSelectionImages = [
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/Climate_Intelligence_Hub_1.png',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/Climate_Intelligence_Hub_2.png'
+];
+const rowingProImages = [
   'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/hobbi_1.PNG',
   'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/hobbi_2.PNG',
   'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/hobbi_3.PNG'
 ];
-const yummyYummyImages = [
-  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/yum_3.png',
-  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/yum_4.png'
+const climateHubImages = [
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/vivian-andon-01.jpg',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/vivian-andon-02.jpg'
 ];
-const relabSEOImages = ['https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/Relab_SEO_1.png'];
+const hobbiImages = [
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/sixseven-jokes-01.jpg',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/sixseven-jokes-02.jpg',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/sixseven-jokes-03.jpg'
+];
+const yummyYummyImages = [
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/spark-up-01.jpg',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/spark-up-02.jpg',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/spark-up-03.jpg'
+];
+const relabSEOImages = [
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/supp-check-01.jpg',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/supp-check-02.jpg'
+];
 
 // 单个作品卡片组件
 function WorkCard({ work }: { work: any }) {
@@ -53,6 +67,10 @@ function WorkCard({ work }: { work: any }) {
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };
 
+  // 解析背景信息，用竖线分隔
+  const backgroundParts = work.background ? work.background.split(/[，,]/).map((s: string) => s.trim()) : [];
+  const tags = work.tags || [];
+
   return (
     <motion.div
       key={work.id}
@@ -83,28 +101,6 @@ function WorkCard({ work }: { work: any }) {
               transition={{ duration: 0.5 }}
             />
           </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-          
-          {/* Title Overlay on Image */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-            <h3 
-              className="text-white drop-shadow-lg"
-              style={{ fontSize: 'clamp(18px, 3vw, 24px)' }}
-            >
-              {work.title}
-            </h3>
-            {hasMultipleImages && (
-              <div className="flex items-center gap-1.5 mt-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-white/60"></div>
-                <span 
-                  className="text-white/90"
-                  style={{ fontSize: 'clamp(10px, 1.8vw, 12px)' }}
-                >
-                  {images.length} {language === 'zh' ? '张图片' : 'images'}
-                </span>
-              </div>
-            )}
-          </div>
           
           {/* Image Navigation - Only show if multiple images */}
           {hasMultipleImages && (
@@ -166,58 +162,55 @@ function WorkCard({ work }: { work: any }) {
 
         {/* Content */}
         <div className="p-6 flex flex-col flex-1">
-          {/* Student Info Section */}
-          <div className="space-y-3 mb-4">
-            {/* Student Name with Icon */}
-            <div className="flex items-start gap-2">
-              <div className="w-1 h-1 rounded-full bg-[#FF6900] mt-2 flex-shrink-0"></div>
-              <div className="flex-1">
-                <p 
-                  className="text-[#FF6900]/70 mb-0.5"
-                  style={{ fontSize: 'clamp(10px, 1.8vw, 12px)' }}
-                >
-                  {language === 'zh' ? '作者' : 'Author'}
-                </p>
-                <p 
-                  className="text-[#101828] leading-relaxed"
-                  style={{ fontSize: 'clamp(12px, 2.2vw, 14px)' }}
-                >
-                  {work.student}
-                </p>
-              </div>
-            </div>
-            
-            {/* Background/Occupation */}
-            <div className="flex items-start gap-2">
-              <div className="w-1 h-1 rounded-full bg-[#FF6900] mt-2 flex-shrink-0"></div>
-              <div className="flex-1">
-                <p 
-                  className="text-[#FF6900]/70 mb-0.5"
-                  style={{ fontSize: 'clamp(10px, 1.8vw, 12px)' }}
-                >
-                  {language === 'zh' ? '背景' : 'Background'}
-                </p>
-                <p 
-                  className="text-[#4a5565] leading-relaxed"
-                  style={{ fontSize: 'clamp(12px, 2.2vw, 14px)' }}
-                >
-                  {work.background}
-                </p>
-              </div>
-            </div>
+          {/* Title */}
+          <h3 
+            className="text-[#FF6900] font-bold mb-4"
+            style={{ fontSize: 'clamp(12px, 2vw, 18px)' }}
+          >
+            {work.title}
+          </h3>
+
+          {/* Student Info */}
+          <div className="flex items-center gap-2 mb-1">
+            <Users className="w-3.5 h-3.5 text-[#101828] flex-shrink-0" />
+            <p 
+              className="text-[#101828]"
+              style={{ fontSize: 'clamp(12px, 1.8vw, 13px)' }}
+            >
+              {work.student}
+            </p>
           </div>
           
-          {/* Product Description */}
-          <div className="mt-auto pt-4 border-t border-gray-100">
+          {/* Background with separator */}
+          {backgroundParts.length > 0 && (
             <p 
-              className="text-[#FF6900]/70 mb-2"
-              style={{ fontSize: 'clamp(10px, 1.8vw, 12px)' }}
+              className="text-[#4a5565] mb-3 pl-6"
+              style={{ fontSize: 'clamp(12px, 1.8vw, 13px)' }}
             >
-              {language === 'zh' ? '产品介绍' : 'About'}
+              {backgroundParts.join(' | ')}
             </p>
+          )}
+
+          {/* Tags / Keywords */}
+          {tags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mb-3">
+              {tags.map((tag: string, index: number) => (
+                <span
+                  key={index}
+                  className="px-3 py-0.5 rounded-full bg-[#FF6900]/10 text-[#FF6900]"
+                  style={{ fontSize: 'clamp(11px, 1.4vw, 12px)' }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+          
+          {/* Product Description */}
+          <div className="mt-auto pt-2">
             <p 
-              className="text-[#4a5565] leading-relaxed"
-              style={{ fontSize: 'clamp(12px, 2.2vw, 14px)' }}
+              className="text-[#4a5565] leading-relaxed text-sm md:text-base"
+              style={{ fontSize: 'clamp(12px, 1.5vw, 15px)' }}
             >
               {work.description}
             </p>
@@ -235,63 +228,69 @@ export function WorksSection() {
   const works = [
     {
       id: 1,
-      title: 'Hobbi',
+      title: 'SixSeven Jokes',
       student: t.works.projects.hobbi.student,
       camp: t.works.projects.hobbi.camp,
       background: t.works.projects.hobbi.background,
       description: t.works.projects.hobbi.description,
       image: hobbiImages,
-      link: 'https://www.voiceto.me/'
+      link: 'https://sixsevenfirebase-663636424984.us-west1.run.app/',
+      tags: t.works.projects.hobbi.tags
     },
     {
       id: 2,
-      title: 'Yummy Yummy',
+      title: 'SparkUp',
       student: t.works.projects.yummyyummy.student,
       camp: t.works.projects.yummyyummy.camp,
       background: t.works.projects.yummyyummy.background,
       description: t.works.projects.yummyyummy.description,
       image: yummyYummyImages,
-      link: 'https://yum.9top.org/'
+      link: 'https://sparkup.deepelevate.com/?ref=producthunt',
+      tags: t.works.projects.yummyyummy.tags
     },
     {
       id: 3,
-      title: 'Climate Intelligence Hub',
+      title: 'Andon — Trust Gate for AI Agents',
       student: t.works.projects.climatehub.student,
       camp: t.works.projects.climatehub.camp,
       background: t.works.projects.climatehub.background,
       description: t.works.projects.climatehub.description,
       image: climateHubImages,
-      link: 'https://climate-intelligence-hub.org/'
+      link: 'https://andon-fullstack.vercel.app/',
+      tags: t.works.projects.climatehub.tags
     },
     {
       id: 4,
-      title: 'Relab SEO',
+      title: 'SuppCheck',
       student: t.works.projects.relabseo.student,
       camp: t.works.projects.relabseo.camp,
       background: t.works.projects.relabseo.background,
       description: t.works.projects.relabseo.description,
       image: relabSEOImages,
-      link: 'https://relabai.netlify.app'
+      link: 'https://supplements-advisor.martianspace.uk/',
+      tags: t.works.projects.relabseo.tags
     },
     {
       id: 5,
-      title: language === 'zh' ? '纯素甄选' : 'PD Selection',
-      student: t.works.projects.pdselection.student,
-      camp: t.works.projects.pdselection.camp,
-      background: t.works.projects.pdselection.background,
-      description: t.works.projects.pdselection.description,
-      image: pdSelectionImages,
-      link: 'https://www.pdselection.com'
-    },
-    {
-      id: 6,
-      title: 'RowingPro',
+      title: 'Hobbi',
       student: t.works.projects.rowingpro.student,
       camp: t.works.projects.rowingpro.camp,
       background: t.works.projects.rowingpro.background,
       description: t.works.projects.rowingpro.description,
       image: rowingProImages,
-      link: 'https://crew-trainer.com'
+      link: 'https://www.voiceto.me/',
+      tags: t.works.projects.rowingpro.tags
+    },
+    {
+      id: 6,
+      title: 'Climate Intelligence Hub',
+      student: t.works.projects.pdselection.student,
+      camp: t.works.projects.pdselection.camp,
+      background: t.works.projects.pdselection.background,
+      description: t.works.projects.pdselection.description,
+      image: pdSelectionImages,
+      link: 'https://climate-intelligence-hub.org/',
+      tags: t.works.projects.pdselection.tags
     }
   ];
 
