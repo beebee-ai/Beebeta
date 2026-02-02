@@ -255,43 +255,50 @@ export const translations = {
           student: "K 同学",
           camp: "BETA 星空营（Galaxy）",
           background: "18岁，大一，多项数学/编程金牌得主",
-          description: "提供可理解、可行动的气候变化预测与解读。它生成美国本地化预测，结合你的所在地、职业和目标，给出具体行动建议。内置 AI 助手可随时答疑，帮你评估选择、减少排放，把\"气候影响\"变成今天就能做的事。",
+          description: "提供可理解、可行动的气候预测与解读。结合你的所在地与目标，给出具体建议，并通过 AI 助手帮助你逐步减少排放。",
           tags: ["气候预测", "数据分析", "行动建议"],
         },
         rowingpro: {
           student: "小组作品，四人协作完成",
           camp: "BETA 深空营（Cosmos）",
           background: "物理博士，金融硕士，CS本科生，有一定工程经验",
-          description: "在安静的冥想空间里，用语音随手记录你的所思所感。Hobbi 会基于你上传的照片生成沉浸式场景，与你轻度互动，帮你把零散情绪整理成一篇心灵日记。想用就用，完全免费，无需预约。",
+          description: "在安静的冥想空间中，用语音记录你的想法。Hobbi 会基于照片生成沉浸式场景，帮你整理情绪，写下属于自己的心灵日记。",
           tags: ["语音记录", "冥想空间", "心灵日记"],
         },
         climatehub: {
           student: "V 同学",
           camp: "BETA 无界营（Infinity）",
           background: "计算机硕士，工程经验",
-          description: "在代理调用 API、访问 URL 或发起支付前，Andon 会在约 200 毫秒内给出批准 / 阻止 / 人工审核的决策，并附带可审计的证据链。它专为代理支付、采购和工具调用等高风险流程而生，把问题挡在\"来不及后悔\"之前。",
+          description: "在代理调用 API、访问链接或发起支付前，Andon 会在约 200 毫秒内给出批准、阻止或人工审核结果，把高风险问题挡在发生之前。",
           tags: ["API安全", "支付拦截", "风险评估"],
         },
         hobbi: {
           student: "小组作品，四人协作完成",
           camp: "BETA 无界营（Infinity）",
           background: "计算机博士，金融博士，金融硕士，工程经验",
-          description: "教师和家长常常难以快速找到安全、适龄的笑话。现有应用要么内容重复，要么尺度失控。SixSeven 一点即用，按场景推荐合适笑话，支持音效音频播放，并会随使用不断变得更懂你。",
+          description: "教师和家长很难快速找到安全、适龄的笑话。SixSeven 一点即用，按场景推荐合适内容，支持音效播放，并会随着使用不断优化体验。",
           tags: ["笑话生成", "笑话推荐", "笑话播放"],
         },
         yummyyummy: {
           student: "小组作品，四人协作完成",
           camp: "BETA 无界营（Infinity）",
           background: "计算机博士，金融博士，设计硕士，有一定工程经验",
-          description: "千篇一律的创业建议毫无用处。SparkUp 会评估您的独特优势，并根据您的个人情况量身定制商业理念。立即将您的个性化创业项目发布到社交媒体，迅速引发早期热议，吸引首批支持者。告别盲目摸索，开启您的创业之旅。",
+          description: "通用的创业建议没有价值。SparkUp 评估你的个人优势，生成量身定制的商业想法，并可一键发布到社交平台，快速获得早期反馈。",
           tags: ["创业建议", "商业理念", "个性化推荐"],
         },
         relabseo: {
           student: "小组作品，三人协作完成",
           camp: "BETA 星空营（Galaxy）",
           background: "金融博士，金融硕士，有一定工程经验",
-          description: "一款基于科学的营养补充剂决策助手。它以科学为先导，评估各种营养补充剂，突出成分的功效和局限性，并根据个人情况量身定制答案。没有网红炒作，没有利益驱动—只有清晰、有证据支持的推理，让您可以放心选择。",
+          description: "一款以科学为核心的营养补充剂助手，评估成分功效与局限，并结合个人情况给出判断。不带营销立场，只提供可验证的结论。",
           tags: ["营养补充剂", "科学评估", "个性化建议"],
+        },
+        yummymeal: {
+          student: "小组作品，四人协作完成",
+          camp: "BETA 无界营（Infinity）",
+          background: "物理博士，金融数学硕士，运筹/电气工程双硕士，有一定工程经验",
+          description: "你的 AI 美食助手，随时帮你做出靠谱选择。清晰展示菜品信息，配合真实照片和简要说明，让你快速看懂、放心点餐。",
+          tags: ["美食推荐", "AI助手", "菜品信息"],
         },
       },
       prevPage: "上一页",
@@ -1180,7 +1187,7 @@ export const translations = {
           background:
             "18 years old, Freshman, Multiple Math/Programming Awards",
           description:
-            "Provides understandable, actionable climate change predictions and interpretations. It generates US-localized forecasts, combines your location, profession, and goals to offer specific action recommendations. Built-in AI assistant is always available to answer questions, help you evaluate choices and reduce emissions, turning 'climate impact' into something you can act on today.",
+            "Provides understandable, actionable climate predictions and interpretations. Combines your location and goals to offer specific recommendations, and helps you gradually reduce emissions through an AI assistant.",
           tags: ["Climate Prediction", "Data Analysis", "Action Recommendations"],
         },
         rowingpro: {
@@ -1189,7 +1196,7 @@ export const translations = {
           background:
             "Physics PhD, Finance Master's, CS Undergraduate, Some Engineering Experience",
           description:
-            "In a quiet meditative space, casually record your thoughts and feelings with voice. Hobbi generates immersive scenes based on your uploaded photos, lightly interacts with you, and helps organize scattered emotions into a spiritual diary. Use it anytime, completely free, no appointment needed.",
+            "In a quiet meditative space, record your thoughts with voice. Hobbi generates immersive scenes based on photos, helping you organize emotions and write your own spiritual diary.",
           tags: ["Voice Recording", "Meditation Space", "Spiritual Diary"],
         },
         climatehub: {
@@ -1198,7 +1205,7 @@ export const translations = {
           background:
             "Computer Science Master's, Engineering Experience",
           description:
-            "Before agents call APIs, access URLs, or initiate payments, Andon delivers approve/block/human-review decisions in ~200ms, with an auditable evidence chain attached. Built for high-risk workflows like agent payments, procurement, and tool calls, stopping problems before it's too late to regret.",
+            "Before agents call APIs, access links, or initiate payments, Andon delivers approve/block/human-review decisions in ~200ms, stopping high-risk issues before they occur.",
           tags: ["API Security", "Payment Interception", "Risk Assessment"],
         },
         hobbi: {
@@ -1207,7 +1214,7 @@ export const translations = {
           background:
             "Computer Science PhD, Finance PhD, Finance Master's, Engineering Experience",
           description:
-            "Teachers and parents often struggle to quickly find safe, age-appropriate jokes. Existing apps either repeat content or cross boundaries. SixSeven works with one tap, recommends suitable jokes by scenario, supports audio playback with sound effects, and gets smarter the more you use it.",
+            "Teachers and parents struggle to quickly find safe, age-appropriate jokes. SixSeven works with one tap, recommends suitable content by scenario, supports audio playback, and continuously optimizes the experience with use.",
           tags: ["Joke Generation", "Joke Recommendation", "Joke Playback"],
         },
         yummyyummy: {
@@ -1216,7 +1223,7 @@ export const translations = {
           background:
             "Computer Science PhD, Finance PhD, Design Master's, Some Engineering Experience",
           description:
-            "Generic startup advice is useless. SparkUp evaluates your unique strengths and tailors business ideas to your personal situation. Instantly publish your personalized startup project to social media, quickly generate early buzz, and attract your first supporters. Say goodbye to blind exploration and start your entrepreneurial journey.",
+            "Generic startup advice has no value. SparkUp evaluates your personal strengths, generates tailored business ideas, and can publish to social platforms with one click for quick early feedback.",
           tags: ["Startup Advice", "Business Ideas", "Personalized Recommendations"],
         },
         relabseo: {
@@ -1225,8 +1232,17 @@ export const translations = {
           background:
             "Finance PhD, Finance Master's, Some Engineering Experience",
           description:
-            "A science-based nutritional supplement decision assistant. It leads with science, evaluates various supplements, highlights ingredient efficacy and limitations, and tailors answers to individual circumstances. No influencer hype, no profit-driven motives—only clear, evidence-backed reasoning so you can choose with confidence.",
+            "A science-first nutritional supplement assistant that evaluates ingredient efficacy and limitations, combining personal circumstances to provide judgment. No marketing bias, only verifiable conclusions.",
           tags: ["Supplements", "Scientific Evaluation", "Personalized Advice"],
+        },
+        yummymeal: {
+          student: "Group Project, Four-Person Collaboration",
+          camp: "BETA Infinity Camp",
+          background:
+            "Physics PhD, Financial Mathematics Master's, Operations Research/Electrical Engineering Dual Master's, Some Engineering Experience",
+          description:
+            "Your AI food assistant, always ready to help you make reliable choices. Clearly displays dish information with real photos and brief descriptions, so you can quickly understand and order with confidence.",
+          tags: ["Food Recommendations", "AI Assistant", "Dish Information"],
         },
       },
       prevPage: "Previous",

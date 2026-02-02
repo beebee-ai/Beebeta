@@ -33,38 +33,51 @@ const relabSEOImages = [
   'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/supp-check-01.jpg',
   'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/supp-check-02.jpg'
 ];
+const yummymealImages = [
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/yum_3.png',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/yum_4.png'
+];
+const veganSelectionImages = [
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/pdselection.png'
+];
+const rowingProProjectImages = [
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/RowingPro_1.png',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/RowingPro_2.png'
+];
 
 // 单个作品卡片组件
-const WorkCard: React.FC<{ work: any }> = ({ work }) => {
+const WorkCard: React.FC<{ work: any; globalImageCounter: number; workImageOffset: number; onImageChange: (workId: number, direction: number, imageCount: number) => void; onImageIndicatorClick: (workId: number, targetIndex: number, imageCount: number) => void; onHoverChange: (workId: number | null) => void }> = ({ work, globalImageCounter, workImageOffset, onImageChange, onImageIndicatorClick, onHoverChange }) => {
   const { language } = useLanguage();
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const images = work.image;
   const hasMultipleImages = images.length > 1;
-
-  // 自动轮播效果
-  useEffect(() => {
-    if (!hasMultipleImages || isHovered) return;
-
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, 3000); // 每3秒切换一次
-
-    return () => clearInterval(interval);
-  }, [hasMultipleImages, isHovered, images.length]);
+  
+  // 根据全局计数器、偏移量和图片数量计算当前显示的图片索引
+  const currentImageIndex = hasMultipleImages ? ((globalImageCounter + workImageOffset) % images.length + images.length) % images.length : 0;
+  
+  // 处理悬停状态变化
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    onHoverChange(work.id);
+  };
+  
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    onHoverChange(null);
+  };
 
   // 切换到上一张图片
   const handlePrevImage = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    onImageChange(work.id, -1, images.length);
   };
 
   // 切换到下一张图片
   const handleNextImage = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    onImageChange(work.id, 1, images.length);
   };
 
   // 解析背景信息，用竖线分隔
@@ -83,8 +96,8 @@ const WorkCard: React.FC<{ work: any }> = ({ work }) => {
         target="_blank"
         rel="noopener noreferrer"
         className="block group bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-[#FF6900]/50 transition-all hover:shadow-xl hover:shadow-[#FF6900]/10 cursor-pointer flex flex-col h-full relative"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {/* Image Gallery */}
         <div className="relative h-56 overflow-hidden">
@@ -123,52 +136,52 @@ const WorkCard: React.FC<{ work: any }> = ({ work }) => {
                 <ChevronRight className="w-5 h-5" />
               </button>
 
-              {/* Image Indicators */}
-              <div className="absolute top-3 right-3 flex gap-1.5 z-10">
-                {images.map((_: any, index: number) => (
-                  <button
-                    key={index}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setCurrentImageIndex(index);
-                    }}
-                    className={`h-1.5 rounded-full transition-all ${
-                      index === currentImageIndex
-                        ? 'bg-white w-6'
-                        : 'bg-white/50 hover:bg-white/70 w-1.5'
-                    }`}
-                    aria-label={`图片 ${index + 1}`}
-                  />
-                ))}
-              </div>
             </>
           )}
-          
-          {/* Hover Overlay with Link Icon */}
-          <div className="absolute inset-0 bg-[#FF6900]/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF6900] to-[#FF8533] flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform">
-              <ExternalLink className="w-6 h-6 text-white" />
-            </div>
-          </div>
-          
-          {/* Link Icon in Corner */}
-          <div className="absolute top-3 left-3 z-10">
-            <div className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center">
-              <ExternalLink className="w-4 h-4 text-[#FF6900]" />
-            </div>
+
+          {/* Image Indicators - Always show, even for single image */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-[50] pointer-events-auto">
+            {images.map((_: any, index: number) => (
+              <button
+                key={index}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (hasMultipleImages) {
+                    onImageIndicatorClick(work.id, index, images.length);
+                  }
+                }}
+                className={`transition-all ${
+                  index === currentImageIndex
+                    ? 'bg-[#FF6900] w-6 h-1.5 rounded-full shadow-md'
+                    : 'bg-white/90 hover:bg-white w-1.5 h-1.5 rounded-full shadow-sm border border-white/50'
+                }`}
+                aria-label={`图片 ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
 
         {/* Content */}
         <div className="p-6 flex flex-col flex-1">
-          {/* Title */}
-          <h3 
-            className="text-[#FF6900] font-bold mb-4"
-            style={{ fontSize: 'clamp(12px, 2vw, 18px)' }}
-          >
-            {work.title}
-          </h3>
+          {/* Title with Share Button */}
+          <div className="flex items-center justify-between mb-4">
+            <h3 
+              className="text-[#FF6900] font-bold"
+              style={{ fontSize: 'clamp(12px, 2vw, 18px)' }}
+            >
+              {work.title}
+            </h3>
+            <a
+              href={work.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="w-6 h-6 rounded-full bg-white/90 hover:bg-white flex items-center justify-center transition-all hover:scale-110"
+            >
+              <ExternalLink className="w-3.5 h-3.5 text-[#FF6900]" />
+            </a>
+          </div>
 
           {/* Student Info */}
           <div className="flex items-center gap-2 mb-1">
@@ -209,8 +222,8 @@ const WorkCard: React.FC<{ work: any }> = ({ work }) => {
           {/* Product Description */}
           <div className="mt-auto pt-2">
             <p 
-              className="text-[#4a5565] leading-relaxed text-sm md:text-base"
-              style={{ fontSize: 'clamp(12px, 1.5vw, 15px)' }}
+              className="text-[#4a5565] leading-relaxed"
+              style={{ fontSize: 'clamp(12px, 1.6vw, 16px)' }}
             >
               {work.description}
             </p>
@@ -283,6 +296,17 @@ export function WorksSection() {
     },
     {
       id: 6,
+      title: 'Yummy Yummy',
+      student: t.works.projects.yummymeal.student,
+      camp: t.works.projects.yummymeal.camp,
+      background: t.works.projects.yummymeal.background,
+      description: t.works.projects.yummymeal.description,
+      image: yummymealImages,
+      link: 'https://yum.9top.org/',
+      tags: t.works.projects.yummymeal.tags
+    },
+    {
+      id: 7,
       title: 'Climate Intelligence Hub',
       student: t.works.projects.pdselection.student,
       camp: t.works.projects.pdselection.camp,
@@ -291,6 +315,57 @@ export function WorksSection() {
       image: pdSelectionImages,
       link: 'https://climate-intelligence-hub.org/',
       tags: t.works.projects.pdselection.tags
+    },
+    {
+      id: 8,
+      title: 'Relab SEO',
+      student: language === 'en' ? 'K (Student)' : 'K 同学',
+      camp: t.works.projects.relabseo.camp,
+      background: language === 'en'
+        ? 'CEO of a real estate data company with sales and marketing background, zero engineering experience.'
+        : '房地产大数据公司 CEO，销售市场背景，0 工程经验',
+      description: language === 'en'
+        ? 'A platform integrating content clustering, AI generation, and SEO scoring. Supports visual analysis and optimization suggestions to help marketers efficiently build content strategies.'
+        : '集内容聚类、AI 生成与 SEO 评分于一体的平台，支持可视化分析与优化建议，帮助营销人员高效构建内容策略。',
+      image: [
+        'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/Relab_SEO_1.png'
+      ],
+      link: 'https://relabai.netlify.app/',
+      tags: t.works.projects.relabseo.tags
+    },
+    {
+      id: 9,
+      title: language === 'en' ? 'Vegan Curated Hub' : '纯素甄选',
+      student: language === 'en' ? 'Z (Student)' : 'Z 同学',
+      camp: t.works.projects.pdselection.camp,
+      background: language === 'en'
+        ? 'Investor background, zero engineering experience.'
+        : '投资背景，零工程经验',
+      description: language === 'en'
+        ? 'Curated selection of high-quality vegan restaurants, recipes, and products. AI-powered recommendations help you find quality resources, making vegan living simpler, healthier, and more refined.'
+        : '精选高质量素食餐厅、食谱与产品，通过 AI 精准推荐优质资源，让素食生活更简单、更健康、更有品质。',
+      image: veganSelectionImages,
+      link: 'https://pdselection.com/',
+      tags: language === 'en'
+        ? ['Vegan Lifestyle', 'Curated Selection', 'AI Recommendations']
+        : ['纯素生活', '精选推荐', 'AI 推荐']
+    },
+    {
+      id: 10,
+      title: 'RowingPro',
+      student: language === 'en' ? 'V (Student)' : 'V 同学',
+      camp: language === 'en' ? 'BETA Galaxy Camp' : 'BETA 星空营（Galaxy）',
+      background: language === 'en'
+        ? '16 years old, based in the US, multiple gold medal winner in math and programming competitions.'
+        : '16岁，美国，多项数学/编程金牌得主',
+      description: language === 'en'
+        ? 'Track training progress, analyze movement details, and connect with the community. AI provides clear improvement suggestions, combining plans and video analysis to help you steadily improve performance.'
+        : '追踪训练进度，分析动作细节，并与社区交流。AI 提供清晰改进建议，结合计划与视频分析，帮助你稳步提升表现。',
+      image: rowingProProjectImages,
+      link: 'https://crew-trainer.com/',
+      tags: language === 'en'
+        ? ['Rowing Training', 'Motion Analysis', 'AI Coach']
+        : ['划船训练', '动作分析', 'AI 教练']
     }
   ];
 
@@ -315,6 +390,49 @@ export function WorksSection() {
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(0); // 用于判断滑动方向
   const shouldUseCarousel = works.length > itemsPerPage;
+  
+  // 全局图片切换计数器 - 所有作品同步切换
+  const [globalImageCounter, setGlobalImageCounter] = useState(0);
+  const [hoveredWorkId, setHoveredWorkId] = useState<number | null>(null);
+  // 每个作品的图片偏移量（用于点击指示器时只影响该作品）
+  const [workImageOffsets, setWorkImageOffsets] = useState<Record<number, number>>({});
+  
+  // 统一管理所有作品的图片自动切换
+  useEffect(() => {
+    // 如果有作品被悬停，暂停自动切换
+    if (hoveredWorkId !== null) return;
+    
+    const interval = setInterval(() => {
+      setGlobalImageCounter((prev) => prev + 1);
+    }, 3000); // 每3秒切换一次
+    
+    return () => clearInterval(interval);
+  }, [hoveredWorkId]);
+  
+  // 处理手动切换图片（只影响特定作品）
+  const handleImageChange = (workId: number, direction: number, imageCount: number) => {
+    // 只更新该作品的偏移量，不影响全局计数器
+    setWorkImageOffsets((prev) => ({
+      ...prev,
+      [workId]: (prev[workId] || 0) + direction
+    }));
+  };
+  
+  // 处理点击图片指示器
+  const handleImageIndicatorClick = (workId: number, targetIndex: number, imageCount: number) => {
+    // 计算需要调整的偏移量，使该作品显示目标图片
+    const currentIndex = (globalImageCounter + (workImageOffsets[workId] || 0)) % imageCount;
+    const offset = (targetIndex - currentIndex + imageCount) % imageCount;
+    setWorkImageOffsets((prev) => ({
+      ...prev,
+      [workId]: (prev[workId] || 0) + offset
+    }));
+  };
+  
+  // 处理悬停状态变化
+  const handleHoverChange = (workId: number | null) => {
+    setHoveredWorkId(workId);
+  };
   
   // 计算总页数
   const totalPages = Math.ceil(works.length / itemsPerPage);
@@ -355,7 +473,7 @@ export function WorksSection() {
   };
 
   return (
-    <section id="works" className="py-16 lg:py-24 bg-[#fafafa]">
+    <section id="works" className="pt-16 pb-32 lg:pt-24 lg:pb-40 bg-[#fafafa] relative z-10">
       {/* Section Title */}
       <SectionDivider 
         number="04" 
@@ -370,18 +488,9 @@ export function WorksSection() {
         {shouldUseCarousel ? (
           /* 轮播模式 - 当作品数量超过6个时 */
           <div className="relative">
-            {/* 左箭头 - 仅桌面端显示 */}
-            <button
-              onClick={handlePrev}
-              className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 translate-x-[20px] xl:translate-x-[50px] z-10 w-[32px] h-[50px] rounded-l-full bg-white text-[#FF6900] hover:bg-gray-50 transition-all items-center justify-center shadow-md cursor-pointer"
-              aria-label="上一页"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
             {/* 作品网格 - 带动画 */}
-            <div className={`relative ${isMobile ? 'min-h-[1000px]' : 'min-h-[600px]'} max-w-[1300px] mx-auto`}>
-              <AnimatePresence initial={false} custom={direction}>
+            <div className="relative max-w-[1300px] mx-auto pb-8">
+              <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                   key={currentPage}
                   custom={direction}
@@ -393,53 +502,88 @@ export function WorksSection() {
                     x: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.3 }
                   }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 absolute w-full top-0 place-items-center"
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full place-items-start"
                 >
-                  {getCurrentPageWorks().map((work) => <WorkCard key={work.id} work={work} />)}
+                  {getCurrentPageWorks().map((work) => (
+                    <WorkCard 
+                      key={work.id} 
+                      work={work} 
+                      globalImageCounter={globalImageCounter}
+                      workImageOffset={workImageOffsets[work.id] || 0}
+                      onImageChange={handleImageChange}
+                      onImageIndicatorClick={handleImageIndicatorClick}
+                      onHoverChange={handleHoverChange}
+                    />
+                  ))}
+                  {/* 占位卡片：保证即使当前页作品不足 itemsPerPage，也占满高度 */}
+                  {Array.from({ length: itemsPerPage - getCurrentPageWorks().length })
+                    .filter((_, index) => itemsPerPage - getCurrentPageWorks().length > 0)
+                    .map((_, index) => (
+                      <div
+                        key={`placeholder-${index}`}
+                        className="h-0 md:h-[360px] lg:h-[380px] opacity-0 pointer-events-none"
+                      >
+                        <div className="h-full" />
+                      </div>
+                  ))}
                 </motion.div>
               </AnimatePresence>
-              {/* 占位元素，保持容器高度 */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-0 pointer-events-none place-items-center">
-                {Array.from({ length: itemsPerPage }).map((_, index) => (
-                  <div key={index} className="w-full sm:w-[400px] h-[480px]">
-                    <div className="h-full"></div>
-                  </div>
-                ))}
-              </div>
             </div>
 
-            {/* 右箭头 - 仅桌面端显示 */}
-            <button
-              onClick={handleNext}
-              className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 -translate-x-[20px] xl:-translate-x-[50px] z-10 w-[32px] h-[50px] rounded-r-full bg-white text-[#FF6900] hover:bg-gray-50 transition-all items-center justify-center shadow-md cursor-pointer"
-              aria-label="下一页"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+            {/* 分页控件 - 参考专业导师团队分页按钮，增加与下方区块的间距 */}
+            <div className="flex items-center justify-center gap-3 mt-6 mb-12 lg:mb-16">
+              {/* 左箭头按钮 */}
+              <button
+                onClick={handlePrev}
+                className="w-8 h-8 rounded-full bg-white border border-gray-300 hover:border-[#FF6900] text-[#FF6900] hover:bg-[#FF6900] hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-sm"
+                aria-label="上一页"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
 
-            {/* 页面指示器 */}
-            <div className="flex items-center justify-center gap-2 mt-4 md:mt-4">
-              {Array.from({ length: totalPages }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setDirection(index > currentPage ? 1 : -1);
-                    setCurrentPage(index);
-                  }}
-                  className={`h-2 rounded-full transition-all cursor-pointer ${
-                    index === currentPage
-                      ? 'bg-[#FF6900] w-8'
-                      : 'bg-gray-400 hover:bg-gray-500 w-2'
-                  }`}
-                  aria-label={`第 ${index + 1} 页`}
-                />
-              ))}
+              {/* 页面指示器 */}
+              <div className="flex items-center gap-2">
+                {Array.from({ length: totalPages }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setDirection(index > currentPage ? 1 : -1);
+                      setCurrentPage(index);
+                    }}
+                    className={`transition-all cursor-pointer ${
+                      index === currentPage
+                        ? 'bg-[#FF6900] w-8 h-2 rounded-full'
+                        : 'bg-gray-400 hover:bg-gray-500 w-2 h-2 rounded-full'
+                    }`}
+                    aria-label={`第 ${index + 1} 页`}
+                  />
+                ))}
+              </div>
+
+              {/* 右箭头按钮 */}
+              <button
+                onClick={handleNext}
+                className="w-8 h-8 rounded-full bg-white border border-gray-300 hover:border-[#FF6900] text-[#FF6900] hover:bg-[#FF6900] hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-sm"
+                aria-label="下一页"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
           </div>
         ) : (
           /* 网格模式 - 当作品数量不超过6个时 */
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-            {works.map((work) => <WorkCard key={work.id} work={work} />)}
+            {works.map((work) => (
+              <WorkCard 
+                key={work.id} 
+                work={work} 
+                globalImageCounter={globalImageCounter}
+                workImageOffset={workImageOffsets[work.id] || 0}
+                onImageChange={handleImageChange}
+                onImageIndicatorClick={handleImageIndicatorClick}
+                onHoverChange={handleHoverChange}
+              />
+            ))}
           </div>
         )}
       </div>

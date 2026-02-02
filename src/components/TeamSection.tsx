@@ -596,7 +596,7 @@ export function TeamSection() {
   };
 
   return (
-    <section id="team" className="pb-16 lg:pb-16 bg-[#fafafa]">
+    <section id="team" className="pb-16 lg:pb-16 bg-[#fafafa] relative z-0">
       {/* Section Title */}
       <SectionDivider 
         number="05" 

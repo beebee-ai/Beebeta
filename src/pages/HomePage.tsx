@@ -49,20 +49,23 @@ export function HomePage() {
         {/* 第三章：进阶与陪练课程 - 标题已在组件内部 */}
         <AdvancedCoursesAndStatsSection />
         
-        {/* 第四章：学员作品展示 - 标题已在组件内部 */}
-        <WorksSection />
-        
-        {/* 第五章：导师团队 - 标题已在组件内部 */}
-        <TeamSection />
-        
-        {/* 第六章：关于我们 - 标题已在组件内部 */}
-        <AboutSection />
-        
-        {/* 第七章：常见问题 - 标题已在组件内部 */}
-        <FAQSection />
-        
-        {/* 第八章：联系我们 - 标题已在组件内部 */}
-        <ContactSection source={t.contact.titleHighlight + t.contact.title} />
+        {/* 从学员作品开始，统一使用浅灰背景，避免中间露出全局渐变底色 */}
+        <div className="bg-[#fafafa]">
+          {/* 第四章：学员作品展示 - 标题已在组件内部 */}
+          <WorksSection />
+          
+          {/* 第五章：导师团队 - 标题已在组件内部 */}
+          <TeamSection />
+          
+          {/* 第六章：关于我们 - 标题已在组件内部 */}
+          <AboutSection />
+          
+          {/* 第七章：常见问题 - 标题已在组件内部 */}
+          <FAQSection />
+          
+          {/* 第八章：联系我们 - 标题已在组件内部 */}
+          <ContactSection source={t.contact.titleHighlight + t.contact.title} />
+        </div>
       </main>
       <Footer />
     </div>
