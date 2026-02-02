@@ -266,7 +266,7 @@ export const translations = {
           tags: ["语音记录", "冥想空间", "心灵日记"],
         },
         climatehub: {
-          student: "V同学",
+          student: "V 同学",
           camp: "BETA 无界营（Infinity）",
           background: "计算机硕士，工程经验",
           description: "在代理调用 API、访问 URL 或发起支付前，Andon 会在约 200 毫秒内给出批准 / 阻止 / 人工审核的决策，并附带可审计的证据链。它专为代理支付、采购和工具调用等高风险流程而生，把问题挡在\"来不及后悔\"之前。",
