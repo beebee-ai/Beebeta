@@ -14,6 +14,36 @@ export function TeamSection() {
   const navigate = useNavigate();
   const isEn = language === 'en';
 
+  // 将 TeamSection 的数字 ID 映射到 PacerPage 的字符串 ID
+  const mentorIdMap: Record<number, string> = {
+    1: 'mentor-pin',        // Pin Zhou
+    2: 'mentor-h',          // Iris Hu
+    3: 'mentor-c',          // Fred Chi
+    4: 'mentor-vito',       // Vito Liu
+    5: 'mentor-miles',      // Miles Chen
+    6: 'mentor-ashlynn',    // Ashlynn Lu
+    7: 'mentor-charlie',    // Charlie Chen
+    8: 'mentor-bobby',      // Bobby Wang
+    9: 'mentor-fangzhong',  // Fangzhong Liu
+    10: 'mentor-mingxi',    // Mingxi Chen
+    11: 'mentor-hongshu',   // Hong Shu
+    12: 'mentor-heyang',    // Heyang Long
+    13: 'mentor-jerry',     // Jerry Yu
+    16: 'mentor-jennifer-liu', // Jennifer Liu
+  };
+
+  // 处理点击人名跳转到详情页
+  const handleNameClick = (memberId: number, e: React.MouseEvent) => {
+    e.stopPropagation(); // 阻止事件冒泡，避免触发卡片点击
+    const pacerId = mentorIdMap[memberId];
+    if (pacerId) {
+      console.log(`跳转到导师详情页: ${memberId} -> ${pacerId}`);
+      navigate(`/pacer?mentor=${pacerId}`);
+    } else {
+      console.warn(`未找到导师映射: memberId=${memberId}`);
+    }
+  };
+
   // 项目导师
   const projectMentors = [
     // 前10位按指定顺序
@@ -88,7 +118,7 @@ export function TeamSection() {
       title: isEn ? 'Senior Data Scientist' : '资深数据科学家',
       bio: isEn
         ? 'UChicago Financial Math graduate specializing in XGBoost/uplift modeling, MMM, RAG analytics and growth systems.'
-        : '芝加哥大学金融数学硕士，负责 XGBoost/uplift 建模、MMM、RAG Analytics Assistant 与增长决策系统。',
+        : 'BEEBEE AI Infinity 全栈工程优秀奖；芝加哥大学金融数学硕士，负责 XGBoost/uplift 建模、MMM、RAG Analytics Assistant 与增长决策系统。',
       expertise: isEn
         ? ['Data Science', 'Marketing Models', 'Risk', 'RAG', 'Experiments']
         : ['数据科学', '营销建模', '风险', 'RAG', 'A/B 测试'],
@@ -101,7 +131,7 @@ export function TeamSection() {
       title: isEn ? 'Full-Stack Engineer & AI Application Developer' : '全栈工程师 / AI 应用开发者',
       bio: isEn
         ? 'Builds end-to-end AI systems including RAG, vLLM, OCR and automation workflows; strong full-stack delivery.'
-        : '专长 RAG、vLLM、OCR、自动化流程、React/Node 全链路；多次完成"想法→上线产品"全流程交付。',
+        : 'BEEBEE AI Infinity 最佳产品奖；专长 RAG、vLLM、OCR、自动化流程、React/Node 全链路；多次完成"想法→上线产品"全流程交付。',
       expertise: isEn
         ? ['Full-stack', 'RAG', 'vLLM', 'OCR', 'Automation', 'React/Node']
         : ['全栈', 'RAG', 'vLLM', 'OCR', '自动化', 'React/Node'],
@@ -114,7 +144,7 @@ export function TeamSection() {
       title: isEn ? 'NYC Financial Systems Engineer' : '纽约金融系统工程师',
       bio: isEn
         ? 'Columbia OR alumnus with 9+ years building trading, settlement and risk systems in NYC finance.'
-        : '哥大运筹学硕士，9+ 年纽约金融机构后端与资金结算/交易/风险系统经验。',
+        : 'BEEBEE AI Infinity 全栈工程优秀奖；哥大运筹学硕士，9+ 年纽约金融机构后端与资金结算/交易/风险系统经验。',
       expertise: isEn
         ? ['Backend', 'Trading', 'FinTech', 'Pipelines', 'Risk']
         : ['后端', '交易系统', '金融工程', '数据管线', '风险系统'],
@@ -127,7 +157,7 @@ export function TeamSection() {
       title: isEn ? 'Machine Learning Engineer, Google' : 'Google 机器学习工程师',
       bio: isEn
         ? 'OSU Physics PhD (Presidential Fellow), ML engineer at Google with experience across RAG, agents and full-stack pipelines.'
-        : 'OSU 物理博士（总统奖学金），深度学习 + 工程并行经验，熟悉 RAG、Agent、全栈与 ML 系统。',
+        : 'BEEBEE AI Infinity 全栈工程优秀奖；OSU 物理博士（总统奖学金），深度学习 + 工程并行经验，熟悉 RAG、Agent、全栈与 ML 系统。',
       expertise: isEn
         ? ['ML', 'DL', 'RAG', 'Agent', 'Engineering']
         : ['机器学习', '深度学习', 'RAG', 'Agent', '工程系统'],
@@ -540,8 +570,10 @@ export function TeamSection() {
           <div className="flex items-start justify-between mb-1.5 flex-shrink-0">
             <div className="flex-1 min-w-0">
               <h3 
-                className="text-[#101828] mb-1"
+                className="text-[#101828] mb-1 cursor-pointer hover:text-[#FF6900] transition-colors"
                 style={{ fontSize: 'clamp(16px, 2.8vw, 18px)' }}
+                onClick={(e) => handleNameClick(member.id, e)}
+                title={isEn ? 'Click to view details' : '点击查看详情'}
               >
                 {member.name}
               </h3>

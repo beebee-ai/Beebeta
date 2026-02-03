@@ -1,87 +1,27 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { ArrowLeft, Globe, Award, Briefcase, GraduationCap, Users, ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { pacerMentors, MentorData } from "../data/pacerData";
 import { expertMentors, ExpertData } from "../data/prosData";
 import { operationsMentors, OperationsMentorData } from "../data/OperationsManagement";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import pacerImages from "../img/pacer";
-
-// 懒加载卡片包装组件
-function LazyCard({ 
-  children, 
-  cardId,
-  forceLoad = false
-}: { 
-  children: React.ReactNode; 
-  cardId: string;
-  forceLoad?: boolean;
-}) {
-  const [isVisible, setIsVisible] = useState(forceLoad);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (forceLoad) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          // 一旦可见就停止观察
-          if (ref.current) {
-            observer.unobserve(ref.current);
-          }
-        }
-      },
-      {
-        rootMargin: "200px", // 提前200px开始加载
-        threshold: 0.01,
-      }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, [forceLoad]);
-
-  return (
-    <div ref={ref} id={cardId}>
-      {isVisible ? (
-        children
-      ) : (
-        // 占位符 - 保持布局稳定
-        <div className="w-full h-[340px] lg:h-[345px] bg-gray-100 rounded-2xl border-2 border-[#FF6900]/10 animate-pulse"></div>
-      )}
-    </div>
-  );
-}
 
 export function PacerPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { language, setLanguage } = useLanguage();
   const [flippedCardId, setFlippedCardId] = useState<string | null>(null);
-  const [forceLoadedCards, setForceLoadedCards] = useState<Set<string>>(new Set());
   
   // 折叠状态 - 默认只展开项目导师
   const [isProjectCollapsed, setIsProjectCollapsed] = useState(false);
   const [isExpertCollapsed, setIsExpertCollapsed] = useState(true);
   const [isOperationsCollapsed, setIsOperationsCollapsed] = useState(true);
+  
+  // 用于防止重复执行滚动
+  const hasScrolledRef = useRef<string | null>(null);
 
   const isEnglish = language === "en";
-
-  // 页面加载时滚动到顶部
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, []);
 
   // 切换卡片翻转状态 - 风琴效果
   const toggleCardFlip = (cardId: string) => {
@@ -93,69 +33,133 @@ export function PacerPage() {
     });
   };
 
-  // 滚动到指定导师卡片 - 优化以支持懒加载
-  const scrollToMentor = (mentorId: string) => {
-    console.log('🎯 尝试滚动到导师:', mentorId);
-    
+  // 滚动到指定导师卡片，并自动展开对应导师详情
+  const scrollToMentor = useCallback((mentorId: string) => {
     // 判断导师属于哪个分类，并自动展开对应分类
     const isPacer = pacerMentors.some(m => m.id === mentorId);
     const isExpert = expertMentors.some(m => m.id === mentorId);
     const isOperations = operationsMentors.some(m => m.id === mentorId);
     
-    console.log('📂 分类判断:', { isPacer, isExpert, isOperations });
+    // 判断是否需要展开分类
+    const needsExpand = (isPacer && isProjectCollapsed) || 
+                        (isExpert && isExpertCollapsed) || 
+                        (isOperations && isOperationsCollapsed);
     
-    let needsExpand = false;
+    // 展开对应的分类
     if (isPacer && isProjectCollapsed) {
-      console.log('🔓 展开项目导师');
       setIsProjectCollapsed(false);
-      needsExpand = true;
     } else if (isExpert && isExpertCollapsed) {
-      console.log('🔓 展开专家导师');
       setIsExpertCollapsed(false);
-      needsExpand = true;
     } else if (isOperations && isOperationsCollapsed) {
-      console.log('🔓 展开运营管理');
       setIsOperationsCollapsed(false);
-      needsExpand = true;
     }
     
-    // 先强制加载该卡片
-    setForceLoadedCards(prev => new Set(prev).add(mentorId));
-    console.log('⚡ 强制加载卡片:', mentorId);
+    // 默认展开对应导师的详情
+    setFlippedCardId(mentorId);
     
-    // 递归查找元素，最多尝试20次
-    let attempts = 0;
-    const maxAttempts = 20;
-    
-    const tryScroll = () => {
+    // 执行滚动，如果需要展开分类则延迟更长时间
+    const performScroll = () => {
       const element = document.getElementById(mentorId);
-      console.log(`🔍 尝试 ${attempts + 1}/${maxAttempts}:`, element ? '✅ 找到元素' : '❌ 未找到');
-      
       if (element) {
-        console.log('📜 开始滚动...');
-        // 使用 scrollIntoView 替代手动计算
-        element.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start',
-          inline: 'nearest'
-        });
+        // 获取固定头部的高度（73px）
+        const headerHeight = 73;
+        // 获取元素相对于文档的位置
+        const rect = element.getBoundingClientRect();
+        const elementTop = rect.top + window.pageYOffset;
+        // 计算目标滚动位置，为固定头部留出空间
+        const targetPosition = elementTop - headerHeight - 20; // 额外20px间距
         
-        // 滚动后微调位置，为固定头部留出空间
-        setTimeout(() => {
-          window.scrollBy({ top: -100, behavior: 'smooth' });
-        }, 300);
-      } else if (attempts < maxAttempts) {
-        attempts++;
-        setTimeout(tryScroll, 100); // 减少间隔到100ms
+        // 使用 window.scrollTo 精确控制滚动位置
+        window.scrollTo({
+          top: Math.max(0, targetPosition), // 确保不为负数
+          behavior: 'smooth'
+        });
       } else {
-        console.error('❌ 滚动失败：未找到元素', mentorId);
+        // 如果元素还没找到，重试（最多3次）
+        if (performScroll.retryCount === undefined) {
+          performScroll.retryCount = 0;
+        }
+        if (performScroll.retryCount < 3) {
+          performScroll.retryCount++;
+          setTimeout(performScroll, 100);
+        }
       }
     };
     
+    // 重置重试计数
+    performScroll.retryCount = 0;
+    
     // 根据是否需要展开来决定延迟时间
-    const initialDelay = needsExpand ? 200 : 50; // 需要展开时200ms，否则50ms
-    setTimeout(tryScroll, initialDelay);
-  };
+    const delay = needsExpand ? 300 : 50;
+    setTimeout(performScroll, delay);
+  }, [isProjectCollapsed, isExpertCollapsed, isOperationsCollapsed]);
+
+  // 页面加载时检查 URL 参数，如果有 mentor 参数则滚动到对应位置
+  useEffect(() => {
+    const mentorId = searchParams.get('mentor');
+    if (mentorId) {
+      // 防止重复执行：如果已经处理过这个 mentorId，则跳过
+      if (hasScrolledRef.current === mentorId) {
+        return;
+      }
+      
+      hasScrolledRef.current = mentorId;
+      
+      // 判断导师属于哪个分类，并自动展开对应分类
+      const isPacer = pacerMentors.some(m => m.id === mentorId);
+      const isExpert = expertMentors.some(m => m.id === mentorId);
+      const isOperations = operationsMentors.some(m => m.id === mentorId);
+      
+      // 判断是否需要展开分类（使用当前状态值）
+      const needsExpand = (isPacer && isProjectCollapsed) || 
+                          (isExpert && isExpertCollapsed) || 
+                          (isOperations && isOperationsCollapsed);
+      
+      // 展开对应的分类
+      if (isPacer && isProjectCollapsed) {
+        setIsProjectCollapsed(false);
+      } else if (isExpert && isExpertCollapsed) {
+        setIsExpertCollapsed(false);
+      } else if (isOperations && isOperationsCollapsed) {
+        setIsOperationsCollapsed(false);
+      }
+      
+      // 默认展开对应导师的详情
+      setFlippedCardId(mentorId);
+      
+      // 参考首页导航栏的实现方式：等待导航和分类展开完成后滚动
+      // 如果需要展开分类，延迟更长时间以确保动画完成
+      const delay = needsExpand ? 300 : 100;
+      
+      setTimeout(() => {
+        const element = document.getElementById(mentorId);
+        if (element) {
+          // 获取固定头部的高度（73px）
+          const headerHeight = 73;
+          // 获取元素相对于文档的位置
+          const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+          // 计算目标滚动位置，为固定头部留出空间
+          const targetPosition = elementTop - headerHeight - 20; // 额外20px间距
+          
+          // 使用 window.scrollTo 精确控制滚动位置
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+        
+        // 清除 URL 参数
+        navigate('/pacer', { replace: true });
+        // 清除标记，允许下次跳转到同一个导师
+        setTimeout(() => {
+          hasScrolledRef.current = null;
+        }, 500);
+      }, delay);
+    } else {
+      // 没有参数时重置标记，但不滚动（避免点击分类标题时触发滚动）
+      hasScrolledRef.current = null;
+    }
+  }, [searchParams, navigate]); // 移除状态依赖，只在 URL 参数变化时执行
 
   const MentorCard = ({
     mentor,
@@ -166,156 +170,134 @@ export function PacerPage() {
     isExpert?: boolean;
     isOperations?: boolean;
   }) => {
-    const isFlipped = flippedCardId === mentor.id;
+    const isFlipped = flippedCardId === mentor.id; // 这里表示“详情是否展开”
     const isProjectMentor = !isExpert && !isOperations; // 判断是否为项目导师
     
     return (
       <>
-        {/* 桌面端 - 3D翻转卡片 */}
+        {/* 桌面端 - 上方卡片 + 下方展开详情（不再翻转） */}
         <div
           className="hidden lg:block w-full"
         >
           <div
-            className="relative w-full cursor-pointer"
-            style={{ 
-              perspective: "1500px",
-              minHeight: isFlipped ? '600px' : '340px',
-              transition: 'min-height 0.3s ease-out'
-            }}
-            onClick={() => toggleCardFlip(mentor.id)}
+            className="relative w-full"
           >
-            <div
-              className="relative w-full h-auto transition-transform duration-500 ease-out"
-              style={{
-                transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                transformStyle: "preserve-3d",
-                willChange: isFlipped ? 'transform' : 'auto',
-              }}
+            {/* 顶部简介卡片 */}
+            <button
+              type="button"
+              onClick={() => toggleCardFlip(mentor.id)}
+              className={`w-full border-2 border-[#FF6900]/30 bg-white shadow-lg text-left hover:border-[#FF6900]/60 transition-all duration-300 cursor-pointer ${
+                isFlipped 
+                  ? 'rounded-t-2xl border-b-0' 
+                  : 'rounded-2xl'
+              }`}
             >
-              {/* 正面 - 简介卡片 */}
-              <div
-                className="w-full rounded-2xl border-2 border-[#FF6900]/30 bg-white shadow-lg"
-                style={{
-                  backfaceVisibility: "hidden",
-                  WebkitBackfaceVisibility: "hidden",
-                }}
-              >
-                {/* 顶部装饰条 */}
-                <div className={`h-1.5 rounded-t-xl ${isExpert ? 'bg-[#FF6900]' : 'bg-[#FF6900]/70'}`}></div>
+              {/* 顶部装饰条 */}
+              <div className={`h-1.5 rounded-t-xl ${isExpert ? 'bg-[#FF6900]' : 'bg-[#FF6900]/70'}`}></div>
 
-                <div className="p-5 flex gap-5">
-                  {/* 左侧：头像 */}
-                  <div className="flex-shrink-0">
-                    {pacerImages[mentor.id] ? (
-                      <img 
-                        src={pacerImages[mentor.id]} 
-                        alt={isEnglish ? mentor.nameEn : mentor.name}
-                        className="w-40 h-40 rounded-full object-cover ring-4 ring-[#FF6900]/20"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-40 h-40 rounded-full bg-[#FF6900] flex items-center justify-center text-5xl text-white ring-4 ring-[#FF6900]/20">
-                        {mentor.nameEn.charAt(0)}
+              <div className="p-5 flex gap-5">
+                {/* 左侧：头像 */}
+                <div className="flex-shrink-0">
+                  {pacerImages[mentor.id] ? (
+                    <img 
+                      src={pacerImages[mentor.id]} 
+                      alt={isEnglish ? mentor.nameEn : mentor.name}
+                      className="w-40 h-40 rounded-full object-cover ring-4 ring-[#FF6900]/20"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="w-40 h-40 rounded-full bg-[#FF6900] flex items-center justify-center text-5xl text-white ring-4 ring-[#FF6900]/20">
+                      {mentor.nameEn.charAt(0)}
+                    </div>
+                  )}
+                </div>
+
+                {/* 右侧：信息内容 */}
+                <div className="flex-1 flex flex-col min-w-0">
+                  {/* 名字 */}
+                  <h3 className="text-3xl text-[#101828] mb-2">
+                    {isEnglish ? mentor.nameEn : mentor.name}
+                  </h3>
+
+                  {/* 职位 */}
+                  <div className="flex items-center gap-2 text-[#FF6900] mb-2">
+                    <Briefcase className="w-4 h-4 flex-shrink-0" />
+                    <p className="text-lg">
+                      {isEnglish ? mentor.titleEn : mentor.title}
+                    </p>
+                  </div>
+
+                  {/* 标签 - 单独一行 */}
+                  <div className="flex items-center gap-3 mb-3">
+                    {isExpert && (
+                      <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-sm">
+                        <GraduationCap className="w-4 h-4" />
+                        <span>{isEnglish ? 'Expert Mentor' : '专家导师'}</span>
+                      </div>
+                    )}
+                    {isOperations && (
+                      <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-sm">
+                        <Users className="w-4 h-4" />
+                        <span>{isEnglish ? 'Operations' : '运营管理'}</span>
+                      </div>
+                    )}
+                    {isProjectMentor && (
+                      <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-sm">
+                        <Briefcase className="w-4 h-4" />
+                        <span>{isEnglish ? 'Project Mentor' : '项目导师'}</span>
                       </div>
                     )}
                   </div>
 
-                  {/* 右侧：信息内容 */}
-                  <div className="flex-1 flex flex-col min-w-0">
-                    {/* 名字 */}
-                    <h3 className="text-3xl text-[#101828] mb-2">
-                      {isEnglish ? mentor.nameEn : mentor.name}
-                    </h3>
+                  {/* 分割线 */}
+                  <div className="h-px bg-[#FF6900]/30 mb-3"></div>
 
-                    {/* 职位 */}
-                    <div className="flex items-center gap-2 text-[#FF6900] mb-2">
-                      <Briefcase className="w-4 h-4 flex-shrink-0" />
-                      <p className="text-lg">
-                        {isEnglish ? mentor.titleEn : mentor.title}
-                      </p>
-                    </div>
+                  {/* 简介内容 - 完整显示，无截断 */}
+                  <div className="mb-3">
+                    <p className="text-[#4a5565] text-base leading-relaxed">
+                      {isEnglish ? mentor.summaryEn : mentor.summary}
+                    </p>
+                  </div>
 
-                    {/* 标签 - 单独一行 */}
-                    <div className="flex items-center gap-3 mb-3">
-                      {isExpert && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-sm">
-                          <GraduationCap className="w-4 h-4" />
-                          <span>{isEnglish ? 'Expert Mentor' : '专家导师'}</span>
-                        </div>
-                      )}
-                      {isOperations && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-sm">
-                          <Users className="w-4 h-4" />
-                          <span>{isEnglish ? 'Operations' : '运营管理'}</span>
-                        </div>
-                      )}
-                      {isProjectMentor && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-sm">
-                          <Briefcase className="w-4 h-4" />
-                          <span>{isEnglish ? 'Project Mentor' : '项目导师'}</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* 分割线 */}
-                    <div className="h-px bg-[#FF6900]/30 mb-3"></div>
-
-                    {/* 简介内容 - 完整显示，无截断 */}
-                    <div className="mb-3">
-                      <p className="text-[#4a5565] text-base leading-relaxed">
-                        {isEnglish ? mentor.summaryEn : mentor.summary}
-                      </p>
-                    </div>
-
-                    {/* 底部提示 */}
-                    <div className="pt-3 border-t border-[#FF6900]/20">
-                      <p className="text-center text-[#FF6900]/60 text-xs">
-                        {isEnglish ? '👆 Click to view details' : '👆 点击查看详细信息'}
-                      </p>
-                    </div>
+                  {/* 底部提示 */}
+                  <div className="pt-3 border-t border-[#FF6900]/20">
+                    <p className="text-center text-[#FF6900]/60 text-xs">
+                      {isEnglish
+                        ? (isFlipped ? '👇 Click to hide details' : '👆 Click to view details')
+                        : (isFlipped ? '👇 再次点击收起详情' : '👆 点击查看详细信息')}
+                    </p>
                   </div>
                 </div>
               </div>
+            </button>
 
-              {/* 背面 - 详细信息 */}
+            {/* 下方展开的详情面板（始终渲染，通过高度动画顺滑出现，与上方卡片视觉上一体） */}
+            <div
+              className={`overflow-hidden transition-all duration-300 ease-out ${
+                isFlipped ? 'max-h-[720px] opacity-100' : 'max-h-0 opacity-0'
+              }`}
+            >
               <div
-                className="absolute top-0 left-0 w-full rounded-2xl border-2 border-[#FF6900]/50"
+                className="rounded-b-2xl border-x-2 border-b-2 border-t-0 border-[#FF6900]/50 overflow-hidden"
                 style={{
-                  transform: "rotateY(180deg)",
-                  backfaceVisibility: "hidden",
-                  WebkitBackfaceVisibility: "hidden",
-                  background: 'linear-gradient(135deg, #FF8533 0%, #FFA366 50%, #FF8533 100%)'
+                  background: 'linear-gradient(135deg, #FF8533 0%, #FFA366 50%, #FF8533 100%)',
                 }}
               >
-                {/* 顶部装饰条 */}
-                <div className="h-2 bg-white/20 rounded-t-xl"></div>
-
                 <div className="p-6 max-h-[600px] overflow-y-auto scrollbar-gold-bg">
-                  {isFlipped && (
-                    <>
-                      <div 
-                        className="mentor-details text-white text-base leading-relaxed"
-                        dangerouslySetInnerHTML={{ 
-                          __html: isEnglish ? mentor.detailsEn : mentor.details 
-                        }}
-                      />
+                  <div 
+                    className="mentor-details text-white text-base leading-relaxed"
+                    dangerouslySetInnerHTML={{ 
+                      __html: isEnglish ? mentor.detailsEn : mentor.details 
+                    }}
+                  />
 
-                      {/* 引用语录 */}
-                      {mentor.quote && (
-                        <div className="mt-6 bg-white/10 border-l-4 border-white/30 p-4 rounded-lg">
-                          <p className="text-white/90 italic text-base">
-                            "{isEnglish ? mentor.quoteEn : mentor.quote}"
-                          </p>
-                        </div>
-                      )}
-
-                      {/* 底部返回提示 */}
-                      <div className="pt-4 mt-4 border-t border-white/20">
-                        <p className="text-center text-white/70 text-sm">
-                          {isEnglish ? '👆 Click again to return' : '👆 再次点击返回简介'}
-                        </p>
-                      </div>
-                    </>
+                  {/* 引用语录 */}
+                  {mentor.quote && (
+                    <div className="mt-6 bg-white/10 border-l-4 border-white/30 p-4 rounded-lg">
+                      <p className="text-white/90 italic text-base">
+                        "{isEnglish ? mentor.quoteEn : mentor.quote}"
+                      </p>
+                    </div>
                   )}
                 </div>
               </div>
@@ -323,150 +305,122 @@ export function PacerPage() {
           </div>
         </div>
 
-        {/* 移动端 - 3D翻转卡片 */}
+        {/* 移动端 - 上方卡片 + 下方展开详情（不再翻转） */}
         <div
           className="lg:hidden w-full"
           id={`${mentor.id}-mobile`}
         >
-          <div
-            className="relative w-full cursor-pointer"
-            style={{ 
-              perspective: "1500px",
-              minHeight: isFlipped ? '600px' : '300px', // 动态最小高度
-              transition: 'min-height 0.3s ease-out'
-            }}
+          {/* 上方简介卡片 */}
+          <button
+            type="button"
             onClick={() => toggleCardFlip(mentor.id)}
+            className={`relative w-full cursor-pointer border-2 border-[#FF6900]/30 bg-white shadow-lg text-left hover:border-[#FF6900]/60 transition-all duration-300 ${
+              isFlipped 
+                ? 'rounded-t-2xl border-b-0' 
+                : 'rounded-2xl'
+            }`}
           >
-            <div
-              className="relative w-full h-auto transition-transform duration-500 ease-out"
-              style={{
-                transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                transformStyle: "preserve-3d",
-                willChange: isFlipped ? 'transform' : 'auto',
-              }}
-            >
-              {/* 正面 - 简介卡片 */}
-              <div
-                className="w-full rounded-2xl border-2 border-[#FF6900]/30 bg-white shadow-lg"
-                style={{
-                  backfaceVisibility: "hidden",
-                  WebkitBackfaceVisibility: "hidden",
-                }}
-              >
-                {/* 顶部装饰条 */}
-                <div className={`h-1.5 rounded-t-xl ${isExpert ? 'bg-[#FF6900]' : 'bg-[#FF6900]/70'}`}></div>
+            {/* 顶部装饰条 */}
+            <div className={`h-1.5 rounded-t-xl ${isExpert ? 'bg-[#FF6900]' : 'bg-[#FF6900]/70'}`}></div>
 
-                <div className="p-6">
-                  {/* 上部分：头像区 - 居中显示 */}
-                  <div className="flex flex-col items-center mb-6">
-                    {/* 头像 */}
-                    {pacerImages[mentor.id] ? (
-                      <img 
-                        src={pacerImages[mentor.id]} 
-                        alt={isEnglish ? mentor.nameEn : mentor.name}
-                        className="w-32 h-32 rounded-full object-cover ring-4 ring-[#FF6900]/20 mb-4"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-32 h-32 rounded-full bg-[#FF6900] flex items-center justify-center text-4xl text-white ring-4 ring-[#FF6900]/20 mb-4">
-                        {mentor.nameEn.charAt(0)}
-                      </div>
-                    )}
+            <div className="p-6">
+              {/* 上部分：头像区 - 居中显示 */}
+              <div className="flex flex-col items-center mb-6">
+                {/* 头像 */}
+                {pacerImages[mentor.id] ? (
+                  <img 
+                    src={pacerImages[mentor.id]} 
+                    alt={isEnglish ? mentor.nameEn : mentor.name}
+                    className="w-32 h-32 rounded-full object-cover ring-4 ring-[#FF6900]/20 mb-4"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-32 h-32 rounded-full bg-[#FF6900] flex items-center justify-center text-4xl text-white ring-4 ring-[#FF6900]/20 mb-4">
+                    {mentor.nameEn.charAt(0)}
+                  </div>
+                )}
 
-                    {/* 名字 */}
-                    <h3 className="text-3xl text-[#101828] text-center mb-2">
-                      {isEnglish ? mentor.nameEn : mentor.name}
-                    </h3>
+                {/* 名字 */}
+                <h3 className="text-3xl text-[#101828] text-center mb-2">
+                  {isEnglish ? mentor.nameEn : mentor.name}
+                </h3>
 
-                    {/* 职位 - 移动端无图标 */}
-                    <div className="text-[#FF6900] mb-2">
-                      <p className="text-lg text-center">
-                        {isEnglish ? mentor.titleEn : mentor.title}
-                      </p>
+                {/* 职位 - 移动端无图标 */}
+                <div className="text-[#FF6900] mb-2">
+                  <p className="text-lg text-center">
+                    {isEnglish ? mentor.titleEn : mentor.title}
+                  </p>
+                </div>
+
+                {/* 标签 - 单独一行 */}
+                <div className="flex items-center gap-3 mb-3">
+                  {isExpert && (
+                    <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-base">
+                      <GraduationCap className="w-4 h-4" />
+                      <span>{isEnglish ? 'Expert Mentor' : '专家导师'}</span>
                     </div>
-
-                    {/* 标签 - 单独一行 */}
-                    <div className="flex items-center gap-3 mb-3">
-                      {isExpert && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-base">
-                          <GraduationCap className="w-4 h-4" />
-                          <span>{isEnglish ? 'Expert Mentor' : '专家导师'}</span>
-                        </div>
-                      )}
-                      {isOperations && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-base">
-                          <Users className="w-4 h-4" />
-                          <span>{isEnglish ? 'Operations' : '运营管理'}</span>
-                        </div>
-                      )}
-                      {isProjectMentor && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-base">
-                          <Briefcase className="w-4 h-4" />
-                          <span>{isEnglish ? 'Project Mentor' : '项目导师'}</span>
-                        </div>
-                      )}
+                  )}
+                  {isOperations && (
+                    <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-base">
+                      <Users className="w-4 h-4" />
+                      <span>{isEnglish ? 'Operations' : '运营管理'}</span>
                     </div>
-                  </div>
-
-                  {/* 分割线 */}
-                  <div className="h-px bg-[#FF6900]/30 mb-4"></div>
-
-                  {/* 下部分：简介内容 */}
-                  <div>
-                    <p className="text-[#4a5565] text-base leading-relaxed">
-                      {isEnglish ? mentor.summaryEn : mentor.summary}
-                    </p>
-                  </div>
-
-                  {/* 底部提示 */}
-                  <div className="mt-4 pt-4 border-t border-[#FF6900]/20">
-                    <p className="text-center text-[#FF6900]/60 text-sm">
-                      {isEnglish ? '👆 Click to view details' : '👆 点击查看详细信息'}
-                    </p>
-                  </div>
+                  )}
+                  {isProjectMentor && (
+                    <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF6900]/20 border border-[#FF6900]/40 rounded-full text-[#FF6900] text-base">
+                      <Briefcase className="w-4 h-4" />
+                      <span>{isEnglish ? 'Project Mentor' : '项目导师'}</span>
+                    </div>
+                  )}
                 </div>
               </div>
 
-              {/* 背面 - 详细信息 */}
-              <div
-                className="absolute top-0 left-0 w-full rounded-2xl border-2 border-[#FF6900]/50 bg-[#FF6900]"
-                style={{
-                  transform: "rotateY(180deg)",
-                  backfaceVisibility: "hidden",
-                  WebkitBackfaceVisibility: "hidden",
-                }}
-              >
-                {/* 顶部装饰条 */}
-                <div className="h-2 bg-black/20 rounded-t-xl"></div>
+              {/* 分割线 */}
+              <div className="h-px bg-[#FF6900]/30 mb-4"></div>
 
-                <div className="p-6 max-h-[600px] overflow-y-auto scrollbar-gold-bg">
-                  {isFlipped && (
-                    <>
-                      <div 
-                        className="mentor-details text-black/90 text-base leading-relaxed"
-                        dangerouslySetInnerHTML={{ 
-                          __html: isEnglish ? mentor.detailsEn : mentor.details 
-                        }}
-                      />
+              {/* 下部分：简介内容 */}
+              <div>
+                <p className="text-[#4a5565] text-base leading-relaxed">
+                  {isEnglish ? mentor.summaryEn : mentor.summary}
+                </p>
+              </div>
 
-                      {/* 引用语录 */}
-                      {mentor.quote && (
-                        <div className="mt-6 bg-black/10 border-l-4 border-black/30 p-4 rounded-lg">
-                          <p className="text-black/80 italic text-base">
-                            "{isEnglish ? mentor.quoteEn : mentor.quote}"
-                          </p>
-                        </div>
-                      )}
+              {/* 底部提示 */}
+              <div className="mt-4 pt-4 border-t border-[#FF6900]/20">
+                <p className="text-center text-[#FF6900]/60 text-sm">
+                  {isEnglish
+                    ? (isFlipped ? '👇 Tap to hide details' : '👆 Tap to view details')
+                    : (isFlipped ? '👇 再次点击收起详情' : '👆 点击查看详细信息')}
+                </p>
+              </div>
+            </div>
+          </button>
 
-                      {/* 底部返回提示 */}
-                      <div className="pt-4 mt-4 border-t border-black/20">
-                        <p className="text-center text-black/60 text-sm">
-                          {isEnglish ? '👆 Click again to return' : '👆 再次点击返回简介'}
-                        </p>
-                      </div>
-                    </>
-                  )}
-                </div>
+          {/* 下方展开详情 - 橙色背景，从下方顺滑伸出，与上方卡片视觉上一体 */}
+          <div
+            className={`overflow-hidden transition-all duration-300 ease-out ${
+              isFlipped ? 'max-h-[720px] opacity-100' : 'max-h-0 opacity-0'
+            }`}
+          >
+            <div
+              className="rounded-b-2xl border-x-2 border-b-2 border-t-0 border-[#FF6900]/50 bg-[#FF6900] overflow-hidden"
+            >
+              <div className="p-6 max-h-[600px] overflow-y-auto scrollbar-gold-bg">
+                <div 
+                  className="mentor-details text-white text-base leading-relaxed"
+                  dangerouslySetInnerHTML={{ 
+                    __html: isEnglish ? mentor.detailsEn : mentor.details 
+                  }}
+                />
+
+                {/* 引用语录 */}
+                {mentor.quote && (
+                  <div className="mt-6 bg-black/10 border-l-4 border-black/30 p-4 rounded-lg">
+                    <p className="text-white/90 italic text-base">
+                      "{isEnglish ? mentor.quoteEn : mentor.quote}"
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -506,7 +460,11 @@ export function PacerPage() {
         {/* 项目导师部分 */}
         <div className="mb-8">
           <button
-            onClick={() => setIsProjectCollapsed(!isProjectCollapsed)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsProjectCollapsed(!isProjectCollapsed);
+            }}
             className="w-full text-xs uppercase tracking-wider mb-3 text-[#FF6900] border-b-2 border-[#FF6900]/30 pb-2 flex items-center justify-between hover:text-[#FF6900]/80 transition-colors text-[14px]"
           >
             <div className="flex items-center gap-2">
@@ -536,7 +494,11 @@ export function PacerPage() {
         {/* 专家导师部分 */}
         <div className="mb-8">
           <button
-            onClick={() => setIsExpertCollapsed(!isExpertCollapsed)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsExpertCollapsed(!isExpertCollapsed);
+            }}
             className="w-full text-xs uppercase tracking-wider mb-3 text-[#FF6900] border-b-2 border-[#FF6900]/30 pb-2 flex items-center justify-between hover:text-[#FF6900]/80 transition-colors text-[14px]"
           >
             <div className="flex items-center gap-2">
@@ -566,7 +528,11 @@ export function PacerPage() {
         {/* 运营管理部分 */}
         <div className="mb-8">
           <button
-            onClick={() => setIsOperationsCollapsed(!isOperationsCollapsed)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsOperationsCollapsed(!isOperationsCollapsed);
+            }}
             className="w-full text-xs uppercase tracking-wider mb-3 text-[#FF6900] border-b-2 border-[#FF6900]/30 pb-2 flex items-center justify-between hover:text-[#FF6900]/80 transition-colors text-[14px]"
           >
             <div className="flex items-center gap-2">
@@ -626,9 +592,9 @@ export function PacerPage() {
           </div>
           <div className="max-w-3xl mx-auto space-y-12">
             {pacerMentors.map((mentor) => (
-              <LazyCard key={mentor.id} cardId={mentor.id} forceLoad={forceLoadedCards.has(mentor.id)}>
-                <MentorCard key={mentor.id} mentor={mentor} />
-              </LazyCard>
+              <div key={mentor.id} id={mentor.id}>
+                <MentorCard mentor={mentor} />
+              </div>
             ))}
           </div>
         </div>
@@ -645,13 +611,12 @@ export function PacerPage() {
           </div>
           <div className="max-w-3xl mx-auto space-y-12">
             {expertMentors.map((expert) => (
-              <LazyCard key={expert.id} cardId={expert.id} forceLoad={forceLoadedCards.has(expert.id)}>
+              <div key={expert.id} id={expert.id}>
                 <MentorCard
-                  key={expert.id}
                   mentor={expert}
                   isExpert={true}
                 />
-              </LazyCard>
+              </div>
             ))}
           </div>
         </div>
@@ -668,13 +633,12 @@ export function PacerPage() {
           </div>
           <div className="max-w-3xl mx-auto space-y-12">
             {operationsMentors.map((opMentor) => (
-              <LazyCard key={opMentor.id} cardId={opMentor.id} forceLoad={forceLoadedCards.has(opMentor.id)}>
+              <div key={opMentor.id} id={opMentor.id}>
                 <MentorCard
-                  key={opMentor.id}
                   mentor={opMentor}
                   isOperations={true}
                 />
-              </LazyCard>
+              </div>
             ))}
           </div>
         </div>

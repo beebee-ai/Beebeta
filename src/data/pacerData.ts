@@ -611,7 +611,7 @@ export const pacerMentors: MentorData[] = [
     title: "资深数据科学家（Teladoc Health）",
     titleEn: "Senior Data Scientist, Teladoc Health",
     summary:
-      "芝加哥大学金融数学硕士，印第安纳大学金融与数学双学士。现任 Teladoc Health 资深数据科学家，负责市场分析与模型体系建设，主导季度策略项目与内部 RAG Analytics Assistant 的研发。曾在 AIG 负责量化风险建模，涉及信用风险、资产组合建模与大规模模拟系统。近期开展多项个人 AI 项目，包括 OCR + LLM 多语言菜单助手 YumTranslate。",
+      "BEEBEE AI Infinity 全栈工程优秀奖；芝加哥大学金融数学硕士，印第安纳大学金融与数学双学士。现任 Teladoc Health 资深数据科学家，负责市场分析与模型体系建设，主导季度策略项目与内部 RAG Analytics Assistant 的研发。曾在 AIG 负责量化风险建模，涉及信用风险、资产组合建模与大规模模拟系统。近期开展多项个人 AI 项目，包括 OCR + LLM 多语言菜单助手 YumTranslate。",
     summaryEn:
       "Holds a Master’s in Financial Mathematics from the University of Chicago and dual bachelor’s degrees in Finance and Mathematics from Indiana University. Senior Data Scientist at Teladoc Health, leading marketing analytics, modeling infrastructure and RAG-based internal tools. Former Quantitative Risk Lead at AIG, responsible for large-scale credit risk and asset modeling. Recently built personal AI projects including YumTranslate, an OCR + LLM multilingual assistant.",
     details: `
@@ -622,8 +622,8 @@ export const pacerMentors: MentorData[] = [
   <li>构建 XGBoost、uplift、propensity 全流程模型，推动注册增长近 50%</li>
   <li>搭建 Google Meridian MMM 模型，用于跨渠道 ROI 测算与预算优化</li>
   <li>主导 A/B 测试与增长实验体系设计，支持业务决策与验证过程</li>
-  <li>设计实时营销监控系统（40+ 指标），减少 DS 支撑需求 40%</li>
-  <li>推动 80% 报表���动化：开发 Python + CI/CD 数据管线</li>
+      <li>设计实时营销监控系统（40+ 指标），减少 DS 支撑需求 40%</li>
+      <li>推动 80% 报表自动化：开发 Python + CI/CD 数据管线</li>
   <li>AIG 时期负责信用风险模型、Monte Carlo 模拟、违约预测（85% 准确度）</li>
   <li>开发早期预警系统，在 COVID 时期避免约 8,000 万潜在损失</li>
 </ul>
@@ -702,7 +702,7 @@ export const pacerMentors: MentorData[] = [
     title: "全栈工程师 / AI 应用开发者",
     titleEn: "Full-Stack Engineer & AI Application Developer",
     summary:
-      "毕业于纽约州立大学石溪分校计算机科学专业，专注全栈开发与 AI 应用落地。熟悉 React / Node / Mongo / Firebase 等完整工程链路，能将大模型、RAG、OCR、自动化流程等技术与前后端系统结合。拥有医疗、加密货币、电商等行业的项目经验，多次主导从“想法 → MVP → 可上线产品”的完整交付。",
+      "BEEBEE AI Infinity 最佳产品奖；毕业于纽约州立大学石溪分校计算机科学专业，专注全栈开发与 AI 应用落地。熟悉 React / Node / Mongo / Firebase 等完整工程链路，能将大模型、RAG、OCR、自动化流程等技术与前后端系统结合。拥有医疗、加密货币、电商等行业的项目经验，多次主导从“想法 → MVP → 可上线产品”的完整交付。",
     summaryEn:
       "CS graduate from Stony Brook University. Focused on full-stack development and AI application engineering. Experienced with React, Node, MongoDB, Firebase, vLLM, RAG, OCR, automation workflows and multi-service orchestration. Delivered multiple end-to-end projects across healthcare, crypto and e-commerce, taking products from concept to MVP to production.",
     details: `
@@ -794,7 +794,7 @@ export const pacerMentors: MentorData[] = [
     titleEn:
       "Core Systems Engineer in NY Financial Institutions",
     summary:
-      "哥伦比亚大学运筹学硕士,纽约大学电气工程硕士,中山大学电子与通信本科。拥有 9 年以上纽约金融机构核心系统经验,覆盖后端开发、数据工程、交易与风险系统。精通 Python/Java/Spring/SQL/C#,并具备前端原型能力。在 BEE BETA 指导学生构建可落地、可维护、可扩展的生产级系统。",
+      "BEEBEE AI Infinity 全栈工程优秀奖；哥伦比亚大学运筹学硕士,纽约大学电气工程硕士,中山大学电子与通信本科。拥有 9 年以上纽约金融机构核心系统经验,覆盖后端开发、数据工程、交易与风险系统。精通 Python/Java/Spring/SQL/C#,并具备前端原型能力。在 BEE BETA 指导学生构建可落地、可维护、可扩展的生产级系统。",
     summaryEn:
       "MS in Operations Research from Columbia University, MS in Electrical Engineering from NYU, and BS from Sun Yat-sen University. Over 9 years of backend and data engineering experience across NYC financial institutions, specializing in core trading, risk, and settlement systems. Skilled in Python, Java, Spring, SQL, C#, plus frontend prototyping.",
     details: `
@@ -883,7 +883,7 @@ export const pacerMentors: MentorData[] = [
     title: "Google 机器学习工程师",
     titleEn: "Machine Learning Engineer, Google",
     summary:
-      "俄亥俄州立大学物理博士（总统奖学金），南京大学物理本科。曾任 Object Tech 机器学习科学家实习生、OSU 研究助理（共发表 11 篇论文）。现为 Google 机器学习工程师。在 BEE Beta 掌握从工程到 AI 的完整技术链路，包括 RAG、Agent、前后端、爬虫、CI/CD 等实战能力。",
+      "BEEBEE AI Infinity 全栈工程优秀奖；俄亥俄州立大学物理博士（总统奖学金），南京大学物理本科。曾任 Object Tech 机器学习科学家实习生、OSU 研究助理（共发表 11 篇论文）。现为 Google 机器学习工程师。在 BEE Beta 掌握从工程到 AI 的完整技术链路，包括 RAG、Agent、前后端、爬虫、CI/CD 等实战能力。",
     summaryEn:
       "PhD in Physics from Ohio State University (Presidential Fellowship) and BS in Physics from Nanjing University. Former ML Scientist Intern at Object Tech and Research Assistant at OSU with 11 publications. Currently a Machine Learning Engineer at Google, experienced across full-stack AI engineering including RAG, agents, crawling, API design, and CI/CD pipelines.",
     details: `
