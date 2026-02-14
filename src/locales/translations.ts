@@ -255,14 +255,14 @@ export const translations = {
           student: "小组作品，四人协作完成",
           camp: "",
           background: "量化金融 | 深度学习",
-          description: "这是一款简单直接的「睡前压力卸载站」，旨在通过轻松的操作和白噪音，帮你快速卸下压力、进入睡眠。",
+          description: "这是一款简单直接的\"睡前压力卸载站\"，通过轻松的操作和白噪音，帮你在睡前放下压力、安静下来，让大脑慢慢降速，更自然地进入睡眠状态。",
           tags: ["白噪音", "减压", "助眠"],
         },
         morningedge: {
           student: "小组作品，四人协作完成",
           camp: "",
           background: "量化思维 | 计算机背景 | AI算法能力 | 产品创业",
-          description: "我们帮你聚信息、AI 帮你筛、叙事和宏观帮你理好，你少花时间、决策清楚一点。有兴趣可以试试。",
+          description: "我们帮你把分散的信息聚在一起，AI 再帮你做第一轮筛选，去噪、分类、抓重点，让你少花时间、决策清楚一点。有兴趣可以试试。",
           tags: ["信息聚合", "AI 筛选", "宏观叙事"],
         },
         pdselection: {
@@ -1206,14 +1206,14 @@ export const translations = {
           student: "Group Project, Four-Person Collaboration",
           camp: "",
           background: "Quantitative Finance | Deep Learning",
-          description: "A simple, direct \"bedtime stress relief station\" that helps you unwind and fall asleep through easy interactions and white noise.",
+          description: "A simple, direct \"bedtime stress relief station\" that helps you put down the day's stress and quiet down before sleep through easy interactions and white noise, letting your mind slow down and ease into sleep more naturally.",
           tags: ["White Noise", "Stress Relief", "Sleep Aid"],
         },
         morningedge: {
           student: "Group Project, Four-Person Collaboration",
           camp: "",
           background: "Quantitative Thinking | CS Background | AI/Algorithm Skills | Product & Startup",
-          description: "We gather information for you, AI helps filter and structure it, narrative and macro views help you make sense of it—so you spend less time and decide more clearly. Feel free to try it.",
+          description: "We bring scattered information together for you; AI then does the first pass—denoising, categorizing, and surfacing what matters—so you spend less time and decide more clearly. Feel free to try it.",
           tags: ["Info Aggregation", "AI Filtering", "Macro Narrative"],
         },
         pdselection: {
