@@ -5,7 +5,16 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../locales/translations';
 import { SectionDivider } from './SectionDivider';
 
-// 学员作品图片 - 使用网络链接
+// 学员产品图片 - 使用网络链接
+const sleepSerenityImages = [
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/SleepSerenity1.png',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/SleepSerenity2.png',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/SleepSerenity3.png'
+];
+const morningEdgeImages = [
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/MorningEdge1.png',
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/MorningEdge2.png'
+];
 const pdSelectionImages = [
   'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/Climate_Intelligence_Hub_1.png',
   'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/Climate_Intelligence_Hub_2.png'
@@ -43,6 +52,9 @@ const veganSelectionImages = [
 const rowingProProjectImages = [
   'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/RowingPro_1.png',
   'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/RowingPro_2.png'
+];
+const glidoImages = [
+  'https://beebee-s3-sit.s3.us-west-2.amazonaws.com/bee-beta/works/Glido.png'
 ];
 
 // 单个作品卡片组件
@@ -240,6 +252,28 @@ export function WorksSection() {
   
   const works = [
     {
+      id: 11,
+      title: 'Morning Edge',
+      student: t.works.projects.morningedge.student,
+      camp: t.works.projects.morningedge.camp,
+      background: t.works.projects.morningedge.background,
+      description: t.works.projects.morningedge.description,
+      image: morningEdgeImages,
+      link: 'https://morning-edge.vercel.app/',
+      tags: t.works.projects.morningedge.tags
+    },
+    {
+      id: 0,
+      title: 'Sleep Serenity',
+      student: t.works.projects.sleepserenity.student,
+      camp: t.works.projects.sleepserenity.camp,
+      background: t.works.projects.sleepserenity.background,
+      description: t.works.projects.sleepserenity.description,
+      image: sleepSerenityImages,
+      link: 'https://calm-tonight-plan.lovable.app/',
+      tags: t.works.projects.sleepserenity.tags
+    },
+    {
       id: 1,
       title: 'SixSeven Jokes',
       student: t.works.projects.hobbi.student,
@@ -304,6 +338,17 @@ export function WorksSection() {
       image: yummymealImages,
       link: 'https://yum.9top.org/',
       tags: t.works.projects.yummymeal.tags
+    },
+    {
+      id: 12,
+      title: 'Glido',
+      student: t.works.projects.glido.student,
+      camp: t.works.projects.glido.camp,
+      background: t.works.projects.glido.background,
+      description: t.works.projects.glido.description,
+      image: glidoImages,
+      link: 'https://chromewebstore.google.com/detail/glido-ai-flow-starter/ohbnkeppibpgmjfhjhdpfdcmagjfmcgg',
+      tags: t.works.projects.glido.tags
     },
     {
       id: 7,

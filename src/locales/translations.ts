@@ -4,7 +4,7 @@ export const translations = {
     nav: {
       home: "首页",
       courses: "课程体系",
-      works: "学员作品",
+      works: "学员产品",
       team: "导师团队",
       about: "关于我们",
       faq: "常见问题",
@@ -17,7 +17,7 @@ export const translations = {
       chapter1: "参加 BEE BETA 你能得到什么？",
       chapter2: "完整课程体系",
       chapter3: "进阶与陪练课程",
-      chapter4: "学员作品展示",
+      chapter4: "学员产品展示",
       chapter5: "专业导师团队",
       chapter6: "关于我们",
       chapter7: "常见问题",
@@ -247,10 +247,24 @@ export const translations = {
     // Works Section
     works: {
       title: "优秀学员",
-      titleHighlight: "作品展示",
+      titleHighlight: "产品展示",
       subtitle:
-        "看看我们的学员如何将所学知识转化为实际项目，创造出令人惊叹的作品",
+        "看看我们的学员如何将所学知识转化为实际项目，创造出令人惊叹的产品",
       projects: {
+        sleepserenity: {
+          student: "小组作品，四人协作完成",
+          camp: "",
+          background: "量化金融 | 深度学习",
+          description: "这是一款简单直接的「睡前压力卸载站」，旨在通过轻松的操作和白噪音，帮你快速卸下压力、进入睡眠。",
+          tags: ["白噪音", "减压", "助眠"],
+        },
+        morningedge: {
+          student: "小组作品，四人协作完成",
+          camp: "",
+          background: "量化思维 | 计算机背景 | AI算法能力 | 产品创业",
+          description: "我们帮你聚信息、AI 帮你筛、叙事和宏观帮你理好，你少花时间、决策清楚一点。有兴趣可以试试。",
+          tags: ["信息聚合", "AI 筛选", "宏观叙事"],
+        },
         pdselection: {
           student: "K 同学",
           camp: "BETA 星空营（Galaxy）",
@@ -261,7 +275,7 @@ export const translations = {
         rowingpro: {
           student: "小组作品，四人协作完成",
           camp: "BETA 深空营（Cosmos）",
-          background: "物理博士，金融硕士，CS本科生，有一定工程经验",
+          background: "物理博士，金融硕士，CS本科生，工程经验",
           description: "在安静的冥想空间中，用语音记录你的想法。Hobbi 会基于照片生成沉浸式场景，帮你整理情绪，写下属于自己的心灵日记。",
           tags: ["语音记录", "冥想空间", "心灵日记"],
         },
@@ -282,23 +296,30 @@ export const translations = {
         yummyyummy: {
           student: "小组作品，四人协作完成",
           camp: "BETA 无界营（Infinity）",
-          background: "计算机博士，金融博士，设计硕士，有一定工程经验",
+          background: "计算机博士，金融博士，设计硕士，工程经验",
           description: "通用的创业建议没有价值。SparkUp 评估你的个人优势，生成量身定制的商业想法，并可一键发布到社交平台，快速获得早期反馈。",
           tags: ["创业建议", "商业理念", "个性化推荐"],
         },
         relabseo: {
           student: "小组作品，三人协作完成",
           camp: "BETA 星空营（Galaxy）",
-          background: "金融博士，金融硕士，有一定工程经验",
+          background: "金融博士，金融硕士，工程经验",
           description: "一款以科学为核心的营养补充剂助手，评估成分功效与局限，并结合个人情况给出判断。不带营销立场，只提供可验证的结论。",
           tags: ["营养补充剂", "科学评估", "个性化建议"],
         },
         yummymeal: {
           student: "小组作品，四人协作完成",
           camp: "BETA 无界营（Infinity）",
-          background: "物理博士，金融数学硕士，运筹/电气工程双硕士，有一定工程经验",
+          background: "物理博士，金融数学硕士，运筹/电气工程双硕士，工程经验",
           description: "你的 AI 美食助手，随时帮你做出靠谱选择。清晰展示菜品信息，配合真实照片和简要说明，让你快速看懂、放心点餐。",
           tags: ["美食推荐", "AI助手", "菜品信息"],
+        },
+        glido: {
+          student: "小组作品，四人协作完成",
+          camp: "",
+          background: "名校博士 | 量化金融 | (金融/艺术)AI跨界探索者",
+          description: "Glido 是一款 AI 助手，通过分析你当前的浏览器标签页，推荐一个可立即执行的小任务，帮助克服启动困难，快速进入学习或工作状态。",
+          tags: ["Chrome 扩展", "AI 助手", "专注启动"],
         },
       },
       prevPage: "上一页",
@@ -931,7 +952,7 @@ export const translations = {
     nav: {
       home: "Home",
       courses: "Courses",
-      works: "Student Works",
+      works: "Student Products",
       team: "Team",
       about: "About",
       faq: "FAQ",
@@ -1177,10 +1198,24 @@ export const translations = {
     // Works Section
     works: {
       title: "Outstanding ",
-      titleHighlight: "Student Works",
+      titleHighlight: "Student Products",
       subtitle:
-        "See how our students transform knowledge into real projects and create amazing works",
+        "See how our students transform knowledge into real projects and create amazing products",
       projects: {
+        sleepserenity: {
+          student: "Group Project, Four-Person Collaboration",
+          camp: "",
+          background: "Quantitative Finance | Deep Learning",
+          description: "A simple, direct \"bedtime stress relief station\" that helps you unwind and fall asleep through easy interactions and white noise.",
+          tags: ["White Noise", "Stress Relief", "Sleep Aid"],
+        },
+        morningedge: {
+          student: "Group Project, Four-Person Collaboration",
+          camp: "",
+          background: "Quantitative Thinking | CS Background | AI/Algorithm Skills | Product & Startup",
+          description: "We gather information for you, AI helps filter and structure it, narrative and macro views help you make sense of it—so you spend less time and decide more clearly. Feel free to try it.",
+          tags: ["Info Aggregation", "AI Filtering", "Macro Narrative"],
+        },
         pdselection: {
           student: "Student K",
           camp: "BETA Galaxy Camp",
@@ -1194,7 +1229,7 @@ export const translations = {
           student: "Group Project, Four-Person Collaboration",
           camp: "BETA Cosmos Camp",
           background:
-            "Physics PhD, Finance Master's, CS Undergraduate, Some Engineering Experience",
+            "Physics PhD, Finance Master's, CS Undergraduate, Engineering Experience",
           description:
             "In a quiet meditative space, record your thoughts with voice. Hobbi generates immersive scenes based on photos, helping you organize emotions and write your own spiritual diary.",
           tags: ["Voice Recording", "Meditation Space", "Spiritual Diary"],
@@ -1221,7 +1256,7 @@ export const translations = {
           student: "Group Project, Four-Person Collaboration",
           camp: "BETA Infinity Camp",
           background:
-            "Computer Science PhD, Finance PhD, Design Master's, Some Engineering Experience",
+            "Computer Science PhD, Finance PhD, Design Master's, Engineering Experience",
           description:
             "Generic startup advice has no value. SparkUp evaluates your personal strengths, generates tailored business ideas, and can publish to social platforms with one click for quick early feedback.",
           tags: ["Startup Advice", "Business Ideas", "Personalized Recommendations"],
@@ -1230,7 +1265,7 @@ export const translations = {
           student: "Group Project, Three-Person Collaboration",
           camp: "BETA Galaxy Camp",
           background:
-            "Finance PhD, Finance Master's, Some Engineering Experience",
+            "Finance PhD, Finance Master's, Engineering Experience",
           description:
             "A science-first nutritional supplement assistant that evaluates ingredient efficacy and limitations, combining personal circumstances to provide judgment. No marketing bias, only verifiable conclusions.",
           tags: ["Supplements", "Scientific Evaluation", "Personalized Advice"],
@@ -1239,10 +1274,17 @@ export const translations = {
           student: "Group Project, Four-Person Collaboration",
           camp: "BETA Infinity Camp",
           background:
-            "Physics PhD, Financial Mathematics Master's, Operations Research/Electrical Engineering Dual Master's, Some Engineering Experience",
+            "Physics PhD, Financial Mathematics Master's, Operations Research/Electrical Engineering Dual Master's, Engineering Experience",
           description:
             "Your AI food assistant, always ready to help you make reliable choices. Clearly displays dish information with real photos and brief descriptions, so you can quickly understand and order with confidence.",
           tags: ["Food Recommendations", "AI Assistant", "Dish Information"],
+        },
+        glido: {
+          student: "Group Project, Four-Person Collaboration",
+          camp: "",
+          background: "Elite university PhD | Quantitative finance | (Finance/arts) AI cross-domain explorer",
+          description: "Glido is an AI assistant that analyzes your current browser tabs and suggests one small, concrete task you can do right away—helping you overcome initiation barriers and get into focus for study or work.",
+          tags: ["Chrome Extension", "AI Assistant", "Focus Starter"],
         },
       },
       prevPage: "Previous",
