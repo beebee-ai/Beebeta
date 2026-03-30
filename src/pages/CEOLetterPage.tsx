@@ -316,7 +316,7 @@ export function CEOLetterPage() {
                         </>
                       ) : (
                         <>
-                          <li>���模态（OCR/ASR/Web Crawl）</li>
+                          <li>多模态（OCR/ASR/Web Crawl）</li>
                           <li>RAG、向量库、关键词图谱</li>
                           <li>Agent + 工具链</li>
                           <li>React + FastAPI 全栈</li>
