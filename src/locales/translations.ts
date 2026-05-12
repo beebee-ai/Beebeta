@@ -448,7 +448,7 @@ export const translations = {
       founder: {
         name: "周品",
         title: "创始人 & CEO",
-        bio: "周品先生是一位拥有超过20年IT和互联网产品运营创业经验的连续创业者，作为全球第一批GPT时代的创业者，他在人工智能领域拥有8年的相关经验，始终保持着对新技术的强烈好奇心。",
+        bio: "周品先生是一位拥有超过25年IT和互联网产品运营创业经验的连续创业者，作为全球第一批GPT时代的创业者，他在人工智能领域拥有8年的相关经验，始终保持着对新技术的强烈好奇心。",
         careerTitle: "职业经历",
         career: [
           {
@@ -1457,7 +1457,7 @@ export const translations = {
       founder: {
         name: "Pin Zhou",
         title: "Founder & CEO",
-        bio: "Mr. Pin Zhou is a serial entrepreneur with over 20 years of experience in IT and Internet product operations. As one of the world's first entrepreneurs in the GPT era, he has 8 years of experience in artificial intelligence and a strong curiosity for new technologies.",
+        bio: "Mr. Pin Zhou is a serial entrepreneur with over 25 years of experience in IT and Internet product operations. As one of the world's first entrepreneurs in the GPT era, he has 8 years of experience in artificial intelligence and a strong curiosity for new technologies.",
         careerTitle: "Career Experience",
         career: [
           {
