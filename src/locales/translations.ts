@@ -432,7 +432,7 @@ export const translations = {
       companyTitle: "关于 BEEBEE AI",
       companyIntro: {
         paragraph1:
-          "BEEBEE AI LTD是一家总部位于新西兰的国际科技公司，团队分布在新西兰、英国、加拿大、美国、泰国、中国。公司专注于GenAI智能产品开发，由具有20年以上互联网/IT经验及8年AI全模态应用开发经验的资深人士于2022年创立。",
+          "BEEBEE AI LTD是一家总部位于新西兰的国际科技公司，团队分布在新西兰、英国、加拿大、美国、泰国、中国。公司专注于GenAI智能产品开发，由具有25年以上互联网/IT经验及8年AI全模态应用开发经验的资深人士于2022年创立。",
         paragraph2: {
           part1: "公司的使命是通过",
           highlight1: "'AI × 私域知识'",
@@ -1440,7 +1440,7 @@ export const translations = {
       companyTitle: "About BEEBEE AI",
       companyIntro: {
         paragraph1:
-          "BEEBEE AI LTD is an international technology company headquartered in New Zealand, with teams distributed across New Zealand, the UK, Canada, the USA, Thailand, and China. The company focuses on GenAI intelligent product development, founded in 2022 by seasoned professionals with over 20 years of internet/IT experience and 8 years of AI multimodal application development experience.",
+          "BEEBEE AI LTD is an international technology company headquartered in New Zealand, with teams distributed across New Zealand, the UK, Canada, the USA, Thailand, and China. The company focuses on GenAI intelligent product development, founded in 2022 by seasoned professionals with over 25 years of internet/IT experience and 8 years of AI multimodal application development experience.",
         paragraph2: {
           part1:
             "The mission of the company is to enhance the productivity of individuals and organizations through",
