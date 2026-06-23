@@ -14,6 +14,7 @@ interface Course {
   ageLimit: string;
   suitableFor: string;
   duration: string;
+  weeklyQA?: string;
   requirements: string;
   content: string[];
   icon: typeof GraduationCap;
@@ -51,6 +52,7 @@ export function CourseSection() {
       ageLimit: t.courses.stage2a.ageLimit,
       suitableFor: t.courses.stage2a.suitableFor,
       duration: t.courses.stage2a.duration,
+      weeklyQA: t.courses.stage2a.weeklyQA,
       requirements: t.courses.stage2a.requirements,
       content: t.courses.stage2a.content,
       icon: Sparkles,
@@ -63,6 +65,7 @@ export function CourseSection() {
       ageLimit: t.courses.stage2b.ageLimit,
       suitableFor: t.courses.stage2b.suitableFor,
       duration: t.courses.stage2b.duration,
+      weeklyQA: t.courses.stage2b.weeklyQA,
       requirements: t.courses.stage2b.requirements,
       content: t.courses.stage2b.content,
       icon: Target,
@@ -75,6 +78,7 @@ export function CourseSection() {
       ageLimit: t.courses.stage3.ageLimit,
       suitableFor: t.courses.stage3.suitableFor,
       duration: t.courses.stage3.duration,
+      weeklyQA: t.courses.stage3.weeklyQA,
       requirements: t.courses.stage3.requirements,
       content: t.courses.stage3.content,
       icon: GraduationCap,
@@ -274,6 +278,22 @@ export function CourseSection() {
                 {course.duration}
               </span>
             </div>
+            {course.weeklyQA && (
+              <div className="leading-relaxed">
+                <span 
+                  className="text-[#101828] font-semibold"
+                  style={{ fontSize: 'clamp(13px, 2vw, 16px)' }}
+                >
+                  {t.courses.labels.weeklyQA}: 
+                </span>
+                <span 
+                  className="text-[#2d3748]"
+                  style={{ fontSize: 'clamp(13px, 2vw, 16px)' }}
+                >
+                  {course.weeklyQA}
+                </span>
+              </div>
+            )}
             <div className="leading-relaxed">
               <span 
                 className="text-[#101828] font-semibold"

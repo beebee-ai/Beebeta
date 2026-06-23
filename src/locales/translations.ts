@@ -118,33 +118,35 @@ export const translations = {
       stage2a: {
         title: "BETA 星空营 (Galaxy)",
         subtitle: "",
-        ageLimit: "18岁及以上大学生/研究生/博士生",
+        ageLimit: "18 岁及以上大学生 / 研究生 / 博士生",
         suitableFor:
           "从零做出能上线的完整产品，强化作品集，用于实习申请、求职提升或验证创业想法",
         duration:
-          "6 周课程：每周 1 次 2 小时主课（2 门产品课、4 门工程课）与 1 次作业检查；工程课当周另提供 1 小时直播答疑",
+          "6 周课程，每周 1 节主课（1 小时大课 + 0.5 小时演练答疑），共 6 节主课（产品课 1 门、工程课 4 门、营销课 1 门）；课前一次 30 分钟一对一诊断，Demo Day 于主课结束后单独举行",
+        weeklyQA: "每周一次答疑课，可预约 Office Hour（共 2 小时）",
         requirements:
           "逻辑清晰，并愿意完成从产品到工程到上线的完整项目流程",
         content: [
-          "AI 认知方法：Johari AI 框架 & CRAFT 提问体系",
-          "AI 工程实践：基于 Cursor 的全栈开发流程",
-          "产品设计能力：JSK 产品设计模型",
-          "技术集成：大模型应用 & 2Brain API",
-          "产品搭建与上线：Firebase 登录与数据、GitHub/Netlify 自动部署",
-          "发布与增长：产品测试与 Product Hunt 冷启动",
-          "商业与展示：商业计划训练 & Demo Day 路演",
+          "产品设计与 AI 提问：JSK 产品设计模型 + CRAFT 提问框架",
+          "AI 工程实践：Codex 应用框架，从结构化指令到可运行原型",
+          "全栈开发：前后端产品开发实战，从界面到数据与交互",
+          "产品上线：Git / GitHub 版本管理、Netlify 部署与独立域名 + SSL",
+          "技术集成：接入大模型与工具能力，用 OpenClaw 搭建可执行 AI 工作流",
+          "发布与增长：Product Hunt 发布，跑通从产品到市场的闭环",
+          "商业与展示：Demo Day 独立路演与成果答辩",
         ],
       },
       stage2b: {
         title: "BETA 深空营 (Cosmos)",
         subtitle: "",
-        ageLimit: "18岁及以上大学生/在职工程师/创业者",
+        ageLimit: "18 岁及以上大学生 / 在职工程师 / 创业者",
         suitableFor:
           "打造生产级、具备商业潜力的项目，用于大厂转岗、PhD申请或创业MVP",
         duration:
-          "8 周课程：每周 2 次 2 小时主课与 1 次作业检查；每周另提供 1 小时集中直播答疑",
+          "8 周课程，每周 1 节主课（1.5 小时），共 8 节主课（产品课 1 门、工程课 6 门、营销课 1 门）；每周 1 次作业检查，Demo Day 于主课结束后单独举行",
+        weeklyQA: "每周一次集中直播答疑（1 小时）",
         requirements:
-          "逻辑清晰，具备一定编程能力，能承担高强度工程实战",
+          "逻辑清晰，具备一定编程基础，愿意完成从产品架构、工程实现到上线验证的高强度项目实战",
         content: [
           "AI 认知方法：Johari AI 框架 & CRAFT 提问体系",
           "多模态处理：高效处理视频、文本、图像，并能实现数据抓取",
@@ -160,11 +162,12 @@ export const translations = {
       stage3: {
         title: "BETA 无界营 (Infinity)",
         subtitle: "",
-        ageLimit: "18岁及以上大学生/在职工程师/创业者",
+        ageLimit: "18 岁及以上大学生 / 在职工程师 / 创业者",
         suitableFor:
           "提升AI工程与产品能力，在市场与专家指导下完成可用于求职或创业的生产级产品",
         duration:
-          "12周课程：每周 1 次 2 小时主课与 1 次作业检查；每周另提供 1 小时集中直播答疑",
+          "12 周课程，每周 1 节主课（课前 10 min 创始人小谈 + 1.5 小时主课），共 12 节主课（产品课 2 门、工程课 8 门、营销课 2 门）；每周 1 次作业检查，Demo Day 于主课结束后单独举行",
+        weeklyQA: "每周一次集中直播答疑（1 小时）",
         requirements:
           "扎实的学术与工程经验，能独立规划并推动项目；通过创始人 1v1 面试",
         content: [
@@ -186,6 +189,7 @@ export const translations = {
         ageLimit: "年龄限制",
         suitableFor: "适合学员",
         duration: "课程时长",
+        weeklyQA: "每周答疑",
         requirements: "招生要求",
         content: "课程内容",
         viewMore: "查看完整课程内容",
@@ -1073,30 +1077,35 @@ export const translations = {
       stage2a: {
         title: "BETA Galaxy Camp",
         subtitle: "",
-        ageLimit: "College Students/Graduate Students/PhD Students (Age 18 and Above)",
-        suitableFor: "Build complete products from scratch to strengthen portfolio for internships, job seeking or startup validation",
-        duration: "6 weeks (1 session/week, 2 hours each)",
-        requirements: "Clear logic, STEM background preferred",
+        ageLimit: "College Students / Graduate Students / PhD Students (Age 18 and Above)",
+        suitableFor:
+          "Build a complete launch-ready product from scratch, strengthen your portfolio, and support internship applications, job growth, or startup idea validation",
+        duration:
+          "6-week program with 1 main class per week (1-hour lecture + 0.5-hour hands-on Q&A), 6 main classes total (1 product class, 4 engineering classes, 1 marketing class); one 30-minute 1-on-1 diagnosis before class, with Demo Day held separately after the main classes",
+        weeklyQA: "Weekly Q&A session, with bookable Office Hours (2 hours total)",
+        requirements:
+          "Clear logic and willingness to complete the full project workflow from product to engineering to launch",
         content: [
-          "AI Cognition & Questioning Framework",
-          "AI-Assisted Full-Stack Development",
-          "Product Design Models",
-          "Large Model Integration",
-          "Project Collaboration",
-          "Automated Deployment",
-          "Product Launch Strategy",
-          "Business Pitch",
+          "Product Design & AI Prompting: JSK Product Design Model + CRAFT Prompting Framework",
+          "AI Engineering Practice: Codex Application Framework, from structured instructions to runnable prototypes",
+          "Full-Stack Development: Frontend and backend product development, from interface to data and interactions",
+          "Product Launch: Git / GitHub version control, Netlify deployment, custom domain + SSL",
+          "Technical Integration: Connect large models and tool capabilities, using OpenClaw to build executable AI workflows",
+          "Launch & Growth: Product Hunt launch, completing the loop from product to market",
+          "Business & Presentation: Independent Demo Day roadshow and outcome defense",
         ],
       },
       stage2b: {
         title: "BETA Cosmos Camp",
         subtitle: "",
-        ageLimit: "College Students/Engineers/Entrepreneurs (Age 18 and Above)",
+        ageLimit: "College Students / Engineers / Entrepreneurs (Age 18 and Above)",
         suitableFor:
           "Build production-grade projects with commercial potential for career advancement, PhD applications or startup MVP",
-        duration: "8 weeks (2 sessions/week, 2 hours each)",
+        duration:
+          "8-week program with 1 main class per week (1.5 hours), 8 main classes total (1 product class, 6 engineering classes, 1 marketing class); 1 assignment check per week, with Demo Day held separately after the main classes",
+        weeklyQA: "Weekly focused live Q&A session (1 hour)",
         requirements:
-          "Programming ability, clear language and mathematical logic",
+          "Clear logic, basic programming foundation, and willingness to complete intensive project practice from product architecture and engineering implementation to launch validation",
         content: [
           "AI Cognition & Questioning Framework",
           "Multimodal Data Engineering",
@@ -1112,10 +1121,12 @@ export const translations = {
       stage3: {
         title: "BETA Infinity Camp",
         subtitle: "",
-        ageLimit: "College Students/Engineers/Entrepreneurs (Age 18 and Above)",
+        ageLimit: "College Students / Engineers / Entrepreneurs (Age 18 and Above)",
         suitableFor:
           "Enhance AI engineering and product skills to complete production-grade products for career, further education or entrepreneurship",
-        duration: "12 weeks (1 session/week, 2 hours each)",
+        duration:
+          "12-week program with 1 main class per week (10-minute founder talk before class + 1.5-hour main class), 12 main classes total (2 product classes, 8 engineering classes, 2 marketing classes); 1 assignment check per week, with Demo Day held separately after the main classes",
+        weeklyQA: "Weekly focused live Q&A session (1 hour)",
         requirements:
           "Solid academic or engineering background, capable of independent project execution; founder 1v1 interview required",
         content: [
@@ -1137,6 +1148,7 @@ export const translations = {
         ageLimit: "Age Requirement",
         suitableFor: "Suitable For",
         duration: "Duration",
+        weeklyQA: "Weekly Q&A",
         requirements: "Requirements",
         content: "Curriculum",
         viewMore: "View Full Curriculum",
